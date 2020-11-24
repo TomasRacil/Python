@@ -42,3 +42,5 @@ Sledování útrat - Program který sleduje práci s budgetem
 Program pro stahování fotek z instagramu
 Projekt pro komunikaci s neo4j 
 Spam filter (machine learning)
+
+test
