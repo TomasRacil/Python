@@ -1,0 +1,2 @@
+from .funkceVPodmodulu import relativniVolani
+from .druhaFunkceVPodmodulu import druhaFunkceVPodmodulu
