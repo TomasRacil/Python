@@ -2,6 +2,7 @@
 # Description: Install necessary dependencies and return system back to its original state.
 # Author: Tomáš Ráčil
 # Date: 20-11-2020
+# test
 
 import argparse
 import glob
