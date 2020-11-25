@@ -9,8 +9,11 @@ print(f"Prvek s nultým indexem: {jazyky[0]}\n")
 #Při použití záporných indexů přistupujeme k prvkům v opačném pořadí tedy od konce.
 print(f"Poslední prvek: {jazyky[-1]}\n")
 
-#Při použití [index:index] tvoříme podmnožinu seznamu v rozsahu těchto dvou indexů.
+#Při použití [index:index] tvoříme podmnožinu seznamu v rozsahu těchto dvou indexů. Takzvaný slicing.
 print(f"Druhý až pátý prvek: {jazyky[2:5]}\n")
+
+#Při použití [:index] nebo [index:] vytváříme podmnožinu všech prvků z leva po index, nebo z prava po index
+print(f"Všechny prvky od druhého prvku: {jazyky[:2]}\n")
 
 #Přistup k prvkům vnořeného seznamu je prováděn kombinací indexu vnořeného seznamu, a indexu prvku uvnitř vnořeného seznamu.
 print(f"Poslední prvek vnořeného seznamu: {jazyky[-2][-1]}\n")

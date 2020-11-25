@@ -1,14 +1,14 @@
 """
-Datové struktury jsou kolekce různých hodnot. 
-Mezi těmito hodnotami mohou být i další datové struktury.
+Datové struktury jsou kolekce prvků. 
+Prvky mohou být proměnné, datové struktury a nebo dokonce funkce.
 V pythonu máme čtyři základní datové struktury.
 """
 
 
 #List (seznam) je velice podobný datové struktuře pole používané v jiných jazycích.
-#deklaraci listu provádíme pomocí hranatých závorek, které naplníme hodnotami oddělenými pomocí čárek
-ukazkovyList = ['první prvek','druhý prvek','...']
-print(f'obsah listu: {ukazkovyList} a typ {type(ukazkovyList)}\n')
+#deklaraci seznamu provádíme pomocí hranatých závorek, které naplníme hodnotami oddělenými pomocí čárek
+ukazkovySeznam = ['první prvek','druhý prvek','...']
+print(f'obsah listu: {ukazkovySeznam} a typ {type(ukazkovySeznam)}\n')
 #Seznam má dané pořadí je možné ho měnit a umožňuje ukládat stejné hodnoty
 
 #Druhým typem datové struktury je takzvaný Tuple (n-tice)
@@ -28,3 +28,6 @@ print(f'obsah setu: {ukazkovySet} a typ {type(ukazkovySet)}\n')
 ukazkovyDict= {'Jmeno':'Tomáš','Prijmeni':'Ráčil', 'Dalsi':'...'}
 print(f'obsah slovníku: {ukazkovyDict} a typ {type(ukazkovyDict)}\n')
 #nemá pořadí, umožňuje změny  a neumožňuje ukládat stejné hodnoty
+
+#Na všechny datové struktury podbně jako u stringu můžeme použít funci len(datová struktura) pro získání její délky
+print(f"Délka ukázkového seznamu: {len(ukazkovySeznam)}")
