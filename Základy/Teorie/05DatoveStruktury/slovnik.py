@@ -1,6 +1,6 @@
 #slovník se kterým budeme pracovat
 studenti={
-	"první":{
+	1:{
 	"Jméno":"Josef",
 	"Příjmení":"Kolík"
 	},
@@ -15,7 +15,7 @@ studenti={
 }
 
 #přístup k jednotlivým prvkům slovníku; také je možno použít metodu get(klíč), která vrací hodnotu klíče předaného argumentem
-print(f"První student: {studenti['první']}")
+print(f"První student: {studenti[1]}")
 print(f"Jméno druhého studenta: {studenti[2]['Jméno']}\n")
 
 #přidávání nového prvků
