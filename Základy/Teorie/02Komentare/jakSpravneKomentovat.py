@@ -28,6 +28,10 @@ def function(parameter='default'):
 	"""
 	return parameter 
 
+
+#pokud máme správně okomentované prvky můžeme jednoduše přistupovat k informacím o nich pomocí metody __doc__
+print(function.__doc__ + '\n')
+
 """
 Komentování funkcí je poměrně standartně zavedené ve formátu jaký jsem předvedl na příkladu.
 Obecně je dobré využívat angličtiny jak při psaní kódu tak při jeho komentování, ale není to nutnost.
