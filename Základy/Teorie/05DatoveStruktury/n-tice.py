@@ -52,6 +52,6 @@ print(f"\nIndex změněného prvku: {petice.index('změněný prvek')}\n")
 #Pro spočítání výskytu konkrétního prvku použijeme metodu count(hodnota prvku)
 print(f"Počet dvojek: {petice.count(2)}\n")
 
-#odstranění n-tice můžeme provést pomoci del
+#Odstranění n-tice můžeme provést výraz del
 del petice
-print(petice)
+print(f"Existuje n-tice petice: {'petice' in vars() or 'petice' in globals()}\n")

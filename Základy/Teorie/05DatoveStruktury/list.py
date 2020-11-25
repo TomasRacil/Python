@@ -90,3 +90,11 @@ print(f"Suda cisla: {sudaCisla}\n")
 #Pro vytvoření kopie listu musíme použít metodu copy() operátor = vytvoří pouze referenci
 kopieJazyku=jazyky.copy()
 print(f"Suda cisla: {kopieJazyku}\n")
+
+#Pro smazání obsahu celého seznamu můžeme použít metodu clear()
+jazyky.clear()
+print(f"Prázdný seznam: {jazyky}\n")
+
+#Odstranění seznamu můžeme provést výrazem del
+del jazyky
+print(f"Existuje seznam jazyky: {'jazyky' in vars() or 'jazyky' in globals()}\n")

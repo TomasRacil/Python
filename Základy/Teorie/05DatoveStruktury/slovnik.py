@@ -83,6 +83,6 @@ print(f"Prázdný slovník: {studenti}\n")
 studentiKopie = studenti.copy()
 print(f"Prázdný slovník: {studentiKopie}\n")
 
-#pro odstranění slovníku můžeme použít metodu del
+#Odstranění slovníku můžeme provést výrazem del
 del studenti
 print(f"Existuje slovník studenti: {'studenti' in vars() or 'studenti' in globals()}\n")
