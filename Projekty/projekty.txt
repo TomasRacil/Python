@@ -10,6 +10,7 @@ Kámen nůžky papír - script který s uživvatelem hraje kámen nůžky papír
 Fibonaciho posloupnost - Vytvořit fibonaciho posloupnost
 Je čílo prvkem fibonaciho posloupnost - Algoritmus, který zjistí jestli je číslo prvkem posloupnosti
 Výpočet faktoriálu - Spočítá faktoriál
+Najdi palindromy 
 
 Složitější projekty 
 Notifikační program - Script, který se postará o vytvoření upozornění (notify2)
