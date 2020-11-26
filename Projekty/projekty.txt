@@ -39,7 +39,7 @@ Text editor - Vytvořit komplexní text editor vycházející z Editoru probíra
 
 Pokročilé
 Webový vyhledávač - prhledává web ...
-Web crawler - Script procházející internet a ukládající zajímavá data
+Web crawler - Script procházející internet a ukládající zajímavá data       # Staněk
 Sledování útrat - Program který sleduje práci s budgetem
 Program pro stahování fotek z instagramu
 Projekt pro komunikaci s neo4j 
