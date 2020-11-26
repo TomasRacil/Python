@@ -30,7 +30,7 @@ Test rychlosti psaní - Uživatel dostane test, který má napsat program zpoč�
 Sudoku čtečka - přečte informace ze sudoku (OpenCV) Tesseract ocr
 Virtuální kreslení - OpenCV Tesseract ocr
 Čtení stojově čitelných údajů - čtení údajů nalezených na  cestovním pasu OpenCV Tesseract ocr
-LPR - Rozpoznání SPZ vozidla a přečtení údajů
+LPR - Rozpoznání SPZ vozidla a přečtení údajů       # Popelář, Božková, Horký
 Zápis do databáze - textový soubor s pevně definovanou strukturou se převede do databáze (PostgreSQL,sqlAlchemy)
 Blog - vytvoření webové stránky pomocí Flasku
 Virus
@@ -44,5 +44,3 @@ Sledování útrat - Program který sleduje práci s budgetem
 Program pro stahování fotek z instagramu
 Projekt pro komunikaci s neo4j 
 Spam filter (machine learning)
-
-test
