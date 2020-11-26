@@ -38,7 +38,7 @@ Virus
 Text editor - Vytvořit komplexní text editor vycházející z Editoru probíraného v rámci výuky
 
 Pokročilé
-Webový vyhledávač - prhledává web ...
+Webový vyhledávač - prohledává web ...
 Web crawler - Script procházející internet a ukládající zajímavá data       # Staněk
 Sledování útrat - Program který sleduje práci s budgetem
 Program pro stahování fotek z instagramu
