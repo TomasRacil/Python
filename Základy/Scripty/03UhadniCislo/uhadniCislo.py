@@ -1,3 +1,4 @@
+#TODO okomentovat
 from random import randint
 
 hraj=True
