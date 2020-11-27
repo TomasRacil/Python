@@ -1,8 +1,8 @@
 """
 Komentování vlastního kódu je velice důležité usnadňujeme tak práci jak sobě tak ostatním.
 V jazyce python se ke komentování používá:
-	symbol # pro jenořádkové komentáře 
-	v případě víceřádkových komentářů se pak používají tři zasebou jdoucí jednoduché, nebo dvojité uvozvoky
+	symbol # pro jednořádkové komentáře 
+	v případě víceřádkových komentářů se pak používají tři zasebou jdoucí jednoduché, nebo dvojité uvozovky
 """
 
 #komentář na jednom řádku

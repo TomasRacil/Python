@@ -1,14 +1,14 @@
 """
 Komentáře podobně jako v každém jiném jazyce mají dvě funkce.
 	První ta hlavní je lépe popsat fungování kódu to může pomoci jak nám samotným tak ostatním, kteří se třeba naším kódem budou chtít inspirovat.
-	Druhý, i když vedlejší, mnohem častěji využíváná je pro hledán a řešení chyb
+	Druhý, i když vedlejší, mnohem častěji využíván je pro hledání a řešení chyb
 Zaměříme se na tu první, protože ta druhá by měla být řešena jinými způsoby.
 
 Neexistuje jeden standard, který by určoval jakým způsobem má být kód okomentovan. 
 Obecně pravidla pro komentování:
 	komentáře jsou vždy stručné a vystižné
 	komentujeme tam, kde je algoritmus z jistých důvodů nepřehledný, nebo by se tak mohl jevit
-	komentujeme všechny klíčové část či myšlenky našeho programu (scriptu)
+	komentujeme všechny klíčové části či myšlenky našeho programu (scriptu)
 	komentujeme v případě, kdy definujeme nějaký samostatný blok například funkci, třídu, nebo její metodu
 
 Ovšem tyto příklady uvadějí, kde by komentář měl být, ovšem můžeme okomentovat klidně každý řádek, pokud to shledáme důležitým a neudělá to program nepřehledným.
@@ -40,9 +40,9 @@ Na prvním řádku odpovídáme co funkce dělá
 Na dalším může být dodatečný popis pokud je nutný.
 Následující řádky jsou nutné pouze v případě že funkce přijímá nějáké parametry.
 Následuje sekce 'Keyword arguments:' nebo 'Args:' její prvky jsou odsazené tabulátorem.
-Na následujících řádcích jsou vysvětleny jednotlivé parametry název parametru (typ): co parametr představuje a omezeni(default 'defaultní hodnota pokud nějaká je')
+Na následujících řádcích jsou vysvětleny jednotlivé parametry název parametru (typ): co parametr představuje a omezení(default 'defaultní hodnota pokud nějaká je')
 Následuje sekce 'Returns:'  její prvky jsou odsazené tabulátorem.
-Na následujícím řádku je vysvětlena návratová hodnota funkce typ: co funkce vrakcí popřípadě význam návratových hodnot nebo rozsah
+Na následujícím řádku je vysvětlena návratová hodnota funkce typ: co funkce vrací popřípadě význam návratových hodnot nebo rozsah
 """
 
 """
@@ -54,12 +54,12 @@ real=4.0	#real part of number
 imag=1.0	#imaginary part of number
 
 """
-Komentáře je také vhodné k označování kódu, 
+Komentáře jsou také vhodné k označování kódu, 
 	kterému nerozumíme 
 	kde je nutné ještě provést nějáké úpravy
 	odkaz na související webovou stránku
 Tyto části nemusí být anglicky předpokládá se, že v programu budou jen při vývoji.
-Dobré je používat slovo TODO pro snažží hledání těchto bodů.
+Dobré je používat slovo TODO pro snazší hledání těchto bodů.
 """
 
 import os 	#https://docs.python.org/3/library/os.html
@@ -87,7 +87,7 @@ Example:
 
 Attributes:
     varible (int): documentation of potential variables on the module level. They
-    	are optional can be documeted directly not in head.
+    	are optional can be documented directly not in head.
 
 Todo:
     * List of things that has to be done in future
@@ -98,6 +98,6 @@ website of this module if exists
 
 
 """
-Jedná se pouze o jednosuché shrnutí postupů, které jsem považoval za vhodné uvést.
+Jedná se pouze o jednoduché shrnutí postupů, které jsem považoval za vhodné uvést.
 Velice dobrý návod jak komentovat je zde https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
 """

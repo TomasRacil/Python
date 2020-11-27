@@ -3,6 +3,7 @@ from random import randint
 
 hraj=True
 
+
 while hraj:
 	print("Hra uhodni číslo od 0 do 100!")
 	if input("Pokud již nechceš hrát zadej 'q': ")=='q':break
