@@ -26,7 +26,7 @@ Převodník měn - který čerpá z aktuálních dat
 Sudoku - Generátor (grafický/konzolový)
 Sudoku - Řešitel (grafický/konzolový)
 Zobrazení souborového stromu - Script zobrazí souborový strom od určitého kořenového adresáře (uživatel může zadat co vynechat a hloubku zobrazení) (konzole)
-Test rychlosti psaní - Uživatel dostane test, který má napsat program zpočítá čas za jaký se mu to povedlo.
+Test rychlosti psaní - Uživatel dostane test, který má napsat program zpočítá čas za jaký se mu to povedlo.     #Veselák
 Sudoku čtečka - přečte informace ze sudoku (OpenCV) Tesseract ocr
 Virtuální kreslení - OpenCV Tesseract ocr
 Čtení stojově čitelných údajů - čtení údajů nalezených na  cestovním pasu OpenCV Tesseract ocr #Rejl
