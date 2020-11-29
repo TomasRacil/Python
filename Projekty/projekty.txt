@@ -14,7 +14,7 @@ Najdi palindromy
 
 Složitější projekty 
 Notifikační program - Script, který se postará o vytvoření upozornění (notify2)       # Jindra
-Program pro stahování videií z youtube - Script, který po zadání adresy videa stáhne dané video
+Program pro stahování videií z youtube - Script, který po zadání adresy videa stáhne dané video     # Hrabáček
 Website blocker - Script, který zamezí přístupu k některým webovým stránkám
 Kalkulačka - Grafická kalkulačka pomocí Tkinter (poměrně škálovatelný projekt)        # Maleta
 Semináhodný generátor hesel- Tento skript se zeptá na některé osobní údaje a vytvoří zapamatovatelné a silné heslo
