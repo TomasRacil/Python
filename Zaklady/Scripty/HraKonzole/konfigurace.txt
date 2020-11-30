@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tomas
 Lukas
 Lubos
@@ -37,3 +38,7 @@ s
 s
 s
 s
+=======
+Jakub
+Tomas
+>>>>>>> 9136a8ea9b1b6bd5e1f11c05c0377b2438fa5cbc

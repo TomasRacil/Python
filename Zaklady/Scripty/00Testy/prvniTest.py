@@ -89,4 +89,3 @@ while True:
 	except Exception as e: logging.exception("Nastala vyjímka zkuste to znovu")
 
 print(f"Faktoriál je {tretiAlgoritmus(cislo)}")
-
