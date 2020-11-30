@@ -22,7 +22,7 @@ Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wiki
 Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit časovač a budík #Beran
 Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře)
 Stenografie - Skrytá zpráva ukrytá v obrázku # Němec
-Převodník měn - který čerpá z aktuálních dat
+Převodník měn - který čerpá z aktuálních dat # Bžatek
 Sudoku - Generátor (grafický/konzolový)
 Sudoku - Řešitel (grafický/konzolový)
 Zobrazení souborového stromu - Script zobrazí souborový strom od určitého kořenového adresáře (uživatel může zadat co vynechat a hloubku zobrazení) (konzole)
