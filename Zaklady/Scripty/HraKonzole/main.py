@@ -150,17 +150,30 @@ def cteniZeSouboru (soubor="konfigurace.txt"):
 	soubor = open(soubor, "r")
 	return soubor
 
-def zapisDoSouboru (uzivatelskeJmeno):
+def zjistiID():
+	"""Funkce pro přidání jedinečného ID k novému uživatelskému jménu"""
+	soubor = cteniZeSouboru()
+	listRadku = soubor.readlines()
+	soubor.close()
+	pocet = listRadku[-1].split(';')
+	return (int(pocet[0])+1)
+
+def zapisDoSouboru(uzivatelskeJmeno):
 	"""Funkce pro zápis do souboru"""
+	ID = zjistiID()
 	soubor = open("konfigurace.txt", "a")
-	soubor.write("\n"+uzivatelskeJmeno)
+	if ID<10: soubor.write("\n0"+str(ID)+';'+uzivatelskeJmeno)
+	else: soubor.write("\n"+str(ID)+';'+uzivatelskeJmeno)
 	soubor.close()
 
-def najdiJmeno (uzivatelskeJmeno):
+def najdiJmeno(uzivatelskeJmeno):
+	"""Separuje z řádku jméno a porovná jej"""
 	soubor=cteniZeSouboru()
 	for radek in soubor:
-		if radek == uzivatelskeJmeno: return True
-
+		radek = radek.split('\n')
+		IDjmeno = radek[0]
+		jmeno = IDjmeno.split(';')
+		if jmeno[1] == uzivatelskeJmeno: return True
 	return False
 
 print("Chcete hrát?")
