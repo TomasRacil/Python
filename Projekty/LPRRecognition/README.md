@@ -23,4 +23,6 @@ TODO:
 	-Poté ukázání výsledku ve formì okna a znakù pod ním napsaných + vypsané
 
 //*Možné rozepsání krokù a pøipsání nìkterých chybìjících, nebo v pøípadì naražení na další problémy, možnost rozepsat*//
+
+
 Autoøi: des. Edita Božková, des. Daniel Popeláø, des. Lubomír Horký
