@@ -3,24 +3,36 @@ uzivatelskeJmeno=None
 from random import randint
 import time
 
-def cteniZeSouboru(soubor="konfigurace.txt"):
-    """Funkce pro čtení ze souboru"""
-    soubor = open(soubor, "r")    
-    return soubor
+def cteniZeSouboru (soubor="konfigurace.txt"):
+	"""Funkce pro čtení ze souboru"""
+	soubor = open(soubor, "r")
+	return soubor
+
+def zjistiID():
+	"""Funkce pro přidání jedinečného ID k novému uživatelskému jménu"""
+	soubor = cteniZeSouboru()
+	listRadku = soubor.readlines()
+	soubor.close()
+	pocet = listRadku[-1].split(';')
+	return (int(pocet[0])+1)
 
 def zapisDoSouboru(uzivatelskeJmeno):
-    """Funkce pro zápis do souboru"""
-    soubor = open("konfigurace.txt", "a")
-    soubor.write("\n"+uzivatelskeJmeno)
-    soubor.close()
+	"""Funkce pro zápis do souboru"""
+	ID = zjistiID()
+	soubor = open("konfigurace.txt", "a")
+	if ID<10: soubor.write("\n0"+str(ID)+';'+uzivatelskeJmeno)
+	else: soubor.write("\n"+str(ID)+';'+uzivatelskeJmeno)
+	soubor.close()
 
 def najdiJmeno(uzivatelskeJmeno):
-    soubor=cteniZeSouboru()
-    for radek in soubor:
-        if radek == uzivatelskeJmeno:
-            return True
-        
-    return False
+	"""Separuje z řádku jméno a porovná jej"""
+	soubor=cteniZeSouboru()
+	for radek in soubor:
+		radek = radek.split('\n')
+		IDjmeno = radek[0]
+		jmeno = IDjmeno.split(';')
+		if jmeno[1] == uzivatelskeJmeno: return True
+	return False
 
 def hodKostkou(od,do):
     """Hodíme kostkou a vrátí číslo od do """
@@ -62,7 +74,7 @@ if chceHrat.lower() == 'y':
                 else:
                     print("přidávám uživatele")
                 
-                zapisDoSouboru(uzivatelskeJmeno)
+                    zapisDoSouboru(uzivatelskeJmeno)
 
                 
             elif int(vek)==17:
