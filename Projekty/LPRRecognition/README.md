@@ -1,28 +1,29 @@
-## Projekt pro rozpoznávání SPZ v OpenCV
+Projekt pro rozpoznÃ¡vÃ¡nÃ­ SPZ v OpenCV
+=====================================
 
-TODO:
-1)	Seznámení se s jazykem Python a knihovnou OpenCV.
-	-instalace OpenCV a propojení s projektem.
+### TODO:
+1. #### SeznÃ¡menÃ­ se s jazykem Python a knihovnou OpenCV.
+   - instalace OpenCV a propojenÃ­ s projektem.
 
-2)	Inspirace podle projektu na Git : "https://github.com/MicrocontrollersAndMore/OpenCV_3_License_Plate_Recognition_Python?fbclid=IwAR1T5z2nZTCi4HFX0SVd_A_QxJEiinoNS_uQmzagPfS2m3M1_H_GmHAhSZ8"
+2. #### Inspirace podle projektu na [Git.](https://github.com/MicrocontrollersAndMore/OpenCV_3_License_Plate_Recognition_Python.git)
 
-3)	Vytvoøení si podprogramu "strojového uèení ètení znakù". Zvolíme vlastní fonty, které se nejèastìji pouívají na SPZ.
-	-vygenerování .txt souborou, které budou pouity k rozpoznávání SPZ
+3. #### VytvoÅ™enÃ­ si podprogramu "strojovÃ©ho uÄenÃ­ ÄtenÃ­ znakÅ¯". ZvolÃ­me vlastnÃ­ fonty, kterÃ© se nejÄastÄ›ji pouÅ¾Ã­vajÃ­ na SPZ.
+   - vygenerovÃ¡nÃ­ .txt souborou, kterÃ© budou pouÅ¾ity k rozpoznÃ¡vÃ¡nÃ­ SPZ
 
-4)	Samotnı program na rozeznání SPZ:
-	Nalezení znaèky
-	-Pøevod obrázku na èernobílı
-	-Nalezení monıch znakù v obrázku
-	-Vytvoøení vektoru monıch znakù, které jsou u sebe a mohou tvoøit SPZ
-	-Vyjmutí vektoru monıch znakù z obrázku a uloení do listu
-	-Zvìtšení a zamìøení se na listy kde se vyskytují znaky
-	-Znovu pøevod obrázku na èernobílı
-	-Rozpoznání znakù na znaèce
-	-Vybrání znaèky, která má buï nejvíce monıch znakù nebo urèitı standardizovanı poèet znakù
-	-Vyjmutí této znaèky z listu a porovnání se znaky
-	-Poté ukázání vısledku ve formì okna a znakù pod ním napsanıch + vypsané
+4. #### SamotnÃ½ program na rozeznÃ¡nÃ­ SPZ:
+   - NalezenÃ­ znaÄky
+   - PÅ™evod obrÃ¡zku na ÄernobÃ­lÃ½ (ze zaÄÃ¡tku pÅ™evod z obrÃ¡zku, v pokroÅ™ilejÅ¡Ã­ fÃ¡zi pÅ™evod z videa)
+   - NalezenÃ­ moÅ¾nÃ½ch znakÅ¯ v obrÃ¡zku
+   - VytvoÅ™enÃ­ vektoru moÅ¾nÃ½ch znakÅ¯, kterÃ© jsou u sebe a mohou tvoÅ™it SPZ
+   - VyjmutÃ­ vektoru moÅ¾nÃ½ch znakÅ¯ z obrÃ¡zku a uloÅ¾enÃ­ do listu
+   - ZvÄ›tÅ¡enÃ­ a zamÄ›Å™enÃ­ se na listy kde se vyskytujÃ­ znaky
+   - Znovu pÅ™evod obrÃ¡zku na ÄernobÃ­lÃ½
+   - RozpoznÃ¡nÃ­ znakÅ¯ na znaÄce
+   - VybrÃ¡nÃ­ znaÄky, kterÃ¡ mÃ¡ buÄ nejvÃ­ce moÅ¾nÃ½ch znakÅ¯ nebo urÄitÃ½ standardizovanÃ½ poÄet znakÅ¯
+   - VyjmutÃ­ tÃ©to znaÄky z listu a porovnÃ¡nÃ­ se znaky
+   - PotÃ© ukÃ¡zÃ¡nÃ­ vÃ½sledku ve formÄ› okna a znakÅ¯ pod nÃ­m napsanÃ½ch + vypsanÃ© nebo zapsÃ¡nÃ­ do databÃ¡ze
 
-//*Moné rozepsání krokù a pøipsání nìkterıch chybìjících, nebo v pøípadì naraení na další problémy, monost rozepsat*//
+> //*MoÅ¾nÃ© rozepsÃ¡nÃ­ krokÅ¯ a pÅ™ipsÃ¡nÃ­ nÄ›kterÃ½ch chybÄ›jÃ­cÃ­ch, nebo v pÅ™Ã­padÄ› naraÅ¾enÃ­ na dalÅ¡Ã­ problÃ©my, moÅ¾nost rozepsat*//
 
 
-Autoøi: des. Edita Boková, des. Daniel Popeláø, des. Lubomír Horkı
+AutoÅ™i: [@EditaBozkova](https://github.com/EditaBozkova), [@Lubos-source](https://github.com/Lubos-source), [@Pompino](https://github.com/Pompino)
