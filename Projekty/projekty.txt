@@ -19,7 +19,7 @@ Website blocker - Script, který zamezí přístupu k některým webovým strán
 Kalkulačka - Grafická kalkulačka pomocí Tkinter (poměrně škálovatelný projekt)        # Maleta
 Semináhodný generátor hesel- Tento skript se zeptá na některé osobní údaje a vytvoří zapamatovatelné a silné heslo
 Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení
-Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit časovač a budík #Beran
+Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit časovač a budík # Beran
 Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře)
 Stenografie - Skrytá zpráva ukrytá v obrázku # Němec
 Převodník měn - který čerpá z aktuálních dat # Bžatek
