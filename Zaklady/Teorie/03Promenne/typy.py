@@ -35,7 +35,7 @@ print(f"hodnota {floatingPointNumber} typ {type(floatingPointNumber)}")
 complexNumber = 2+3j
 print(f"hodnota {complexNumber} typ {type(complexNumber)}")
 
-#řetězce je možné zapisovat třemi způsoby pomocí dvojitých uvozovek, jednoduchých uvozovek, anebo je uzavřít mezi trojici ubvozovek.
+#řetězce je možné zapisovat třemi způsoby pomocí dvojitých uvozovek, jednoduchých uvozovek, anebo je uzavřít mezi trojici uvozovek.
 text1="Ahoj "
 text2='světe!'
 print(f"hodnoty: {text1}, {text2} typ {type(text1)}, {type(text2)}")

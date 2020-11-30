@@ -25,7 +25,7 @@ print(formatovanyText3)
 #Do řetězce jsme také schopní přidat symboly například pro nový řádek \n, nebo \t pro tabulátor  a další
 print('\n "Naučila jsem se, že cesta pokroku není rychlá ani snadná." \n \t—  Marie Curie-Skłodowská\n')
 
-#Pokud chceme zapsat funkční sybol do řetězce využíváme \
+#Pokud chceme zapsat funkční symbol do řetězce využíváme \
 print("Například jednu uvozovku: \", \nnebo znak pro nový rádek je \\n\n")
 
 
