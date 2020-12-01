@@ -21,7 +21,7 @@ print(f"hodnota {octal} typ {type(octal)}")
 hexadecimal = 0x10
 print(f"hodnota {hexadecimal} typ {type(hexadecimal)}")
 
-#Jak je vidět na výstupu python přijíma čísla v různých soustavách, ale převádí je na svůj nuniverzální typ int.
+#Jak je vidět na výstupu python přijíma čísla v různých soustavách, ale převádí je na svůj univerzální typ int.
 
 #zápis čísla s plovoucí desetinou čárkou; opět bez omezení velikosti; dva způsoby
 floatingPointNumber= 2.58

@@ -1,5 +1,5 @@
 """
-V rámci jazyku python podobně jak v dalších programovacích jazycích máme prostředky pro větvení programu v závislostin na splnění určitých podmínek. 
+V rámci jazyku python podobně jak v dalších programovacích jazycích máme prostředky pro větvení programu v závislosti na splnění určitých podmínek. 
 V rámci pythonu je k tomu užíváno výrazů if, else, elif.
 """
 

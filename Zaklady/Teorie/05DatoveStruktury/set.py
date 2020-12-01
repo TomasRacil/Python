@@ -18,7 +18,7 @@ for prvek in zelenina:
 
 
 
-#Přidání prvku prvádíme pomocí metody add(prvek)
+#Přidání prvku provádíme pomocí metody add(prvek)
 zelenina.add("jablko")
 print(f"\nZelenina + jablko: {zelenina}\n")
 
@@ -38,7 +38,7 @@ print(f"Cvicny včetně kořenové zeleniny: {zelenina}\n")
 zelenina.remove("jablko")
 print(f"Zelenia bez jablka: {zelenina}\n")
 
-#Pro odstranění prvku používáme metodu discard('hodnota prvku'), která nehlásí chabu pokud již prvek neexistuje
+#Pro odstranění prvku používáme metodu discard('hodnota prvku'), která nehlásí chybu pokud již prvek neexistuje
 zelenina.discard("jablko")
 
 #Metoda pop() odstraní poslední přidaný prvek

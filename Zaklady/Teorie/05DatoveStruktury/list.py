@@ -19,7 +19,7 @@ print(f"Poslední prvek vnořeného seznamu: {jazyky[-2][-1]}\n")
 
 #Změna hodnoty
 jazyky[0]='Python'
-print(f"Změněný první prvek: {jazyky}\n")
+print(f"Změněný první prvek: {jazyky[0]}\n")
 
 #Přidávání prvků
 jazyky.append("Go")
@@ -33,7 +33,7 @@ print(f"Seznam rozšířen o dva prvky: {jazyky}\n")
 jazyky=jazyky+['HTML','CSS']
 print(f"Seznam rozšířen o dva prvky pomocí operátor: {jazyky}\n")
 
-#Pro vložení prvku do seznamu používáme metodu insert(index,hodnota), které přijímá dva argumenty index, kam má být prvkek vložen, a prvek samotný.
+#Pro vložení prvku do seznamu používáme metodu insert(index,hodnota), které přijímá dva argumenty: index, kam má být prvkek vložen, a prvek samotný.
 jazyky.insert(2,"F#")
 print(f"Na druhý index seznamu byl vložen F#: {jazyky}\n")
 
@@ -89,7 +89,7 @@ print(f"Suda cisla: {sudaCisla}\n")
 
 #Pro vytvoření kopie listu musíme použít metodu copy() operátor = vytvoří pouze referenci
 kopieJazyku=jazyky.copy()
-print(f"Suda cisla: {kopieJazyku}\n")
+print(f"Kopie jazyku: {kopieJazyku}\n")
 
 #Pro smazání obsahu celého seznamu můžeme použít metodu clear()
 jazyky.clear()
