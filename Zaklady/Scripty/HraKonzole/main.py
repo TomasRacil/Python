@@ -1,5 +1,4 @@
 uzivatelskeJmeno=None
-<<<<<<< HEAD
 from random import randint
 import time
 
@@ -16,12 +15,37 @@ def zjistiID():
 	pocet = listRadku[-1].split(';')
 	return (int(pocet[0])+1)
 
+def vyberPostavy():
+    """Funkce pro vyber postavy/tridy a pripsani ji k novemu uzivateli"""
+    postavy=["Warrior", "Scout", "Mage"]
+    print("Pro zvoleni postavy zmacknete prislusne cislo\n")
+    i=1
+    vybral=False
+    for postava in postavy:
+        print(f"{i}. {postava}")
+        i+=1
+    while not vybral:
+        volba=input('\n')
+
+        try:
+            if int(volba)>0 or int(volba)<i:
+                print(f"Vybral sis postavu: {postavy[int(volba)-1]}")
+                vybral=True
+            elif int(volba)>=i:
+                print("Prilis velke cislo. Znovu!")
+        except Exception as e:
+            print(f"Chyba: {e}\nZnovu!")
+    
+    return postavy[int(volba)-1]
+
 def zapisDoSouboru(uzivatelskeJmeno):
 	"""Funkce pro zápis do souboru"""
 	ID = zjistiID()
+	postava=vyberPostavy()
 	soubor = open("konfigurace.txt", "a")
-	if ID<10: soubor.write("\n0"+str(ID)+';'+uzivatelskeJmeno)
-	else: soubor.write("\n"+str(ID)+';'+uzivatelskeJmeno)
+	if ID<10: soubor.write("\n0")
+	else: soubor.write("\n")
+	soubor.write(str(ID)+";"+uzivatelskeJmeno+";"+postava)
 	soubor.close()
 
 def najdiJmeno(uzivatelskeJmeno):
@@ -96,7 +120,7 @@ if chceHrat.lower() == 'y':
 
     volba=False    
     while not volba:
-        volba=input("Zvolte další akci:\nHodit kostkou: 1   \nOdejít: 2")
+        volba=input("Zvolte další akci:\nHodit kostkou: 1   \nOdejít: 2\n")
         if volba=='1':
             hod=hodKostkou(1,8)
             print("Hodil jsi: " + str(hod))    ##Rozmezí kostky si každý nastavý podle potřeby
@@ -154,86 +178,4 @@ if chceHrat.lower() == 'y':
 
 else:
     print("Hra ukončena")
-=======
-
-
-def cteniZeSouboru (soubor="konfigurace.txt"):
-	"""Funkce pro čtení ze souboru"""
-	soubor = open(soubor, "r")
-	return soubor
-
-def zjistiID():
-	"""Funkce pro přidání jedinečného ID k novému uživatelskému jménu"""
-	soubor = cteniZeSouboru()
-	listRadku = soubor.readlines()
-	soubor.close()
-	pocet = listRadku[-1].split(';')
-	return (int(pocet[0])+1)
-
-def zapisDoSouboru(uzivatelskeJmeno):
-	"""Funkce pro zápis do souboru"""
-	ID = zjistiID()
-	soubor = open("konfigurace.txt", "a")
-	if ID<10: soubor.write("\n0"+str(ID)+';'+uzivatelskeJmeno)
-	else: soubor.write("\n"+str(ID)+';'+uzivatelskeJmeno)
-	soubor.close()
-
-def najdiJmeno(uzivatelskeJmeno):
-	"""Separuje z řádku jméno a porovná jej"""
-	soubor=cteniZeSouboru()
-	for radek in soubor:
-		radek = radek.split('\n')
-		IDjmeno = radek[0]
-		jmeno = IDjmeno.split(';')
-		if jmeno[1] == uzivatelskeJmeno: return True
-	return False
-
-print("Chcete hrát?")
-
-chceHrat=input("pokud ano zadejte Y: ")
-
-if chceHrat.lower() == 'y':
-
-	zadalVek=False
-
-	while not zadalVek:
-		vek=input("Zadejte svůj věk: ")
-
-		try:
-			if int(vek)>=18:
-				print("Hra zacina")
-
-				uzivatelskeJmeno=input("Zadej své uživatelské jméno: ")
-
-				uzivatelExistuje= najdiJmeno(uzivatelskeJmeno)
-
-				if uzivatelExistuje:
-					print("uživatel existuje")
-				else:
-					print("přidávám užvatel")
-					zapisDoSouboru(uzivatelskeJmeno)
-
-				
-
-			elif int(vek)==17:
-				print("Už jen jeden rok")
-
-			else:
-				print("nemůžeš hrát")
-
-			zadalVek=True
-
-		except ValueError:
-			print("Toto není číslo, zadejte číslo")
-
-		except Exception as e:
-			print(f"Neočekávaná vyjímka: \n {e}")
-			zadalVek=True
-
-
-	print("program pokracuje")
-
-else:
-	print("Hra ukončena")
->>>>>>> 9136a8ea9b1b6bd5e1f11c05c0377b2438fa5cbc
 

@@ -1,3 +1,7 @@
-00;Tomas
-01;Lukas
-02;Lubos
+00;Jakub;Warrior
+01;Tomas;Warrior
+02;Filip;Mage
+03;Sanda;Scout
+04;Popy;Scout
+05;Gred;Warrior
+06;Tonny;Mage
