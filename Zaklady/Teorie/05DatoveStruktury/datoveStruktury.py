@@ -25,6 +25,6 @@ print(f'obsah setu: {ukazkovySet} a typ {type(ukazkovySet)}\n')
 
 #Čtvrým a posledním typem je dictionary (slovník)
 #deklarujeme ho pomocí složených závorek, uvnitř ktrých mám vždy klíč:hodnota oddělených čárkami
-ukazkovyDict= {'Jmeno':'Tomáš','Prijmeni':'Ráčil', 'Dalsi':'...'}
+ukazkovyDict= {'Jmeno':'Tomáš','Prijmeni':'Ráčil', 'Další':'...'}
 print(f'obsah slovníku: {ukazkovyDict} a typ {type(ukazkovyDict)}\n')
 #nemá pořadí, umožňuje změny  a neumožňuje ukládat stejné hodnoty

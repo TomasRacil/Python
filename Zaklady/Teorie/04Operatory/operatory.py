@@ -1,11 +1,11 @@
 """
 Jazyk python disponuje celou sadou operátorů velice podobnou operátorům nalezeným v ostatních jazycích.
 Aritmetické operátory - využívané především v matematických operacích
-Operátory přirazení - sloužící k přirazení a upravě hodnot proměnných
-Operátory porovnání - poskygtující možnosti porovnání proměnných
+Operátory přiřazení - sloužící k přiřazení a upravě hodnot proměnných
+Operátory porovnání - poskytující možnosti porovnání proměnných
 Logické operátory - sloužící k práci s hodnotami boolean (True/Flase)
-Operátory příslušnosti - zjišŤující přislušnost k dané množině
-Binární operátory - zajišťující operce s binnárními čísly
+Operátory příslušnosti - zjišťující přislušnost k dané množině
+Binární operátory - zajišťující operce s binárními čísly
 """
 
 
@@ -16,8 +16,8 @@ print(f'ale i různých typů {6+6.5}')
 print(f'Sčítat můžeme'+'i řetězce')
 
 #	- 		Odčítání
-print(f'Stejně jako u sčítaní,\n odčítat můžeme čísla stejného typu {6+6},')
-print(f'ale i různých typů {6+6.5}')
+print(f'Stejně jako u sčítaní,\n odčítat můžeme čísla stejného typu {6-6},')
+print(f'ale i různých typů {6-6.5}')
 
 #	*		Násobení
 print(f'Násobit můžeme čísla stejného typu {6*6},')
@@ -42,13 +42,13 @@ print(f'ale i různé typy {9//3.5}')
 
 
 
-#operátory přirazení
-#	=		Přirazení hodnoty funkční pro všechny typy proměnných
+#operátory přiřazení
+#	=		Přiřazení hodnoty funkční pro všechny typy proměnných
 x=5
 text='text'
 print(x,text)
 
-#	+=		Přitení a přiřazení hodnoty pouze u proměných u kterých je možné použít operátor +								x = x + 3	
+#	+=		Přičtení a přiřazení hodnoty pouze u proměných u kterých je možné použít operátor +								x = x + 3	
 x+=5
 text+=' text2'
 print(x,text)
@@ -84,7 +84,7 @@ print(x)
 #	== 		True pokud jsou si prvky rovny
 print(f'12 se rovná  12: {12==12}')
 
-#	!= 		True pokud jsou si prvky nejsou rovny
+#	!= 		True pokud si prvky nejsou rovny
 print(f'12 se nerovná 12: {12!=12}')
 
 #	> <		True pokud jsou prvky (větší/menší)

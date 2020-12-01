@@ -40,7 +40,7 @@ for cislo in range(5,50,5):
 i = 1
 while i < 6:
 	line=""
-	for cislo in range(6):
-		line += str(cislo)+", "
+	for cislo in range(6):			##Při vynechání argumentů ve funkci range(6) -> cisla od 0 do 6 po 1
+		line += str(cislo)+", "		## range(1,5) -> cisla od 1 do 5 po 1				range(1,6,2) -> cisla od 1 do 6 po 2
 	print(line)
 	i += 1

@@ -141,9 +141,11 @@ if chceHrat.lower() == 'y':
                         if hod<=4:
                             print("Nepodařilo se ti utéct")
                             ##Zivot--
+                            break
                         elif hod>4:
                             print("Dnes je tvůj šťastný den, úspěšně jsi utekl před banditem, stálo tě to 2 energie.")
                             ##energie=energie-2
+                            break
                     if volba=='2':
                         volba=True
                         print("Házíš kostkou kolik tě toto rozhodnutí bude stát životu (nejvýše však 3)")
