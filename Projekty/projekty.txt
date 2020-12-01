@@ -17,7 +17,7 @@ Notifikační program - Script, který se postará o vytvoření upozornění (n
 Program pro stahování videií z youtube - Script, který po zadání adresy videa stáhne dané video     # Hrabáček
 Website blocker - Script, který zamezí přístupu k některým webovým stránkám          #Balga
 Kalkulačka - Grafická kalkulačka pomocí Tkinter (poměrně škálovatelný projekt)        # Maleta
-Semináhodný generátor hesel- Tento skript se zeptá na některé osobní údaje a vytvoří zapamatovatelné a silné heslo
+Semináhodný generátor hesel- Tento skript se zeptá na některé osobní údaje a vytvoří zapamatovatelné a silné heslo #Hornof
 Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení
 Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit časovač a budík # Beran
 Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře)
