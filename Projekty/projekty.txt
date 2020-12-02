@@ -33,7 +33,7 @@ Virtuální kreslení - OpenCV Tesseract ocr
 LPR - Rozpoznání SPZ vozidla a přečtení údajů       # Popelář, Božková, Horký
 Zápis do databáze - textový soubor s pevně definovanou strukturou se převede do databáze (PostgreSQL,sqlAlchemy)
 Blog - vytvoření webové stránky pomocí Flasku
-Virus
+Virus #Žaludová
 Řešitel závislostí - Nainstaluje všechny potřebné moduly a spustí script po ukončení opět vše vrátí do původního stavu
 Text editor - Vytvořit komplexní text editor vycházející z Editoru probíraného v rámci výuky
 Šifrování a dešifrování - zpráv (spustitelných kódů-pokročilá verze)
