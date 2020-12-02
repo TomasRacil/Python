@@ -165,8 +165,8 @@ if chceHrat.lower() == 'y':
    # print("Program pokracuje")
 
     volba=False    
-    if(not age_restriction_partial_fix): #Ukončí program, hra vůbec nezačne.
-        volba = True
+	if(not age_restriction_partial_fix): #Ukončí program, hra vůbec nezačne.
+		volba = True
     while not volba:
         volba=input("Zvolte další akci:\nHodit kostkou: 1   \nOdejít: 2\n")
         if volba=='1':
