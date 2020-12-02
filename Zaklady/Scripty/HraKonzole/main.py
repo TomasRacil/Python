@@ -115,7 +115,77 @@ def ageExploit():
 	else:
 		global age_restriction_partial_fix
 		age_restriction_partial_fix = False
-		
+
+def reakceNaNepritele(obtiznostOblasti):
+    nepritelHP = obtiznostOblasti * 3
+    zivoty = 10
+    konec = False
+    while not konec:
+        volba=False
+        while not volba:
+            volba=input("Vyber co uděláš:\n 1 utéct\n 2 bojovat\n")
+            if volba=='1':
+                volba=True
+                print("Házíš kostkou pro rychlost útěku 1-12")
+                hod=hodKostkou(1,12)
+                print("Hodil jsi: " + str(hod))
+                if hod<=4:
+                    print("Nepodařilo se ti utéct, budeš muset bojovat\n")
+                    nepritelHP = HrdinaUtok(nepritelHP)
+                    zivoty = nepritelUtok(zivoty)
+                elif hod>4:
+                    print("Dnes je tvůj šťastný den, úspěšně jsi utekl před banditem, stálo tě to 2 energie.\n")
+                    konec = True
+                    break
+                    ##energie=energie-2
+            if volba=='2':
+                volba=True
+                print("Rozhodl jsi se bojovat\n")
+                nepritelHP = HrdinaUtok(nepritelHP)
+                zivoty = nepritelUtok(zivoty)
+            else:
+                volba=False
+
+        print("Tvé životy: ",zivoty," | Životy nepřítele: ",nepritelHP,"\n")
+        if zivoty <= 0:
+            print("Zemřel jsi KONEC HRY\n")
+            konec = True
+        if nepritelHP <= 0:
+            print("Výborně zabil jsi nepřítele, můžeš pokračovat dále\n")
+            konec = True
+
+def HrdinaUtok(nepritelHP):
+    print("Házíš kostkou kolik udělíš poškození")
+    hod=hodKostkou(1,6)
+    print("Hodil jsi: " + str(hod))
+    if hod == 1:
+        print("Zakopl jsi a útok úplně minul")
+    elif hod == 6:
+        print("Použil jsi své umění KungFu a udělil nepříteli dvojnásobné poškození")
+        nepritelHP = nepritelHP - 2
+    else:
+        print("Zasáhl jsi nepřítele a ubral mu jeden život")
+        nepritelHP = nepritelHP - 1
+    print("\n")
+    return nepritelHP
+
+def nepritelUtok(zivoty):
+    print("Nepřítel ti vrací úder, házíš kostkou kolik dostaneš poškození")
+    hod=hodKostkou(1,6)
+    print("Hodil jsi: " + str(hod))
+    if hod == 1:
+        print("Nepřítel ti udělil kritické poškození")
+        zivoty = zivoty - 2
+    elif hod == 2 or hod == 3:
+        print("Nepřítel tě zasáhl a ubral ti jeden život")
+        zivoty = zivoty - 1
+    elif hod == 4 or hod == 5:
+        print("Vyhnul jsi se útoku nepřítele")
+    elif hod == 6:
+        print("Fuuha, jak se říká, co tě nezabije to tě posílí. Získáváš jeden život navíc.")
+        zivoty = zivoty + 1
+    print("\n")
+    return zivoty
 		
 print("Chcete hrát?")
 
@@ -147,11 +217,11 @@ if chceHrat.lower() == 'y':
                 
             elif int(vek)==17:
                 print("Už jen jeden rok")
-		ageExploit()
+                ageExploit()
 
             else:
                 print("Nemůžeš hrát")
-		ageExploit()
+                ageExploit()
                 
             zadalVek=True
 
@@ -162,56 +232,25 @@ if chceHrat.lower() == 'y':
             print(f"Neočekávaná vyjímka: \n{e}")
             zadalVek=True
 
-   # print("Program pokracuje")
+    # print("Program pokracuje")
 
+    zivoty = 10
+    obtiznostOblasti = 1
     volba=False    
-	if(not age_restriction_partial_fix): #Ukončí program, hra vůbec nezačne.
-		volba = True
     while not volba:
         volba=input("Zvolte další akci:\nHodit kostkou: 1   \nOdejít: 2\n")
         if volba=='1':
-            hod=hodKostkou(1,8)
+            hod=hodKostkou(1,6)
             print("Hodil jsi: " + str(hod))    ##Rozmezí kostky si každý nastavý podle potřeby
             volba=True
-            if hod<=2:
+            if hod==1:
                 print("Nasadil jsi šnečí tempo o moc jsi se neposunul, nic zvláštního tě nepotkalo")
-            elif hod>2 and hod<=5:
-                print("Pohybuješ se kupředu")
+            elif hod>=2 and hod<=5:
+                print("Narazil jsi na nepřítele, je to roztomilý slime")
+                reakceNaNepritele(obtiznostOblasti)
             elif hod==6:
                 print("Šťastná ŠESTKA, bohužel ne zde. Z křoví na tebe vylezl bandita.")
-                volba=False
-                while not volba:            
-                    volba=input("Vyber co uděláš:\n 1 utéct\n 2 bojovat")
-                    if volba=='1':
-                        volba=True
-                        print("Házíš kostkou pro rychlost útěku 1-12")
-                        hod=hodKostkou(1,12)
-                        if hod<=4:
-                            print("Nepodařilo se ti utéct")
-                            ##Zivot--
-                            break
-                        elif hod>4:
-                            print("Dnes je tvůj šťastný den, úspěšně jsi utekl před banditem, stálo tě to 2 energie.")
-                            ##energie=energie-2
-                            break
-                    if volba=='2':
-                        volba=True
-                        print("Házíš kostkou kolik tě toto rozhodnutí bude stát životu (nejvýše však 3)")
-                        hod=hodKostkou(-1,3)
-                        if hod<0:
-                            print("Fuuha, jak se říká, co tě nezabije to tě posílí. Získáváš jeden život navíc.")
-                            ##Zivot++
-                        elif hod==0:
-                            print("Použil jsi své umění KungFu a úspěšně jsi se vyhnul všem útokům bandity")
-                        else:
-                            print("Něco tě škráblo ztrácíš : "+hod+"životů")
-                            ##Zivoty=Zivoty-hod
-                            ##if Zivoty<=0 print("KONEC HRY - ZEMŘEL JSI")
-                    else:
-                        volba=False
-            elif hod>6:
-                print("Rychlostí blesku se pohybuješ dál")
-                ##energie-2
+                reakceNaNepritele(obtiznostOblasti+1)
                         
         elif volba=='2':
             print("Odcházíš...")

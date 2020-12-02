@@ -5,3 +5,4 @@
 04;Popy;Scout
 05;Gred;Warrior
 06;Tonny;Mage
+07;j;Mage
