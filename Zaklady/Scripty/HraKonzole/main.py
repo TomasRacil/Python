@@ -147,11 +147,11 @@ if chceHrat.lower() == 'y':
                 
             elif int(vek)==17:
                 print("Už jen jeden rok")
-			ageExploit()
+		ageExploit()
 
             else:
                 print("Nemůžeš hrát")
-			ageExploit()
+		ageExploit()
                 
             zadalVek=True
 
