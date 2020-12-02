@@ -1,4 +1,6 @@
 uzivatelskeJmeno=None
+age_restriction_partial_fix = True
+
 from random import randint
 import time
 
@@ -98,6 +100,23 @@ def zmenaSmeru():
             print(f"Neočekávaná vyjímka: \n{e}")
             zadalSmer=True
 
+def ageExploit():
+	"""Funkce umožňující hrát s nedostatečným věkem."""
+	print("\nMáš štěstí! Herní vývojáři dostatečně neošetřili věkovou restrikci.")
+	volba = input("(1)Tvorba nebo výběr postavy.\n(R-{1})Toto je zločin! Ukončit hru.\nTvá volba: ")
+	if(volba == "1"):
+		user_name = input("Zadej uživatelské jméno: ")
+		uzivatelExistuje = najdiJmeno(user_name)
+		if uzivatelExistuje:
+			print("Postava " + user_name + " načtena.") 
+		else:
+			print("Přidávám uživatele.")
+			zapisDoSouboru(user_name)
+	else:
+		global age_restriction_partial_fix
+		age_restriction_partial_fix = False
+		
+		
 print("Chcete hrát?")
 
 chceHrat=input("Pokud ano zadejte Y: ")
@@ -128,9 +147,11 @@ if chceHrat.lower() == 'y':
                 
             elif int(vek)==17:
                 print("Už jen jeden rok")
+		ageExploit()
 
             else:
                 print("Nemůžeš hrát")
+		ageExploit()
                 
             zadalVek=True
 
@@ -144,6 +165,8 @@ if chceHrat.lower() == 'y':
    # print("Program pokracuje")
 
     volba=False    
+    if(not age_restriction_partial_fix): #Ukončí program, hra vůbec nezačne.
+        volba = True
     while not volba:
         volba=input("Zvolte další akci:\nHodit kostkou: 1   \nOdejít: 2\n")
         if volba=='1':
