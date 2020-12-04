@@ -1,4 +1,4 @@
-Stenografie je způsob ukrytí elektronické informace do souboru. Lze ukrýt text, obrázek i video do jiného textu, obrázku nebo videa.
+Steganografie je způsob ukrytí elektronické informace do souboru. Lze ukrýt text, obrázek i video do jiného textu, obrázku nebo videa.
 
 Je to možné díky různé "hodnotě" jednotlivých bitů v rámci bajtu. Soubor, do kterého je informace ukrývána, je pozměněn, avšak tuto změnu nelze běžnými prostředky rozeznat. Skrývaná informace tedy musí mít výrazně menší velikost, aby bylo možné ji zapsat do cílového souboru.
 
