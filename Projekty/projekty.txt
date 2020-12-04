@@ -36,7 +36,7 @@ Blog - vytvoření webové stránky pomocí Flasku
 Virus #Žaludová
 Řešitel závislostí - Nainstaluje všechny potřebné moduly a spustí script po ukončení opět vše vrátí do původního stavu
 Text editor - Vytvořit komplexní text editor vycházející z Editoru probíraného v rámci výuky
-Šifrování a dešifrování - zpráv (spustitelných kódů-pokročilá verze)
+Šifrování a dešifrování - zpráv (spustitelných kódů-pokročilá verze) # Gallus
 
 Pokročilé
 Webový vyhledávač - prohledává web ...
