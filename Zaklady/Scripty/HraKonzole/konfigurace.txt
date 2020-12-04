@@ -1,7 +1,9 @@
-00;Jakub;Warrior
-01;Tomas;Warrior
-02;Filip;Mage
-03;Sanda;Scout
-04;Popy;Scout
-05;Gred;Warrior
-06;Tonny;Mage
+00;Jakub;1
+01;Tomas;1
+02;Filip;3
+03;Sanda;2
+04;Popy;2
+05;Gred;1
+06;Tonny;3
+07;j;3
+08;M;3
