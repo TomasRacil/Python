@@ -277,7 +277,29 @@ def reakceNaNepritele(level=1):
     else:
         volba=False
 
+def nactiHrace(uzivatelskeJmeno):
 
+    soubor=cteniZeSouboru()
+    for radek in soubor:
+        radek=radek.split('\n')
+        IDjmeno=radek[0]
+        jmeno=IDjmeno.split(';')
+        if jmeno[1]==uzivatelskeJmeno:
+            if jmeno[2]=='1':
+                hrac=warrior()
+                break
+            if jmeno[2]=='2':
+                hrac=scout()
+                break
+            if jmeno[2]=='3':
+                hrac=mage()
+                break
+    return hrac
+
+def saveGame(hrac):
+    #TODO saveGame() - pro uložení hry (hp, damage, energy)
+    #naxit IS WORKING on it
+    print("Aktualni score ulozeno....Jeste ne:D")
 
 print("Chcete hrát?")
 
@@ -297,12 +319,9 @@ if chceHrat.lower() == 'y':
                 uzivatelExistuje=najdiJmeno(uzivatelskeJmeno)
                 if uzivatelExistuje:
                     print("uzivatel existuje")
-                    #TODO nahrát uživatele ze souboru - podle posledního čísla v řádku vybrat za co hraje a dodělat ukládání aktuálních hodnot
-                    #if nactiTypHrace() == 1: hrac=warrior(nactiHP(),nactiEnergy(), nactiDamage())
-                    #if nactiTypHrace() == 2: hrac=scout(nactiHP(),nactiEnergy(), nactiDamage())
-                    #if nactiTypHrace() == 3: hrac=mage(nactiHP(),nactiEnergy(), nactiDamage())
-
-                    hrac=warrior() #zatím se defaultně použije defaultní warrior
+                    hrac=nactiHrace(uzivatelskeJmeno)
+                    #TODO nahrát uživatele ze souboru - podle posledního čísla v řádku vybrat za co hraje a dodělat ukládání aktuálních hodnot                   
+                    #naxit IS WORKING on it
                     
                 else:
                     print("přidávám uživatele")
@@ -383,7 +402,7 @@ if chceHrat.lower() == 'y':
 
         elif volba==3:
             print("Odcházíš...")
-            #TODO saveGame() - pro uložení hry (hp, damage, energy)
+            saveGame(hrac)
             pokracovat=False
 
         print("\n======================================================")
