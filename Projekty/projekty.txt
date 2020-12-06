@@ -20,7 +20,7 @@ Kalkulačka - Grafická kalkulačka pomocí Tkinter (poměrně škálovatelný p
 Semináhodný generátor hesel- Tento skript se zeptá na některé osobní údaje a vytvoří zapamatovatelné a silné heslo #Hornof
 Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení    #Schejbal
 Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit časovač a budík # Beran
-Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře)
+Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře) #Vomáčka
 Stenografie - Skrytá zpráva ukrytá v obrázku # Němec
 Převodník měn - který čerpá z aktuálních dat # Bžatek
 Sudoku - Generátor (grafický/konzolový)
