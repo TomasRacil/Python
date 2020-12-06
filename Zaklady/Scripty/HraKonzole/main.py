@@ -89,8 +89,6 @@ class dragonNPC(character): #za NPC nelze hrát - nemá fce jako heal a sleep
         self.energy=20
         self.damage=80
 
-
-
 def fight(hrac, protivnik):
     """hráč dá svůj damage protivníkovi a protivník dá svůj damage hráči"""
     print("\nBOJUJEŠ!!!\n")
@@ -118,7 +116,6 @@ def fight(hrac, protivnik):
     hrac.card()
 
     print("\n")
-
 
 def cteniZeSouboru (soubor="konfigurace.txt"):
     """Funkce pro čtení ze souboru"""
@@ -193,8 +190,6 @@ def hodKostkou(od,do):
         print(f"Neočekávaná vyjímka: \n{e}")
     except NameError:
         print("Rozmezi hodu neni cislo!")
-
-
       
 def zmenaSmeru():
     """Zmenime smer pohybu"""
@@ -294,24 +289,24 @@ def nactiHrace(uzivatelskeJmeno):
                     if jmeno[2]=='3':
                         hrac=mage()                
             try:
-                hrac.hp=jmeno[3];                
+                hrac.hp=int(jmeno[3]);                
             except Exception as e:
                 print(f"Nepodarilo se nacist ulozene data - HP\n{e}")
             try:
-                hrac.damage=jmeno[4];                
+                hrac.damage=int(jmeno[4]);                
             except Exception as e:
                 print(f"Nepodarilo se nacist ulozene data - damage\n{e}")
             try:
-                hrac.energy=jmeno[5];                
+                hrac.energy=int(jmeno[5]);                
             except Exception as e:
                 print(f"Nepodarilo se nacist ulozene data - energy\n{e}")
 
             break
+    hrac.card()    
     return hrac
 
 def saveGame(hrac,uzivatelskeJmeno):
-    #TODO saveGame() - naxit IS WORKING on it
-    
+    #TODO saveGame() - naxit IS WORKING on it    
     soubor = open("konfigurace.txt", "r")
     
     i=0
@@ -328,19 +323,18 @@ def saveGame(hrac,uzivatelskeJmeno):
         if jmeno[1] == uzivatelskeJmeno:
             prepsanyRadek=jmeno[0]+";"+jmeno[1]+";"+jmeno[2]+";"+str(hrac.hp)+";"+str(hrac.damage)+";"+str(hrac.energy)  
             list[i]=prepsanyRadek
-        i+=1
-        
+        i+=1      
     soubor.close()
     
     soubor = open("konfigurace.txt", "w")
-    i=0
+    soubor.write(list[0])
+    
     for i in range(len(list)):
-        soubor.write(list[i]+"\n")
-
+        if not i==0: soubor.write("\n"+list[i])
     soubor.close()
 
-
     print("Aktualni score ulozeno")
+    hrac.card()
 
 print("Chcete hrát?")
 
@@ -360,7 +354,7 @@ if chceHrat.lower() == 'y':
                 uzivatelExistuje=najdiJmeno(uzivatelskeJmeno)
                 if uzivatelExistuje:
                     print("uzivatel existuje")
-                    hrac=nactiHrace(uzivatelskeJmeno)
+                    hrac=nactiHrace(uzivatelskeJmeno)                    
                     
                 else:
                     print("přidávám uživatele")
@@ -441,7 +435,10 @@ if chceHrat.lower() == 'y':
 
         elif volba==3:
             print("Odcházíš...")
-            saveGame(hrac,uzivatelskeJmeno)
+            try:
+                saveGame(hrac,uzivatelskeJmeno)
+            except Exception as e:
+                print(f"Neočekávaná vyjímka: Hra neulozena, kontaktujte Naxit\n{e}")
             pokracovat=False
 
         print("\n======================================================")
