@@ -287,19 +287,60 @@ def nactiHrace(uzivatelskeJmeno):
         if jmeno[1]==uzivatelskeJmeno:
             if jmeno[2]=='1':
                 hrac=warrior()
-                break
-            if jmeno[2]=='2':
-                hrac=scout()
-                break
-            if jmeno[2]=='3':
-                hrac=mage()
-                break
+            else:
+                if jmeno[2]=='2':
+                    hrac=scout()
+                else:
+                    if jmeno[2]=='3':
+                        hrac=mage()                
+            try:
+                hrac.hp=jmeno[3];                
+            except Exception as e:
+                print(f"Nepodarilo se nacist ulozene data - HP\n{e}")
+            try:
+                hrac.damage=jmeno[4];                
+            except Exception as e:
+                print(f"Nepodarilo se nacist ulozene data - damage\n{e}")
+            try:
+                hrac.energy=jmeno[5];                
+            except Exception as e:
+                print(f"Nepodarilo se nacist ulozene data - energy\n{e}")
+
+            break
     return hrac
 
-def saveGame(hrac):
-    #TODO saveGame() - pro uložení hry (hp, damage, energy)
-    #naxit IS WORKING on it
-    print("Aktualni score ulozeno....Jeste ne:D")
+def saveGame(hrac,uzivatelskeJmeno):
+    #TODO saveGame() - naxit IS WORKING on it
+    
+    soubor = open("konfigurace.txt", "r")
+    
+    i=0
+    for line in soubor:
+        line = line.split('\n')
+        i+=1    
+    soubor.seek(0)
+    list=[{} for c in range(i)]
+    i=0 
+    for radek in soubor:
+        radek = radek.split('\n')
+        list[i]=radek[0]
+        jmeno = list[i].split(';')
+        if jmeno[1] == uzivatelskeJmeno:
+            prepsanyRadek=jmeno[0]+";"+jmeno[1]+";"+jmeno[2]+";"+str(hrac.hp)+";"+str(hrac.damage)+";"+str(hrac.energy)  
+            list[i]=prepsanyRadek
+        i+=1
+        
+    soubor.close()
+    
+    soubor = open("konfigurace.txt", "w")
+    i=0
+    for i in range(len(list)):
+        soubor.write(list[i]+"\n")
+
+    soubor.close()
+
+
+    print("Aktualni score ulozeno")
 
 print("Chcete hrát?")
 
@@ -320,8 +361,6 @@ if chceHrat.lower() == 'y':
                 if uzivatelExistuje:
                     print("uzivatel existuje")
                     hrac=nactiHrace(uzivatelskeJmeno)
-                    #TODO nahrát uživatele ze souboru - podle posledního čísla v řádku vybrat za co hraje a dodělat ukládání aktuálních hodnot                   
-                    #naxit IS WORKING on it
                     
                 else:
                     print("přidávám uživatele")
@@ -402,7 +441,7 @@ if chceHrat.lower() == 'y':
 
         elif volba==3:
             print("Odcházíš...")
-            saveGame(hrac)
+            saveGame(hrac,uzivatelskeJmeno)
             pokracovat=False
 
         print("\n======================================================")
