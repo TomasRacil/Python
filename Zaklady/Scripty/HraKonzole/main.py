@@ -4,6 +4,19 @@ from random import randint
 uzivatelskeJmeno=None
 age_restriction_partial_fix = True
 
+def hodKostkou(od,do):
+   """Hodíme kostkou a vrátí číslo od do """
+   for i in range(5):        
+       print(randint(0,9),end='\r')    ##pouze vzhledový design : "jednoduchý výběr z čísel" random čísla a pak se nějaké zvolí.
+       time.sleep(0.25)
+   try:
+       return (randint(od,do))
+   except Exception as e:
+       print(f"Neočekávaná vyjímka: \n{e}")
+   except NameError:
+       print("Rozmezi hodu neni cislo!")
+
+
 class character():
     """třída ze které vychází postavy"""
     type=1 #1=warrior 2=scout 3=mage 4=banditNPC 5=dragonNPC
@@ -54,27 +67,27 @@ class warrior(character):
 
     def heal(self): self.hp=120
     def sleep(self):  
-	hod=hodKostkou(1,8) """Nahodny hod kostkou pro zisk urciteho mnozstvi energie"""
-            print("\nHodil jsi: " + str(hod) + "\n")   
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
 
-            if hod==1:
-                print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
+        if hod==1:
+            print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
                
 
-            elif hod==2:
+        elif hod==2:
                 print("Sotva jsi zamhouřil oči, okolní rámus tvému spánku rozhodně nedopřál!\nZískáváš 30 energie")
                 self.energy=30
+        elif hod==3:
+            print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
+            self.energy=60
 
-            elif hod==3:
-                print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
-                self.energy=60
+        elif hod==4 or hod==5:
+            print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
+            self.energy=90
 
-            elif hod==4 or hod==5:
-                print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
-                self.energy=90
-            elif hod==6:
-                print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
-                 self.energy=120
+        elif hod==6:
+           print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
+           self.energy=120
 
 
 class scout(character):
@@ -86,23 +99,27 @@ class scout(character):
 
     def heal(self): self.hp=50
     def sleep(self):  
-	hod=hodKostkou(1,8) """Nahodny hod kostkou pro zisk urciteho mnozstvi energie"""
-            print("\nHodil jsi: " + str(hod) + "\n")   
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
 
-            if hod==1:
-                print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
-            elif hod==2:
+        if hod==1:
+            print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
+               
+
+        elif hod==2:
                 print("Sotva jsi zamhouřil oči, okolní rámus tvému spánku rozhodně nedopřál!\nZískáváš 30 energie")
                 self.energy=30
-            elif hod==3:
-                print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
-                self.energy=60
-            elif hod==4 or hod==5:
-                print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
-                self.energy=90
-            elif hod==6:
-                print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
-                 self.energy=120
+        elif hod==3:
+            print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
+            self.energy=60
+
+        elif hod==4 or hod==5:
+            print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
+            self.energy=90
+
+        elif hod==6:
+           print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
+           self.energy=120
 
 class mage(character):
     def __init__(self,hp=65,energy=100,damage=110):
@@ -113,27 +130,27 @@ class mage(character):
 
     def heal(self): self.hp=65
     def sleep(self):  
-	hod=hodKostkou(1,8) """Nahodny hod kostkou pro zisk urciteho mnozstvi energie"""
-            print("\nHodil jsi: " + str(hod) + "\n")   
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
 
-            if hod==1:
-                print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
+        if hod==1:
+            print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
                
 
-            elif hod==2:
+        elif hod==2:
                 print("Sotva jsi zamhouřil oči, okolní rámus tvému spánku rozhodně nedopřál!\nZískáváš 30 energie")
                 self.energy=30
+        elif hod==3:
+            print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
+            self.energy=60
 
-            elif hod==3:
-                print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
-                self.energy=60
+        elif hod==4 or hod==5:
+            print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
+            self.energy=90
 
-            elif hod==4 or hod==5:
-                print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
-                self.energy=90
-            elif hod==6:
-                print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
-                 self.energy=120
+        elif hod==6:
+           print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
+           self.energy=120
 
 class banditNPC(character): #za NPC nelze hrát - nemá fce jako heal a sleep
     def __init__(self):
@@ -148,6 +165,7 @@ class dragonNPC(character): #za NPC nelze hrát - nemá fce jako heal a sleep
         self.hp=200
         self.energy=20
         self.damage=80
+
 
 def fight(hrac, protivnik):
     """hráč dá svůj damage protivníkovi a protivník dá svůj damage hráči"""
@@ -239,17 +257,7 @@ def najdiJmeno(uzivatelskeJmeno):
         if jmeno[1] == uzivatelskeJmeno: return True
     return False
 
-def hodKostkou(od,do):
-    """Hodíme kostkou a vrátí číslo od do """
-    for i in range(5):        
-        print(randint(0,9),end='\r')    ##pouze vzhledový design : "jednoduchý výběr z čísel" random čísla a pak se nějaké zvolí.
-        time.sleep(0.25)
-    try:
-        return (randint(od,do))
-    except Exception as e:
-        print(f"Neočekávaná vyjímka: \n{e}")
-    except NameError:
-        print("Rozmezi hodu neni cislo!")
+
       
 def zmenaSmeru():
     """Zmenime smer pohybu"""
