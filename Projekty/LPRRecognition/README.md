@@ -3,7 +3,7 @@ Projekt pro rozpoznávání SPZ v OpenCV
 
 ### TODO:
 1. #### Seznámení se s jazykem Python a knihovnou OpenCV.
-   - instalace OpenCV a propojení s projektem.
+   - instalace OpenCV a následné propojení s projektem.
 
 2. #### Inspirace podle projektu na [Git.](https://github.com/MicrocontrollersAndMore/OpenCV_3_License_Plate_Recognition_Python.git)
 
