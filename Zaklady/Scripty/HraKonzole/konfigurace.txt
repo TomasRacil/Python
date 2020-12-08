@@ -2,7 +2,7 @@
 01;Tomas;1
 02;Filip;3
 03;Sanda;2
-04;Popy;2
+04;Popy;2;50;20;150
 05;Gred;1
 06;Tonny;3
 07;j;3

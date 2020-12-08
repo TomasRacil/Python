@@ -1,8 +1,9 @@
 import time
 from random import randint
 
+from GameEngine import *
+
 uzivatelskeJmeno=None
-age_restriction_partial_fix = True
 
 def hodKostkou(od,do):
    """Hodíme kostkou a vrátí číslo od do """
@@ -260,8 +261,6 @@ def najdiJmeno(uzivatelskeJmeno):
         if jmeno[1] == uzivatelskeJmeno: return True
     return False
 
-
-      
 def zmenaSmeru():
     """Zmenime smer pohybu"""
     print("\nSMER POHYBU:\n1. doprava - 2. dolu - 3. doleva - 4. nahoru\n")
@@ -290,21 +289,6 @@ def zmenaSmeru():
             print(f"Neočekávaná vyjímka: \n{e}")
             zadalSmer=True
 
-def ageExploit():
-	"""Funkce umožňující hrát s nedostatečným věkem."""
-	print("\nMáš štěstí! Herní vývojáři dostatečně neošetřili věkovou restrikci.")
-	volba = input("(1)Tvorba nebo výběr postavy.\n(R-{1})Toto je zločin! Ukončit hru.\nTvá volba: ")
-	if(volba == "1"):
-		user_name = input("Zadej uživatelské jméno: ")
-		uzivatelExistuje = najdiJmeno(user_name)
-		if uzivatelExistuje:
-			print("Postava " + user_name + " načtena.") 
-		else:
-			print("Přidávám uživatele.")
-			zapisDoSouboru(user_name)
-	else:
-		global age_restriction_partial_fix
-		age_restriction_partial_fix = False
 
 def reakceNaNepritele(level=1):
     """fce pro boj - nechá hráče bojovat s protivníkem, kterého určí na vstupu fce"""
