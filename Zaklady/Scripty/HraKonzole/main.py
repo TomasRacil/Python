@@ -199,18 +199,6 @@ def fight(hrac, protivnik):
 
     print("\n")
 
-def cteniZeSouboru (soubor="konfigurace.txt"):
-    """Funkce pro čtení ze souboru"""
-    soubor = open(soubor, "r")
-    return soubor
-
-def zjistiID():
-    """Funkce pro přidání jedinečného ID k novému uživatelskému jménu"""
-    soubor = cteniZeSouboru()
-    listRadku = soubor.readlines()
-    soubor.close()
-    pocet = listRadku[-1].split(';')
-    return (int(pocet[0])+1)
 
 def zapisDoSouboru(uzivatelskeJmeno):
     """Funkce pro zápis do souboru"""
@@ -227,16 +215,6 @@ def zapisDoSouboru(uzivatelskeJmeno):
     soubor.write(str(ID)+";"+uzivatelskeJmeno+";"+str(postava))
     soubor.close()
     return postava
-
-def najdiJmeno(uzivatelskeJmeno):
-    """Separuje z řádku jméno a porovná jej"""
-    soubor=cteniZeSouboru()
-    for radek in soubor:
-        radek = radek.split('\n')
-        IDjmeno = radek[0]
-        jmeno = IDjmeno.split(';')
-        if jmeno[1] == uzivatelskeJmeno: return True
-    return False
 
 def zmenaSmeru():
     """Zmenime smer pohybu"""
