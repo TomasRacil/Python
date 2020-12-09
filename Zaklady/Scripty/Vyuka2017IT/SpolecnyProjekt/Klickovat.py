@@ -11,7 +11,7 @@ def klickovat():
 		startTime = time.time()
 		prvni = int(input("Opsane: "))
 
-		if (time.time()-startTime) < 5:
+		if (time.time()-startTime) < 2:
 			if cislo != prvni:
 				print("SPADL JSI!!!")
 				pomocna = pomocna+1
