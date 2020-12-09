@@ -1,7 +1,16 @@
 import time
 from random import randint
+from datetime import date
 
 from GameEngine import *
+
+print("Vítejte v náší dobrodružné hře")
+
+today = date.today()
+
+# dd/mm/YY
+d1 = today.strftime("%d/%m/%Y")
+print("Dnes je krásný den s datumem ", d1)
 
 uzivatelskeJmeno=None
 
