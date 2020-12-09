@@ -23,8 +23,8 @@ Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit č
 Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře) #Vomáčka
 Stenografie - Skrytá zpráva ukrytá v obrázku # Němec
 Převodník měn - který čerpá z aktuálních dat # Bžatek
-Sudoku - Generátor (grafický/konzolový)
-Sudoku - Řešitel (grafický/konzolový)
+Sudoku - Generátor (grafický/konzolový) - #Zdenda Vyležich :)
+Sudoku - Řešitel (grafický/konzolový) - #Jan Kubalek
 Zobrazení souborového stromu - Script zobrazí souborový strom od určitého kořenového adresáře (uživatel může zadat co vynechat a hloubku zobrazení) (konzole)
 Test rychlosti psaní - Uživatel dostane test, který má napsat program zpočítá čas za jaký se mu to povedlo.     #Veselák
 Sudoku čtečka - přečte informace ze sudoku (OpenCV) Tesseract ocr
@@ -49,4 +49,3 @@ Spam filter (machine learning)
 
 =======
 >>>>>>> 31970527e818f3fcb0f4e0cc4da716e3556ab2fc
-Zkouska Z
