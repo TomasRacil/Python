@@ -31,7 +31,7 @@ Sudoku čtečka - přečte informace ze sudoku (OpenCV) Tesseract ocr
 Virtuální kreslení - OpenCV Tesseract ocr
 Čtení stojově čitelných údajů - čtení údajů nalezených na  cestovním pasu OpenCV Tesseract ocr #Rejl
 LPR - Rozpoznání SPZ vozidla a přečtení údajů       # Popelář, Božková, Horký
-Zápis do databáze - textový soubor s pevně definovanou strukturou se převede do databáze (PostgreSQL,sqlAlchemy)
+Zápis do databáze - textový soubor s pevně definovanou strukturou se převede do databáze (PostgreSQL,sqlAlchemy) #Weiss
 Blog - vytvoření webové stránky pomocí Flasku
 Virus #Žaludová
 Řešitel závislostí - Nainstaluje všechny potřebné moduly a spustí script po ukončení opět vše vrátí do původního stavu
