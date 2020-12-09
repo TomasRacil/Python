@@ -437,7 +437,7 @@ if chceHrat.lower() == 'y':
             print(f"Neočekávaná vyjímka: \n{e}")
             zadalVek=True
 
-    print("\n======================================================")
+    print("\n=======================================================")
 
     pokracovat=True
     
@@ -517,8 +517,7 @@ if chceHrat.lower() == 'y':
         print("\n\nZemřel jsi\n\n")
 
     ##Pokracovani programu (Po volbě Odejít) nebo po ukonceni hodu.
-        
 
 else:
     print("Hra ukončena")
-
+      
