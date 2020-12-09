@@ -436,4 +436,4 @@ if chceHrat.lower() == 'y':
 
 else:
     print("Hra ukončena")
-      
+
