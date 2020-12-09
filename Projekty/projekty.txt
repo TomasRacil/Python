@@ -49,3 +49,4 @@ Spam filter (machine learning)
 
 =======
 >>>>>>> 31970527e818f3fcb0f4e0cc4da716e3556ab2fc
+Zkouska Z
