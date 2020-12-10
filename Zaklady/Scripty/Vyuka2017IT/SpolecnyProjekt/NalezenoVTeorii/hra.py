@@ -22,7 +22,7 @@ while behHry:
 				print("Není soucasti")
 				spatnePokusy+=1
 				if spatnePokusy>5:
-					break=False
+					break
 
 		behHry=False
 	else:
