@@ -20,7 +20,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 9. Vytvořte program, tahání nejkratší sirky zadáte počet osob a jejich jména a program náhodně zvolí jednu z těchto osob.(1)
 
-10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde palindromy (čísla,slova,fráze nebo celé věty, které mají stejný význam, když je čteme z obou stran) (1-3)
+10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde palindromy (čísla,slova,fráze nebo celé věty, které mají stejný význam, když je čteme z obou stran) (1-3) #Bozkova, Popelar
 
 10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde všechny jednotlivá slova a zapíše k nim frekvenci jejich výskytu pak seřadí podle počtu vlajkou předáváme počet znaků, které musí mít slovo minimálně aby bylo považováno za slovo  (1-2) #Rejl
 
