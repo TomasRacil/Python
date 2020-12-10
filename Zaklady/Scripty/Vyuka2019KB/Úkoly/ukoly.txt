@@ -1,0 +1,54 @@
+U všech programů se snažte komentovat a ošetřit případné vyjímky. U každého úkolu je uvedo v závorkách počet lidí, kteří se na něm mohou podílet.
+
+Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z Advent of Code
+
+1. Program do kterého je možné uložit osobu a datum narození a v případě že má dnes někdo narozeniny tak na to při spuštění upozorní. (1)
+
+2. Oběšenec hra ve které hádáme slovo omezený počet pokusů vyktreslení oběšence na konzoli. Slova čerpáme z různých souborů(tématické) například věda, zvířata, sci-fi atd. (1-2)
+
+3. Kámen nůžky papír pomocí vlajek(argument parsing) můžeme přepnout na geek verzi kámen nůžky papír spok(1) 
+
+4. Uhádni číslo vygeneruje se náhodné číslo a uživatel hádá o jaké číslo se jedná rozsah generovaných čísel můžeme předdefinovat pomocí vlajek (argument parsing) (1)
+
+5. Výpočet π možnost určení počtu desetiných čísel na které bude zaokrouhleno. (1)
+
+6. Stáhněte si váš rozvrh na měsíc prosinec a leden a převďte ho do tříd/třídy pythonu s metodami pro zápis dat, získání nejbližší hodiny, výpis hodin s konkrétním učitelem, a výpis nejčastějších předmětů (samozřejmě můžete vytvořit i další). (1-3)
+
+7. Script co pomocí regulárních výrazů najde v html webové stránky všechny obrázky a vrátí nám odakazy na tyto obrázky. (html stránku můžete stáhnout přímo a přistupovat k ní jako k txt nebo pomocí modulu request a metody get https://www.tutorialspoint.com/downloading-files-from-web-using-python) (1-2)
+
+8. Vygenerujte dva soubory (10000 řádků) s náhodnými čísly (0-100000) oddělenými řádky tyto soubory uložte a vyvořte pak funkci která tyto souboryseřadí od největšího po nejmenší číslo a najde čísla, která jsou oběma společná. (1-2)
+
+9. Vytvořte program, tahání nejkratší sirky zadáte počet osob a jejich jména a program náhodně zvolí jednu z těchto osob.(1)
+
+10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde palindromy (čísla,slova,fráze nebo celé věty, které mají stejný význam, když je čteme z obou stran) (1-3)
+
+10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde všechny jednotlivá slova a zapíše k nim frekvenci jejich výskytu pak seřadí podle počtu vlajkou předáváme počet znaků, které musí mít slovo minimálně aby bylo považováno za slovo  (1-2)
+
+11. Vypište kalendář na daný rok případně měsíc (podle vlajek předaných skriptu -r pro rok -m pro měsíc) v konzoli formát bude sloupec uplně vlevo je pondělí, sloupec úplně v pravo neděle. (1-2) 
+např. tento prosinec
+	1	2	3	4	5 	6
+7	8	9	10	11	12	13
+...
+28	29	30	31
+
+12. Program pro slovní kopanou uživatel zadává slova program mu odpovídá náhodným slovy začínající na písmeno (1-3 podle vlajky předané při spuštění), kterým uživsatelovo slovo končilo ten pak musí odpovědět počítači a dodržet pravidla kopané. (1-3) 
+Odkaz na slovník českých slov z kterého bude program čerpat http://www.pspad.com/files/dic/cz_dic.cab 
+
+13. Vytvořte program vypisující fibonaciho posloupnost ve tvaru pyramidy do konzole. Velikost posloupnosti předáte pomocí vlajky při spuštění scriptu. (1)
+ukázka:
+			1
+		1		1
+	1		2		1
+...
+
+14. Napište program, který převádí text předáný pomocí vlajky při zavolání skriptu na morzeovku. (1-2)
+
+15. Vytvořte program, který šifruje text stejným způsobem jako to prováděl šifrovací zařízení enigma (1-4)
+
+16. Porovnejte rychlost defaulní funkce pro nalezení největšího člena listu max() a vlastní funkce pro nalezení nejvyšší hodnoty(1-2) 
+knihovna timeit
+
+17. Skuste implementovat Karacubovo násobení a porovnat ho s defaultním násobením pythonu(1-2)
+knihovna timeit
+
+18. Najděte všechny anagramy ve slovech obsažených v textu (http://www.gutenberg.org/ebooks/2267) anagram je slovo které obsahuje stejné písmena, ale v jiném pořadí. (1-2)
