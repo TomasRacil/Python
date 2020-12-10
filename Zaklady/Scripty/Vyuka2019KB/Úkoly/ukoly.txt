@@ -22,7 +22,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde palindromy (čísla,slova,fráze nebo celé věty, které mají stejný význam, když je čteme z obou stran) (1-3)
 
-10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde všechny jednotlivá slova a zapíše k nim frekvenci jejich výskytu pak seřadí podle počtu vlajkou předáváme počet znaků, které musí mít slovo minimálně aby bylo považováno za slovo  (1-2)
+10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde všechny jednotlivá slova a zapíše k nim frekvenci jejich výskytu pak seřadí podle počtu vlajkou předáváme počet znaků, které musí mít slovo minimálně aby bylo považováno za slovo  (1-2) #Rejl
 
 11. Vypište kalendář na daný rok případně měsíc (podle vlajek předaných skriptu -r pro rok -m pro měsíc) v konzoli formát bude sloupec uplně vlevo je pondělí, sloupec úplně v pravo neděle. (1-2) 
 např. tento prosinec
