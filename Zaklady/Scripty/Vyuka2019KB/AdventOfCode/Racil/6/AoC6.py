@@ -2,7 +2,7 @@
 #vytváříme list skupin, kde každá skupina obsahuje set jednotlivých osob; split pomocí dvojitých newline skupiny a jedné newline osoby 
 customs=[ [set(osoba) for osoba in skupina.split("\n")] for skupina in open("customs.txt", "r").read().split("\n\n")]
 
-#
+#proměnné pro ukládání součtů všech možností a stejných možností ve skupinách
 vsechny, stejne=0,0
 #procházíme skupin po skupině
 for skupina in customs:
