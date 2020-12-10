@@ -1,8 +1,31 @@
 import time
 from random import randint
+from datetime import date
+
+from GameEngine import *
+
+print("Vítejte v náší dobrodružné hře")
+
+today = date.today()
+
+# dd/mm/YY
+d1 = today.strftime("%d/%m/%Y")
+print("Dnes je krásný den s datumem ", d1)
 
 uzivatelskeJmeno=None
-age_restriction_partial_fix = True
+
+def hodKostkou(od,do):
+   """Hodíme kostkou a vrátí číslo od do """
+   for i in range(5):        
+       print(randint(0,9),end='\r')    ##pouze vzhledový design : "jednoduchý výběr z čísel" random čísla a pak se nějaké zvolí.
+       time.sleep(0.25)
+   try:
+       return (randint(od,do))
+   except Exception as e:
+       print(f"Neočekávaná vyjímka: \n{e}")
+   except NameError:
+       print("Rozmezi hodu neni cislo!")
+
 
 class character():
     """třída ze které vychází postavy"""
@@ -19,6 +42,9 @@ class character():
         else:
             self.hp=0
             self.alive=False
+
+    def prictiHP(self, kolik):
+        self.hp+=kolik
 
     def odectiEnergy(self, kolik):
         if (self.energy-kolik)>0:
@@ -53,7 +79,29 @@ class warrior(character):
         self.damage=damage
 
     def heal(self): self.hp=120
-    def sleep(self): self.energy=60
+    def sleep(self):  
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
+
+        if hod==1:
+            print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
+               
+
+        elif hod==2:
+                print("Sotva jsi zamhouřil oči, okolní rámus tvému spánku rozhodně nedopřál!\nZískáváš 30 energie")
+                self.energy=30
+        elif hod==3:
+            print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
+            self.energy=60
+
+        elif hod==4 or hod==5:
+            print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
+            self.energy=90
+
+        elif hod==6:
+           print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
+           self.energy=120
+
 
 class scout(character):
     def __init__(self,hp=50,energy=150,damage=20):
@@ -63,7 +111,28 @@ class scout(character):
         self.damage=damage
 
     def heal(self): self.hp=50
-    def sleep(self): self.energy=150
+    def sleep(self):  
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
+
+        if hod==1:
+            print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
+               
+
+        elif hod==2:
+                print("Sotva jsi zamhouřil oči, okolní rámus tvému spánku rozhodně nedopřál!\nZískáváš 30 energie")
+                self.energy=30
+        elif hod==3:
+            print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
+            self.energy=60
+
+        elif hod==4 or hod==5:
+            print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
+            self.energy=90
+
+        elif hod==6:
+           print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
+           self.energy=120
 
 class mage(character):
     def __init__(self,hp=65,energy=100,damage=110):
@@ -73,7 +142,28 @@ class mage(character):
         self.damage=damage
 
     def heal(self): self.hp=65
-    def sleep(self): self.energy=100
+    def sleep(self):  
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
+
+        if hod==1:
+            print("Během spánku jsi byl přepaden. \nNezískal jsi žádnou energii")
+               
+
+        elif hod==2:
+                print("Sotva jsi zamhouřil oči, okolní rámus tvému spánku rozhodně nedopřál!\nZískáváš 30 energie")
+                self.energy=30
+        elif hod==3:
+            print("V průběhu spánku ses několikrát probudil kvůli nočním můrám !\nZískáváš 60 energie")
+            self.energy=60
+
+        elif hod==4 or hod==5:
+            print("Po několika hodinách se probouzíš, ale spaní na tvrdé podložce nebylo to pravé!\nZískáváš 90 energie")
+            self.energy=90
+
+        elif hod==6:
+           print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
+           self.energy=120
 
 class banditNPC(character): #za NPC nelze hrát - nemá fce jako heal a sleep
     def __init__(self):
@@ -88,7 +178,6 @@ class dragonNPC(character): #za NPC nelze hrát - nemá fce jako heal a sleep
         self.hp=200
         self.energy=20
         self.damage=80
-
 
 
 def fight(hrac, protivnik):
@@ -119,83 +208,6 @@ def fight(hrac, protivnik):
 
     print("\n")
 
-
-def cteniZeSouboru (soubor="konfigurace.txt"):
-    """Funkce pro čtení ze souboru"""
-    soubor = open(soubor, "r")
-    return soubor
-
-def zjistiID():
-    """Funkce pro přidání jedinečného ID k novému uživatelskému jménu"""
-    soubor = cteniZeSouboru()
-    listRadku = soubor.readlines()
-    soubor.close()
-    pocet = listRadku[-1].split(';')
-    return (int(pocet[0])+1)
-
-def vyberPostavy():
-    """Funkce pro vyber postavy/tridy a pripsani ji k novemu uzivateli"""
-    postavy=["Warrior", "Scout", "Mage"]
-    print("Pro zvoleni postavy zmacknete prislusne cislo\n")
-    i=1
-    vybral=False
-    for postava in postavy:
-        print(f"{i}. {postava}")
-        i+=1
-    while not vybral:
-        volba=input('\n')
-
-        try:
-            if int(volba)>0 or int(volba)<i:
-                print(f"Vybral sis postavu: {postavy[int(volba)-1]}")
-                vybral=True
-            elif int(volba)>=i:
-                print("Prilis velke cislo. Znovu!")
-        except Exception as e:
-            print(f"Chyba: {e}\nZnovu!")
-    
-    return postavy[int(volba)-1]
-
-def zapisDoSouboru(uzivatelskeJmeno):
-    """Funkce pro zápis do souboru"""
-    ID = zjistiID()
-    vyber=vyberPostavy()
-
-    if vyber=="Warrior": postava=1 #zapíše místo slova číslo odpovídající postavě, zakterou hráč hraje - aby pak šla loadnout
-    if vyber=="Scout": postava=2
-    if vyber=="Mage": postava=3
-
-    soubor = open("konfigurace.txt", "a")
-    if ID<10: soubor.write("\n0")
-    else: soubor.write("\n")
-    soubor.write(str(ID)+";"+uzivatelskeJmeno+";"+str(postava))
-    soubor.close()
-    return postava
-
-def najdiJmeno(uzivatelskeJmeno):
-    """Separuje z řádku jméno a porovná jej"""
-    soubor=cteniZeSouboru()
-    for radek in soubor:
-        radek = radek.split('\n')
-        IDjmeno = radek[0]
-        jmeno = IDjmeno.split(';')
-        if jmeno[1] == uzivatelskeJmeno: return True
-    return False
-
-def hodKostkou(od,do):
-    """Hodíme kostkou a vrátí číslo od do """
-    for i in range(5):        
-        print(randint(0,9),end='\r')    ##pouze vzhledový design : "jednoduchý výběr z čísel" random čísla a pak se nějaké zvolí.
-        time.sleep(0.25)
-    try:
-        return (randint(od,do))
-    except Exception as e:
-        print(f"Neočekávaná vyjímka: \n{e}")
-    except NameError:
-        print("Rozmezi hodu neni cislo!")
-
-
-      
 def zmenaSmeru():
     """Zmenime smer pohybu"""
     print("\nSMER POHYBU:\n1. doprava - 2. dolu - 3. doleva - 4. nahoru\n")
@@ -223,22 +235,6 @@ def zmenaSmeru():
         except Exception as e:
             print(f"Neočekávaná vyjímka: \n{e}")
             zadalSmer=True
-
-def ageExploit():
-	"""Funkce umožňující hrát s nedostatečným věkem."""
-	print("\nMáš štěstí! Herní vývojáři dostatečně neošetřili věkovou restrikci.")
-	volba = input("(1)Tvorba nebo výběr postavy.\n(R-{1})Toto je zločin! Ukončit hru.\nTvá volba: ")
-	if(volba == "1"):
-		user_name = input("Zadej uživatelské jméno: ")
-		uzivatelExistuje = najdiJmeno(user_name)
-		if uzivatelExistuje:
-			print("Postava " + user_name + " načtena.") 
-		else:
-			print("Přidávám uživatele.")
-			zapisDoSouboru(user_name)
-	else:
-		global age_restriction_partial_fix
-		age_restriction_partial_fix = False
 
 def reakceNaNepritele(level=1):
     """fce pro boj - nechá hráče bojovat s protivníkem, kterého určí na vstupu fce"""
@@ -277,7 +273,39 @@ def reakceNaNepritele(level=1):
     else:
         volba=False
 
+def nactiHrace(uzivatelskeJmeno):
 
+    soubor=cteniZeSouboru()
+    for radek in soubor:
+        radek=radek.split('\n')
+        IDjmeno=radek[0]
+        jmeno=IDjmeno.split(';')
+        if jmeno[1]==uzivatelskeJmeno:
+            if jmeno[2]=='1':
+                hrac=warrior()
+            else:
+                if jmeno[2]=='2':
+                    hrac=scout()
+                else:
+                    if jmeno[2]=='3':
+                        hrac=mage()                
+            try:
+                hrac.hp=int(jmeno[3]);                
+            except Exception as e:
+                print(f"Nepodarilo se nacist ulozene data - HP\n{e}")
+            try:
+                hrac.damage=int(jmeno[4]);                
+            except Exception as e:
+                print(f"Nepodarilo se nacist ulozene data - damage\n{e}")
+            try:
+                hrac.energy=int(jmeno[5]);                
+            except Exception as e:
+                print(f"Nepodarilo se nacist ulozene data - energy\n{e}")
+
+            break
+    hrac.card()    
+    return hrac
+   
 
 print("Chcete hrát?")
 
@@ -297,12 +325,7 @@ if chceHrat.lower() == 'y':
                 uzivatelExistuje=najdiJmeno(uzivatelskeJmeno)
                 if uzivatelExistuje:
                     print("uzivatel existuje")
-                    #TODO nahrát uživatele ze souboru - podle posledního čísla v řádku vybrat za co hraje a dodělat ukládání aktuálních hodnot
-                    #if nactiTypHrace() == 1: hrac=warrior(nactiHP(),nactiEnergy(), nactiDamage())
-                    #if nactiTypHrace() == 2: hrac=scout(nactiHP(),nactiEnergy(), nactiDamage())
-                    #if nactiTypHrace() == 3: hrac=mage(nactiHP(),nactiEnergy(), nactiDamage())
-
-                    hrac=warrior() #zatím se defaultně použije defaultní warrior
+                    hrac=nactiHrace(uzivatelskeJmeno)                    
                     
                 else:
                     print("přidávám uživatele")
@@ -330,7 +353,7 @@ if chceHrat.lower() == 'y':
             print(f"Neočekávaná vyjímka: \n{e}")
             zadalVek=True
 
-    print("\n======================================================")
+    print("\n=======================================================")
 
     pokracovat=True
     
@@ -369,9 +392,22 @@ if chceHrat.lower() == 'y':
             elif hod==6:
                 print("Šťastná ŠESTKA, bohužel ne zde. Z křoví na tebe vylezl drak.")
                 reakceNaNepritele(obtiznostOblasti+1)
-            elif hod>6:
+            elif hod>6 and hod <=7:
                 print("Rychlostí blesku se pohybuješ dál\nStojí tě to pouze 10 energie")
                 hrac.odectiEnergy(10)
+
+            elif hod==8:
+                print("Narazil si na kašnu s živou vodou\nJak moc se napiješ záleží na štěstí: ")
+                hod=hodKostkou(1,6)
+                if hod<=2:
+                    print("No to si se moc nenapil, pričetlo se ti 10 životů")
+                    hrac.prictiHP(10)
+                elif hod==3:
+                    print("Přiměřeně si se napil, alespoň zbyde i na ostatní, pričetlo se ti 20 životů")
+                    hrac.prictiHP(20)
+                elif hod>=4:
+                    print("Teda nemusel si vypít všechno, pričetlo se ti 30 životů")
+                    hrac.prictiHP(30)
 
         if hrac.energy==0:
             print("\nJsi strašně unavený\nUsínáš uprostřed cesty...\nProbouzíš se alespoň trochu odpočatý\n")
@@ -383,7 +419,10 @@ if chceHrat.lower() == 'y':
 
         elif volba==3:
             print("Odcházíš...")
-            #TODO saveGame() - pro uložení hry (hp, damage, energy)
+            try:
+                saveGame(hrac,uzivatelskeJmeno)
+            except Exception as e:
+                print(f"Neočekávaná vyjímka: Hra neulozena, kontaktujte Naxit\n{e}")
             pokracovat=False
 
         print("\n======================================================")
@@ -394,8 +433,7 @@ if chceHrat.lower() == 'y':
         print("\n\nZemřel jsi\n\n")
 
     ##Pokracovani programu (Po volbě Odejít) nebo po ukonceni hodu.
-        
 
 else:
     print("Hra ukončena")
-
+      

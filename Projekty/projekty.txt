@@ -18,25 +18,25 @@ Program pro stahování videií z youtube - Script, který po zadání adresy vi
 Website blocker - Script, který zamezí přístupu k některým webovým stránkám          #Balga
 Kalkulačka - Grafická kalkulačka pomocí Tkinter (poměrně škálovatelný projekt)        # Maleta
 Semináhodný generátor hesel- Tento skript se zeptá na některé osobní údaje a vytvoří zapamatovatelné a silné heslo #Hornof
-Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení
+Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení    #Schejbal
 Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit časovač a budík # Beran
-Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře)
+Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře) #Vomáčka
 Stenografie - Skrytá zpráva ukrytá v obrázku # Němec
 Převodník měn - který čerpá z aktuálních dat # Bžatek
-Sudoku - Generátor (grafický/konzolový)
-Sudoku - Řešitel (grafický/konzolový)
+Sudoku - Generátor (grafický/konzolový) - #Zdenda Vyležich :)
+Sudoku - Řešitel (grafický/konzolový) - #Jan Kubalek
 Zobrazení souborového stromu - Script zobrazí souborový strom od určitého kořenového adresáře (uživatel může zadat co vynechat a hloubku zobrazení) (konzole)
 Test rychlosti psaní - Uživatel dostane test, který má napsat program zpočítá čas za jaký se mu to povedlo.     #Veselák
 Sudoku čtečka - přečte informace ze sudoku (OpenCV) Tesseract ocr
 Virtuální kreslení - OpenCV Tesseract ocr
 Čtení stojově čitelných údajů - čtení údajů nalezených na  cestovním pasu OpenCV Tesseract ocr #Rejl
 LPR - Rozpoznání SPZ vozidla a přečtení údajů       # Popelář, Božková, Horký
-Zápis do databáze - textový soubor s pevně definovanou strukturou se převede do databáze (PostgreSQL,sqlAlchemy)
+Zápis do databáze - textový soubor s pevně definovanou strukturou se převede do databáze (PostgreSQL,sqlAlchemy) #Weiss
 Blog - vytvoření webové stránky pomocí Flasku
 Virus #Žaludová
 Řešitel závislostí - Nainstaluje všechny potřebné moduly a spustí script po ukončení opět vše vrátí do původního stavu
 Text editor - Vytvořit komplexní text editor vycházející z Editoru probíraného v rámci výuky
-Šifrování a dešifrování - zpráv (spustitelných kódů-pokročilá verze)
+Šifrování a dešifrování - zpráv (spustitelných kódů-pokročilá verze) # Gallus
 
 Pokročilé
 Webový vyhledávač - prohledává web ...

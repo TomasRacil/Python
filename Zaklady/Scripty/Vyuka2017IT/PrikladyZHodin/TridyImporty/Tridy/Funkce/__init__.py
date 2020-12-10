@@ -1,0 +1,1 @@
+from .initPrvni import inicializace
