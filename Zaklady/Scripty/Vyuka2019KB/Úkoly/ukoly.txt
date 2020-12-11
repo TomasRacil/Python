@@ -46,7 +46,7 @@ ukázka:
 15. Vytvořte program, který šifruje text stejným způsobem jako to prováděl šifrovací zařízení enigma (1-4)
 
 16. Porovnejte rychlost defaulní funkce pro nalezení největšího člena listu max() a vlastní funkce pro nalezení nejvyšší hodnoty(1-2) 
-knihovna timeit
+knihovna timeit	#Horky
 
 17. Skuste implementovat Karacubovo násobení a porovnat ho s defaultním násobením pythonu(1-2)
 knihovna timeit
