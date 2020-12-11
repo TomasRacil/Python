@@ -16,7 +16,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 7. Script co pomocí regulárních výrazů najde v html webové stránky všechny obrázky a vrátí nám odakazy na tyto obrázky. (html stránku můžete stáhnout přímo a přistupovat k ní jako k txt nebo pomocí modulu request a metody get https://www.tutorialspoint.com/downloading-files-from-web-using-python) (1-2)
 
-8. Vygenerujte dva soubory (10000 řádků) s náhodnými čísly (0-100000) oddělenými řádky tyto soubory uložte a vyvořte pak funkci která tyto souboryseřadí od největšího po nejmenší číslo a najde čísla, která jsou oběma společná. (1-2)
+8. Vygenerujte dva soubory (10000 řádků) s náhodnými čísly (0-100000) oddělenými řádky tyto soubory uložte a vyvořte pak funkci která tyto souboryseřadí od největšího po nejmenší číslo a najde čísla, která jsou oběma společná. (1-2) #Bzatek, Nemec
 
 9. Vytvořte program, tahání nejkratší sirky zadáte počet osob a jejich jména a program náhodně zvolí jednu z těchto osob.(1)
 
