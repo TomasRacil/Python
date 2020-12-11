@@ -11,7 +11,8 @@ for otazka in otazky:
 	if odpoved=="D":
 		print("Ti-ti-ticho!")
 		urovenSpokojenosti=urovenSpokojenosti+1
-	else: print("Kecy,kecy,kecy!!!!!")
+	else: 
+		print("Kecy,kecy,kecy!!!!!")
 		urovenSpokojenosti=urovenSpokojenosti-1	
 	print(otazka[1])
 	print(moznosti[1])
