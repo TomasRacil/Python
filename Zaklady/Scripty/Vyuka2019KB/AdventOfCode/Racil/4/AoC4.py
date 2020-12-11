@@ -40,19 +40,31 @@ spravnePID=[pas for pas in spravnaBarvaOci if re.fullmatch(r"[0-9]{9}",pas['pid'
 print(len(spravnePID))"""
 
 #využíváme list comprehension pro vytvoření listu obsahujících jednotlivé pasy ve fromě slovníku, které obsahují klíče označující položky pasů a jejich hodnoty  
-platnePasy=[pas for pas 
-in [{dvojice.split(":")[0]:dvojice.split(":")[1] for #dělíme jednotlivé dvojice dvojtečkou a ukládáme je ve formě klíč hodnota slovníku
-in pas.split()} for pas #dělíme jednotlivé pasy pomocí split tedy mezer a newline
-in open("pasy.txt", "r").read().split("\n\n")] 	#otevíráme soubor rozdělujeme ho na základě dvojité newline
-if (all (k in pas for k in ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]) #kontrolujeme jestli pas obsahuje povinné klíče
-	and 1920<=int(pas['byr'])<=2002 #kontrolujeme jestli datum narození je ve správném rozsahu
-	and 2010<=int(pas['iyr'])<=2020 #kontrolujeme jestli datum vydání je ve správném rozsahu
-	and 2020<=int(pas['eyr'])<=2030 #kontrolujeme jestli datum expirace je ve správném rozsahu
-	and ((pas['hgt'][-2:]=="cm" and 150<=int(pas['hgt'][:-2])<=193) #kontrolujeme jestli výška uvedená v cm je ve správném rozsahu
-		or (pas['hgt'][-2:]=="in" and 59<=int(pas['hgt'][:-2])<=76))#kontrolujeme jestli výška uvedená v in je ve správném rozsahu
-	and re.fullmatch(r'#[0-9a-f]{6}', pas['hcl']) #pomocí regulárního výrazu zjišťujeme jestli je formát barvy uvedený v hexadicimálně
-	and pas['ecl'] in ["amb","blu","brn","gry","grn","hzl","oth"] #ověřujeme jestli barva očí nabývá jen určených hodnot
-	and re.fullmatch(r"[0-9]{9}",pas['pid']))] #regulární výraz ověřuje jestli je pas id přesnš devíti místné číslo
+platnePasy=[pas for pas
+in [{dvojice.split(":")[0]:dvojice.split(":")[1] for dvojice
+in pas.split()} for pas
+in open("pasy.txt", "r").read().split("\n\n")]
+if (all (k in pas for k in ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"])
+	and 1920<=int(pas['byr'])<=2002
+	and 2010<=int(pas['iyr'])<=2020
+	and 2020<=int(pas['eyr'])<=2030
+	and ((pas['hgt'][-2:]=="cm" and 150<=int(pas['hgt'][:-2])<=193)
+		or (pas['hgt'][-2:]=="in" and 59<=int(pas['hgt'][:-2])<=76))
+	and re.fullmatch(r'#[0-9a-f]{6}', pas['hcl'])
+	and pas['ecl'] in ["amb","blu","brn","gry","grn","hzl","oth"]
+	and re.fullmatch(r"[0-9]{9}",pas['pid']))]
+#44. řádek: dělíme jednotlivé dvojice dvojtečkou a ukládáme je ve formě klíč hodnota slovníku
+#45. řádek: dělíme jednotlivé pasy pomocí split tedy mezer a newline
+#46. řádek: otevíráme soubor rozdělujeme ho na základě dvojité newline
+#47. řádek: kontrolujeme jestli pas obsahuje povinné klíče
+#48. řádek: kontrolujeme jestli datum narození je ve správném rozsahu
+#49. řádek: kontrolujeme jestli datum vydání je ve správném rozsahu
+#50. řádek: kontrolujeme jestli datum expirace je ve správném rozsahu
+#51. řádek: kontrolujeme jestli výška uvedená v cm je ve správném rozsahu
+#52. řádek: kontrolujeme jestli výška uvedená v in je ve správném rozsahu
+#53. řádek: pomocí regulárního výrazu zjišťujeme jestli je formát barvy uvedený v hexadicimálně
+#54. řádek: ověřujeme jestli barva očí nabývá jen určených hodnot
+#55. řádek: regulární výraz ověřuje jestli je pas id přesnš devíti místné číslo
 
-print(len(platnePasy))
 print(platnePasy)
+print(len(platnePasy))
