@@ -11,7 +11,8 @@ for otazka in otazky:
 	if odpoved=="D":
 		print("Ti-ti-ticho!")
 		urovenSpokojenosti=urovenSpokojenosti+1
-	else: print("Kecy,kecy,kecy!!!!!")
+	else: 
+		print("Kecy,kecy,kecy!!!!!")
 		urovenSpokojenosti=urovenSpokojenosti-1	
 	print(otazka[1])
 	print(moznosti[1])
@@ -19,7 +20,8 @@ for otazka in otazky:
 	if odpoved=="C":
 		print("Ti-ti-ticho^2!")
 		urovenSpokojenosti=urovenSpokojenosti+1
-	else: print("To je hnus!!!!!")		
+	else: 
+		print("To je hnus!!!!!")		
 		urovenSpokojenosti=urovenSpokojenosti-1
 	print(otazka[2])
 	print(moznosti[2])
@@ -27,7 +29,8 @@ for otazka in otazky:
 	if odpoved=="D":
 		print("Ti-ti-ticho^3!")
 		urovenSpokojenosti=urovenSpokojenosti+1
-	else: print("Kecy,kecy,kecy!!!!!")	  
+	else: 
+		print("Kecy,kecy,kecy!!!!!")	  
 		urovenSpokojenosti=urovenSpokojenosti-1
 	if urovenSpokojenosti>=2:
 		print("Major je s vasi odpovedi spokojeny")
