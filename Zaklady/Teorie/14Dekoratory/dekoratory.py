@@ -85,7 +85,7 @@ def opakujDvakrat(func):
     #abychom mohli předávat argumenty  do volané funkce použijem *args **kwargs
     def wrapper(*args, **kwargs):
     	#zavoláme funkce a předáme do ní všechny argumenty
-        func(*args, **kwargs)
+        #func(*args, **kwargs)
         #vrátíme výsledek funkce
         return func(*args, **kwargs)
         #vrátíme náš vrapper

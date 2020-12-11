@@ -6,9 +6,9 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 2. Oběšenec hra ve které hádáme slovo omezený počet pokusů vyktreslení oběšence na konzoli. Slova čerpáme z různých souborů(tématické) například věda, zvířata, sci-fi atd. (1-2)
 
-3. Kámen nůžky papír pomocí vlajek(argument parsing) můžeme přepnout na geek verzi kámen nůžky papír tapír spok(1) 
+3. Kámen nůžky papír můžeme přepnout na geek verzi kámen nůžky papír tapír spok(1) 
 
-4. Uhádni číslo vygeneruje se náhodné číslo a uživatel hádá o jaké číslo se jedná rozsah generovaných čísel můžeme předdefinovat pomocí vlajek (argument parsing) (1) #Hrabáček
+4. Uhádni číslo vygeneruje se náhodné číslo a uživatel hádá o jaké číslo se jedná rozsah generovaných čísel definujeme při spuštění scriptu (1) 
 
 5. Výpočet π možnost určení počtu desetiných čísel na které bude zaokrouhleno. (1)
 
@@ -16,15 +16,15 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 7. Script co pomocí regulárních výrazů najde v html webové stránky všechny obrázky a vrátí nám odakazy na tyto obrázky. (html stránku můžete stáhnout přímo a přistupovat k ní jako k txt nebo pomocí modulu request a metody get https://www.tutorialspoint.com/downloading-files-from-web-using-python) (1-2)
 
-8. Vygenerujte dva soubory (10000 řádků) s náhodnými čísly (0-100000) oddělenými řádky tyto soubory uložte a vyvořte pak funkci která tyto souboryseřadí od největšího po nejmenší číslo a najde čísla, která jsou oběma společná. (1-2) #Bzatek, Nemec
+8. Vygenerujte dva soubory (10000 řádků) s náhodnými čísly (0-100000) oddělenými řádky tyto soubory uložte a vyvořte pak funkci která tyto souboryseřadí od největšího po nejmenší číslo a najde čísla, která jsou oběma společná. (1-2) 
 
 9. Vytvořte program, tahání nejkratší sirky zadáte počet osob a jejich jména a program náhodně zvolí jednu z těchto osob.(1)
 
-10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde palindromy (čísla,slova,fráze nebo celé věty, které mají stejný význam, když je čteme z obou stran) (1-3) #Bozkova
+10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde palindromy (čísla,slova,fráze nebo celé věty, které mají stejný význam, když je čteme z obou stran) (1-3) 
 
-10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde všechny jednotlivá slova a zapíše k nim frekvenci jejich výskytu pak seřadí podle počtu vlajkou předáváme počet znaků, které musí mít slovo minimálně aby bylo považováno za slovo  (1-2) #Rejl
+10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde všechny jednotlivá slova a zapíše k nim frekvenci jejich výskytu pak seřadí podle počtu; na začátku předáme počet znaků, které musí mít slovo minimálně aby bylo považováno za slovo  (1-2) 
 
-11. Vypište kalendář na daný rok případně měsíc (podle vlajek předaných skriptu -r pro rok -m pro měsíc) v konzoli formát bude sloupec uplně vlevo je pondělí, sloupec úplně v pravo neděle. (1-2) 
+11. Vypište kalendář na daný rok případně měsíc podle zadaných hodnot uživatelem v konzoli formát bude sloupec uplně vlevo je pondělí, sloupec úplně v pravo neděle. (1-2) 
 např. tento prosinec
 	1	2	3	4	5 	6
 7	8	9	10	11	12	13
@@ -41,12 +41,12 @@ ukázka:
 	1		2		1
 ...
 
-14. Napište program, který převádí text předáný pomocí vlajky při zavolání skriptu na morzeovku. (1-2) #Popelar
+14. Napište program, který převádí text zadaný uživatelem při zavolání skriptu na morzeovku. (1-2) 
 
 15. Vytvořte program, který šifruje text stejným způsobem jako to provádělo šifrovací zařízení enigma (1-4)
 
 16. Porovnejte rychlost defaulní funkce pro nalezení největšího člena listu max() a vlastní funkce pro nalezení nejvyšší hodnoty(1-2) 
-knihovna timeit nebo time	#Horky
+knihovna timeit	nebo time
 
 17. Skuste implementovat Karacubovo násobení a porovnat ho s defaultním násobením pythonu(1-2)
 knihovna timeit nebo time

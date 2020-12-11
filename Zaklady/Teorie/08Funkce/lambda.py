@@ -14,7 +14,7 @@ print((lambda x:x)("Vrácená hodnota lambda"))
 print(vrat("Vrácená hodnota normální funkce"))
 
 
-#lambda funkce může být přřazena k proměné a pak skrze ni volána
+#lambda funkce může být přiřazena k proměné a pak skrze ni volána
 soucet = lambda a,b : a+b
 print(type(soucet))
 print(soucet(5,6))
