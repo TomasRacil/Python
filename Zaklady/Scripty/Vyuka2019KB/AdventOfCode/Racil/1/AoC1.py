@@ -1,3 +1,5 @@
+import math
+
 #slovnik={ 2020-int(line.strip()):int(line.strip()) for line in open("2000.txt", "r")}
 
 #čteme soubor řádek po řádku a u každého řádku použijeme metodu strip, která odstraní všechny bílé znaky ze začátku a konce řetězce 
@@ -21,3 +23,6 @@ for cislo in open("2000.txt", "r"):
 		if zbytek==int(cislo1.strip()):	print(zbytek*int(cislo.strip()))
 
 #TODO použít indexování
+
+
+print(math.prod({int(line.strip()) for line in open("2000.txt", "r")}.intersection({2020-cislo for cislo in cisla})))
