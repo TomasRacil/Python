@@ -24,7 +24,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde všechny jednotlivá slova a zapíše k nim frekvenci jejich výskytu pak seřadí podle počtu vlajkou předáváme počet znaků, které musí mít slovo minimálně aby bylo považováno za slovo  (1-2) #Rejl
 
-11. Vypište kalendář na daný rok případně měsíc (podle vlajek předaných skriptu -r pro rok -m pro měsíc) v konzoli formát bude sloupec uplně vlevo je pondělí, sloupec úplně v pravo neděle. (1-2) 
+11. Vypište kalendář na daný rok případně měsíc (podle vlajek předaných skriptu -r pro rok -m pro měsíc) v konzoli formát bude sloupec uplně vlevo je pondělí, sloupec úplně v pravo neděle. (1-2)  #Jindra, Vomáčka
 např. tento prosinec
 	1	2	3	4	5 	6
 7	8	9	10	11	12	13
