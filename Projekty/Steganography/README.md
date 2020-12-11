@@ -7,8 +7,8 @@ Aktuální verze tohoto projektu se zabývá ukrytím textu do obrázku.
 Náměty k pokračování: ukrytí obrázku do videa, ukrytí videa do videa, ukrytí souboru do více různých souborů.
 
 TODO aktuální verze:
-- Vytvořit prostředí pro komunikaci s uživatelem.
-- Rozdělit text na bity.
-- Zapsat bity do příslušných bajtů obrázku.
-- Vytvořit způsob přečtení ukryté informace.
-- (optional) Zakódování textu podle hesla.
+- Podmínka velikosti
+- zefektivnit, zobecnit, zapouzdřit?
+- Do modulu
+- Přidat try + except
+- Sepsat poznamky pro nasledovniky
