@@ -2,7 +2,7 @@ zacitHru= input("Chcete zacit hru? (A-ano) ")
 
 behHry=True
 while behHry:
-	if zactiHru.lower().strip()=="A":
+	if zacitHru.lower().strip()=="A":
 		print("Hra zacala")
 
 		#cinnost= input("Uhadni nápis")
