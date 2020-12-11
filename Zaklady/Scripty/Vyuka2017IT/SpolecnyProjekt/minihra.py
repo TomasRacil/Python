@@ -16,13 +16,15 @@ for polozka in seznam
 	print("Dnešní nástup budeš přežívat jako {seznam}\n")"""
 time.sleep(5)
 #dekoratory podívat se 
+# "k==" h8yelo chzbu v buildu proto jsem celý blok hodil do poznámky
+"""
 if k == 
 		seznam_prvnikont = ["Kdo tam zase vybruje ve tvaru","Čemu se tam smějete vy modrá poskupino","Co tam zase děláte kurva,zase ti piloti -odpad armády"]
 		print(f"V klidu si stojíš ve tvaru a povídáš si s chábrem vedle tebe když v tom Roman řve {random.choice(seznam_prvnikont)}")
 		
 		seznam_chyba = ["ti chybí vstupka","máš jinou ústroj","to z tebe táhne jako z lihovaru","máš zasraný boty jako dobytek"]
 		print(f"Po téhle větě k tobě Roman přistupuje a jebe tě  za to že  {random.choice(seznam_chyba)}")
-
+"""
 """if polozka in seznam == 'modrá'
 		seznam_prvnikmodr = ["Sotva to dostane modrou uniformu a už si to myslí že si může dělat co chce","Chcete si snad zahrát deskové hry?","Na co čumíte Modrá Eminence!"]
 			print(f"V klidu si stojíš ve tvaru a povídáš si s chábrem vedle tebe když v tom Roman řve {random.choice(seznam_prvnikmodr)}")
