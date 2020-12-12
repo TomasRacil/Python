@@ -1,14 +1,15 @@
-Steganografie je způsob ukrytí elektronické informace do souboru. Lze ukrýt text, obrázek i video do jiného textu, obrázku nebo videa.
+Steganografie je způsob ukrytí elektronické informace do souboru. Lze ukrýt text, obrázek, video, zvuk, exe soubor... do jiného souboru.
 
-Je to možné díky různé "hodnotě" jednotlivých bitů v rámci bajtu. Soubor, do kterého je informace ukrývána, je pozměněn, avšak tuto změnu nelze běžnými prostředky rozeznat. Skrývaná informace tedy musí mít výrazně menší velikost, aby bylo možné ji zapsat do cílového souboru.
+Je to možné díky různé "hodnotě" jednotlivých bitů v rámci bajtu. Soubor, do kterého je informace ukrývána, je pozměněn, avšak tuto změnu nelze běžnými prostředky rozeznat.
 
-Aktuální verze tohoto projektu se zabývá ukrytím textu do obrázku.
+Aktuální verze tohoto projektu se zabývá ukrytím textu do obrázku. Program funguje na .png. Za ostatní formáty se nelze zaručit (např. .jpeg nefunguje kvůli kompresi).
 
-Náměty k pokračování: ukrytí obrázku do videa, ukrytí videa do videa, ukrytí souboru do více různých souborů.
+Náměty k pokračování:
+- ukrytí textu do videa
+- ukrytí obrázku do videa
+- ukrytí videa do videa
+- ukrytí souboru do více různých souborů
+- alternativní přístup ke kódování
+- Misc: upravit program aby fungoval s více příponami, implementovat spouštění z konzole, zahešování bitů podle hesla (k rozkódování by nestačil jen program ale i heslo).
 
-TODO aktuální verze:
-- Podmínka velikosti
-- zefektivnit, zobecnit, zapouzdřit?
-- Do modulu
-- Přidat try + except
-- Sepsat poznamky pro nasledovniky
+Pro více informací je možné přečíst notes.txt

@@ -1,0 +1,9 @@
+Aktuální verze funguje následovně:
+pro zapsání jednoho znaku je potřeba tří pixelů. Každý pixel se skládá ze tří RGB hodnot. Do prvních osmi jsou zapsány bity znaku. Pro 0 sudé číslo, pro 1 liché. Devátá hodnota je sudá pokud následuje další znak nebo lichá pokud je zpráva u konce.
+
+Alternativní způsob (neimplementován):
+Některé obrázky dnes obsahují čtyři hodnoty pro pixel. Jsou jimi RGBA, kde A je průhlednost. Běžný způsob A ignoruje. Bylo by tedy možné zapsat znak do dvou pixelů. Je také nutné upravit koncovou podmínku, nejspíše unikátním znakem nebo sekvencí.
+
+Nejhorší částí pro programování je přístup k datům, do kterých je zapisováno. Doporučuji užití knihoven, ale chvíli trvá než člověk zjistí, jak fungují.
+
+Pokud se rozhodneš v projektu pokračovat, zajisti, že již implementované myšlenky zůstanou funkční. Jinak můžeš upravovat existující kód dle libosti. A neboj se zanechat poznámky pro ostatní, ať už zde nebo ve svém kódu.
