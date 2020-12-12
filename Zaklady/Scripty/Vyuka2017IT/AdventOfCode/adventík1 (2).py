@@ -8,4 +8,4 @@ for prvek in soubor:
     soucin = zbytek*cislo
     if (cislo + zbytek == 2020):
         print(f"Součet čísla {zbytek} a čísla {cislo} = 2020 a jejich součin je {soucin}")
-     """Na závěr vypíšu varianty součtů čísel a jejich součiny"""
+        """Na závěr vypíšu varianty součtů čísel a jejich součiny"""
