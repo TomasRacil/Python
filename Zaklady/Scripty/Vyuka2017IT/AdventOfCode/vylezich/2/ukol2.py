@@ -1,15 +1,16 @@
 import time
+import re
 soubor = open("Hesla.txt", "r").readlines()
-startTime = time.time()
+starttime = time.time()
+pocetplatnychhesel=0
 for radek in soubor:
-    cislo1 = int(radek.strip())
-    rozdil = 2020 - cislo1  # rozdil
-    for radek2 in soubor:  # Hledani shody rozdilu a cisla v seznamu
-        cislo2 = int(radek2.strip())
-        for radek3 in soubor:  # Hledani shody rozdilu a cisla v seznamu
-            cislo3 = int(radek3.strip())
-            suma = (cislo2+cislo3)
-            if rozdil == suma:  # Porovnani daneho cisla ze seznamu
-                print(f"Hledaná čísla {cislo1} a {cislo2} a {cislo3}jejich soucin {cislo3*cislo2*cislo1}")
+   print(re.split('[- :]', radek.strip()))
+   parts=re.split('[- :]', radek.strip())
+   if(int(parts[0]) <= parts[4].count(parts[2]) & parts[4].count(parts[2]) <= int(parts[1])):
+      pocetplatnychhesel=pocetplatnychhesel+1
+      print(radek)
 
-print(f"{time.time()-startTime}\n")
+   ##cislo = Petr[2].count(Petr[1])
+   ##print(cislo)
+print(f"pocet platnych cisel :{pocetplatnychhesel}")
+print(f"{time.time()-starttime}\n")
