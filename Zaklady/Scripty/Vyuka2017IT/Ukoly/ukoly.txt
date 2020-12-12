@@ -41,7 +41,7 @@ ukázka:
 	1		2		1
 ...
 
-14. Napište program, který převádí text zadaný uživatelem při zavolání skriptu na morzeovku. (1-2) 
+14. Napište program, který převádí text zadaný uživatelem při zavolání skriptu na morzeovku. (1-2) Vylezich Zdenda :)
 
 15. Vytvořte program, který šifruje text stejným způsobem jako to provádělo šifrovací zařízení enigma (1-4)
 

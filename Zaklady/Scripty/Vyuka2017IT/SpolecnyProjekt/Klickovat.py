@@ -8,10 +8,10 @@ def klickovat():
 	for pocet in range(0, 10, 1):
 		cislo = randint(0, 20)
 		print(f"Krok: {cislo}\n")
-		startTime = time.time()
+		starttime = time.time()
 		prvni = int(input("Opsane: "))
 
-		if (time.time()-startTime) < 2:
+		if (time.time()-starttime) < 2:
 			if cislo != prvni:
 				print("SPADL JSI!!!")
 				pomocna = pomocna+1
