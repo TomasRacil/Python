@@ -8,7 +8,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 3. Kámen nůžky papír můžeme přepnout na geek verzi kámen nůžky papír tapír spok(1) 
 
-4. Uhádni číslo vygeneruje se náhodné číslo a uživatel hádá o jaké číslo se jedná rozsah generovaných čísel definujeme při spuštění scriptu (1) 
+4. Uhádni číslo vygeneruje se náhodné číslo a uživatel hádá o jaké číslo se jedná rozsah generovaných čísel definujeme při spuštění scriptu (1) Magda
 
 5. Výpočet π možnost určení počtu desetiných čísel na které bude zaokrouhleno. (1)
 
