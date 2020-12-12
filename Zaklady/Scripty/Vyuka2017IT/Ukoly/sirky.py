@@ -1,4 +1,5 @@
 """9. Vytvořte program, tahání nejkratší sirky zadáte počet osob a jejich jména a program náhodně zvolí jednu z těchto osob.(1)"""
+"""MagdalenaHlavicova"""
 from random import randint
 import random
 
