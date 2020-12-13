@@ -1,0 +1,4 @@
+CMD (úroveň složky projektu)
+	- pyinstaller -i [icon file] [python_file]
+	- ikona s příponou .ico
+		- pyinstaller -i "E:\Programování\Python\Keylogger\ikona.ico" main.py
