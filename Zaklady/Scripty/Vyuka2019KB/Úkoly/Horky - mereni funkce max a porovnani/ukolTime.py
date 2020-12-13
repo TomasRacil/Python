@@ -32,8 +32,10 @@ try:
 	vel = int(input("Zadej počet prvků v listu: "))	
 except ValueError:
 	print("Toto není číslo, zadejte číslo")	# zadani jineho typu nez cisla
+	exit()
 except Exception as e:
 	print(f"Neočekávaná vyjímka: \n{e}") 	# ostatni vyjimky
+	exit()
 
 # naplnění listu
 for i in range(1, int(vel) + 1): 
