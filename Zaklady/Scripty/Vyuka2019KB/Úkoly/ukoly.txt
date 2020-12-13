@@ -10,7 +10,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 4. Uhádni číslo vygeneruje se náhodné číslo a uživatel hádá o jaké číslo se jedná rozsah generovaných čísel můžeme předdefinovat pomocí vlajek (argument parsing) (1) #Hrabáček
 
-5. Výpočet π možnost určení počtu desetiných čísel na které bude zaokrouhleno. (1)
+5. Výpočet π možnost určení počtu desetiných čísel na které bude zaokrouhleno. (1) #Beran
 
 6. Stáhněte si váš rozvrh na měsíc prosinec a leden a převďte ho do tříd/třídy pythonu s metodami pro zápis dat, získání nejbližší hodiny, výpis hodin s konkrétním učitelem, a výpis nejčastějších předmětů (samozřejmě můžete vytvořit i další). (1-3)
 
