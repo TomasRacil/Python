@@ -1,22 +1,23 @@
                           Frekvence slov v textu
 ==============================================================================
-Program vypoèítá frekvenci vıskytu kadého platného slova v souboru data.txt
+
+Program vypoÄÃ­tÃ¡ frekvenci vÃ½skytu kaÅ¾dÃ©ho platnÃ©ho slova v souboru data.txt
 
 Vstup:
-- program pøijímá vlajku -min - pokud je poèet znakù daného slova vyšší nebo roven hodnotì pøedané vlajce min - program
-  slovo pøidá do databáze - slova s menším poètem znakù, ne je min jsou ignorována
-- syntaxe: "WordFrequency.py -min 3" ignoruje všechna slova, která mají ménì znakù ne 3
-- program urèuje délku slova a po odstranìní znakù obsaenıch v listu remove - tzn. slovo "don't" po odstranìní apostrofu
+- program pÅ™ijÃ­mÃ¡ vlajku -min - pokud je poÄet znakÅ¯ danÃ©ho slova vyÅ¡Å¡Ã­ nebo roven hodnotÄ› pÅ™edanÃ© vlajce min - program
+  slovo pÅ™idÃ¡ do databÃ¡ze - slova s menÅ¡Ã­m poÄtem znakÅ¯, neÅ¾ je min jsou ignorovÃ¡na
+- syntaxe: "WordFrequency.py -min 3" ignoruje vÅ¡echna slova, kterÃ¡ majÃ­ mÃ©nÄ› znakÅ¯ neÅ¾ 3
+- program urÄuje dÃ©lku slova aÅ¾ po odstranÄ›nÃ­ znakÅ¯ obsaÅ¾enÃ½ch v listu remove - tzn. slovo "don't" po odstranÄ›nÃ­ apostrofu
   obsahuje 4 znaky
 
 Popis funkce:
-- Program nahraje obsah souboru data.txt do pamìti a rozdìlí text na jednotlivá slova (podle mezer a koncù øádku)
-- Z kadého slova odebere neádoucí znaky (list remove) a pøevede vše na malá písmena
-- Vytvoøí se databáze unikátních slov a ke kadému slovu se pøiøazuje jeho vıskyt - program
-  prochází všechna upravená slova a porovnává je se svojí databází, pokud slovo najde, pøiète si 1 k jeho vıskytu
-  pokud slovo v databázi nenajde - pøidá si ho do databáze a nastaví mu vıskyt 1
-- program pøijímá jako vstup vlajku -min která definuje, kolik musí mít slovo minimálnì znakù, aby bylo
-  povaováno za platné a pøidalo se do databáze programu - je takto moné odfiltrovat krátká slova
-- databáze má charakter dvourozmìrného pole (vnoøené listy do listu) 
-  pø. database = [["ahoj", 2], ["pes", 3]] - slovo ahoj má vıskyt 2, slovo pes má vıskyt 3
-  pøístup k prvkùm: database[1][0] vrací pes, database[1][1] vrací 3 
+- Program nahraje obsah souboru data.txt do pamÄ›ti a rozdÄ›lÃ­ text na jednotlivÃ¡ slova (podle mezer a koncÅ¯ Å™Ã¡dku)
+- Z kaÅ¾dÃ©ho slova odebere neÅ¾Ã¡doucÃ­ znaky (list remove) a pÅ™evede vÅ¡e na malÃ¡ pÃ­smena
+- VytvoÅ™Ã­ se databÃ¡ze unikÃ¡tnÃ­ch slov a ke kaÅ¾dÃ©mu slovu se pÅ™iÅ™azuje jeho vÃ½skyt - program
+  prochÃ¡zÃ­ vÅ¡echna upravenÃ¡ slova a porovnÃ¡vÃ¡ je se svojÃ­ databÃ¡zÃ­, pokud slovo najde, pÅ™iÄte si 1 k jeho vÃ½skytu
+  pokud slovo v databÃ¡zi nenajde - pÅ™idÃ¡ si ho do databÃ¡ze a nastavÃ­ mu vÃ½skyt 1
+- program pÅ™ijÃ­mÃ¡ jako vstup vlajku -min kterÃ¡ definuje, kolik musÃ­ mÃ­t slovo minimÃ¡lnÄ› znakÅ¯, aby bylo
+  povaÅ¾ovÃ¡no za platnÃ© a pÅ™idalo se do databÃ¡ze programu - je takto moÅ¾nÃ© odfiltrovat krÃ¡tkÃ¡ slova
+- databÃ¡ze mÃ¡ charakter dvourozmÄ›rnÃ©ho pole (vnoÅ™enÃ© listy do listu) 
+  pÅ™. database = [["ahoj", 2], ["pes", 3]] - slovo ahoj mÃ¡ vÃ½skyt 2, slovo pes mÃ¡ vÃ½skyt 3
+  pÅ™Ã­stup k prvkÅ¯m: database[1][0] vracÃ­ pes, database[1][1] vracÃ­ 3 
