@@ -52,3 +52,5 @@ knihovna timeit nebo time	#Horky
 knihovna timeit nebo time
 
 18. Najděte všechny anagramy ve slovech obsažených v textu (http://www.gutenberg.org/ebooks/2267) anagram je slovo které obsahuje stejné písmena, ale v jiném pořadí. (1-2)
+
+19. Advent of Code Day 3 #Veselák
