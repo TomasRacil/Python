@@ -56,7 +56,7 @@ if vyber_hru == "1":
 	else:
 		print(f"Celkové skóre je: {vyhra} Ty a {vyhra_pc} Počítač \n\n \t\tVýsledek je:\n\n\t\t\t\tREMÍZA!\t\t\t\t\n\n")
 if vyber_hru == "2":
-	print("Vybrali jste si Normální verzi:\n")
+	print("Vybrali jste si Geek verzi:\n")
 	for cislo in range(3):
 		seznam=["1","2","3","4","5"]
 		tah_ui= random.choice(seznam)
