@@ -1,0 +1,1 @@
+8. Vygenerujte dva soubory (10000 řádků) s náhodnými čísly (0-100000) oddělenými řádky tyto soubory uložte a vyvořte pak funkci která tyto souboryseřadí od největšího po nejmenší číslo a najde čísla, která jsou oběma společná. (1-2) #Bzatek, Nemec
