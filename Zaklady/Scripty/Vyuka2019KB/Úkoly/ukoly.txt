@@ -6,7 +6,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 2. Oběšenec hra ve které hádáme slovo omezený počet pokusů vyktreslení oběšence na konzoli. Slova čerpáme z různých souborů(tématické) například věda, zvířata, sci-fi atd. (1-2)
 
-3. Kámen nůžky papír pomocí vlajek(argument parsing) můžeme přepnout na geek verzi kámen nůžky papír tapír spok(1) 
+3. Kámen nůžky papír pomocí vlajek(argument parsing) můžeme přepnout na geek verzi kámen nůžky papír tapír spok(1) #Weiss
 
 4. Uhádni číslo vygeneruje se náhodné číslo a uživatel hádá o jaké číslo se jedná rozsah generovaných čísel můžeme předdefinovat pomocí vlajek (argument parsing) (1) #Hrabáček
 
@@ -18,7 +18,7 @@ Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z
 
 8. Vygenerujte dva soubory (10000 řádků) s náhodnými čísly (0-100000) oddělenými řádky tyto soubory uložte a vyvořte pak funkci která tyto souboryseřadí od největšího po nejmenší číslo a najde čísla, která jsou oběma společná. (1-2) #Bzatek, Nemec
 
-9. Vytvořte program, tahání nejkratší sirky zadáte počet osob a jejich jména a program náhodně zvolí jednu z těchto osob.(1) #Weiss
+9. Vytvořte program, tahání nejkratší sirky zadáte počet osob a jejich jména a program náhodně zvolí jednu z těchto osob.(1) 
 
 10. Program, který v textu (http://www.gutenberg.org/ebooks/2267) najde palindromy (čísla,slova,fráze nebo celé věty, které mají stejný význam, když je čteme z obou stran) (1-3) #Bozkova
 
