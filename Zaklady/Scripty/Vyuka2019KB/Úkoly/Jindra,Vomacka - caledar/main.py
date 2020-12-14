@@ -1,10 +1,12 @@
 import calendar
 import datetime
 import argparse
+	
+def date(r,m):
+# Funkce vypisující jednotlivé dny v zadaném měsíci/roce
+	month = calendar.monthcalendar(r,m)	
 
-def month(m):
-	now = datetime.datetime.now()
-	month = calendar.monthcalendar(now.year,m)
+	print ("\n" + calendar.month_name[m])
 	for week in month:
 		for day in week:
 			if day == 0:
@@ -15,10 +17,23 @@ def month(m):
 				print(day, end ="  ")
 		print("")
 
-
+# Nastavení vlajek -m = měsíc; -r = rok
 parser = argparse.ArgumentParser()
-parser.add_argument('-m', metavar='měsíc', type=int, default="0", help='Zadejte měsíc současného roku který chcete zobrazit')
+parser.add_argument('-m', metavar='měsíc', type=int, default="0", help='Zadejte měsíc současného roku, který chcete zobrazit')
+parser.add_argument('-r', metavar='rok', type=int, default="0", help='Zadejte rok, který chcete zobrazit')
 args = parser.parse_args()
 
-if args.m > 0 and args.m <= 12:
-	month(args.m)
+# Pokrytí argumentu -r -m
+if args.m > 0 and args.m <= 12 and args.r >= 1600:
+	date(args.r, args.m)
+
+# Pokrytí argumentu -m
+elif args.m > 0 and args.m <= 12:
+	now = datetime.datetime.now()
+	date(now.year, args.m)
+
+# Pokrytí argumentu -r
+elif args.r >= 1600:
+	for x in range(12):
+		date(args.r, x+1)
+

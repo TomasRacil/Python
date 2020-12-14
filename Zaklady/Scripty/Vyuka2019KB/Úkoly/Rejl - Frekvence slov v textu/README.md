@@ -21,3 +21,6 @@ Popis funkce:
 - databáze má charakter dvourozměrného pole (vnořené listy do listu) 
   př. database = [["ahoj", 2], ["pes", 3]] - slovo ahoj má výskyt 2, slovo pes má výskyt 3
   přístup k prvkům: database[1][0] vrací pes, database[1][1] vrací 3 
+
+Progress bar verze:
+- přidává do UI grafické zobrazení postupu - negativní vliv na výkon a čas zpracování souboru, ale vypadá to dobře
