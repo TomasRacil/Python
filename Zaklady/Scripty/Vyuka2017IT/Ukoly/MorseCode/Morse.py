@@ -16,6 +16,16 @@ MORSE_CODE_DICT = { 'A':'.-', 'B':'-...',
                     'É':'.', 'Í':'..', 'Ů':'..-', 'Ý':'-.--','Š':'...',
                     'Ř':'.-.', 'Ě':'.','Ž':'--..'}
 
+"""MORSE_CODE_DICT = {line.split()[0]:line.split()[1] for line in open("Morse.txt","r")}
+
+MORSE_CODE_DICT = dict()
+
+for line in open("Morse.txt","r"):
+    MORSE_CODE_DICT[line.split()[0]]=line.split()[1]
+
+print(MORSE_CODE_DICT)
+input()"""
+
 def encrypt(zprava):
     sifra = ''
     # vyhleda ve slovniku
