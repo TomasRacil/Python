@@ -3,9 +3,9 @@ rotace(L/R,degree)
 pohyb(command,value)
 poloha()
 navigace(list)"""
-N = orientace
-E = orientace
-w = waypoint()
+N = "orientace"
+E = "orientace"
+w = "waypoint()"
 
 class lod:
     def rotace(course,degree):
