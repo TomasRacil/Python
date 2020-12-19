@@ -1,5 +1,5 @@
 """
-Script, který řeší výrazy uvedené v textovém souboru math.txt zapíše je do listu a nakonec je všechny sečte.
+Skript, který řeší výrazy uvedené v textovém souboru math.txt zapíše je do listu a nakonec je všechny sečte.
 V první variantě nemají operátory žádnou přednost tedy řešení probíhá zleva doprava. Vyjímkou jsou závorky ty mají prioritu.
 V druhé části mají prioritu závorky a znaménko plus právě v tomto pořadí.
 """
