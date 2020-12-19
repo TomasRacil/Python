@@ -106,8 +106,8 @@ def main():
 	#priklady=[line.strip().replace(" ","") for line in open("math.txt","r")]
 	solved1=[count(list(line.strip().replace(" ",""))) for line in open("math.txt","r")]
 	solved2=[count2(list(line.strip().replace(" ",""))) for line in open("math.txt","r")]
-	print(sum(solved1))
-	print(sum(solved2))
+	print(f"Suma výsledků všech výrazů pokud počítáme prvně závorky znaménka nemají přednost: {sum(solved1)}")
+	print(f"Suma výsledků všech výrazů pokud počítáme prvně závorky a operátor '+' má přednost: {sum(solved2)}")
 
 if __name__=="__main__":
 	main()

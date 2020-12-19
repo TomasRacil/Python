@@ -140,7 +140,7 @@ def main():
 	startSlice=[[[[char for char in line.strip()] for line in open("initState.txt","r")]]]
 	final=run(startSlice,6)
 	#show(final)
-	print(countAll(final))
+	print(f"Počet aktivních prvků: {countAll(final)}")
 
 if __name__=="__main__":
 	main()
