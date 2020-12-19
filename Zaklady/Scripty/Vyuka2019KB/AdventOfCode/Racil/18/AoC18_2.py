@@ -4,6 +4,8 @@ V první variantě nemají operátory žádnou přednost tedy řešení probíh�
 V druhé části mají prioritu závorky a znaménko plus právě v tomto pořadí.
 """
 
+#Správné odpověďi: 	1: 	21022630974613                                                                                                                                                   
+#				 	2:	169899524778212
 
 def solveL2R(expression):
 	"""Solve left to right
