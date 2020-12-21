@@ -5,42 +5,31 @@ import tkinter
 import winsound
 import time
 import math
-
-second=0
-minute=0
-hour=0
-stp=0
-
-root = tkinter.Tk() 
-root.title('Clock,alarm,stopwatch,timer') 
-root.geometry("420x600")
-root.resizable(False,False)
-root.configure(bg="white")
   
- """Clock"""
+"""Clock"""
 def time(): 
     string = strftime('%H:%M:%S %p \n %d.%m.%Y')
     lbl.config(text = string) 
     lbl.after(1000, time) 
 """Start Stopwatch"""
 def start():
-	global second,minute,hour
-	second = second + 1
-	if(second==60):
-		minute=minute+1
-		second=0
-	if(minute==60):
-		hour=hour+1
-		minute=0
-	if(stp==0):
-		label=Label(root,text='%i:%i:%i'%(hour,minute,second),font=('arial',30,'bold'),
-		foreground='white',background="black",width=6)
-		label.after(1000,start)
-		label.place(x=140,y=260)
+    global second,minute,hour
+    second = second + 1
+    if(second==60):
+        minute=minute+1
+        second=0
+    if(minute==60):
+        hour=hour+1
+        minute=0
+    if(stp==0):
+        label=Label(root,text='%i:%i:%i'%(hour,minute,second),font=('arial',30,'bold'),
+        foreground='white',background="black",width=6)
+        label.after(1000,start)
+        label.place(x=140,y=260)
 """Stop stopwatch"""
 def stop():
-	global stp
-	stp = 1
+    global stp
+    stp = 1
 
 """Timer countdown"""
 #math.floor - vraci x - nejvetsi cislo, ale ne vetsi nez x 
@@ -66,6 +55,20 @@ def updateButton():
            time=int(hr)*3600+int(mn)*60+int(sec)
            countdown(time)
 
+#dovolil jsem si také přesunout následující část skriptu ze místa před definicemi funkcí za ně
+#jedná se o doporučený způsob psaní skriptů, ale pokud budete chtít tak můžete vrátit zpět
+second=0
+minute=0
+hour=0
+stp=0
+
+root = tkinter.Tk() 
+root.title('Clock,alarm,stopwatch,timer') 
+root.geometry("420x600")
+root.resizable(False,False)
+root.configure(bg="white")
+#konec přesunutého kódu
+
 clock = Label(root, text="Clock",font=('arial',30,'bold'),foreground='red').pack(anchor = 'n')
 lbl = Label(root, font = ('arial', 40, 'bold'), background = 'black', foreground = 'white') 
 lbl.pack(anchor = 'n') 
@@ -77,13 +80,27 @@ button2=Button(root,text="Stop",command=stop).place(x=210,y=230)
 time() 
 
 hoursT=tkinter.Label(root, text="Hours:",font=('arial',12,'bold')).place(x=20,y=320)
-hoursE=tkinter.Entry(root).place(x=100,y=320)
+
+#Ukládal jste do proměnné hoursE návratovou hodnotu metody place()
+#ta ovšem žádnou návratovou hodnotu nemá pouze přesouvá widget
+#a tak jste nemohl pak odkazovat na widget přes proměnnou hoursE protože ta žádný widget neobsahovala
+#stejný problém byl i u minuteE a secondE
+hoursE=tkinter.Entry(root)#.place(x=100,y=320)
+hoursE.place(x=100,y=320)
+
+
 minuteT=tkinter.Label(root, text="Minutes:",font=('arial',12,'bold')).place(x=20,y=340)
-minuteE=tkinter.Entry(root).place(x=100,y=340)
+minuteE=tkinter.Entry(root)
+minuteE.place(x=100,y=340)
 secondT=tkinter.Label(root, text="Seconds:",font=('arial',12,'bold')).place(x=20,y=360)
-secondE=tkinter.Entry(root).place(x=100,y=360)
+secondE=tkinter.Entry(root)
+secondE.place(x=100,y=360)
 
-button=tkinter.Button(root,text="Start Timer",command=updateButton).place(x=20,y=400)
+#přídán label pro otestování jestli zbytek funguje
+label = tkinter.Label(root)
+label.place(x=100,y=380)
+
+button=tkinter.Button(root,text="Start Timer",command=updateButton).place(x=20,y=420)
 
 
-mainloop() 
+root.mainloop() 
