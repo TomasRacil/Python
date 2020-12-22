@@ -1,5 +1,7 @@
 import cv2
 
+#import pytesseract
+
 ################## NASTAVENI pevnych promenych ###########################
 frameWidth = 640
 frameHeight = 480
@@ -25,6 +27,11 @@ while True:
 			cv2.putText(img,"Number Plate",(x,y-5),cv2.FONT_HERSHEY_COMPLEX_SMALL,1,color,2)	#Napsani textu nad obdelnik
 			imgCropped = img[y:y+h,x:x+w]	#oriznuti obdelniku (SPZ)
 			cv2.imshow("Oriz",imgCropped)	#zobrazeni SPZ v okne "Oriz"
+			
+
+			#TEST tesseract #text=pytesseract.image_to_string(imgCropped,lang="eng")
+			#print(text)
+
 
 	cv2.imshow("Vysledek", img)	#zobrazeni zaznamu z webky + obdelnik + text (v okne "vysledek" )
 

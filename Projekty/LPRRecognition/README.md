@@ -25,5 +25,6 @@ Projekt pro rozpoznávání SPZ v OpenCV
 
 > //*Možné rozepsání kroků a připsání některých chybějících, nebo v případě naražení na další problémy, možnost rozepsat*//
 
+> //*Možná použít pytesseract ? ulehčí práci (není potřeba shánět Xml soubory) - v projektu "DetekceZnacekTEST" je zakomentován a po odkomentování funguje, ale je to napsáno v čisté verzi na tvrdo, je potřeba doladit, napsat lépe a zamezit chybám.
 
 Autoři: [@EditaBozkova](https://github.com/EditaBozkova), [@Lubos-source](https://github.com/Lubos-source), [@Pompino](https://github.com/Pompino)
