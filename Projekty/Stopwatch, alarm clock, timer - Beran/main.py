@@ -6,7 +6,6 @@ import winsound
 import time
 import datetime
 import math
-
   
 """Clock - vypise aktualni cas, AM/PM, den,mesic a rok"""
 def time(): 
@@ -26,7 +25,7 @@ def start():
         minute=0
     if(stp==0):
         label=Label(root,text='%i:%i:%i'%(hour,minute,second),font=('arial',30,'bold'),
-        foreground='white',background="black",width=6)
+        foreground='green',background="black",width=6)
         label.after(1000,start)
         label.place(x=140,y=260)
 
@@ -36,7 +35,6 @@ def stop():
     stp = 1
 
 """Timer countdown - odecita 1 od celkoveho souctu do 0"""
-
 def countdown(count): 
 	#math.floor - vraci x - nejvetsi cislo, ale ne vetsi nez x 
     seconds=math.floor(count%60)		
@@ -53,8 +51,8 @@ def countdown(count):
         alert.title('Timer alert')
         alert.geometry("240x160")
         alert.resizable(False,False)
-        alert.configure(bg="white")
-        labeltimer = Label(alert, text = "Time is up!",font=('arial',15,'bold'),foreground='red')
+        alert.configure(bg="silver")
+        labeltimer = Label(alert, text = "Time is up!",font=('arial',15,'bold'),background='silver',foreground='green')
         labeltimer.place(x=65,y=60) 	
 
         #Zvukovy signal	
@@ -69,8 +67,8 @@ def countdown(count):
 def updateButton():
     hr,mn,sec = hoursE.get(),minuteE.get(),secondE.get()
     if hr.isdigit() and mn.isdigit() and sec.isdigit():
-           time=int(hr)*3600+int(mn)*60+int(sec)
-           countdown(time)
+           stp_time=int(hr)*3600+int(mn)*60+int(sec)
+           countdown(stp_time)
 
 #Stopwatch - definování proměnných
 second=0
@@ -81,43 +79,47 @@ stp=0
 #Hlavni dialogove okno
 root = tkinter.Tk() 
 root.title('Clock,alarm,stopwatch,timer') 
-root.geometry("420x600")
+root.geometry("420x560")
 root.resizable(False,False)
-root.configure(bg="white")
+root.configure(bg="dimgray")
 
 #Clock labels
-clock = Label(root, text="Clock",font=('arial',30,'bold'),foreground='red').pack(anchor = 'n')
-lbl = Label(root, font = ('arial', 40, 'bold'), background = 'black', foreground = 'white') 
+clock = Label(root, text="Clock",font=('arial',30,'bold'),background='dimgray',foreground='black').pack(anchor = 'n')
+lbl = Label(root, font = ('arial', 40, 'bold'), background = 'black', foreground = 'green') 
 lbl.pack(anchor = 'n') 
 
 time() 
 
 #Stopwatch labels
-stopwatch = Label(root, text="Stopwatch",font=('arial',30,'bold'),foreground='red').pack(anchor = 'center')
-stopwatchlabel = Label(root, text='0:0:0',font=('arial',30,'bold'),foreground='white',background="black",width=6).place(x=140,y=260)
+stopwatch = Label(root, text="Stopwatch",font=('arial',30,'bold'),background="dimgray",foreground='black').pack(anchor = 'center')
+stopwatchlabel = Label(root, text='0:0:0',font=('arial',30,'bold'),foreground='green',background="black",width=6).place(x=140,y=260)
 button1=Button(root,text="Start",command=start).place(x=130,y=230)
 button2=Button(root,text="Stop",command=stop).place(x=210,y=230)
 
 #Timer labels
-timer = Label(root, text="Timer",font=('arial',30,'bold'),foreground='red').place(x=140,y=340)
+timer = Label(root, text="Timer",font=('arial',30,'bold'),background='dimgray',foreground='black').place(x=150,y=310)
 
-enter = Label(text="Enter all values:", font=('arial',14,'bold')).place(x=10,y=400)
-hoursT=tkinter.Label(root, text="Hours:",font=('arial',12,'bold')).place(x=20,y=425)
-hoursE=tkinter.Entry(root)
-hoursE.place(x=100,y=430)
+enter = Label(text="Enter all values:", font=('arial',14,'bold'),background="lightgreen").place(x=10,y=360)
+hoursT=tkinter.Label(root, text="Hours:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=400)
+hoursE=tkinter.Entry(root,width=10)
+hoursE.place(x=170,y=400)
 
-minuteT=tkinter.Label(root, text="Minutes:",font=('arial',12,'bold')).place(x=20,y=445)
-minuteE=tkinter.Entry(root)
-minuteE.place(x=100,y=450)
+minuteT=tkinter.Label(root, text="Minutes:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=425)
+minuteE=tkinter.Entry(root,width=10)
+minuteE.place(x=170,y=425)
 
-secondT=tkinter.Label(root, text="Seconds:",font=('arial',12,'bold')).place(x=20,y=465)
-secondE=tkinter.Entry(root)
-secondE.place(x=100,y=470)
+secondT=tkinter.Label(root, text="Seconds:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=450)
+secondE=tkinter.Entry(root,width=10)
+secondE.place(x=170,y=450)
 
-button=tkinter.Button(root,text="Start Timer",command=updateButton).place(x=20,y=510)
+button=tkinter.Button(root,text="Start Timer",command=updateButton).place(x=20,y=490)
 
 #label pro otestování jestli zbytek funguje
-label = tkinter.Label(root)
+label = tkinter.Label(root,background="dimgray")
 label.place(x=100,y=490)
 
-root.mainloop() 
+hours = StringVar()
+mins = StringVar()
+sec = StringVar()
+
+root.mainloop()
