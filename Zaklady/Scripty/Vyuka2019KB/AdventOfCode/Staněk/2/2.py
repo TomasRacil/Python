@@ -23,7 +23,7 @@ def solve2(data):
     total = 0
 
     for line in data:
-        if((bool(line.rulePass[line.rulePositions[0]] == line.ruleChar)) ^ (bool(line.rulePass[line.rulePositions[1]] == line.ruleChar))): # XOR
+        if ((bool(line.rulePass[line.rulePositions[0]] == line.ruleChar)) ^ (bool(line.rulePass[line.rulePositions[1]] == line.ruleChar))): # XOR
             print(total, "Found valid password = ", line.rulePass, line.rulePositions, line.ruleChar)
             total += 1
 
