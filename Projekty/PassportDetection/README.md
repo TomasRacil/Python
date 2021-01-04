@@ -8,3 +8,10 @@ Program pro rozpoznání a přečtení údajů z cestovního pasu
 - pro bezpečné testování jsem získal vzory různých evropských pasů, na kterých je možné testovat program (viz. složka Examples)
 
 - jako rozšíření tohoto programu by mělo být možné použít jako zdroj obrazu živé záběry z kamery počítače
+
+
+Verze 0.1
+===========================================================
+- první funkční verze - rozpozná zadanou část pasu a přečte z ní data
+- přečtená data vypisuje do konzole
+- pro fungování je třeba mít tesseract verze 5 (https://github.com/UB-Mannheim/tesseract/wiki)

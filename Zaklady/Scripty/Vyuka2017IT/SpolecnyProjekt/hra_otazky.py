@@ -5,7 +5,7 @@ otazky=["Proc jste prisel pozde?","2. Vite v kolik mate byt na nastupu?","3. Vy 
 moznosti=["A) Ja jsem myslel, že..., B) Ja jsem zapomnel, ze..., C) Oni mi rikali, ze..., D) Vracel jsem se pro vstupku","A) V 7:00, B) o pet minut predem, C) pet minut predem pred peti minutama, D) 7:05","A) Ano, B) Ne, C) To neni mozny, D) Jenom sem hral kulecnik"]
 for otazka in otazky:
 	urovenSpokojenosti=0
-	print(otazka[0])
+	print(otazka)
 	print(moznosti[0])
 	odpoved=input()
 	if odpoved=="D":
