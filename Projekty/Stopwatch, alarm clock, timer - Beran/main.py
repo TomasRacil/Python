@@ -123,7 +123,7 @@ clock = Label(root, text="Clock",font=('arial',30,'bold'),background='dimgray',f
 lbl = Label(root, font = ('arial', 40, 'bold'), background = 'black', foreground = 'green') 
 lbl.pack(anchor = 'n') 
 
-#Zavolame funkci time a funkci s widgety pro stopky
+#Zavolame funkci time a funkci s widgety pro stopky a budik
 time() 
 stopwatchWidgets()
 alarm()
