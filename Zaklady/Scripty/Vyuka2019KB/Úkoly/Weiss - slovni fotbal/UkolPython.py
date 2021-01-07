@@ -1,4 +1,4 @@
-
+#nedokončeno
 
 with open("slovnik.txt", "r", encoding="utf-8") as f:
     slova = []
