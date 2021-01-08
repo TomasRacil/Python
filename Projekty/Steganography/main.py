@@ -1,4 +1,5 @@
-from steganography import *
+from moduls.encode import *
+from moduls.decode import *
 
 def main():
 	"""Function dealing with user input"""

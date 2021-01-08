@@ -59,7 +59,7 @@ def kontrolBod(bod):
     return True
 
 def naplnBod(bod):
-    global counter
+    #global counter
     for i in range(0, 81):
         rad = i // 9 #i děleno 9 - 1/9 = 0 rad
         slo = i % 9 #i modulo 9 - 1 mod 9 = 1
@@ -67,6 +67,7 @@ def naplnBod(bod):
             shuffle(numberList)
             for value in numberList:
                 if not (value in bod[rad]):
+<<<<<<< HEAD
                     # Check that this value has not already be used on this sloumn
                     if not value in (
                             bod[0][slo], bod[1][slo], bod[2][slo], bod[3][slo], bod[4][slo], bod[5][slo], bod[6][slo],
@@ -93,13 +94,18 @@ def naplnBod(bod):
                                 if naplnBod(bod):return True
                 break
         bod[rad][slo] = 0
+=======
+                    pass                        # Zatim pass aby nevyhazoval chybu pri sestaveni nez se funkce dodela
+>>>>>>> 028d4d42a462e7bd500877f41980bc5850451d7e
 
-
+""" Nedodelane funkce vyhazuji error
 def resBod(bod):
-    global counter
+    global counter   
+    
 
 def vymaz(bod, obtiznost):
-
+    
+"""
 
 def main():
     obtiznost = 10*int(input("Zadejte obtiznost (1-10): \n"))

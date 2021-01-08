@@ -8,14 +8,17 @@ import datetime
 import math
 from tkinter import messagebox
 
-"""Clock - vypise aktualni cas, AM/PM, den,mesic a rok"""
 def time(): 
+    """Display of the current time"""
     string = strftime('%H:%M:%S %p \n %d.%m.%Y')
     lbl.config(text = string) 
     lbl.after(1000, time) 
 
-"""Start stopwatch"""
 def start():
+    """Starting stopwatch
+    1. Setting of time units.
+    2. If the variable stp==0, the stopwatch starts. 
+    """
     global second,minute,hour
     second = second + 1
     if(second==60):
@@ -25,19 +28,30 @@ def start():
         hour=hour+1
         minute=0
     if(stp==0):
-        label=Label(root,text='%i:%i:%i'%(hour,minute,second),font=('arial',30,'bold'),
-        foreground='green',background="black",width=6)
+        label=Label(root,text='%i:%i:%i'%(hour,minute,second),font=('arial',30,'bold'), foreground='green',background="black",width=6)
         label.after(1000,start)
         label.place(x=110,y=260)
 
-"""Stop stopwatch"""
 def stop():
+    """Stopping stopwatch
+    Changes the value of the value of the variable stp to 1. This will stop the stopwatch.
+    """
     global stp
     stp = 1
 
-"""Timer countdown - odecita 1 od celkoveho souctu do 0"""
+
 def countdown(count): 
-	#math.floor - vraci x - nejvetsi cislo, ale ne vetsi nez x 
+    """Timer countdown - 
+    #math.floor - returns x - the largest number, but not larger than x.
+    
+    Args:
+        count(int): the total sum of seconds entered values of time units; back conversion to units of time using modulo and divison
+    
+    Returns: the original values of units of time
+
+    Subtract 1 from the total to 0, when the value is less than 0 a signal sounds and is displayed alert window. 
+    """
+
     seconds=math.floor(count%60)		
     minutes=math.floor((count/60)%60)
     hours=math.floor((count/3600))
@@ -47,30 +61,31 @@ def countdown(count):
         root.after(1000, countdown,count-1)
 
     else:
-        #Zvukovy signal	
         for x in range(3):
             winsound.Beep(500,1000)
-            #Alert okno o vyprseni casu
-        messagebox.showinfo("Timer alert", "Time´s up!")
+            messagebox.showinfo("Timer alert", "Time´s up!")
 
-"""Start timer"""
-#isdigit - metoda vraci true, pokud jsou všechny znaky číslice
-#get - vraci hodnoty polozky
 def updateButton():
+    """Start timer:
+    1. Load the entered values into the variables using the get method.  
+        #isdigit - this method returns true if all characters are digits 
+    2. Convert all values to seconds into a variable stp_time and call the countdown function.
+    """
+
     hr,mn,sec = hoursE.get(),minuteE.get(),secondE.get()
     if hr.isdigit() and mn.isdigit() and sec.isdigit():
            stp_time=int(hr)*3600+int(mn)*60+int(sec)
            countdown(stp_time)
 
-"""Stopwatch labels and buttons"""
 def stopwatchWidgets():
+    """Display stopwatch labels and buttons"""
     stopwatch = Label(root, text="Stopwatch",font=('arial',30,'bold'),background="dimgray",foreground='black').pack(anchor = 'center')
     stopwatchLabel = Label(root, text='0:0:0',font=('arial',30,'bold'),foreground='green',background="black",width=6).place(x=110,y=260)
     button1=Button(root,text="Start",command=start).place(x=100,y=230)
     button2=Button(root,text="Stop",command=stop).place(x=180,y=230)
 
-"""Alarm clock labels and button"""
 def alarm():
+    """Display alarm clock labels and button"""
     global e1,e2
     alarm_clock=Label(root,text="Alarm clock",font=('arial',30,'bold'),background="dimgray",foreground='black').place(x=60,y=520)
     hours = Label(root,text="Hours: ",font=('arial',10,'bold'),background="lightgreen")
@@ -87,12 +102,15 @@ def alarm():
 
 """Alarm clock """
 def alarm_begin(event):
-    global e1,e2
+    """Alarm clock:
+    1. Load the entered values into the variables (h,m) using the get method.  
+    2. If the time we enter is either the current time, a beep will sound and a warning will be displayed.
+    """
 
+    global e1,e2
     h=e1.get()
     m=e2.get()
 
-#Pokud se rovna cas, ktery zadame, se soucasnym casem zazni zvukovy signal a zobrazi se upozorneni
     while(1):
         if (int(h)==datetime.datetime.now().hour and int(m)==datetime.datetime.now().minute):
             winsound.Beep(2000,1000)
@@ -101,7 +119,7 @@ def alarm_begin(event):
             messagebox.showinfo("Alarm alert", "Time´s up!")
             break
 
-#Definování proměnných
+#Defining variables
 second=0
 minute=0
 hour=0
@@ -111,7 +129,7 @@ entry2=0
 e1=0
 e2=0
 
-#Hlavni dialogove okno
+#The main dialog window
 root = tkinter.Tk() 
 root.title('Clock,alarm,stopwatch,timer') 
 root.geometry("360x700")
@@ -123,7 +141,7 @@ clock = Label(root, text="Clock",font=('arial',30,'bold'),background='dimgray',f
 lbl = Label(root, font = ('arial', 40, 'bold'), background = 'black', foreground = 'green') 
 lbl.pack(anchor = 'n') 
 
-#Zavolame funkci time a funkci s widgety pro stopky a budik
+#Functions call 
 time() 
 stopwatchWidgets()
 alarm()
@@ -146,7 +164,7 @@ secondE.place(x=170,y=450)
 
 button=tkinter.Button(root,text="Start Timer",command=updateButton).place(x=120,y=480)
 
-#label pro otestování zda timer funguje
+#Timer testing
 label = tkinter.Label(root,background="dimgray")
 label.place(x=100,y=510)
 

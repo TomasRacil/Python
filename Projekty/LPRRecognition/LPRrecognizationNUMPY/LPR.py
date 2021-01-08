@@ -6,15 +6,25 @@ import pytesseract
 
 img = cv2.imread('spz\\SA.jpg',cv2.IMREAD_COLOR)
 img = cv2.resize(img, (600,400) )
+cv2.imshow('Orig',img)	#kontorla
+
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) 
 gray = cv2.bilateralFilter(gray, 13, 15, 15) 		###zbavení se šumu
+#cv2.imshow('Gray',gray)	#kontorla
+
+"""
+morphology - mozne vyuzit - krasne vykresluje kontrast
+rectKernel = cv2.getStructuringElement(cv2.MORPH_RECT, (13, 5))     ###cisla (13,5) meni toleranci ?
+blackhat = cv2.morphologyEx(gray, cv2.MORPH_BLACKHAT, rectKernel)
+cv2.imshow('BlackHat',blackhat)   #kontorla
+"""
 
 edged = cv2.Canny(gray, 30, 220) 				#vykreslení hran
-#cv2.imshow('hrany',edged)	#kontorla
+cv2.imshow('hrany',edged)	#kontrola
 
 ### HLEDANI spojenych hran ###
-contours = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+contours = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)	#cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 #print(contours)	#kontorla listu
 contours = imutils.grab_contours(contours)
 contours = sorted(contours, key = cv2.contourArea, reverse = True)[:10]	#uspořádání od největšího pouze prvnich deseti prvku, zbytek ignorujeme
@@ -68,3 +78,15 @@ cv2.imshow('vysledek',Cropped)	#vysledek SPZ
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+
+""" TESSERACT nastaveni
+def build_tesseract_options( psm=7):
+    # tell Tesseract to only OCR alphanumeric characters
+    alphanumeric = "ABCDEFHIJKLMNPRSTUVXYZ0123456789"
+    options = "-c tessedit_char_whitelist={}".format(alphanumeric)
+    # set the PSM mode
+    options += " --psm {}".format(psm)
+    # return the built options string
+    return options
+"""
