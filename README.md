@@ -29,4 +29,8 @@ git add .
 git commit -m "Zpráva" 
 - pro zavedení změn do společného repozitáře 
 
-git push 
+git push
+- poslání dat na mateřský odresář z mého lokálního úložiště
+
+git pull
+- aktualizace (stažení nových souborů z mateřského adresáře)
