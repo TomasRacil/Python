@@ -52,7 +52,7 @@ def drawbod(bod):
                 text(bod[rad][slo], topLeft_x + slo * intDim + 9, topLeft_y - rad * intDim - intDim + 8, 20)
 
 def naplnBod(bod):
-    global counter
+    #global counter
     for i in range(0, 81):
         rad = i // 9
         slo = i % 9
@@ -60,13 +60,16 @@ def naplnBod(bod):
             shuffle(numberList)
             for value in numberList:
                 if not (value in bod[rad]):
+                    pass                        # Zatim pass aby nevyhazoval chybu pri sestaveni nez se funkce dodela
 
-
+""" Nedodelane funkce vyhazuji error
 def resBod(bod):
-    global counter
+    global counter   
+    
 
 def vymaz(bod, obtiznost):
-
+    
+"""
 
 def main():
     obtiznost = 10*int(input("Zadejte obtiznost (1-10): \n"))
