@@ -51,15 +51,48 @@ def drawbod(bod):
             if bod[rad][slo] != 0:
                 text(bod[rad][slo], topLeft_x + slo * intDim + 9, topLeft_y - rad * intDim - intDim + 8, 20)
 
+def kontrolBod(bod):
+    for rad in range(0, 9):
+        for slo in range(0, 9):
+            if bod[rad][slo] == 0:
+                return False
+    return True
+
 def naplnBod(bod):
     global counter
     for i in range(0, 81):
-        rad = i // 9
-        slo = i % 9
+        rad = i // 9 #i děleno 9 - 1/9 = 0 rad
+        slo = i % 9 #i modulo 9 - 1 mod 9 = 1
         if bod[rad][slo] == 0:
             shuffle(numberList)
             for value in numberList:
                 if not (value in bod[rad]):
+                    # Check that this value has not already be used on this sloumn
+                    if not value in (
+                            bod[0][slo], bod[1][slo], bod[2][slo], bod[3][slo], bod[4][slo], bod[5][slo], bod[6][slo],
+                            bod[7][slo], bod[8][slo]):
+                        # Identify which of the 9 squares we are working on
+                        square = []
+                        if rad < 3:
+                            if slo < 3:square = [bod[i][0:3] for i in range(0, 3)]
+                            elif slo < 6:square = [bod[i][3:6] for i in range(0, 3)]
+                            else:square = [bod[i][6:9] for i in range(0, 3)]
+                        elif rad < 6:
+                            if slo < 3:square = [bod[i][0:3] for i in range(3, 6)]
+                            elif slo < 6:square = [bod[i][3:6] for i in range(3, 6)]
+                            else:square = [bod[i][6:9] for i in range(3, 6)]
+                        else:
+                            if slo < 3:square = [bod[i][0:3] for i in range(6, 9)]
+                            elif slo < 6:square = [bod[i][3:6] for i in range(6, 9)]
+                            else:square = [bod[i][6:9] for i in range(6, 9)]
+                        # Check that this value has not already be used on this 3x3 square
+                        if not value in (square[0] + square[1] + square[2]):
+                            bod[rad][slo] = value
+                            if kontrolBod(bod):return True
+                            else:
+                                if naplnBod(bod):return True
+                break
+        bod[rad][slo] = 0
 
 
 def resBod(bod):
