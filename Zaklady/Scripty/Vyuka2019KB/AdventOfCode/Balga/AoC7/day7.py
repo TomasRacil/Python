@@ -3,7 +3,7 @@ with open("input7.txt") as file:																#// Otevře soubor input7.txt v 
 	data = [ line.strip() for line in data ]													#// Odstraní whitespace znaky na začátku a konci každého řádku (mezery, \n atd..)
 		
 def get_num_bags(color):																		#// Vytvoří funkci get_num_bags s parametrem color
-	lines = [line for line in data if color in linie and line.index(color) != 0]				#// Najde všechny řádky, kde je ta barva a slovo té barvy nezačíná na začátku řádku
+	lines = [line for line in data if color in line and line.index(color) != 0]				#// Najde všechny řádky, kde je ta barva a slovo té barvy nezačíná na začátku řádku
 	
 	allColors = []																				#// Vynulování allColors
 
@@ -26,5 +26,5 @@ def get_num_bags(color):																		#// Vytvoří funkci get_num_bags s pa
 
 		return uniqueColors																		#// vrátíme unikátní barvy
 
-	colors = get_num_bags("shiny gold")															#// Zavolá se get_num_bags funkce na shiny gold
-	print(len(colors))																			#// Vypíše se počet unikátních barev
+colors = get_num_bags("shiny gold")															#// Zavolá se get_num_bags funkce na shiny gold
+print(len(colors))																			#// Vypíše se počet unikátních barev
