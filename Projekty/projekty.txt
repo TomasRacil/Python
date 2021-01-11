@@ -38,6 +38,7 @@ Virus #Žaludová
 Text editor - Vytvořit komplexní text editor vycházející z Editoru probíraného v rámci výuky
 Šifrování a dešifrování - zpráv (spustitelných kódů-pokročilá verze) # Gallus
 Hra života - Konwayova hra života (konzole)
+Hanoi towers - Grafický řešitel hanoiských věží 
 
 Pokročilé
 Webový vyhledávač - prohledává web ...
