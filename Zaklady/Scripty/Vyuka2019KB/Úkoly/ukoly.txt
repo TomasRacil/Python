@@ -32,7 +32,7 @@ např. tento prosinec
 28	29	30	31
 
 12. Program pro slovní kopanou uživatel zadává slova program mu odpovídá náhodným slovy začínající na písmeno (1-3 podle vlajky předané při spuštění), kterým uživatelovo slovo končilo ten pak musí odpovědět počítači a dodržet pravidla kopané. (1-3) #Weiss
-Odkaz na slovník českých slov z kterého bude program čerpat http://www.pspad.com/files/dic/cz_dic.cab 
+Odkaz na slovník českých slov z kterého bude program čerpat http://www.pspad.com/files/dic/cz_dic.cab (nepřistupovat lokálně další úkol)
 
 13. Vytvořte program vypisující fibonaciho posloupnost ve tvaru pyramidy do konzole. Velikost posloupnosti předáte pomocí vlajky při spuštění scriptu. (1) #Maleta
 ukázka:
