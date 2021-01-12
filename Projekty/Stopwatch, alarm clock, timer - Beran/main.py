@@ -1,3 +1,4 @@
+from GUI import * 
 from tkinter import * 
 from tkinter.ttk import *
 from time import strftime 
@@ -39,7 +40,6 @@ def stop():
     global stp
     stp = 1
 
-
 def countdown(count): 
     """Timer countdown - 
     #math.floor - returns x - the largest number, but not larger than x.
@@ -77,30 +77,6 @@ def updateButton():
            stp_time=int(hr)*3600+int(mn)*60+int(sec)
            countdown(stp_time)
 
-def stopwatchWidgets():
-    """Display stopwatch labels and buttons"""
-    stopwatch = Label(root, text="Stopwatch",font=('arial',30,'bold'),background="dimgray",foreground='black').pack(anchor = 'center')
-    stopwatchLabel = Label(root, text='0:0:0',font=('arial',30,'bold'),foreground='green',background="black",width=6).place(x=110,y=260)
-    button1=Button(root,text="Start",command=start).place(x=100,y=230)
-    button2=Button(root,text="Stop",command=stop).place(x=180,y=230)
-
-def alarm():
-    """Display alarm clock labels and button"""
-    global e1,e2
-    alarm_clock=Label(root,text="Alarm clock",font=('arial',30,'bold'),background="dimgray",foreground='black').place(x=60,y=520)
-    hours = Label(root,text="Hours: ",font=('arial',10,'bold'),background="lightgreen")
-    hours.place(x=100,y=580)
-    e1=Entry(root,width=10)
-    e1.place(x=170,y=580)
-    minutes=Label(root,text="Minutes: ",font=('arial',10,'bold'),background="lightgreen")
-    minutes.place(x=100,y=600)
-    e2 = Entry(root,width=10)
-    e2.place(x=170,y=600)
-    begin=Button(root,text="Start alarm")
-    begin.place(x=120,y=630)
-    begin.bind("<Button-1>",alarm_begin)
-
-"""Alarm clock """
 def alarm_begin(event):
     """Alarm clock:
     1. Load the entered values into the variables (h,m) using the get method.  
@@ -129,43 +105,9 @@ entry2=0
 e1=0
 e2=0
 
-#The main dialog window
-root = tkinter.Tk() 
-root.title('Clock,alarm,stopwatch,timer') 
-root.geometry("360x700")
-root.resizable(False,False)
-root.configure(bg="dimgray")
-
-#Clock labels
-clock = Label(root, text="Clock",font=('arial',30,'bold'),background='dimgray',foreground='black').pack(anchor = 'n')
-lbl = Label(root, font = ('arial', 40, 'bold'), background = 'black', foreground = 'green') 
-lbl.pack(anchor = 'n') 
-
 #Functions call 
 time() 
 stopwatchWidgets()
 alarm()
-
-#Timer labels
-timer = Label(root, text="Timer",font=('arial',30,'bold'),background='dimgray',foreground='black').place(x=110,y=310)
-
-enter = Label(text="Enter all values:", font=('arial',14,'bold'),background="lightgreen").place(x=10,y=360)
-hoursT=tkinter.Label(root, text="Hours:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=400)
-hoursE=tkinter.Entry(root,width=10)
-hoursE.place(x=170,y=400)
-
-minuteT=tkinter.Label(root, text="Minutes:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=425)
-minuteE=tkinter.Entry(root,width=10)
-minuteE.place(x=170,y=425)
-
-secondT=tkinter.Label(root, text="Seconds:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=450)
-secondE=tkinter.Entry(root,width=10)
-secondE.place(x=170,y=450)
-
-button=tkinter.Button(root,text="Start Timer",command=updateButton).place(x=120,y=480)
-
-#Timer testing
-label = tkinter.Label(root,background="dimgray")
-label.place(x=100,y=510)
 
 root.mainloop()
