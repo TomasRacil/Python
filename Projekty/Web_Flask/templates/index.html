@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <title>DLSC</title>
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" href="styly.css" type="text/css" />
+<meta name="author" content="Miloslav Šťastný"/>
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
+ <link href="static/styly.css" rel="stylesheet" media="screen">
 </head>
-<body>
-  
+<body background="static/back.png"> 
 <div class="wrapper">
+
   <header>
     <h1><a href="index.html">DLSC </a>  Distance Learning, Simulation and Communication</h1>
-  
+    
   </header>
   <nav class="menu" >
-     <img src="list.png" class="obr" >
+    <img src="static/list.png" class="obr" >
   <ul>
     <li><a href="dlsc09.html">DLSC 2009</a></li>
     <li><a href="index11.html">DLSC 2011</a></li>
@@ -30,12 +32,19 @@
   </ul>
 </nav>
 <article>
- <ul>
-  <li> <h1><a >Proceedings</a></h1></li>
-  <li><h1><a >Photos</a></h1></li>
- </ul>
+  <ul>
+    <li><h1><a href="login.html" title="Invitation">Login</a></h1></li>
+   
+  </ul>
+       
+
+
+
+    
+ 
+
 </article>
-<footer>Dnes je <script type="text/javascript" src="js/datum.js"></script></footer>
+<footer>Dnes je <form action="../datum.py" method="get"></form></footer>
 </div>
 </body>
 </html>
