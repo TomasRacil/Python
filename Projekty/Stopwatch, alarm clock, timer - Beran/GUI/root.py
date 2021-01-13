@@ -1,6 +1,3 @@
-from GUI import *
-from tkinter import * 
-from tkinter.ttk import *
 import tkinter
 
 root = tkinter.Tk() 

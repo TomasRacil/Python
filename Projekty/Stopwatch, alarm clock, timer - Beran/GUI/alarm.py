@@ -1,7 +1,11 @@
-from GUI import *
-from tkinter import * 
-from tkinter.ttk import *
-from .root import * 
+from tkinter.ttk import Label,Entry,Button
+
+from .root import root
+
+from Controls import alarm_begin
+
+
+
 
 def alarm():
     """Display alarm clock labels and button"""
@@ -17,4 +21,6 @@ def alarm():
     e2.place(x=170,y=600)
     begin=Button(root,text="Start alarm")
     begin.place(x=120,y=630)
-    begin.bind("<Button-1>",alarm_begin)
+    def handler(event, e1=e1, e2=e2):   
+            return alarm_begin(event, e1,e2)
+    begin.bind("<Button-1>",handler)
