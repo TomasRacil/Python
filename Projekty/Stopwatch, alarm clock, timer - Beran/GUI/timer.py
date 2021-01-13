@@ -1,27 +1,29 @@
-from GUI import *
-from tkinter import * 
-from tkinter.ttk import *
-import tkinter
-from .root import * 
+from tkinter.ttk import Label,Entry,Button
 
-#Timer labels
-timer = Label(root, text="Timer",font=('arial',30,'bold'),background='dimgray',foreground='black').place(x=110,y=310)
+from .root import root 
+from Controls import updateButton
 
-enter = Label(text="Enter all values:", font=('arial',14,'bold'),background="lightgreen").place(x=10,y=360)
-hoursT=tkinter.Label(root, text="Hours:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=400)
-hoursE=tkinter.Entry(root,width=10)
-hoursE.place(x=170,y=400)
 
-minuteT=tkinter.Label(root, text="Minutes:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=425)
-minuteE=tkinter.Entry(root,width=10)
-minuteE.place(x=170,y=425)
+def timerWidget():
+	#Timer labels
+	timer = Label(root, text="Timer",font=('arial',30,'bold'),background='dimgray',foreground='black').place(x=110,y=310)
 
-secondT=tkinter.Label(root, text="Seconds:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=450)
-secondE=tkinter.Entry(root,width=10)
-secondE.place(x=170,y=450)
+	enter = Label(text="Enter all values:", font=('arial',14,'bold'),background="lightgreen").place(x=10,y=360)
+	hoursT=Label(root, text="Hours:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=400)
+	hoursE=Entry(root,width=10)
+	hoursE.place(x=170,y=400)
 
-button=tkinter.Button(root,text="Start Timer",command=updateButton).place(x=120,y=480)
+	minuteT=Label(root, text="Minutes:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=425)
+	minuteE=Entry(root,width=10)
+	minuteE.place(x=170,y=425)
 
-#Timer testing
-label = tkinter.Label(root,background="dimgray")
-label.place(x=100,y=510)
+	secondT=Label(root, text="Seconds:",font=('arial',10,'bold'),background="lightgreen").place(x=100,y=450)
+	secondE=Entry(root,width=10)
+	secondE.place(x=170,y=450)
+
+	label = Label(root,background="dimgray")
+	button=Button(root,text="Start Timer",command=lambda: updateButton(hoursE,minuteE,secondE,label)).place(x=120,y=480)
+
+	#Timer testing
+	
+	label.place(x=100,y=510)
