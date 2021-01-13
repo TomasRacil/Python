@@ -116,7 +116,7 @@ def praceBod(bod, varianta):
 
 #Funkce, která po naplnění začně náhodně mazat hodnoty v políčku a zároveň kontroluje možný počet řešení, tedy, aby byla splněna podmínka
 # jednoho řešení
-def vymaz(bod, obtiznost):
+def vymazBod(bod, obtiznost):
     # těžkopádné nastavení obtížnosti, závislé na volbě uživatele
     pokusy=20+obtiznost*10
     while pokusy > 0:
@@ -147,15 +147,15 @@ def main():
         print(f"Zvolili jste spatnou obtiznost")
     #Zde probíhá plnění samotného Sudoku
     praceBod(bod,2)
-    vymaz(bod, obtiznost)
+    vymazBod(bod, obtiznost)
     myPen.getscreen().update()
     # vykreslení samotného sudoku
     drawbod(bod)
-    sleep(5)
+    sleep(10)
     print("Sudoku bod Ready")
-    for slopec in range(0,9):
-            print(f"{bod[slopec][0]} {bod[slopec][1]} {bod[slopec][2]} | {bod[slopec][3]} {bod[slopec][4]} {bod[slopec][5]} | {bod[slopec][6]} {bod[slopec][7]} {bod[slopec][8]}")
-            if (slopec % 3 == 2):
+    for sloupec in range(0,9):
+            print(f"{bod[sloupec][0]} {bod[sloupec][1]} {bod[sloupec][2]} | {bod[sloupec][3]} {bod[sloupec][4]} {bod[sloupec][5]} | {bod[sloupec][6]} {bod[sloupec][7]} {bod[sloupec][8]}")
+            if (sloupec % 3 == 2):
                 print("_____________________")
 
 if __name__ == '__main__':
