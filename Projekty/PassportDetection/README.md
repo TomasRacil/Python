@@ -15,3 +15,8 @@ Verze 0.1
 - první funkční verze - rozpozná zadanou část pasu a přečte z ní data
 - přečtená data vypisuje do konzole
 - pro fungování je třeba mít tesseract verze 5 (https://github.com/UB-Mannheim/tesseract/wiki)
+
+
+Verze 0.2
+===========================================================
+- rozdělení jednotlivých částí do modulů
