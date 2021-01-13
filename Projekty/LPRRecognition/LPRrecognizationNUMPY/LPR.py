@@ -15,7 +15,7 @@ Změna velikosti a uložení do proměnné img
 Změnou velikosti zabráníme problémům s velkým rozlišením fotografií
 """
 
-cv2.imshow('Orig',img)	#kontrola 
+#cv2.imshow('Orig',img)	#kontrola 
 """
 Zobrazení obrázku v okně
 """
@@ -73,12 +73,11 @@ Uspořádáme od největšího a uchováme prvních 10 prvků
 
 screenCnt = None
 
-for c in contours:			
-"""
-Projdeme všechny obrysy a najdeme takový, který má tvar obdélníku,
-4 strany a je uzavřený.
-"""
-
+for c in contours:
+    """
+    Projdeme všechny obrysy a najdeme takový, který má tvar obdélníku,
+    čtyři strany a je uzavřený.
+    """
     peri = cv2.arcLength(c, True)			
     approx = cv2.approxPolyDP(c, 0.018 * peri, True)
  
