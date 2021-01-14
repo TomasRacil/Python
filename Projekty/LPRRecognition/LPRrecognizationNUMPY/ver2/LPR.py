@@ -141,7 +141,11 @@ def LPRmain(fileName = '1', imgShow = True):
     Zobrazení výsledného převodu textu z obrázku
     """
 
+<<<<<<< HEAD:Projekty/LPRRecognition/LPRrecognizationNUMPY/ver2/LPR.py
     if(imgShow): return text
+=======
+    if not imgShow: return text
+>>>>>>> add9b313242cd35d3446b0452b96bf72eb9a4c71:Projekty/LPRRecognition/LPRrecognizationNUMPY/loop/LPR.py
     """
     Vrátí text spz kvuli zapisu do databaze
     """
