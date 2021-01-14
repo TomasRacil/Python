@@ -20,3 +20,4 @@ Verze 0.1
 Verze 0.2
 ===========================================================
 - rozdělení jednotlivých částí do modulů
+- doplnění komentářů

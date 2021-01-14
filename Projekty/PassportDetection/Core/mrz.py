@@ -1,3 +1,9 @@
+"""Machine Readable Zone detection
+
+Modul obsahuje fci process - ze zadaného obrázku separuje MRZ
+
+"""
+
 import numpy as np #pro matice
 import argparse #parsování argumentů
 import imutils #fce resize 
@@ -13,17 +19,26 @@ rectKernel = cv2.getStructuringElement(cv2.MORPH_RECT, (13, 5))
 sqKernel = cv2.getStructuringElement(cv2.MORPH_RECT, (21, 21))
 
 def process(cesta):
+    """pomocí imutils prochází složku danou argumentem a hledá obrázky
+       cílem je vrátit část obrázku, která obsahuje MRZ
 
-    #pomocí imutils prochází složku danou argumentem a hledá obrázky
+    Args:
+        cesta: (str) cesta k obrázku, na kterém provádíme separaci MRZ
+
+    Returns:
+        vysledek: (cv2 obj) obsahuje vyseknutou MRZ zónu bez úprav - pouze výřez fotky
+
+    """
+
+    
     data = cv2.imread(cesta) #načte soubor
     data = imutils.resize(data, height=600) #změní výšku na maximálně 600p 
     grayFilter = pic.get_grayscale(data) #zbavíme se barvy - používají se odstíny šedé barvy
     
     grayFilter = pic.get_GaussianBlur(grayFilter) #odstranění šumu pomocí GaussianBlur
     blackhatFilter = cv2.morphologyEx(grayFilter, cv2.MORPH_BLACKHAT, rectKernel) #zvýrazní černou bravu proti světlému pozadí - zvýrazní text
-    
-    #Sobel operator - výpočet gradientů - zde jsem musel použít kód z webu 
-    gradX = cv2.Sobel(blackhatFilter, ddepth=cv2.CV_32F, dx=1, dy=0, ksize=-1)
+     
+    gradX = cv2.Sobel(blackhatFilter, ddepth=cv2.CV_32F, dx=1, dy=0, ksize=-1) #Sobel operator - výpočet gradientů - zde jsem musel použít kód z webu
     gradX = np.absolute(gradX)
     (minVal, maxVal) = (np.min(gradX), np.max(gradX))
     gradX = (255 * ((gradX - minVal) / (maxVal - minVal))).astype("uint8")
