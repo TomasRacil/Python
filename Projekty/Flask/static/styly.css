@@ -1,0 +1,160 @@
+
+@media (min-width: 500px) {
+header{
+	width: 100%;
+	display: block;
+	margin: auto;
+	background: #202B2F;		
+	margin:0;
+	font-family:  'Rockwell';
+	padding: 2px 0px 2px 0px;
+	text-align: center;
+	position: relative;
+	top: 0;
+	color:white;
+	font-size: 12px;
+	opacity: 90%;
+}
+header a{
+	text-decoration: none;
+	color:white;
+	font-size: 30px;
+}
+header a:hover{
+color:grey	;
+
+}
+div.wrapper{
+	display: block;
+	margin: auto;
+	margin: 0;
+	width: 100%;
+	
+	
+}
+nav.menu{
+	background: #456856;
+	display: block;
+  	width: 100%;
+  	margin:auto;
+  	position: relative;
+  	opacity: 90%;
+}
+ nav.menu a {
+ line-height: 3em;
+ padding: 0 15px;
+ position: relative;
+ color:white;
+ text-decoration: none;
+ font-size: 17px;
+ display: block;
+ font-family: Arial;
+}
+
+nav.menu ul {
+  width: 100%;
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+nav.menu ul li {
+  width: auto;
+  /* background: red; */
+  display: inline-block;
+  text-decoration-style: none;
+}
+nav.menu a:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+nav.menu a:hover::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: white;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+article{
+	display: block;
+	margin:auto;
+	width: 100%;
+	position: relative;
+	height: 566px;
+	background-color: white;
+	opacity: 70%;
+	margin-top: 0px;
+	padding-top: 5px;
+	text-align: center;
+}
+article a{
+	text-decoration: none;
+	color: black;
+	font-family: Arial;
+	font-size: 28px;
+	font-weight: normal;
+	display: block;
+	position: relative;	
+	border:solid black;
+	
+	padding:5px;
+}
+article a:hover{
+	color:grey;
+	border-color: grey;
+}
+article ul{
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+    padding: 0;
+    width: 100%;
+
+}
+article ul li{
+	width: auto;
+	text-decoration: none;
+	display: inline-block;
+	text-align: center;
+
+}
+article p{
+	text-align: center;
+}
+footer{
+	display: block;
+	margin:auto;
+	width: 100%;
+	background:#456856;
+	font-weight: bold;
+	bottom: : 0;
+	padding-top: 10px;
+	padding-bottom:10px;
+	color: white;
+	text-align: center;
+	font-family: Arial;
+	opacity: 90%;
+}
+body{
+	margin:0;
+	background-image: url(back.png);
+
+}
+img.obr{
+	width: 3%;
+	height: 2%;
+	float: left;
+	margin-top: 2px;
+	margin-left: 10px;
+}
+summary{
+	font-size: 16px;
+	font-family: Arial;
+	text-align: center;
+}
+
+}
