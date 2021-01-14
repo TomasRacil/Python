@@ -42,4 +42,7 @@ elif Choose and not database:
     data = open("database.txt", "w")
 
     for n in range(1, files+1):
-        data.write(str(n)+";"+LPR.LPRmain(n, database)[:-1])
+        try:
+            data.write(str(n)+";"+LPR.LPRmain(n, database)[:-2]+"\n")
+        except Exception as e:
+            data.write(str(n)+";"+"------\n")
