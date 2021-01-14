@@ -33,7 +33,11 @@ elif(int(Choice)==4): database = False
 
 
 if Choose and database:
-    for n in range(1, files+1): LPR.LPRmain(n, database)
+    for n in range(1, files+1):
+        try:
+            LPR.LPRmain(n, database)
+        except Exception as e:
+            print(f"Chyba: {e}\nPřeskočeno!")
 elif Choose and not database:
     data = open("database.txt", "w")
 
