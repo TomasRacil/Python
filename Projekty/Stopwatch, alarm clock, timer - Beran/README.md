@@ -21,3 +21,9 @@ TODO:
 		sec = time.strftime("%S")
 	
 	label.config(text=hour + ":" + minute + ":" + second)
+
+Chyby v programu k opravě: 
+	1. stopwatch - po zastaveni a opetovnem stisknuti tlacitka start se nic nestane
+	2. timer - musi se zadat vsechny hodnoty pred spustenim
+	3. alarm - po nastaveni casu se aplikace zastavi a zvukove upozorneni se ozve az kdyz vyprsi cas
+
