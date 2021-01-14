@@ -9,7 +9,8 @@ Náměty k pokračování:
 - ukrytí obrázku do videa
 - ukrytí videa do videa
 - ukrytí souboru do více různých souborů
-- alternativní přístup ke kódování
-- Misc: upravit program aby fungoval s více příponami, implementovat spouštění z konzole, zahešování bitů podle hesla (k rozkódování by nestačil jen program ale i heslo).
+- alternativní přístup ke kódování (viz notes.txt)
+- implementovat spuštění z konzole (viz notes.txt)
+- Misc: upravit program aby fungoval s více příponami, upravit aby fungoval s unicode(oproti ASCII), zahešování bitů podle hesla (k rozkódování by nestačil jen program ale i heslo).
 
 Pro více informací je možné přečíst notes.txt
