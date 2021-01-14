@@ -124,13 +124,14 @@ def LPRmain(fileName = '1', imgShow = True):
 
     #print(pytesseract.get_languages(config=''))	                                                                                                                      #kontrola dostupnych nastaveni teseracu (lang=...)
 
-    text = pytesseract.image_to_string(Cropped, lang='eng', config='--psm 10')	                                                                                         #config --psm10 je single character recognition (moznosti nastaveni --psm lze najit napsanim do konzole "tesseract --help-psm") mozno dodat --oem 1 (Neural Nets) 
+    text = pytesseract.image_to_string(Cropped, lang='eng', config='--psm 10 -c tessedit_char_whitelist=ABCDEFHIJKLMNPRSTUVXYZ0123456789')                                                                                           #config --psm10 je single character recognition (moznosti nastaveni --psm lze najit napsanim do konzole "tesseract --help-psm") mozno dodat --oem 1 (Neural Nets) 
     """
     Použijeme tesseract na přečtení textu z obrázku
 
         Args:
             lang (str): jazyk
             config (str): --psm10 je single character recognization
+                           -c tessedit_char_whitelist je whitelist znaků, které může obsahovat
             hrany které mají "intensity gradient" mezi těmito
             hodnotami se vykreslí
     """
