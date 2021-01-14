@@ -21,3 +21,8 @@ Verze 0.2
 ===========================================================
 - rozdělení jednotlivých částí do modulů
 - doplnění komentářů
+
+TODO:
+===========================================================
+- upravit předávání obrázku z openCV do Tesseract tak, aby se obrázek nemusel ukládat na disk
+- dále zpracovat detekovaný string - pomocí RegEx z něj separovat jméno, příjmení atd. + odstranit chyby vzniklé ve strojovém rozpoznání textu
