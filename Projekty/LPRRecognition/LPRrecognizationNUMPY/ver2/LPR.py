@@ -141,7 +141,7 @@ def LPRmain(fileName = '1', imgShow = True):
     Zobrazení výsledného převodu textu z obrázku
     """
 
-    return text
+    if(imgShow): return text
     """
     Vrátí text spz kvuli zapisu do databaze
     """
