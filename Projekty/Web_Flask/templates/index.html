@@ -13,6 +13,7 @@
 <meta name="author" content="Miloslav Šťastný"/>
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
  <link href="static/styly.css" rel="stylesheet" media="screen">
+
 </head>
 <body background="static/back.png"> 
 <div class="wrapper">
@@ -23,28 +24,17 @@
   </header>
   <nav class="menu" >
     <img src="static/list.png" class="obr" >
-  <ul>
-    <li><a href="dlsc09.html">DLSC 2009</a></li>
-    <li><a href="index11.html">DLSC 2011</a></li>
-    <li><a href="index13.html">DLSC 2013</a></li>
-    <li><a href="index15.html">DLSC 2015</a></li>
-    <li class="active"><a href="index.html">DLSC 2017</a></li>
-  </ul>
+  
+<ul>
+<li><a href="{{ url_for('login') }}">Přihlášení</a></li>
+<li><a href="{{ url_for('signup') }}">Registrace</a></li>
+</ul>
 </nav>
 <article>
-  <ul>
-    <li><h1><a href="login.html" title="Invitation">Login</a></h1></li>
-   
-  </ul>
-       
-
-
-
-    
+<h1>Vítejte!</h1>
  
-
 </article>
-<footer>Dnes je <form action="../datum.py" method="get"></form></footer>
+<footer>{{datum}}</footer>
 </div>
 </body>
 </html>
