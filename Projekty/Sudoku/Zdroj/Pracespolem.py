@@ -2,7 +2,7 @@ from random import randint, shuffle
 cislaSeznam = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 counter = 0 # počítá počet řešní
 
-def obtiznostNastav(obtiznost):
+def obtiznostNastav():
     """obtiznostNastav --- Funkce nastavujicí pocatecni obtiznost a kontrolující, zda-li uživatel zadal správné číslo
     Args:
         obtiznost --- uroven obtiznosti
