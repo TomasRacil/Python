@@ -2,7 +2,7 @@ import argparse
 def argument():
     parser = argparse.ArgumentParser()
     parser.add_argument("-l", metavar=" --level", type=int,
-                        help="Vrací hodnotu obtiznosti 1-3")
+                        help="Vrací hodnotu obtiznosti 1-3", default=1)
     args = parser.parse_args()
     answer = int(args.l)
     if(answer<1 or answer>3 ):
