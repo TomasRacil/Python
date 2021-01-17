@@ -1,7 +1,7 @@
 import argparse
 def argument():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-l", metavar="level", type=int,
+    parser.add_argument("-l", metavar=" --level", type=int,
                         help="Vrací hodnotu obtiznosti 1-3")
     args = parser.parse_args()
     answer = int(args.l)
