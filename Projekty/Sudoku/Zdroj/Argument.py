@@ -1,10 +1,10 @@
 import argparse
 def argument():
     parser = argparse.ArgumentParser()
-    parser.add_argument("square", type=int,
-                        help="display the square of a given number")
+    parser.add_argument("-l", metavar="level", type=int,
+                        help="Vrací hodnotu obtiznosti 1-3")
     args = parser.parse_args()
-    answer = int(args.square)
+    answer = int(args.l)
     if(answer<1 or answer>3 ):
         print("Zvolili jste spatnou variantu, byla automaticky zvolena obtiznost 1")
         return 1
