@@ -8,10 +8,12 @@ from flask_sqlalchemy  import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import datetime
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/42060/Desktop/UNOB/4. ročník/UdIS/Flask/database.db'
+path=os.path.dirname(os.path.abspath(__file__)).replace("\\","/")
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{path}/database.db'
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
 login_manager = LoginManager()
@@ -38,8 +40,11 @@ class RegisterForm(FlaskForm):
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
 
-
 @app.route('/')
+def default():
+    return redirect(url_for('login'))
+
+@app.route('/index')
 def index():
     date=datetime.datetime.now()
     den=format(date.day)
@@ -79,7 +84,6 @@ def signup():
         #return '<h1>' + form.username.data + ' ' + form.email.data + ' ' + form.password.data + '</h1>'
 
     return render_template('reg.html', form=form)
-
 
 @app.route('/logout')
 @login_required
