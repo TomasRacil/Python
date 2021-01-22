@@ -136,8 +136,7 @@ def LPRmain(fileName = '1', imgShow = True):
             lang (str): jazyk
             config (str): --psm10 je single character recognization
                            -c tessedit_char_whitelist je whitelist znaků, které může obsahovat
-            hrany které mají "intensity gradient" mezi těmito
-            hodnotami se vykreslí
+        
     """
 
     print("License Plate Recognition (LPR)\n")
