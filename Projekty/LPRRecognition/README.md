@@ -1,7 +1,7 @@
 Projekt pro rozpoznávání SPZ v OpenCV
 =====================================
 
-### TODO:
+### Kroky:
 1. #### Seznámení se s jazykem Python a knihovnou OpenCV.
    - instalace OpenCV a následné propojení s projektem.
 
@@ -23,8 +23,18 @@ Projekt pro rozpoznávání SPZ v OpenCV
    - Vyjmutí této značky z listu a porovnání se znaky
    - Poté ukázání výsledku ve formě okna a znaků pod ním napsaných + vypsané nebo zapsání do databáze
 
-> //*Možné rozepsání kroků a připsání některých chybějících, nebo v případě naražení na další problémy, možnost rozepsat*//
 
-> //*Možná použít pytesseract ? ulehčí práci (není potřeba shánět Xml soubory) - v projektu "DetekceZnacekTEST" je zakomentován a po odkomentování funguje, ale je to napsáno v čisté verzi na tvrdo, je potřeba doladit, napsat lépe a zamezit chybám.
+
+### TODO:
+1. #### Použít lepší metody na rozpoznání textu z obrázku (tesseract-pomalý).
+
+2. #### Určit poměr stran SPZ, pro eliminaci nechtěných obdélníků.
+
+3. #### Jiný druh algoritmu na rozeznávání SPZ (např. kontrast? černé na bílém / bílé na černém).
+
+4. #### Propojení s databází více obrázků, pro lepší kontrolu úspěšnosti.
+
+
+
 
 Autoři: [@EditaBozkova](https://github.com/EditaBozkova), [@Lubos-source](https://github.com/Lubos-source), [@Pompino](https://github.com/Pompino)
