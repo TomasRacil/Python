@@ -6,7 +6,7 @@ Textová hra - Popis asi není nutný (tento projekt je velice dobře škálovat
 Házení kostkou - Simulace hodu kostkou, nebo více kostkami s možností přehozu jednotlivých kostek
 Oběšenec - Hádání písmen ve slovu 
 EmailSlicer - program získá ze zadaného emailu doménu a jméno uživatele
-Kámen nůžky papír - script který s uživvatelem hraje kámen nůžky papír
+Kámen nůžky papír - script který s uživatelem hraje kámen nůžky papír
 Fibonaciho posloupnost - Vytvořit fibonaciho posloupnost
 Je čílo prvkem fibonaciho posloupnost - Algoritmus, který zjistí jestli je číslo prvkem posloupnosti
 Výpočet faktoriálu - Spočítá faktoriál
