@@ -16,7 +16,7 @@ class Calculator:
         self.text_input = tk.StringVar()
         self.master = master
 
-        # Creating TextBox
+        # TextBox
 
         TextBox = tk.Entry(master, font=('arial', 12),fg="#333333",textvariable=self.text_input,justify='right',borderwidth="2px")
         TextBox.place(x=10,y=10,width=200,height=40)
@@ -100,11 +100,16 @@ class Calculator:
 
 # Functions
 
-    # Puts button you press into TextBox and equation
-    # equation is the core equation that will be evaluated
-    # inputEquation shows up in TextBox it is not evaluated
-
     def btnPress(self, value):
+        """Puts button you press into TextBox and equation
+
+        equation is the core equation that will be evaluated
+        inputEquation shows up in TextBox, it is not evaluated
+    
+        Args:
+            value : Value that is written on the button
+        """
+
         if len(self.inputEquation) >= 21:
             self.equation = self.equation
             self.text_input.set(self.equation)
@@ -125,10 +130,12 @@ class Calculator:
             self.inputEquation= self.inputEquation + str(value)
             self.text_input.set(self.inputEquation)
 
-    # Deletes the last character in TextBox and the last item in string equation
-    # There is difference between inputEquation and equation so we have to delete it differently
-
     def btnDelete(self):
+        """Deletes the last character in TextBox and the last item in string equation
+
+        There is difference between inputEquation and equation so we have to delete it differently
+        """
+
         if len(self.inputEquation) == 0:            # If there is nothing in inputEquation we are not doing anything
             self.text_input.set(self.inputEquation)
         else:
@@ -146,21 +153,22 @@ class Calculator:
                 self.equation = self.equation[:-1]
 
             self.text_input.set(self.inputEquation)
-            
-        
-    # Clears equation inputEquation and TextBox
 
     def btnClear(self):
+        """Clears equation, inputEquation and TextBox
+
+        """
         self.equation = ""
         self.inputEquation = ""
         self.text_input.set("")
 
-    # Converts equation into a mathematical equation and evaluates it
-
     def btnEquals(self):
+        """Converts equation into a mathematical equation and evaluates it
+        
+        """
         try:
             self.total = str(eval(self.equation))
             self.text_input.set(self.total)
-            #self.equation = self.total
+            #self.equation = self.total         # Can be used for Ans and Memory
         except Exception as e:
             self.text_input.set("Chyba!")
