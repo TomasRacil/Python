@@ -7,3 +7,4 @@ from .smer import zmenaSmeru
 from .reakceNaNepritele import *
 from .hrdinaUtok import *
 from .nepritelUtok import *
+from .sound import *
