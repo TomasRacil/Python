@@ -5,9 +5,10 @@ def prazdne_pole(board):
 	Returns:
 	Adresa prvku s prázdným polem(i,j)
 	"""
-	for j in range(len(board[0])):
-		if board [i][j] == 0:
-			return (i, j)
+	for i in range(len(board)):
+		for j in range(len(board[0])):
+			if board [i][j] == 0:
+				return (i, j)
 	return None
 def prochazeni(board, cislo, pozice):
 	"""prochazeni - funkce která nám prochází matici a kontroluje zdali se stejné číslo, které se dolňuje
