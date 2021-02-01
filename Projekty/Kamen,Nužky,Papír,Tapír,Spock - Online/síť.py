@@ -15,7 +15,7 @@ class Sit:
 	def connect(self):
 		try:
 			self.klient.connect(self.adresa)
-			return self.klient.recv(2048).decode() #hráč dostane číslo 1 nebo 2
+			return self.klient.recv(2048).decode() #dostaneme číslo hráče(buď 0 nebo 1)
 		except:
 			pass
 

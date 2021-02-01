@@ -19,8 +19,8 @@ class Tlačítko:
 
 	def vykreslit(self,okno):
 		pygame.draw.rect(okno,self.barva,(self.x,self.y,self.width,self.height))
-		font = pygame.font.SysFont("somicsans",40)
-		text = font.render(self.text,1, (255,255,255))
+		font = pygame.font.SysFont("somicsans",40) #systémový font písma
+		text = font.render(self.text,1, (255,255,255)) #tímhle generujeme font
 		okno.blit(text, (self.x+ round(self.width/2) - round(text.get_width()/2), self.y + round(self.height/2) - round(text.get_height()/2)))
 	def kliknuti(self,pozice):
          x1 = pozice[0]

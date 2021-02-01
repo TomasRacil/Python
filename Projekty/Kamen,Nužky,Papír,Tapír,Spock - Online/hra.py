@@ -5,7 +5,7 @@ class Hra:
 		self.p2Went = False
 		self.ready = False
 		self.id= id  #každá hra bude mít svou ID
-		self.tahy = [None, None] 
+		self.tahy = [None, None] #dvě pozice tahá které budeme měnit
 		self.vyhra = [0,0]
 		self.ties = 0
 
@@ -21,9 +21,10 @@ class Hra:
 			self.p1Went = True #změní z false na true jelikož odehrál
 		else:
 			self.p2Went = True #pokud neodehrál hráč 1 musel hráč 2
-	#hlídá jestli jsou připojeni dva hráči
+	#hlídá jestli jsou připojeni dva hráči a potom jim to umožní hrát
 	def pripojeni(self):
 		return self.ready
+	# jestli oba odešli 
 	def obaWent(self):
 		return self.p1Went and self.p2Went
 	def vitez(self):
