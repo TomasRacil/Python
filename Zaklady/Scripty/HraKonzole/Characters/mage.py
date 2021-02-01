@@ -7,7 +7,6 @@ class mage(character):
         self.energy=energy
         self.damage=damage
 
-    def heal(self): self.hp=65
     def sleep(self):  
         hod=hodKostkou(1,8)
         print("\nHodil jsi: " + str(hod) + "\n")   
@@ -30,3 +29,22 @@ class mage(character):
         elif hod==6:
            print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
            self.energy=120
+
+    def heal(self):  
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
+
+        if hod==1:
+            print("Asi jsi trochu mimo, použil jsi lektvar na špatnou část těla.") 
+
+        elif hod==2:
+                print("Vypadá to, že tenhle lektvar je prošlý.\nZískáváš 30 hp.")
+                self.hp=hp+30
+
+        elif hod==3 or hod==5:
+            print("Tvé léčení bylo úspěšné.\nZískáváš 45 hp.")
+            self.hp=hp+45
+
+        elif hod==4 or hod==6:
+            print("Tvé léčení by snad oživilo i mrtvého.\nZískáváš 65 hp.")
+            self.hp=hp+65

@@ -7,7 +7,6 @@ class warrior(character):
         self.energy=energy
         self.damage=damage
 
-    def heal(self): self.hp=120
     def sleep(self):  
         hod=hodKostkou(1,8)
         print("\nHodil jsi: " + str(hod) + "\n")   
@@ -30,3 +29,22 @@ class warrior(character):
         elif hod==6:
            print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
            self.energy=120
+
+    def heal(self):  
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
+
+        if hod==1:
+            print("Spletl jsi si lektvary. \nZtrácíš 20 hp.")
+              self.hp=hp-20 
+
+        elif hod==2:
+                print("Jsi neohrabaný a lektvar jsi rozlil na zem.")
+                
+        elif hod==3 or hod==5:
+            print("Bohužel lektvar byl prošlý.\nZískáváš 40 hp.")
+            self.hp=hp+40
+
+        elif hod==4 or hod==6:
+            print("Všechny tvé válečné rány se zahojily!\nZískáváš 95 hp.")
+            self.hp=hp+95

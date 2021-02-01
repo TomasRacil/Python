@@ -7,7 +7,6 @@ class scout(character):
         self.energy=energy
         self.damage=damage
 
-    def heal(self): self.hp=50
     def sleep(self):  
         hod=hodKostkou(1,8)
         print("\nHodil jsi: " + str(hod) + "\n")   
@@ -30,3 +29,22 @@ class scout(character):
         elif hod==6:
            print("Bylo ti nabídnuto lůžko v blízkém hostinci, takhle dobře ses už dlouho nevyspal!\nZískáváš 120 energie")
            self.energy=120
+
+    def heal(self):  
+        hod=hodKostkou(1,8)
+        print("\nHodil jsi: " + str(hod) + "\n")   
+
+        if hod==1:
+            print("Upustil jsi lektvar a spadl ti na nohu \nZtrácíš 5 hp.")
+              self.hp=hp-5 
+
+        elif hod==2:
+                print("Vypadá to že jsi lektavar někde ztratil.")
+                
+        elif hod==3 or hod==5:
+            print("Bylo to vnitřní užití ne?.\nZískáváš 25 hp.")
+            self.hp=hp+25
+
+        elif hod==4 or hod==6:
+            print("Jsi dokonalý CLS.\nZískáváš 40 hp.")
+            self.hp=hp+45
