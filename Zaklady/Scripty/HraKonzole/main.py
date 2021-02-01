@@ -18,7 +18,7 @@ uzivatelskeJmeno=None
 
 def hodKostkou(od,do):
    """Hodíme kostkou a vrátí číslo od do """
-   playsound('soundlib/kostka.wav')  
+   ZvukKostka() 
    for i in range(5):        
        print(randint(0,9),end='\r')    ##pouze vzhledový design : "jednoduchý výběr z čísel" random čísla a pak se nějaké zvolí.
        time.sleep(0.25)
@@ -237,21 +237,21 @@ if chceHrat.lower() == 'y':
 
             elif hod>3 and hod<6:
                 print("Narazil jsi na nepřítele, je to roztomilý bandita")
-                playsound('soundlib/bandita.wav')
+                ZvukBandita()
                 reakceNaNepritele(obtiznostOblasti)
 
             elif hod==6:
                 print("Šťastná ŠESTKA, bohužel ne zde. Z křoví na tebe vylezl drak.")
-                playsound('soundlib/drak.wav')
+                ZvukDrak()
                 reakceNaNepritele(obtiznostOblasti+1)
             elif hod>6 and hod <=7:
                 print("Rychlostí blesku se pohybuješ dál\nStojí tě to pouze 10 energie")
-                playsound('soundlib/rychlost.wav')
+                ZvukRychlost()
                 hrac.odectiEnergy(10)
 
             elif hod==8:
                 print("Narazil si na kašnu s živou vodou\nJak moc se napiješ záleží na štěstí: ")
-                playsound('soundlib/voda.wav')
+                ZvukVoda()
                 hod=hodKostkou(1,6)
                 if hod<=2:
                     print("No to si se moc nenapil, pričetlo se ti 10 životů")
@@ -285,7 +285,7 @@ if chceHrat.lower() == 'y':
         
     if not hrac.alive:
         print("\n\nZemřel jsi\n\n")
-        playsound('soundlib/smrt.wav')
+        ZvukSmrt()
 
     ##Pokracovani programu (Po volbě Odejít) nebo po ukonceni hodu.
 
