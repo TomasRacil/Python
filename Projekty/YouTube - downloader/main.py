@@ -1,16 +1,12 @@
 from Source.parser import *
 from Source.downloadyt import *
-import argparse
-from pytube import YouTube
 
 def main():
-
-	
 
 	video = vlajky()
 
 
-	downloader(video.odkaz, video.rozliseni, video.titulky)
+	downloader(video.o, video.r, video.t)
 
 	print("Úspěšně staženo")
 

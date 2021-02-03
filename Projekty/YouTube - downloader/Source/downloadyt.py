@@ -1,4 +1,3 @@
-import argparse
 from pytube import YouTube
 
 def downloader(odkaz, rozliseni, titulky):
@@ -9,7 +8,7 @@ def downloader(odkaz, rozliseni, titulky):
 	print("Délka videa: ",yt.length)
 	print("Počet shlédnutí: ",yt.views)
 
-	if rozlisen == 'nezadano':					#pokud uživatel nezadá rozlišení, stáhne se video v nejlepší kvalitě
+	if rozliseni == 'nezadano':					#pokud uživatel nezadá rozlišení, stáhne se video v nejlepší kvalitě
 		ys = yt.streams.get_highest_resolution()
 	else:
 		ys = yt.streams.filter(res=rozliseni)
