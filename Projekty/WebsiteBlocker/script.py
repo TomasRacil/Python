@@ -4,7 +4,7 @@ import time
 from datetime import datetime as dt 
   
 # change hosts path according to your OS 
-hosts_path = "C:\Windows\System32\drivers\etc"
+hosts_path = "C:\Windows\System32\drivers\etc\hosts"
 # localhost's IP 
 redirect = "127.0.0.1"
   
@@ -35,7 +35,8 @@ while True:
             # removing hostnmes from host file 
             file.truncate() 
   
-        print("Fun hours...") 
+        print("all websites unblocked")
+        break 
     time.sleep(5) 
 
 
