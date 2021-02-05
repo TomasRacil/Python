@@ -7,7 +7,7 @@ server = "192.168.14.214"
 port = 5555
 #nadefinujeme typy připojení(ipv4,TCP protocol)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#přiřadíme portu adresu
+#přiřadíme portu adresu a pokut bude nějaká chyba objeví se nám
 try:
 	s.bind((server, port))
 except socket.error as e:
@@ -15,11 +15,15 @@ except socket.error as e:
 
 s.listen(2) #omezení počtu hráču
 print("Čeká se na připojení, Server v provozu")
-# pokud chceme mít neomezený počet hráču musíme mít neomezený počet her v jednu chvíli, tak vytvoříme slovník s hrama
-#hry budou přístupné s jejich ID kterou budou mít
+"""Tady vytvoříme slovník s hrami ke kterým bude přiřazena unikátní ID aby jsme měli možnost většího(až neomezeného) 
+počtu her a pokud hru hráč opustí budeme tuto hru mazat podle její ID"""
+
 pripojeni = set() #uchová ip adresy připojených hráču
 hry = {} #v tomto slovníku budeme mít naše hry s příslušnou ID
 idPocitani = 0
+
+"""Tady řesíme počítání hráču kteří jsou připojeni a rozdělujeme hráče na hráče 1 a 2 dále rozlišujeme
+ přijatá data na reset hry, get nebo na tah, a mažeme hru podle ID"""
 
 def threaded_klient(conn,p,hraId):
 	global idPocitani#aby jsme věděli stále kolik hráču je připojeno
@@ -57,6 +61,7 @@ def threaded_klient(conn,p,hraId):
 	idPocitani -= 1
 	conn.close()
 
+"""zatímco běží server  počítáme kolik máme hráču na serveru(přičítáme připojené) a pokud se připojí lichý hráč vytvoříme novou hru """
 
 while True:
 	conn, adresa = s.accept()

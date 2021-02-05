@@ -18,7 +18,7 @@ class Sit:
 			return self.klient.recv(2048).decode() #dostaneme číslo hráče(buď 0 nebo 1)
 		except:
 			pass
-
+""" send slouží k zasílání dat na server ve formátu string dat a následnému obdržení dat od serveru z5 ve formátu pickle dat(binární formě)"""
 	def send(self,data):
 		try:
 			self.klient.send(str.encode(data)) #posíláme na server stringové data

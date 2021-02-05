@@ -2,11 +2,14 @@ import pygame
 from síť import Sit 
 import pickle
 pygame.font.init() #seznam všech systémových funkcí
-
+"""Tady vytváříme okno v kterém bude hra běžet"""
 width = 700
 height = 700
 okno = pygame.display.set_mode((width,height))
 pygame.display.set_caption("Client")
+
+"""Tady si vytvoříme třídu tlačítko,jeho tvar a text v něm a také pozici pro 
+potvrzení tlačítka(pokud na tlačítko klikneme aby reagovalo) aby bylo možné potom vytvářet více tlačítek"""
 
 class Tlačítko:
 	def __init__(self,text,x,y,barva):
@@ -29,6 +32,10 @@ class Tlačítko:
             return True
          else :
             return False
+
+"""tady definujeme pokud nejsou dva hráči na hru tak čekáme na hráče, a pokud jsou dva hráči tak se nám ukáže text 
+(rozdělení na plochu muj tah a tah protihráče)dále řešíme že pokud oba odešli nemusí být jejich tah skrytý,
+dále udáváme info ohledně toho jestli protihráč(nebo já) tahl nebo ne, a také uspořádáváme okno podle toho jaký hráč jsem já a vykreslujeme tlačítka"""
 
 def prekreslovaciOkno(okno, hra, p):
     okno.fill((128,128,128))
@@ -77,6 +84,8 @@ def prekreslovaciOkno(okno, hra, p):
 
     pygame.display.update()
 tlačítka = [Tlačítko("Kámen", 50, 500, (0,0,0)), Tlačítko("Nůžky", 250, 500, (255,0,0)), Tlačítko("Papír", 450, 500, (0,255,0)), Tlačítko("Tapír",50,600,(0,0,255)), Tlačítko("Spock",250,600,(255,0,255))]
+
+
 def main():
     run = True
     clock = pygame.time.Clock() #skrze fps 
@@ -92,7 +101,7 @@ def main():
             run = False
             print("Hra se nespustila")
             break
-
+"""pokud oba hráči odehrajou svůj tah potřebujeme hru resetovat aby jsme mohli hrát znovu"""
         if hra.obaWent(): #pokud oba odejdou
             prekreslovaciOkno(okno, hra, hrac)
             pygame.time.delay(500) #zpoždění "jestli opravdu oba odešli"
@@ -102,7 +111,7 @@ def main():
                 run = False
                 print("Hra se nespustila")
                 break
-
+"""tady definujeme jaký text se hráči objeví pokud vyhrál prohrál nebo remízoval a updatuje se na okno(vystředěný na střed)"""
             font = pygame.font.SysFont("comicsans", 90)
             if (hra.vitez() == 1 and hrac == 1) or (hra.vitez() == 0 and hrac == 0):
                 text = font.render("Vyhrál jsi!", 1, (255,0,0))
@@ -111,10 +120,10 @@ def main():
             else:
                 text = font.render("Prohrál jsi...", 1, (255, 0, 0))
 
-            okno.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2)) #aby text byl na středu
+            okno.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2)) #zarovnává nám to text na střed
             pygame.display.update() #updatujeme display textem
             pygame.time.delay(2000) #zpoždění 2s
-
+"""tady umožníme ukončení hry křížkem  a dále definujeme kliknutí myši na tlačítko(které odešleme jako tah)"""
         for event in pygame.event.get(): #aby jsme mohli ukončit křížkem
             if event.type == pygame.QUIT:
                 run = False
@@ -135,15 +144,15 @@ def main():
 def menu_screen():
     run = True
     clock = pygame.time.Clock()
-
+"""zvolíme fps, barvu okna"""
     while run:
-        clock.tick(60)
-        okno.fill((128, 128, 128))
+        clock.tick(60) #volíme fps
+        okno.fill((128, 128, 128))#vyplníme okno barvou(šedou)
         font = pygame.font.SysFont("comicsans", 60)
         text = font.render("Klikni a hraj!", 1, (255,0,0))
         okno.blit(text, (100,200))
         pygame.display.update()
-
+"""aby se dalo v průběhu celé hry ukončit hru křížkem"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

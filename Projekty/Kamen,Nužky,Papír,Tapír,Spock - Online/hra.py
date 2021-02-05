@@ -27,6 +27,9 @@ class Hra:
 	# jestli oba odešli 
 	def obaWent(self):
 		return self.p1Went and self.p2Went
+	
+	"""porovnání tahu hráču kde se v potaz berou pouze první písmena z textu zvoleného tlačítka"""
+
 	def vitez(self):
 
 		p1 = self.tahy[0].upper()[0] #vezme do porovnání pouze první písmeno slova hráče1
@@ -75,7 +78,7 @@ class Hra:
 			vitez = 1
 
 		return vitez
-
+"""pokud oba hráči odejdou """
 	def resetWent(self):
 		self.p1Went = False
 		self.p2Went = False
