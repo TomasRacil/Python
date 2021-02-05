@@ -20,3 +20,9 @@ potom definujeme uspořádání okna hry(vizualizaci- rozdělení na tah muj a p
 upgradujeme info o tahu mém a protihráče a upravujeme okno podle toho jestli jsme hráč 1 nebo 2
 posíláme data na server, vykreslujeme text jestli jsme vyhráli nebo prohráli, ošetříme ukončení hry křížkem
 
+možné zlepšení:
+grafická vizualizace - možno vylepšit místo tlačítek obrázky (možno i pohyb obrázku)
+možnost výběru singleplayer modu nebo multiplayer modu
+implementování tehle verze multiplayeru na jinou hru
+
+
