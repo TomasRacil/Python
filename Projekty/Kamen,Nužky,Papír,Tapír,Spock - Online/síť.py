@@ -4,7 +4,7 @@ import pickle
 class Sit:
 	def __init__(self):
 		self.klient = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #skrze protokol ipv4 a TCP
-		self.server = "192.168.14.214" #ip počítače který vytvoří server
+		self.server = "127.0.0.1" #ip počítače který vytvoří server
 		self.port = 5555 #jakýkoliv volný otevřený port
 		self.adresa = (self.server , self.port)
 		self.p = self.connect()
@@ -18,7 +18,7 @@ class Sit:
 			return self.klient.recv(2048).decode() #dostaneme číslo hráče(buď 0 nebo 1)
 		except:
 			pass
-""" send slouží k zasílání dat na server ve formátu string dat a následnému obdržení dat od serveru z5 ve formátu pickle dat(binární formě)"""
+	""" send slouží k zasílání dat na server ve formátu string dat a následnému obdržení dat od serveru z5 ve formátu pickle dat(binární formě)"""
 	def send(self,data):
 		try:
 			self.klient.send(str.encode(data)) #posíláme na server stringové data

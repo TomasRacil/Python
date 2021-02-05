@@ -78,7 +78,7 @@ class Hra:
 			vitez = 1
 
 		return vitez
-"""pokud oba hráči odejdou """
+	"""pokud oba hráči odejdou """
 	def resetWent(self):
 		self.p1Went = False
 		self.p2Went = False

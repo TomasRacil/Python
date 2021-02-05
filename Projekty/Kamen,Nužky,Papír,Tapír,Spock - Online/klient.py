@@ -101,7 +101,7 @@ def main():
             run = False
             print("Hra se nespustila")
             break
-"""pokud oba hráči odehrajou svůj tah potřebujeme hru resetovat aby jsme mohli hrát znovu"""
+        """pokud oba hráči odehrajou svůj tah potřebujeme hru resetovat aby jsme mohli hrát znovu"""
         if hra.obaWent(): #pokud oba odejdou
             prekreslovaciOkno(okno, hra, hrac)
             pygame.time.delay(500) #zpoždění "jestli opravdu oba odešli"
@@ -111,7 +111,7 @@ def main():
                 run = False
                 print("Hra se nespustila")
                 break
-"""tady definujeme jaký text se hráči objeví pokud vyhrál prohrál nebo remízoval a updatuje se na okno(vystředěný na střed)"""
+            """tady definujeme jaký text se hráči objeví pokud vyhrál prohrál nebo remízoval a updatuje se na okno(vystředěný na střed)"""
             font = pygame.font.SysFont("comicsans", 90)
             if (hra.vitez() == 1 and hrac == 1) or (hra.vitez() == 0 and hrac == 0):
                 text = font.render("Vyhrál jsi!", 1, (255,0,0))
@@ -123,7 +123,7 @@ def main():
             okno.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2)) #zarovnává nám to text na střed
             pygame.display.update() #updatujeme display textem
             pygame.time.delay(2000) #zpoždění 2s
-"""tady umožníme ukončení hry křížkem  a dále definujeme kliknutí myši na tlačítko(které odešleme jako tah)"""
+        """tady umožníme ukončení hry křížkem  a dále definujeme kliknutí myši na tlačítko(které odešleme jako tah)"""
         for event in pygame.event.get(): #aby jsme mohli ukončit křížkem
             if event.type == pygame.QUIT:
                 run = False
@@ -144,7 +144,7 @@ def main():
 def menu_screen():
     run = True
     clock = pygame.time.Clock()
-"""zvolíme fps, barvu okna"""
+    """zvolíme fps, barvu okna"""
     while run:
         clock.tick(60) #volíme fps
         okno.fill((128, 128, 128))#vyplníme okno barvou(šedou)
@@ -152,7 +152,7 @@ def menu_screen():
         text = font.render("Klikni a hraj!", 1, (255,0,0))
         okno.blit(text, (100,200))
         pygame.display.update()
-"""aby se dalo v průběhu celé hry ukončit hru křížkem"""
+        """aby se dalo v průběhu celé hry ukončit hru křížkem"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

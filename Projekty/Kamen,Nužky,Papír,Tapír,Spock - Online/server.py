@@ -3,7 +3,7 @@ from _thread import *
 import pickle #umožnuje nám poslat objekt ve formě jedniček a nul a poslat ji přes internet a potom ji zpětně přeměnime na objekt
 from hra import Hra
 
-server = "192.168.14.214"
+server = "127.0.0.1"
 port = 5555
 #nadefinujeme typy připojení(ipv4,TCP protocol)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
