@@ -1,7 +1,7 @@
 # Run this script as root 
   
 import time 
-from datetime import datetime as dt 
+from datetime import datetime as dt
   
 # change hosts path according to your OS 
 hosts_path = "C:\Windows\System32\drivers\etc\hosts"
@@ -9,7 +9,7 @@ hosts_path = "C:\Windows\System32\drivers\etc\hosts"
 redirect = "127.0.0.1"
   
 # websites That we want to block 
-website_list =["www.facebook.com","facebook.com","www.gmail.com","gmail.com"] 
+website_list =["www.facebook.com","facebook.com","www.gmail.com","gmail.com","www.instagram.com"] 
   
 while True: 
   
@@ -25,19 +25,17 @@ while True:
                     # mapping hostnames to your localhost IP address 
                     file.write(redirect + " " + website + "\n") 
     else: 
-        with open(hosts_path, 'r+') as file: 
-            content=file.readlines() 
-            file.seek(0) 
-            for line in content: 
-                if not any(website in line for website in website_list): 
-                    file.write(line) 
-  
-            # removing hostnmes from host file 
-            file.truncate() 
-  
-        print("all websites unblocked")
-        break 
-    time.sleep(5) 
+        print("unblock sites")
+        with open(hosts_path, 'r+') as file:
+            lines = file.readlines()
+            file.seek(0)
+            for line in lines:
+                if not any(website in line for website in website_list):
+                    file.write(line)
+            # removing hostnmes from host file
+            file.truncate()
+    time.sleep(5)
+
 
 
 #127.0.0.1 www.instagram.com
