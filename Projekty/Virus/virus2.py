@@ -48,11 +48,6 @@ def Replicate ():
 
 
 
-def DoMaliciousThings():
-	"""Zde jsou funkce samotného škodlivého kódu, jedná se o zašifrování souborů oběti (symetrické šifrování pomocí Fernet)"""
-	print("You are infected")
-
-
 def write_key():    
     """Vytvoření symetrického klíče, jež se nám vygeneruje do key souboru key.key"""
     key = Fernet.generate_key()
