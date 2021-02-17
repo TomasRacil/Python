@@ -1,0 +1,1 @@
+print("Přeji krásný den")
