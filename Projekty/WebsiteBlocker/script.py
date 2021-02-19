@@ -50,17 +50,3 @@ def blocks_sites():
     # sudo python script.py
 if __name__ == '__main__':
    blocks_sites()
-    
-    # 1. Trigger script manually every now and then
-    # 2. Cron job
-    # 3. scipt running in background with while True
-    #while True:
-    #    block_websites() 
-    #    time.sleep(5)
-
-
-
-#127.0.0.1 www.instagram.com
-#127.0.0.1 instagram.com
-#127.0.0.1 www.facebook.com
-#127.0.0.1 facebook.com
