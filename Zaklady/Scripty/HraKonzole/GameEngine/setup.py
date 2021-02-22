@@ -1,4 +1,7 @@
 from GameEngine import *
+from os import path
+
+absolute_path = path.dirname(path.abspath(__file__))
 
 """ funkce/tridy pro konfiguraci pri vyberu postavy """
 
@@ -26,7 +29,7 @@ def vyberPostavy():
     return postavy[int(volba)-1]
 
 
-def cteniZeSouboru (soubor="Data\konfigurace.txt"):
+def cteniZeSouboru (soubor=(absolute_path + "\\konfigurace.txt")):
     """Funkce pro čtení ze souboru"""
     soubor = open(soubor, "r")
     return soubor
@@ -60,7 +63,7 @@ def zapisDoSouboru(uzivatelskeJmeno):
     if vyber=="Scout": postava=2
     if vyber=="Mage": postava=3
 
-    soubor = open("Data\konfigurace.txt", "a")
+    soubor = open((absolute_path + "\\konfigurace.txt"), "a")
     if ID<10: soubor.write("\n0")
     else: soubor.write("\n")
     soubor.write(str(ID)+";"+uzivatelskeJmeno+";"+str(postava))
@@ -69,7 +72,7 @@ def zapisDoSouboru(uzivatelskeJmeno):
 
 def saveGame(hrac,uzivatelskeJmeno):
     #TODO saveGame() - naxit IS WORKING on it    
-    soubor = open("Data\konfigurace.txt", "r")
+    soubor = open((absolute_path + "\\konfigurace.txt"), "r")
     
     i=0
     for line in soubor:
@@ -88,7 +91,7 @@ def saveGame(hrac,uzivatelskeJmeno):
         i+=1      
     soubor.close()
     
-    soubor = open("Data\konfigurace.txt", "w")
+    soubor = open((absolute_path + "\\konfigurace.txt"), "w")
     soubor.write(list[0])
     
     for i in range(len(list)):

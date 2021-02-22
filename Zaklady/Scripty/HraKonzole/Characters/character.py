@@ -5,6 +5,8 @@ class character():
     hp=100
     damage=100
     energy=100
+    lvl=1
+    xp=0
     alive=True
     
 
@@ -24,6 +26,12 @@ class character():
         else:
             self.energy=0
 
+    def ziskejXP(self, kolik):
+        self.xp+=kolik
+
+    def ziskejLvl(self, kolik):
+        self.lvl+=kolik
+
     def die(self):
         self.alive=False
 
@@ -40,4 +48,6 @@ class character():
         print(f"Živý: {self.alive}")
         print(f"Zdraví: {self.hp}")
         print(f"Energie: {self.energy}")
+        print(f"Level: {self.lvl}")
+        print(f"Zkušenosti: {self.xp}")
         print(f"Dává poškození: {self.damage}\n")
