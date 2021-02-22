@@ -8,4 +8,4 @@ Problém s přístupem sys32 - je třeba vytvořit duplikat host filu, dale pře
 
 Do host filu je potřeba zapsat blokované stránky - 127.0.0.1 www.facebook.com
 
-Možné rozšíření - uživatelské rozhraní, kompatibilita s linux,
+Možné rozšíření - uživatelské rozhraní, kompatibilita s linux, metoda sleep, automatické mazání stránek
