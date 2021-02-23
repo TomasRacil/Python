@@ -1,4 +1,4 @@
-# Run this script as root 
+# Run this script as root
 import os
 import module
 
