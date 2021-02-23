@@ -1,9 +1,6 @@
 from pytube import YouTube
-<<<<<<< HEAD
-=======
 import ffmpeg
 import os
->>>>>>> 580955f5df2223cb1f7e8204e5b77bfd6b71739a
 
 def downloader(odkaz, rozliseni, titulky):
 
@@ -13,14 +10,6 @@ def downloader(odkaz, rozliseni, titulky):
 	print("Délka videa: ",yt.length)
 	print("Počet shlédnutí: ",yt.views)
 
-<<<<<<< HEAD
-	if rozliseni == 'nezadano':					#pokud uživatel nezadá rozlišení, stáhne se video v nejlepší kvalitě
-		ys = yt.streams.get_highest_resolution()
-	else:
-		ys = yt.streams.filter(res=rozliseni)
-
-=======
->>>>>>> 580955f5df2223cb1f7e8204e5b77bfd6b71739a
 
 	try:
 		if titulky == 'ano':
@@ -31,13 +20,6 @@ def downloader(odkaz, rozliseni, titulky):
 	except:
 		print("Žádné titulky  k dispozici")
 
-<<<<<<< HEAD
-	try: 
-		ys.download()     #zahájí stahování videa
-		print("Stahování")
-	except:
-		print("Špatně zadaná data")
-=======
 	if rozliseni == 'nezadano':													#pokud uživatel nezadá rozlišení, stáhne se video v nejlepší kvalitě
 		video_file = yt.streams.filter(mime_type="video/webm").order_by('resolution').desc().first()		
 	else:
@@ -77,4 +59,3 @@ def downloader(odkaz, rozliseni, titulky):
 
 	if os.path.exists(os.getcwd()+"/tmp"):
 		os.rmdir(os.getcwd()+"/tmp")
->>>>>>> 580955f5df2223cb1f7e8204e5b77bfd6b71739a
