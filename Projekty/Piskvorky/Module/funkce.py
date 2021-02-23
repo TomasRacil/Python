@@ -4,6 +4,9 @@ Round = 1
 
 def VytvorHerniPole(velikostPole, pocetStejnych):
     """
+    Vstupy: velikostPole(int): znaci, jak velke bude hraci pole (int) x (int) - pokud je tedy velikostPole např. 5 bude velikost 5x5 (tj. 25 tlacitek) 
+            pocetStejnych(int): znaci, kolik stejnych symbolu za sebou je potreba, aby byla uznana vyhra
+
     Funkce, ktera vytvori libovolne velke pole na zaklade prijatych parametru z mainu
     nejprve do 2d pole vytvori tlacitka pouze se zakladnimi parametry a to v poctu velikost pole x velikost pole
     pote do kazdeho z tlacitek vlozi grid - to je zarovnani (kazde tlacitko je zarovnano do jakesi tabulky)
@@ -22,6 +25,11 @@ def VytvorHerniPole(velikostPole, pocetStejnych):
 
 def Vyhodnot(r,c,velikostPole, pocetStejnych):
     """
+    Vstupy: velikostPole(int): znaci, jak velke bude hraci pole (int) x (int) - pokud je tedy velikostPole např. 5 bude velikost 5x5 (tj. 25 tlacitek) 
+            pocetStejnych(int): znaci, kolik stejnych symbolu za sebou je potreba, aby byla uznana vyhra
+            r(int): znaci radek, kde se nachazi tlacitko (0 až velikostPole)
+            c(int): znaci sloupec, kde se nachazi tlacitko ((0 až velikostPole))
+
     Funkce, ktera pouze po stisku klavesy zmeni text tlacitka bud na "O" nebo na "X", zalezi jestli je sude nebo liche kolo (round)
     a spousti dalsi funkci (ZkontrolujVyhru), ktere preda parametry
     """
@@ -38,6 +46,11 @@ def Vyhodnot(r,c,velikostPole, pocetStejnych):
 
 def ZkontrolujVyhru(r, c, velikostPole, pocetStejnych):
     """
+    Vstupy: velikostPole(int): znaci, jak velke bude hraci pole (int) x (int) - pokud je tedy velikostPole např. 5 bude velikost 5x5 (tj. 25 tlacitek) 
+            pocetStejnych(int): znaci, kolik stejnych symbolu za sebou je potreba, aby byla uznana vyhra
+            r(int): znaci radek, kde se nachazi tlacitko (0 až velikostPole)
+            c(int): znaci sloupec, kde se nachazi tlacitko ((0 až velikostPole))
+
     Funkce, ktera kontroluje, zda se nachazi zvoleny pocet "X" nebo "O" za sebou
     Zkontroluje Radky,Sloupce,Hlavni diagonalu z leveho horniho rohu do praveho dolniho, a pote postranni diagonaly
     dale zkontroluje hlavni diagonalu z praveho horniho rohu do leveho dolniho rohu a postanni diagonaly.

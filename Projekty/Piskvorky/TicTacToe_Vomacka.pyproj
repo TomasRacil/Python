@@ -4,13 +4,13 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>28365e1c-740b-4248-881e-81d6975e453c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>TicTacToe_Vomacka.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>TicTacToe_Vomacka</Name>
-    <RootNamespace>TicTacToe_Vomacka</RootNamespace>
+    <Name>main</Name>
+    <RootNamespace>main</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="TicTacToe_Vomacka.py" />
+    <Compile Include="main.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
