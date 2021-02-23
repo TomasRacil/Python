@@ -8,3 +8,4 @@ from .reakceNaNepritele import *
 from .hrdinaUtok import *
 from .nepritelUtok import *
 from .sound import *
+from .train import *

@@ -1,25 +1,29 @@
 from playsound import playsound
 from GameEngine import *
 
+from os import path
+
+absolute_path = path.dirname(path.abspath(__file__))
+
 def ZvukKostka():
-	playsound('GameEngine/soundlib/kostka.wav')
+	playsound(absolute_path + '\\soundlib\\kostka.wav')
 
 
 def ZvukBandita():
-	playsound('GameEngine/GameEngine/soundlib/bandita.wav')
+	playsound(absolute_path + '\\soundlib\\bandita.wav')
 
 
 def ZvukDrak():
-	playsound('GameEngine/soundlib/drak.wav')
+	playsound(absolute_path + '\\soundlib\\drak.wav')
 
 
 def ZvukRychlost():
-	playsound('GameEngine/soundlib/rychlost.wav')
+	playsound(absolute_path + '\\soundlib\\rychlost.wav')
 
 
 def ZvukVoda():
-	playsound('GameEngine/soundlib/voda.wav')
+	playsound(absolute_path + '\\soundlib\\voda.wav')
 
 
 def ZvukSmrt():
-	playsound('GameEngine/soundlib/smrt.wav')
+	playsound(absolute_path + '\\soundlib\\smrt.wav')

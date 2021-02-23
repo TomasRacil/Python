@@ -2,7 +2,7 @@ U všech programů se snažte komentovat a ošetřit případné vyjímky. U ka�
 
 Pokud se vám žádné zadání nelíbí můžete vyřešit nějaký příklad z Advent of Code
 
-1. Program do kterého je možné uložit osobu a datum narození a v případě že má dnes někdo narozeniny tak na to při spuštění upozorní. (1)
+1. Program do kterého je možné uložit osobu a datum narození a v případě že má dnes někdo narozeniny tak na to při spuštění upozorní. (1) #Schejbal
 
 2. Oběšenec hra ve které hádáme slovo omezený počet pokusů vyktreslení oběšence na konzoli. Slova čerpáme z různých souborů(tématické) například věda, zvířata, sci-fi atd. (1-2)
 

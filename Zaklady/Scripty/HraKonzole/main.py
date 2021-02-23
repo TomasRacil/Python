@@ -234,8 +234,12 @@ if chceHrat.lower() == 'y':
             elif hod>=2 and hod<=3:
                 print("Pohybuješ se kupředu\nZtrácíš 10 energie")
                 hrac.odectiEnergy(10)
+            
+            elif hod==4:
+                print("Dostal si chuť na trénink. Snad si nic neuděláš...\n")
+                train(hrac)
 
-            elif hod>3 and hod<6:
+            elif hod>4 and hod<6:
                 print("Narazil jsi na nepřítele, je to roztomilý bandita")
                 ZvukBandita()
                 reakceNaNepritele(obtiznostOblasti)
