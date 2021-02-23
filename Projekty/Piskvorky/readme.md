@@ -4,6 +4,7 @@ Budoucí vylepšení hry:
 - Po výhře přidat vyskakovací okno, které bude informovat že ten a ten hráč vyhrál
 - Nastavení vstupních parametrů nastavovat pomocí flagů nebo přímo v tkinter okně
 - Zobrazit počet kol
+- Propojit s projektem jiného studenta - serverové propojení, možnost hrát přes server multiplayer
 - ...
 
 
