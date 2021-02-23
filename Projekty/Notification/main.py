@@ -2,13 +2,13 @@ from moduls.notifie import *
 from moduls.serverRequest import *
 import time
 
-"""
-program vytahne data o covid-19 v CR z api serveru
-vytvori notifikaci s poctem mrtvich
-pak pocka 10 minut a zkusi znovu ziskat data
-pokovad se pocet zmeni vytvori novou notifikaci s prirustkem
-"""
 def main():
+	"""
+	program vytahne data o covid-19 v CR z api serveru
+	vytvori notifikaci s poctem mrtvich
+	pak pocka 10 minut a zkusi znovu ziskat data
+	pokovad se pocet zmeni vytvori novou notifikaci s prirustkem
+	"""
 	data = serverRequest() #fukce nacte a vrati data ze serveru 
 	if data != None:
 		lastDeath = data['deceased'] #vytahneme z dat pocet smrti
