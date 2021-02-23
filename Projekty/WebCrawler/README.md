@@ -9,11 +9,11 @@
 - Using [Scrapy](https://scrapy.org/) framework to extract relevant data from a webpage.
 - Target webpage in this case is [alza.cz/akcni-zbozi](https://alza.cz/akcni-zbozi) and all subsequent pages.
 
-Relevant data extracted:
-* Product/Item name
-* Price before discount
-* Price after discount
-* Showed discount perecntage
+- Relevant data extracted:
+  - Product/Item name
+  - Price before discount
+  - Price after discount
+  - Showed discount perecntage
 
 - Data items saved to a [SQLite3](https://docs.python.org/3/library/sqlite3.html) database.
 - Scraper doesn't ignore robot.txt and is set up to not overwhelm the website.
@@ -22,6 +22,7 @@ Relevant data extracted:
 
 - Path to the WebCrawler root directory.
 - Execute in terminal to start scraping: `scrapy crawl alzaSpidey`
+- Also possible to execute this to write output into .json: `scrapy crawl alzaSpidey -o alzaSpidey.json`
 - Database .db file can be opened using [sqliteonline.com/](https://sqliteonline.com/) web interface.
 
 ## Possible expansion
