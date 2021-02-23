@@ -23,7 +23,7 @@ def downloader(odkaz, rozliseni, titulky):
 	if rozliseni == 'nezadano':													#pokud uživatel nezadá rozlišení, stáhne se video v nejlepší kvalitě
 		video_file = yt.streams.filter(mime_type="video/webm").order_by('resolution').desc().first()		
 	else:
-		video_file = yt.streams.filter(mime_type="video/webm").filter(res=rozliseni).order_by('resolution').desc().first()
+		video_file = yt.streams.filter(mime_type="video/webm").filter(res=rozliseni).order_by('resolution').desc().first()     #zvlášť se seáhne video a zvuková stopa
 
 	audio_file = yt.streams.filter(only_audio=True).order_by('abr').desc().first()		
 
@@ -36,7 +36,7 @@ def downloader(odkaz, rozliseni, titulky):
 
 	try: 
 		print("Stahování")
-		video_file.download(output_path=os.getcwd()+"/tmp",filename="video")    						 	#zahájí stahování videa a zvukobé stopy
+		video_file.download(output_path=os.getcwd()+"/tmp",filename="video")    	#zahájí stahování videa a zvukobé stopy
 		audio_file.download(output_path=os.getcwd()+"/tmp",filename="audio") 		
 
 		print(os.getcwd()+"/tmp/audio.webm")
