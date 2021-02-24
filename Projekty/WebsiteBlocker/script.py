@@ -1,9 +1,6 @@
 # Run this script as root
 import os
 import module
-
-# localhost's IP 
-redirect = "127.0.0.1"
  
 module.get_sites()
 """if __name__== ten kontrektni soubor, pokud je prvni a neni importovany, tak bude mit jmeno main"""

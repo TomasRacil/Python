@@ -2,8 +2,11 @@ import time
 import os
 from datetime import datetime as dt
 
-""" Arg: none, Return: blocked sites"""
+# localhost's IP 
+redirect = "127.0.0.1"
+
 def get_sites():
+""" Arg: none, Return: blocked sites"""
 # websites That we want to block from txt 
     blokace = os.path.dirname(os.path.realpath(__file__))+"/blokace.txt"
     soubor = open(blokace,"r")
@@ -15,8 +18,8 @@ def get_sites():
         sites_to_block.append(site[4:])
     return sites_to_block
 
-""" Arg: sites to block and hosts path, Return: nothing just edit host file """
 def blocks_sites(sites_to_block,hosts_path):
+""" Arg: sites to block and hosts path, Return: nothing just edit host file """
     while True:
         # time of your work 
         if dt(dt.now().year, dt.now().month, dt.now().day,8) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day,16): 
