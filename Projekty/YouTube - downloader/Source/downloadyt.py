@@ -66,8 +66,8 @@ def downloader(odkaz, rozliseni, titulky):
 		print("Špatně zadaná data")
 
 		#8) postupně odstraní nepotřebné složky
-	if os.path.exists(os.getcwd()+"/tmp/video.webm")		
-			os.remove(os.getcwd()+"/tmp/video.webm")
+	if os.path.exists(os.getcwd()+"/tmp/video.webm"):		
+		os.remove(os.getcwd()+"/tmp/video.webm")
 
 	if os.path.exists(os.getcwd()+"/tmp/audio.webm"):
 		os.remove(os.getcwd()+"/tmp/audio.webm")
