@@ -1,13 +1,14 @@
 from .character import *
 
 class mage(character):
-    def __init__(self,hp=65,energy=100,lvl=1,xp=0,damage=110):
+    def __init__(self,hp=65,energy=100,lvl=1,xp=0,damage=110, hunger=100):
         self.type=3
         self.hp=hp
         self.energy=energy
         self.lvl=lvl
         self.xp=xp
         self.damage=damage
+        self.hunger=hunger
 
     def sleep(self):  
         hod=hodKostkou(1,8)
@@ -73,3 +74,22 @@ class mage(character):
         elif hod == 6:
             print("DING!\nZískáváš level.")
             self.lvl = lvl + 1
+            
+    def hunger(self):
+        hod=hodKostkou(1,5)
+        print("\nHodil jsi: " + str(hod) + "\n")   
+
+        if hod == 1:
+            print("Nenašel jsi žádné jídlo\nZískáváš 0 hunger bodů.")
+
+        elif hod == 2:
+            print("Kůrka chleba...najíš se, ale ne moc.\nZískáváš 10 hunger bodů.")
+            self.hunger = hunger + 10
+
+        elif hod == 3 or hod == 4:
+            print("Celý krajíc chleba a šunka k tomu.\nZískáváš 50 hunger bodů.")
+            self.hunger= hunger + 50
+
+        elif hod == 5:
+            print("Pečené kuře...konečně jsi najezený\nZískáváš 100 xp.")
+            self.hunger = hunger + 100    
