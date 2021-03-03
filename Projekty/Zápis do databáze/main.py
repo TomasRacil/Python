@@ -20,8 +20,34 @@ def main():
     database = data['data']
     cur = conn.cursor()
 
+    #Zde začíná modifikovaný kód
+    cur.execute("SELECT * FROM okresy ORDER BY id DESC LIMIT 1;")
+    last_id_database =int(cur.fetchone()[0])
+    last_id_api = len(database)
+    
+    if last_id_database == last_id_api:
+        pass
+    else:
+        for i in range(last_id_database+1,last_id_api):
+            info = database[i]  
+            datum = info['datum']
+            nakazeni = info['kumulovany_pocet_nakazenych']
+            vyleceni = info['kumulovany_pocet_vylecenych']
+            umrti = info['kumulovany_pocet_umrti']
+            test = info['kumulovany_pocet_provedenych_testu']
+            atest = info['kumulovany_pocet_provedenych_ag_testu']
+            cur = conn.cursor()
+        
+            #uložení nových dat do databáze PostgreSQL
+            postgres_insert_query = "INSERT INTO Okresy (ID, DATUM, POCET_NAKAZENYCH, POCET_VYLECENYCH, POCET_UMRTI, POCET_TESTU, POCET_ATESTU) VALUES(%s, %s, %s, %s, %s, %s, %s)"
+            record_to_insert = (i, datum, nakazeni, vyleceni, umrti, test, atest)
+            cur.execute( postgres_insert_query, record_to_insert)
+            conn.commit()
+    #Zde končí modifikovaný kód
+
+    """
     #nejprve vymažeme staré údaje
-    postgres_delete_query = """DELETE FROM Okresy"""
+    postgres_delete_query = "DELETE FROM Okresy
     cur.execute( postgres_delete_query)
     conn.commit()
     for i in range(0, len(database)):
@@ -36,10 +62,10 @@ def main():
         cur = conn.cursor()
         
         #uložení nových dat do databáze PostgreSQL
-        postgres_insert_query = """INSERT INTO Okresy (ID, DATUM, POCET_NAKAZENYCH, POCET_VYLECENYCH, POCET_UMRTI, POCET_TESTU, POCET_ATESTU) VALUES(%s, %s, %s, %s, %s, %s, %s)"""
+        postgres_insert_query = "INSERT INTO Okresy (ID, DATUM, POCET_NAKAZENYCH, POCET_VYLECENYCH, POCET_UMRTI, POCET_TESTU, POCET_ATESTU) VALUES(%s, %s, %s, %s, %s, %s, %s)"
         record_to_insert = (i, datum, nakazeni, vyleceni, umrti, test, atest)
         cur.execute( postgres_insert_query, record_to_insert)
         conn.commit()
-
+    """
 if __name__ == '__main__':
 	main()
