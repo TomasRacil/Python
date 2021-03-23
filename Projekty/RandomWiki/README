@@ -1,4 +1,3 @@
-TODO
-1. Zjistit jak fungují scripty
-2. Napsat script, kt. splní zadání
-3. Oslavit to
+Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení
+
+Program vyhledá náhodný článek na Wikipedii, vypíše nadpis a první odstavec. Zeptá se zda si uživatel přeje zobrazit tento článek, pokud ano článek zobrazí ve webovém prohlížeči, pokud ne vyhledá jiný článek a znovu se dotáže.
