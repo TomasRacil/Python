@@ -1,3 +1,8 @@
 Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení
 
 Program vyhledá náhodný článek na Wikipedii, vypíše nadpis a první odstavec. Zeptá se zda si uživatel přeje zobrazit tento článek, pokud ano článek zobrazí ve webovém prohlížeči, pokud ne vyhledá jiný článek a znovu se dotáže.
+
+Možnost rozšíření:
+-využití try a except
+-využití grafického rozhraní
+-možnost zobrazení odkazů souvisejicích s článkem
