@@ -1,4 +1,4 @@
-from Moduly import *
+from Moduly import Uloz,jsonGetInfo
 
 def main(): 
     data = jsonGetInfo()

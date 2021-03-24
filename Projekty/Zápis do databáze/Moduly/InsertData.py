@@ -14,11 +14,11 @@ def Uloz(data):
     DB_PORT = "5432"
     
     #připojení k databázi PostgreSql 
-        try:
-            conn = psycopg2.connect(database = DB_NAME, user = DB_USER, password = DB_PASS, host = DB_HOST, port = DB_PORT)
-            print("Database connected successfully")
-        except:
-            print("Database not connected")
+    try:
+        conn = psycopg2.connect(database = DB_NAME, user = DB_USER, password = DB_PASS, host = DB_HOST, port = DB_PORT)
+        print("Database connected successfully")
+    except:
+        print("Database not connected")
     
     #Předává si data z JSON struktury
     database = data['data']
