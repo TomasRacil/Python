@@ -9,6 +9,10 @@ Uloz(data) s parametrem ve funkci main() dostává data, které jsou uloženy do
   Komunikace a ukládání dat končí ve chvíli přenosu posledního prvku databáze
 
 
+Další možnosti využití:
+  Funkce jsonGetInfo(), lze upravit aby ji bylo možno používat opakovaně pro různé zdroje
+  lepší řešení pro funkci Uloz(data) by bylo s implementací knihovny sqlalchemy
+
   
 
 
