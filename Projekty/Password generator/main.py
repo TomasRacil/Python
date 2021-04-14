@@ -1,7 +1,7 @@
-from Funkce.prvni import *
-from Funkce.druha import *
-from Funkce.treti import *
-from Funkce.ctvrta import *
+from Funkce.delka_hesla import *
+from Funkce.generator import *
+from Funkce.kombinace import *
+from Funkce.string4 import *
 
 LETTERS = string.ascii_letters
 NUMBERS = string.digits  
