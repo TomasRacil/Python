@@ -21,7 +21,7 @@ Semináhodný generátor hesel- Tento skript se zeptá na některé osobní úda
 Náhodný článek z wikipedie - Script, který vybyre náhodný článek z wikipedie v určitém jazyce, a umožní jeho zobrazení    #Schejbal
 Stopky, Budík, časovač - Tkinter aplikace schopná stopovat čas, nastavit časovač a budík # Beran
 Piškovorky - grafické Tkinter (hráč vs hráč) ; (hodně pokročilá verze napsat AI soupeře) #Vomáčka
-Stenografie - Skrytá zpráva ukrytá v obrázku # Němec
+Steganografie - Skrytá zpráva ukrytá v obrázku # Němec
 Převodník měn - který čerpá z aktuálních dat # Bžatek
 Sudoku - Generátor (grafický/konzolový) - #Zdenda Vyležich :)
 Sudoku - Řešitel (grafický/konzolový) - #Jan Kubalek
