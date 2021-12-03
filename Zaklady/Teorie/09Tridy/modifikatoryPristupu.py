@@ -83,3 +83,35 @@ obj.zavolejPrivateMetodu()
 
 #objekt.vlatnost je monžné použít pro přístup k private prvkům
 #ale jedná se o porušení pravidel
+
+
+#řešením je property dekorátor
+class Budova:
+	def __init__(self,cisloPopisne: int, typ: str):
+		self._cisloPopisne=cisloPopisne
+		self._typ=typ
+	
+	@property
+	def cisloPopisne(self):
+		return self._cisloPopisne
+	
+	@cisloPopisne.setter
+	def cisloPopisne(self, cisloPopisne: int):
+		if cisloPopisne>1000: print("error")
+		else:self.__cisloPopisne=cisloPopisne
+
+	@property
+	def typ(self):
+		return self.__typ
+	
+	@typ.setter
+	def typ(self, typ: str):
+		self.__typ=typ
+
+mujByt=Budova(618,"dum")
+
+mujByt.cisloPopisne
+
+print(f"pristup pres property {mujByt.cisloPopisne}")
+mujByt.cisloPopisne=int(input("zadej cislo popisne"))
+print(mujByt.cisloPopisne)
