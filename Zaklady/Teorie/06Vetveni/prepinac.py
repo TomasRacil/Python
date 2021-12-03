@@ -19,7 +19,7 @@ def funkcePrepinace(cislo):
 		string: vrací číslo předané v argumentu jako string 
   """
 
-	#Datový typ knihovná, který skladuje všechny možnosti a hodnoty které mají být vráceny přepínačem
+	#Datový typ slovnik, který skladuje všechny možnosti a hodnoty které mají být vráceny přepínačem
   prepinac = { 
       0: "nula", 
       1: "jedna", 
