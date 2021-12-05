@@ -1,1 +1,1 @@
-## RPG game Coins
+## RPG game Coin
