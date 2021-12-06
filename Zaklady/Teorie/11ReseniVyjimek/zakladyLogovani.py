@@ -12,7 +12,7 @@ import logging
 #Pro definování úrovně zpráv které budou zaznamenávány slouží klíčové slovo level
 #máme pět úrovní DEBUG,INFO,WARNING,ERROR,CRITICAL defaultní je WARNING
 
-#logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 
 
 
@@ -49,7 +49,8 @@ logging.error('Připojení k serveru selhalo')
 logging.critical('Klíčové závislosti nenalezeny! Aplikace bude ukončena.')
 
 #Pokud k jednoduchému zachycení chybovou události (try) metodu exception která zachytí událost a přiřadí jí úroveň error 
-a,b = 5,0
+# a,b = 5,0
 
-try: c = a / b
-except Exception as e: logging.exception("Exception occurred")
+# try:
+#     c = a / b
+# except Exception as e: logging.exception("Exception occurred")
