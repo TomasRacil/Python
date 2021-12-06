@@ -1,0 +1,5 @@
+pyinstaller -w -F -i [icon file] [python file]
+
+-w nespustí při zapnutí terminál
+-F schová všechny potřebné soubory do .exe souboru
+-i umožňuje přidání ikony
