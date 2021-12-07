@@ -1,0 +1,1 @@
+Zadej svů tip na číslo (pokud chceš skončit  zadej 'q'): ")
