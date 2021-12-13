@@ -36,8 +36,12 @@ except:
 try:
     cislo = int(input("Napiš číslo: "))
     assert cislo % 2 == 0 #assert zkusí jestli je podmínka pravdivá pokud ne vrátí AssertionError
-except:
+except AssertionError:
     print("Nejedná se o sudé číslo")
+except ValueError:
+	print("Nejedná se o číslo")
+except Exception as e:
+	print(e)
 else:
     podil = 1/cislo
     print(podil)

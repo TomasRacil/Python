@@ -1,16 +1,17 @@
 """
 Lambda funkce jsou jednoduché, anonymní, jednořádkové funkce.
 Díky tomu že jsou anonymní není možné je opakovaně volat. Na rozdíl od ostatních funkcí jsou tedy zavolány hned při jejich vytvoření.
-Snytax
+Sytax
 lambda argumenty: provedená funkce
 """
+
 #lambda funkce
-lambda x:x
+#lambda x:x
 #funkce se stejnou činností jako labda
 def vrat(x):
 	return x
 
-print((lambda x:x)("Vrácená hodnota lambda"))
+print((lambda x:x*2)("Vrácená hodnota lambda"))
 print(vrat("Vrácená hodnota normální funkce"))
 
 
@@ -29,3 +30,14 @@ def nasob(n):
 sestinasobek = nasob(6)
 
 print(sestinasobek(3))
+
+cisla=[1,2,3,4,5,6,7,8,9,10]
+
+sudaCisla=[cislo for cislo in cisla if cislo%2==0]
+print(sudaCisla)
+sudaCisla=filter(lambda cislo:cislo%2==0,cisla)
+print(list(sudaCisla))
+def jeSude(cislo):
+  return cislo%2==0
+sudaCisla=filter(jeSude,cisla)
+print(list(sudaCisla))
