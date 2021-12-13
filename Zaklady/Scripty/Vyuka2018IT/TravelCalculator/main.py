@@ -1,8 +1,9 @@
 class Vehicle:
-    def __init__(self, avgSpeed, x, avgFuelConsumption, fuelCapacity=50):
+    def __init__(self, avgSpeed, x, avgFuelConsumption,typ, fuelCapacity=50):
         self.avgSpeed=avgSpeed
         self.x=x
         self.avgFuelConsumption = avgFuelConsumption
+        self.typ=typ
 
     def move(self,dobaCesty):
         self.x+=self.avgSpeed*dobaCesty
@@ -24,17 +25,23 @@ class Route:
         print(f"Cesta z  místa {self.startLocation} do místa {self.endLocation} odjezd {self.startTime} vzdálenost {self.distance}")
 
     def spotrebaVsech(self):
-        celkovaSpotreba=0
+        celkovaSpotrebaNafty=0
+        celkovaSpotrebaBenzinu=0
         for vehicle in self.vehicles:
-            celkovaSpotreba+=vehicle.fuelConsumption(self.distance)
-        return celkovaSpotreba
+            #celkovaSpotreba+=vehicle.fuelConsumption(self.distance)
+            pass
+        return (celkovaSpotrebaNafty,celkovaSpotrebaBenzinu)
 
-prvniAuto=Vehicle(90, 0, 8)
-druheAuto=Vehicle(120, 240, 10)
+    def cenaVsech(self,cenaNafty, cenaBenzinu):
+        return self.spotrebaVsech()*cenaNafty
+
+prvniAuto=Vehicle(90, 0, 8, 'diesel')
+druheAuto=Vehicle(120, 240, 10, 'benzin')
 
 prvniCesta = Route([prvniAuto,druheAuto],0,640, "10:00")
 prvniCesta.info()
 print(prvniCesta.spotrebaVsech())
+print(prvniCesta.cenaVsech(35))
 
 
 # dobaCesty=(prvniAuto.x+druheAuto.x)/(prvniAuto.avgSpeed+druheAuto.avgSpeed)
