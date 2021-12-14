@@ -1,4 +1,8 @@
 import requests, json
+
+url='https://maps.distancematrixapi.com/maps/api/distancematrix/json?'
+api_key ='AlphaDMAVhNcGaWYPjbHanGWO0MJyTQqV0HnPVeb'
+
 class Vehicle:
     def __init__(self, avgSpeed, x, avgFuelConsumption,typ, fuelCapacity=50):
         self.avgSpeed=avgSpeed
@@ -16,11 +20,20 @@ class Vehicle:
 
 class Route:
     def __init__(self,vehicles, startLocation, endLocation,startTime, endTime=None):
+
         self.vehicles=vehicles
         self.startLocation = startLocation
         self.endLocation = endLocation
         self.startTime = startTime
-        self.distance = endLocation-startLocation
+
+        r=requests.get(url + 'origins=' + startLocation +
+                   '&destinations=' + endLocation +
+                   '&departure_time=now'
+                   '&key=' + api_key)
+        
+        parsed=r.json()
+
+        self.distance = parsed['rows'][0]['elements'][0]['distance']['value']/1000
     
     def info(self):
         print(f"Cesta z  místa {self.startLocation} do místa {self.endLocation} odjezd {self.startTime} vzdálenost {self.distance}")
@@ -36,31 +49,15 @@ class Route:
     def cenaVsech(self,cenaNafty, cenaBenzinu):
         return self.spotrebaVsech()*cenaNafty
 
-# prvniAuto=Vehicle(90, 0, 8, 'diesel')
-# druheAuto=Vehicle(120, 240, 10, 'benzin')
+prvniAuto=Vehicle(90, 0, 8, 'diesel')
+druheAuto=Vehicle(120, 240, 10, 'benzin')
 
-# prvniCesta = Route([prvniAuto,druheAuto],0,640, "10:00")
-# prvniCesta.info()
+prvniCesta = Route([prvniAuto,druheAuto],'Brno','Praha', "10:00")
+prvniCesta.info()
 # print(prvniCesta.spotrebaVsech())
 # print(prvniCesta.cenaVsech(35,35))
 
 
-api_key ='AlphaDMAVhNcGaWYPjbHanGWO0MJyTQqV0HnPVeb'
-  
-source = input("Zadej výchozí bod")
-  
-dest = input('Zadej cílový bod')
-
-departure = 'now'
-url ='https://maps.distancematrixapi.com/maps/api/distancematrix/json?'
-
-r = requests.get(url + 'origins=' + source +
-                   '&destinations=' + dest +
-                   '&departure_time=' + departure +
-                   '&key=' + api_key)
-                     
-x = r.json()
-print(x['rows'][0]['elements'][0]['distance']['value'])
   
 # by default driving mode considered
   
