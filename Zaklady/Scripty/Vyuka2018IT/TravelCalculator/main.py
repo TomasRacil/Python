@@ -29,10 +29,8 @@ class Route:
         r=requests.get(url + 'origins=' + startLocation +
                    '&destinations=' + endLocation +
                    '&departure_time=now'
-                   '&key=' + api_key)
-        
+                   '&key=' + api_key)    
         parsed=r.json()
-
         self.distance = parsed['rows'][0]['elements'][0]['distance']['value']/1000
     
     def info(self):
@@ -42,20 +40,30 @@ class Route:
         celkovaSpotrebaNafty=0
         celkovaSpotrebaBenzinu=0
         for vehicle in self.vehicles:
-            #celkovaSpotreba+=vehicle.fuelConsumption(self.distance)
-            pass
-        return (celkovaSpotrebaNafty,celkovaSpotrebaBenzinu)
+            
+            if vehicle.typ=='benzin':
+                celkovaSpotrebaBenzinu = vehicle.fuelConsumption(self.distance)
+            else:
+                celkovaSpotrebaNafty = vehicle.fuelConsumption(self.distance)
+
+        return (round(celkovaSpotrebaNafty,2),round(celkovaSpotrebaBenzinu,2))
 
     def cenaVsech(self,cenaNafty, cenaBenzinu):
-        return self.spotrebaVsech()*cenaNafty
 
+        celkem = self.spotrebaVsech()[0] * cenaNafty + self.spotrebaVsech()[1] * cenaBenzinu
+        return celkem
+
+
+#------------------------------------
 prvniAuto=Vehicle(90, 0, 8, 'diesel')
 druheAuto=Vehicle(120, 240, 10, 'benzin')
 
 prvniCesta = Route([prvniAuto,druheAuto],'Brno','Praha', "10:00")
 prvniCesta.info()
-# print(prvniCesta.spotrebaVsech())
-# print(prvniCesta.cenaVsech(35,35))
+
+
+print(prvniCesta.spotrebaVsech())
+print(prvniCesta.cenaVsech(29,35))
 
 
   
