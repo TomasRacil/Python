@@ -1,3 +1,4 @@
+import requests, json
 class Vehicle:
     def __init__(self, avgSpeed, x, avgFuelConsumption,typ, fuelCapacity=50):
         self.avgSpeed=avgSpeed
@@ -41,9 +42,38 @@ druheAuto=Vehicle(120, 240, 10, 'benzin')
 prvniCesta = Route([prvniAuto,druheAuto],0,640, "10:00")
 prvniCesta.info()
 print(prvniCesta.spotrebaVsech())
-print(prvniCesta.cenaVsech(35))
+print(prvniCesta.cenaVsech(35,35))
 
 
+api_key ='AlphaDMAVhNcGaWYPjbHanGWO0MJyTQqV0HnPVeb'
+  
+# Take source as input
+source = 'Praha'
+  
+# Take destination as input
+dest = 'Brno'
+
+departure = 'now'
+#"https://maps.distancematrixapi.com/maps/api/distancematrix/json?origins=Boston%2CMA%7CCharlestown%2CMA&destinations=Lexington%2CMA%7CConcord%2CMA&departure_time=now&key=AlphaDMAVhNcGaWYPjbHanGWO0MJyTQqV0HnPVeb"
+# url variable store url 
+url ='https://maps.distancematrixapi.com/maps/api/distancematrix/json?'
+  
+# Get method of requests module
+# return response object
+#r=requests.get(url)
+r = requests.get(url + 'origins=' + source +
+                   '&destinations=' + dest +
+                   '&departure_time=' + departure +
+                   '&key=' + api_key)
+                     
+# json method of response object
+# return json format result
+x = r.json()
+  
+# by default driving mode considered
+  
+# print the value of x
+print(x)
 # dobaCesty=(prvniAuto.x+druheAuto.x)/(prvniAuto.avgSpeed+druheAuto.avgSpeed)
 # hodiny=int(dobaCesty)
 # minuty=int(60/((dobaCesty-hodiny)*100))
