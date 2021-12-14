@@ -12,7 +12,7 @@ import logging
 #Pro definování úrovně zpráv které budou zaznamenávány slouží klíčové slovo level
 #máme pět úrovní DEBUG,INFO,WARNING,ERROR,CRITICAL defaultní je WARNING
 
-logging.basicConfig(level=logging.WARNING)
+#logging.basicConfig(level=logging.INFO)
 
 
 
@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.WARNING)
 #filemode způsob zápisu (w-přepíše soubor při každém spuštění aplikace,a-přidává na konec souboru);
 #format, který definuje jakým způsobem bude zpráva zformátována;
 
-#logging.basicConfig(level=logging.DEBUG, filename='ukazka.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, filename='ukazka.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s -%(asctime)s')
 
 #V rámci formátu je možné odkazovat na základní elementy třídy LogRecord, pomocí %(názvu elementu)s
 #Užitečné elementy:
