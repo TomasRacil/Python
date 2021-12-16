@@ -21,15 +21,17 @@ def process_data(threadName, q):
       if not workQueue.empty():
          data = q.get()
          queueLock.release()
-         print ("%s processing %s" % (threadName, data))
+         print (f"{threadName} processing {data}")
+         time.sleep(0.5)
       else:
          queueLock.release()
          time.sleep(1)
 
 threadList = ["Thread-1", "Thread-2", "Thread-3"]
-nameList = ["One", "Two", "Three", "Four", "Five"]
+nameList = ["One", "Two", "Three", "Four", "Five",6,7,8,9,10]
 queueLock = threading.Lock()
 workQueue = queue.Queue(10)
+dataQueue= queue.Queue(1000)
 threads = []
 threadID = 1
 

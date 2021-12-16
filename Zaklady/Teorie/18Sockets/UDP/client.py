@@ -11,13 +11,13 @@ message = b'This is the message.  It will be repeated.'
 try:
 
     # Send data
-    print('sending {!r}'.format(message))
+    print(f'sending {message.decode("utf-8")}')
     sent = sock.sendto(message, server_address)
 
     # Receive response
     print('waiting to receive')
     data, server = sock.recvfrom(4096)
-    print('received {!r}'.format(data))
+    print(f'received {data.decode("utf-8")}')
 except KeyboardInterrupt:
     pass
 finally:
