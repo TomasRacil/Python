@@ -13,7 +13,7 @@ class Vehicle:
     def move(self,dobaCesty):
         self.x+=self.avgSpeed*dobaCesty
     def info(self):
-        print(f'Auto je na místě {self.x} a má průměrnou rychlost {self.avgSpeed}')
+        print(f'Auto je na místě {self.x} a má průměrnou rychlost {self.avgSpeed} auto na jednu nadrz uraazi {}')
 
     def fuelConsumption(self,distance):
         return distance/100*self.avgFuelConsumption
@@ -58,7 +58,7 @@ class Route:
 prvniAuto=Vehicle(90, 0, 8, 'diesel')
 druheAuto=Vehicle(120, 240, 10, 'benzin')
 
-prvniCesta = Route([prvniAuto,druheAuto],'Brno','Praha', "10:00")
+prvniCesta = Route([prvniAuto,druheAuto],'Brno','Paris', "10:00")
 prvniCesta.info()
 
 

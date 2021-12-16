@@ -5,7 +5,7 @@ Regulární výrazy slouží k hledání textu odpovídajícího nějákemu pře
 import re
 
 #Definujeme text, který bude prohledáván.
-text= "Email pana Kolika je kolik@email.com.\nTento email nemá pan Kolík již 5 let"
+text= "Email pana Kolika je kolik@email.com.\nTento email nemá pan Kolík již 5 let."
 
 
 #Dále musíme definovat regulární výraz(string). Ten slouží jako vzor textu, který heldáme.
@@ -18,7 +18,7 @@ x = re.search("[abc]", text)
 print(f"První výskyty a,b, nebo c: {x}\n")
 
 #Tečka vystihuje jakýkoliv symbol kromě nového řádku
-x = re.search(".", text)
+x = re.search(".....", text)
 print(f"První znak: {x}")
 
 #Hvězdička udává že předchozích symbolu skupiny symbolu je 0 až nekonečno
@@ -38,7 +38,7 @@ x = re.search("jmeno|email", text)
 print(f"První jmeno nebo email: {x}\n")
 
 #Pomocí stříšky a nebo dolaru označujeme začátek nebo konec řetězce
-x = re.search("[a-z]+$", text)
+x = re.search("[a-z\.]+$", text)
 print(f"Poslední znaky: {x}\n")
 
 #Pokud chceme použít speciální symbol využijeme \ symbol
@@ -70,7 +70,7 @@ print(f"První slovo: {x}\n")
 #DAlší informace a možnosti je možné najít na této stránce https://docs.python.org/3/library/re.html
 
 #Jednoduchý regulární výraz pro nalezení emailové adresy
-emailVzor="[a-z0-9]+[\._]?[a-z0-9]+@\w+.\w{2,3}"
+emailVzor="[a-z\d]+[a-z\d]\.-_]*[a-z0-9]+@\w+.\w{2,3}"
 #vysvětlení výrazu
 #[a-z0-9]+ 	jakýkoliv počet znaků nebo čísel větší jak jedna 
 #[\._]? 	nula nebo jeden výskyt . nebo ?

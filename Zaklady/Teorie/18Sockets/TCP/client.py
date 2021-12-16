@@ -13,7 +13,7 @@ try:
     
     # Send data
     message = 'This is the message.  It will be repeated.'
-    print('sending "%s"' % message)
+    print(f'sending {message}')
     sock.sendall(bytes(message,'utf-8'))
 
     # Look for the response
@@ -23,7 +23,7 @@ try:
     while amount_received < amount_expected:
         data = sock.recv(50)
         amount_received += len(data)
-        print('received "%s"' % data)
+        print(f'received {data}')
 
 finally:
     print('closing socket')
