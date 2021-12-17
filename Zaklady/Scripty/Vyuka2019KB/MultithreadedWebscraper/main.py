@@ -23,11 +23,16 @@ class Crawler(threading.Thread):
 
 def crawl(id,q):
     while True:
-        urlToCrawl=q.get()
-        #print(urlToCrawl)
+        try:
+            urlToCrawl=q.get(timeout=0.2)
+            #urlToCrawl=q.get(False)
+            #print(urlToCrawl)
+            getUrls(id,urlToCrawl)
+        except queue.Empty:
+            print(id,": dotaz ")
+            pass
         if exitFlag:
-            break
-        getUrls(id,urlToCrawl)
+                break
 
 def getUrls(id,url):
     try:
@@ -43,10 +48,10 @@ def getUrls(id,url):
                     #if not href.split("/")[2]==url.split("/")[2]:
                     urlsToVisit.append(href)
             for ur in urlsToVisit:
-                print(id,ur)
+                print(f"{id}: from: {url} page: {ur}")
                 workQueue.put(ur)
     except Exception as e:
-        print("ERROR",url,e)
+        print(id,": ERROR",url,e)
 
 
 
