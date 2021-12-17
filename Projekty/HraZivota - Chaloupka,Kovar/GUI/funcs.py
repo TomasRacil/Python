@@ -1,4 +1,5 @@
 import pygame
+from Game import addPoint
 
 color = (30, 30, 60)
 
@@ -18,5 +19,4 @@ def eventHandler():
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_presses = pygame.mouse.get_pressed()
             if mouse_presses[0]:
-                print("Left Mouse key was clicked")
-                print(pygame.mouse.get_pos())
+                addPoint(pygame.mouse.get_pos())
