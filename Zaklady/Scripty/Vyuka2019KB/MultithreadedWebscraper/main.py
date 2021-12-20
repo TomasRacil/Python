@@ -1,21 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
-#import re
+import re
 import queue
 import threading
-#from neo4j import config, WebPage
-from neomodel import config, StructuredNode,re
 import time
-#from neomodel import StructuredNode, StringProperty, RelationshipTo, config
+from neo4j import expandMap
 
 
 exitFlag=False
-# config.DATABASE_URL = 'bolt://neo4j:heslo123@localhost:7687'
-
-
-# class WebPage(StructuredNode):
-#     url= StringProperty(unique_index=True)
-#     connected_webpages= RelationshipTo('WebPage','WEBPAGE')
 
 class Crawler(threading.Thread):
 
@@ -54,18 +46,9 @@ def getUrls(id,url):
                 href=ur.get('href')
                 if checkUrl(url,href):
                     urlsToVisit.append(href)
-            # try:
-            #     root=WebPage.nodes.get(url=url)
-            # except:
-            #     root=WebPage(url=url).save()
+            expandMap(url,urlsToVisit)
             for ur in urlsToVisit:
-                print(f"{id}: from: {url} page: {ur}")
-                # try:
-                #     to=WebPage.nodes.get(url=ur)
-                #     root.connected_webpages.connect(to)
-                # except:
-                #     to=WebPage(url=ur).save()
-                #     root.connected_webpages.connect(to)
+                #print(f"{id}: from: {url} page: {ur}")
                 workQueue.put(ur)
     except Exception as e:
         print(id,": ERROR",url,e)
@@ -94,7 +77,7 @@ if __name__=="__main__":
     # print(checkUrl(url,url1))
 
     workQueue = queue.Queue()
-    ids=[1,2]
+    ids=[1,2,3,4,5,6,7,8]
     crawlers=[]
 
     url="https://www.google.com"
@@ -109,7 +92,7 @@ if __name__=="__main__":
     
 
 
-    time.sleep(2)
+    time.sleep(5)
 
     exitFlag = True
 

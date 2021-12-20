@@ -1,25 +1,16 @@
-from neomodel import StructuredNode, StringProperty, RelationshipTo, config
+#from neomodel import StructuredNode, StringProperty, RelationshipTo,BooleanProperty
+from py2neo.ogm import Label, Model, Property,RelatedTo
+
+#config.DATABASE_URL = 'bolt://neo4j:heslo123@localhost:7687'
 
 
-config.DATABASE_URL = 'bolt://neo4j:heslo123@localhost:7687'
+class WebPage(Model):
+    __primarykey__="name"
+    name = Property()
+    url = Property()
+    ssl = Label()
+    connected_webpages= RelatedTo('WebPage','WEBPAGE')
 
-
-class WebPage(StructuredNode):
-    url= StringProperty(unique_index=True)
-    connected_webpages= RelationshipTo('WebPage','WEBPAGE')
-
-# url="https://www.google.com"
-# ur="https://www.maps.google.com"
-# try:
-#     root=WebPage.nodes.get(url=url)
-# except:
-#     root=WebPage(url=url).save()
-# try:
-#     to=WebPage.nodes.get(url=ur)
-#     root.connected_webpages.connect(to)
-# except:
-#     to=WebPage(url=ur).save()
-#     root.connected_webpages.connect(to)
 # google=WebPage(url="https://www.google.com").save()
 # googleMaps=WebPage(url="https://www.maps.google.com").save()
 # google.connected_webpages.connect(googleMaps)
