@@ -1,5 +1,5 @@
 Hlavní body aplikace:
-    1.	Vše zpracované přes GUI (nejspíš pomocí tkinter)
+    1.	Vše zpracované přes GUI
     2.	Zpracování uživatelského vstupu, kde si uživatel navolí živé a mrtvé buňky
     3.	Tlačítka start a stop, pro spuštění a zastavení běhu hry
     4.	Samotná logika hry
