@@ -1,12 +1,21 @@
-# from time import sleep
 import requests
 from bs4 import BeautifulSoup
-import re
+#import re
 import queue
 import threading
+#from neo4j import config, WebPage
+from neomodel import config, StructuredNode,re
 import time
+#from neomodel import StructuredNode, StringProperty, RelationshipTo, config
+
 
 exitFlag=False
+# config.DATABASE_URL = 'bolt://neo4j:heslo123@localhost:7687'
+
+
+# class WebPage(StructuredNode):
+#     url= StringProperty(unique_index=True)
+#     connected_webpages= RelationshipTo('WebPage','WEBPAGE')
 
 class Crawler(threading.Thread):
 
@@ -43,19 +52,47 @@ def getUrls(id,url):
             urlsToVisit=[]
             for ur in urls:
                 href=ur.get('href')
-                #input(href)
-                if href[0]!='/':
-                    #if not href.split("/")[2]==url.split("/")[2]:
+                if checkUrl(url,href):
                     urlsToVisit.append(href)
+            # try:
+            #     root=WebPage.nodes.get(url=url)
+            # except:
+            #     root=WebPage(url=url).save()
             for ur in urlsToVisit:
                 print(f"{id}: from: {url} page: {ur}")
+                # try:
+                #     to=WebPage.nodes.get(url=ur)
+                #     root.connected_webpages.connect(to)
+                # except:
+                #     to=WebPage(url=ur).save()
+                #     root.connected_webpages.connect(to)
                 workQueue.put(ur)
     except Exception as e:
         print(id,": ERROR",url,e)
 
 
+def checkUrl(origin_url,target_url):
+    try:
+        org=re.split(r'^(http[s]?)://www\.([a-z0-9\._-]+)/?(.*)',origin_url)
+        tar=re.split(r"^(http[s]?)://www\.([a-z0-9\._-]+)/?(.*)",target_url)
+        #print(org,tar)
+        if org[2]!=tar[2]:
+            return True
+        else:
+            return False
+    except:
+        return False
+        
+
 
 if __name__=="__main__":
+    # url0="//www.google.com"
+    url="https://www.google.com"
+    # url1="https://www.google.com/idsad"
+    # url3="https://www.maps.google.com"
+
+    # print(checkUrl(url,url1))
+
     workQueue = queue.Queue()
     ids=[1,2]
     crawlers=[]
