@@ -1,5 +1,5 @@
 import pygame
-from Game import clickHandler, boardUpdate
+from Game import clickHandler, boardUpdate, getRunning
 
 pygame.init()
 pygame.display.set_caption("Hra života")
@@ -10,11 +10,17 @@ col_button = (255,255,255)
 
 pygame.font.init()
 buttonFont = pygame.font.SysFont('Century Gothic', 35)
-buttonText = buttonFont.render('Start / Stop' , True , col_button)
+clearButton= buttonFont.render('Clear All' , True , col_button)
 
 def updateSurface():
+    if getRunning() == False:
+        startButton = buttonFont.render('Start' , True , col_button)
+    else:
+        startButton = buttonFont.render('Stop' , True , col_button)
+
     surface.fill(col_background)
-    surface.blit(buttonText, (475, 5))
+    surface.blit(startButton, (400, 5))
+    surface.blit(clearButton, (600, 5))
     boardUpdate(surface)
     pygame.display.update()
 
