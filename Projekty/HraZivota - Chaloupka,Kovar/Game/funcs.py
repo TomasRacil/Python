@@ -2,15 +2,27 @@ import numpy as np
 import pygame
 
 board = np.zeros((80,120))
+running = False
 
 col_dead = (10, 10, 40)
 col_aboutToDie = (200, 200, 225)
 col_alive = (255, 255, 215)
 
-def addPoint(coords):
-    board[int((coords[1] - 50)/ 10), int(coords[0] / 10)] = 1
+
+def clickHandler(coords):
+    global running
+    if coords[0] >= 0 and coords[0] <= 800 and coords[1] >= 50 and coords [1] <= 1200:
+        if not running: 
+            board[int((coords[1] - 50) / 10), int(coords[0] / 10)] = 1
+    else: 
+        if running == True:
+             running = False
+        else:
+             running = True
+
 
 def boardUpdate(surface):
+    global board
     newBoard = np.zeros((board.shape[0], board.shape[1]))
 
     for row, column in np.ndindex(board.shape):
@@ -26,5 +38,5 @@ def boardUpdate(surface):
 
         pygame.draw.rect(surface, col, (column*10, (row*10) + 50, 9, 9))
     
-    #zde bude board = newBoard pro aktualizaci, je možné udělat až po implementaci tlačítek
-    
+    if(running == True): #Hra neběží, nový board se neukládá
+        board = newBoard

@@ -1,2 +1,2 @@
-from .funcs import addPoint
+from .funcs import clickHandler
 from .funcs import boardUpdate
