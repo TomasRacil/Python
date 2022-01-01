@@ -1,8 +1,11 @@
+from dotenv import load_dotenv
+import os
+load_dotenv()
 #INPUT YOUR API KEYS, TRADING SYMBOL AND CANDLE LENGHT, ALL IN UPPERCASE
 
 #INPUT:
-API_KEY=''
-API_SECRET=''
+API_KEY=str(os.getenv("API_KEY"))
+API_SECRET=str(os.getenv("API_SECRET"))
 SYMBOL='BTCUSDT'
 CANDLES="1M"
 RSI_OVER=70
