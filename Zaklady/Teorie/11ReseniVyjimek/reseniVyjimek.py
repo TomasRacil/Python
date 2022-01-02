@@ -36,15 +36,30 @@ except:
 try:
     cislo = int(input("Napiš číslo: "))
     assert cislo % 2 == 0 #assert zkusí jestli je podmínka pravdivá pokud ne vrátí AssertionError
-except:
+except AssertionError:
     print("Nejedná se o sudé číslo")
+except ValueError:
+	print("Nejedná se o číslo")
+except Exception as e:
+	print(e)
 else:
     podil = 1/cislo
     print(podil)
 
 #Slovo final je možné také použít v kobinaci s try a exception. Blok kódu uvedený za final se vždy provede.
-try:
-	raise KeyboardInterrupt
-finally:
-	print('Konec lekce')
+# try:
+# 	raise KeyboardInterrupt
+# finally:
+# 	print('Konec lekce')
 	
+class CustomException(Exception):
+	def __init__(self, message="message from custom exception"):
+		self.message=message
+		super().__init__(self.message)
+
+
+try:
+	#some code
+	raise CustomException
+except CustomException as e:
+	print(e)

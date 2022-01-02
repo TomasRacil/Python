@@ -1,1 +1,0 @@
-## Odchytávač kláves
