@@ -21,11 +21,10 @@
 #  SOFTWARE.
 
 import websocket
-from library.my_functions import *
+from library.my_functions import SOCKET, on_open, on_close, on_message
 
 
 if __name__ == '__main__':
-    ws=websocket.WebSocketApp(SOCKET, on_open=on_open, on_close=on_close, on_message=on_message)
+    ws = websocket.WebSocketApp(
+        SOCKET, on_open=on_open, on_close=on_close, on_message=on_message)
     ws.run_forever()
-
-

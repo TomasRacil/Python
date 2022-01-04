@@ -1,21 +1,26 @@
-Program, jenž na základě RSI nakupuje/prodává pozice 
-v rámci libovolně zvolené kryptoměny
+# Krypto trader
 
-TODO:
+Program, jenž na základě RSI nakupuje/prodává pozice v rámci libovolně zvolené kryptoměny
 
-vygenerovat si vlastní API_KEYS
+Před spuštěním:
 
-naistahovat knihovny, co nemáte
-
-stáhnout wheel od TA-Lib, odkaz a command v my_functions.py
-nainstalovat python-dotenv-> schová api klíče proti pushnutí do githubu ->enviroment variable
+1. vygenerovat si vlastní API_KEYS
+2. naistahovat knihovny, co nemáte
+3. stáhnout wheel od TA-Lib, odkaz a command v my_functions.py
+4. nainstalovat python-dotenv-> schová api klíče proti pushnutí do githubu ->enviroment variable
 
 Obsluha:
 
-v config #INPUT si zadáte parametry dle své potřeby
-vytvoříte si vlastní .env kam dáte API_KEY a SECRET_KEY
-
+- v config #INPUT si zadáte parametry dle své potřeby
+- vytvoříte si vlastní .env kam dáte API_KEY a SECRET_KEY
 
 Nápady do budoucna:
-více strategií, více burz+převody mezi nimi, více měn zaráz, UI
 
+- více strategií
+- více burz+převody mezi nimi
+- více měn zaráz
+- UI
+
+## TODO
+
+- Lépe definovat kroky potřebné kzprovoznění traderu především část spojenou s technical analysis library (TA-Lib).

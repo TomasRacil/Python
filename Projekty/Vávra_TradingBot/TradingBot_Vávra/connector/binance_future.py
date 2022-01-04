@@ -52,7 +52,8 @@ class BinanceFuturesClient:
         """
 
         if method == "POST":
-            response = requests.post(self.base_url + endpoint, params=data, headers=self.headers)
+            response = requests.post(
+                self.base_url + endpoint, params=data, headers=self.headers)
         else:
             raise ValueError
 
