@@ -1,4 +1,5 @@
 
+#  MIT LICENSE
 #  Copyright (c) [2022] [Vávra Tomáš]
 
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
