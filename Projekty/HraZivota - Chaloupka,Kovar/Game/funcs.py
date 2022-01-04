@@ -12,7 +12,7 @@ def clickHandler(coords):
     global running
     global board
     #GAME BOARD
-    if coords[0] >= 0 and coords[0] <= 800 and coords[1] >= 50 and coords [1] <= 1200:
+    if coords[0] >= 0 and coords[0] <= 1200 and coords[1] >= 50 and coords [1] <= 800:
         if not running: 
             x = int((coords[1] - 50) / 10)
             y = int(coords[0] / 10)
