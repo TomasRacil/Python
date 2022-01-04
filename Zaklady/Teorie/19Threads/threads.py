@@ -13,7 +13,7 @@ class myThread (threading.Thread):
    def run(self):
       print (f"Starting {self.name}")
       process_data(self.name, self.q)
-      print ("Exiting {self.name}")
+      print (f"Exiting {self.name}")
 
 def process_data(threadName, q):
    while not exitFlag:
