@@ -167,7 +167,7 @@ def vaultScreen():
 
 #   Window layout #######################################
 
-    window.geometry("650x350")
+    window.geometry("700x350")
     main_frame = Frame(window)
     main_frame.pack(fill=BOTH, expand=1)
     
@@ -220,7 +220,7 @@ def vaultScreen():
             btn2.grid(column=3, row=i + 3, pady=10)
             btn3 = Button(second_frame, text="Copy Pass", command=partial(copyPass, array[i][3]))
             btn3.grid(column=4, row=i + 3, pady=10)
-            btn1 = Button(second_frame, text="Update", command=partial(updateEntry, array[i][0]))
+            btn1 = Button(second_frame, text="Update Pass", command=partial(updateEntry, array[i][0]))
             btn1.grid(column=5, row=i + 3, pady=10)
             btn = Button(second_frame, text="Delete", command=partial(removeEntry, array[i][0]))
             btn.grid(column=6, row=i + 3, pady=10)
