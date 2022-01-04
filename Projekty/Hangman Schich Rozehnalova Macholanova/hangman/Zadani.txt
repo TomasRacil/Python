@@ -1,0 +1,9 @@
+Dobrý den, slečno Macholánová
+ 
+můžete tedy začít pracovat, jen doplním pár podrobností k zadání. Program bude mít grafické rozhraní (uvedeno v vašem emailu) volbu knihovny nechám na Vás. Dále bude aplikace propojena s databází, která bude obsahovat český slovník včetně obtížnosti jednotlivých slov. Obtížnost bude automaticky přiřazována na základě délky, množství unikátních znaků, a jedinečnosti znaků (např. “X” vzácný znak-těžší na uhádnutí “A” běžný znak-lehký na uhádnutí). Poslední úkol budou hráčské profily. Uživatel se bude moci přihlásit a automaticky se budou jeho výkony zaznamenávat do databáze. Žebříček nejlepších hráčů bude sestavován z průměrného počtu kroků potřebných k úhadnutí slova (obtižnosti je třeba nějak zahrnout). Doufám, že je zadání přehledné.
+
+S pozdravem
+
+->žebříček
+->obtížnost - písmena
+
