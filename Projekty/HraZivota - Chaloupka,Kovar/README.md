@@ -9,12 +9,15 @@ Hlavní body aplikace:
 
 TODO:
 
-- Doplint komentáře u jednotlivých funkcí (docstring)
+- DONE - Doplnit komentáře u jednotlivých funkcí (docstring)
 - Přidat možnost krokování a možnost ovládat rychlost s jakou jsou kroky uskutečňovány
 
-Vedlejší body možné k zpracování:
+Body k budoucímu zpracování:
 
 1. Menu, ze kterého by se dalo odejít do 3 hlavních sekcí
     - hlavní hra (popsaná v hlavních bodech)
     - přehled pravidel hry
     - ukázka tvarů/stavů, které mohou ve hře nastat
+
+2. Optimalizace vyhodnocování následujcího stavu hry
+    - např. pomocí uchovávání listu živých buněk
