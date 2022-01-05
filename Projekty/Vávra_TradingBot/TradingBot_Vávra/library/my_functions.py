@@ -82,7 +82,7 @@ def on_close(ws):
     logger.info("WS CONNECTION OPENED")
 
 
-def on_message(ws, message: str):  # x in Json True-> closing candle
+def on_message(ws, message: str):  # [x] in Json True-> closing candle
     """
     Function to take kline message, get candle info, trigger _order() if needed
     :param ws:
