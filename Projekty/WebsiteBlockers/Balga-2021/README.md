@@ -1,4 +1,4 @@
-Website Blocker
+# Website Blocker
 
 Blokace jednotlivých stránek v zavislosti na čase pomocí IP Adresy
 

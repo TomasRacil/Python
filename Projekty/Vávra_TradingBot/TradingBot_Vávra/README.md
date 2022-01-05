@@ -4,10 +4,14 @@ Program, jenž na základě RSI nakupuje/prodává pozice v rámci libovolně zv
 
 Před spuštěním:
 
-1. vygenerovat si vlastní API_KEYS
-2. naistahovat knihovny, co nemáte
-3. stáhnout wheel od TA-Lib, odkaz a command v my_functions.py
-4. nainstalovat python-dotenv-> schová api klíče proti pushnutí do githubu ->enviroment variable
+1. vygenerovat si vlastní API_KEYS na https://testnet.binancefuture.com/ (PUBLIC a SECRET KEY)
+2. naistahovat knihovny, co nemáte potřebné k projektu
+3. stáhnout wheel od TA-Lib, https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib pro zprovoznění talib knihovny
+4. vyberte si podle své verze pythonu a windows (TA_Lib-0.4.22-cp37-cp37m-win_amd64.whl->python3.7, windows 64b)
+5. rozbalte wheel přímo do projektu na úrovni mainu
+6. pip install TA_Lib-0.4.22-cp37-cp37m-win_amd64.whl (nebo jiný wheel vhodný pro vás)
+7. nainstalovat python-dotenv-> schová api klíče proti pushnutí do githubu ->enviroment variable (pip install python-dotenv)
+9. vytvoření složky .env do které dáme API_KEY=váš publlic key a SECRET_KEY=váš secret key (na main úrovni)
 
 Obsluha:
 
