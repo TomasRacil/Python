@@ -96,7 +96,7 @@ def on_message(ws, message: str):  # [x] in Json True-> closing candle
     json_message = json.loads(message)
     candle = json_message['k']
     print("MESSAGE:")
-    print("CANDLE CLOSE PRISE ::", candle['c'])
+    print("CANDLE PRISE ::", candle['c'])
     is_candle_closed = candle['x']
     close = candle['c']
 
