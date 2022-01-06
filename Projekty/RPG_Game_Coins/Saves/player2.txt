@@ -1,0 +1,6 @@
+PCmaster
+start
+invitation letter;flashlight;mailbox note;
+front porch;main hallway downstairs;
+
+
