@@ -32,7 +32,7 @@ class BinanceFuturesClient:
 
         self.prices = dict()
 
-        logger.info("BINANCE FUTURE CLIENT SUCCESSFULLY INITIALIZED")
+        logger.info("BINANCE FUTURE CLIENT CONNECTED")
 
     def _generate_signature(self, data: typing.Dict):
         """
