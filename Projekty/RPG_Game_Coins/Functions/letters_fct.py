@@ -9,7 +9,7 @@ def DecoratorToColourLetters(func):
     # To colour all letters in light blue colour.
 
     def wrapper(*args, **kwargs):
-        print(Fore.LIGHTBLUE_EX)
+        print(Fore.BLUE)
         func(*args, **kwargs)
         print(Style.RESET_ALL)
         PressEnter()
@@ -40,13 +40,7 @@ def Letter_Fridge(playerName):
     print(" I have no doubt you will find answers to all of them, eventually.\n\n Good luck.\n\n PS: Don't forget to prioritize.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourLetters
-def Note_Pigeon():   # 659 - 2 - 8 (6 pigeons + 1 mouse + 1 squirrel) - 6
+def Note_Pigeon(playerName):   # 659 - 2 - 8 (6 pigeons + 1 mouse + 1 squirrel) - 6
     print("---------------------------------------------------------------------------------------------------------------\n PIGEON NOTE\n")
     print(" House number\n Number of people who lost their head\n Number of animals inhabiting the house\n Number of previous residents")
-    print("---------------------------------------------------------------------------------------------------------------")
-
-@DecoratorToColourLetters
-def Letter_Book():
-    print("---------------------------------------------------------------------------------------------------------------\n BOOK LETTER\n")
-    print(" ")
     print("---------------------------------------------------------------------------------------------------------------")

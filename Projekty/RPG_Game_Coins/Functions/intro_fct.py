@@ -1,45 +1,13 @@
 # External import
-from time import sleep      # to prolong an action
+from time import sleep      # to prolong an Action
 from colorama import Fore, Style
 
 # Internal import
 from Functions.versatile_fct import *
-from Functions.letters_fct import InvitationLetter, MailboxNote
+from Functions.letters_fct import Letter_Invitation, Note_Mailbox
 
 
-def ActCompare(actDef):
-    '''
-    This function lets user enter his desired command and compares it with
-    a command that he is supposed to enter according to the storymaker.
-    The loop of entering repeats itself until the user enters the right command.
-
-    Args:
-        actDef(str): action defined by storymaker, to be compared with user imput
-
-    Returns:
-
-    '''
-    
-    while(True):
-        actPl = input(Fore.MAGENTA+"\n I choose action: ")
-        print(Style.RESET_ALL)
-
-        if(actPl.lower().find(" the ") != (-1)):
-            actPl = actPl.replace("the ", "")
-        elif(actPl.lower().find(" a ") != (-1)):
-            actPl = actPl.replace("a ", "")
-        elif(actPl.lower().find(" an ") != (-1)):
-            actPl = actPl.replace("an ", "")
-
-        if(actPl.lower() == actDef):
-            break
-        else:
-            print(Fore.RED+ "\n YOU CAN NOT DO THAT")
-            print(Style.RESET_ALL)
-
-
-
-def Instructions(playerName, inv, map):
+def Instructions(playerName):
     '''
     Goes through the basic instructions and the beginning of the story.
 
@@ -50,9 +18,9 @@ def Instructions(playerName, inv, map):
         
     '''
 
-    print(Fore.YELLOW+ "\n\n------------------------------------------------------------------------\n\n                          Welcome to game\n\n                             C O I N S")
+    print(Fore.YELLOW+     "\n\n------------------------------------------------------------------------\n\n                          Welcome to game\n\n                             C O I N S")
     print(Style.RESET_ALL+ "\n\n You are going to get through the game using a few easy commands that\n can be found in Main menu after choosing an option Help or during\n the game after typing a command -help-.\n")
-    print(" You can go back to Main menu after writing a command -exit-.\n\n Now, try to look at all of the commands.")
+    print(" You can go back to Main menu after writing a command -exit- and save a game using -save-.\n\n Now, try to look at all of the commands.")
 
     # Enter command -help-
     ActCompare("help")
@@ -63,11 +31,11 @@ def Instructions(playerName, inv, map):
 
     # Enter command -exit-
     ActCompare("exit")
-    print(" You didn't think I would let you quit so soon, did you?\n Consider next part a small film, that can not be skipped.\n\n Brace yourself, your adventure is beginning...\n")
+    print(" You didn't think I would let you quit so soon, did you?\n Consider next part a small film, that can not be skipped\n and where you can not use -help-, -exit-, -save-, etc.\n\n Brace yourself, your adventure is beginning...\n")
     PressEnter()
 
     # Intro to the story
-    print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n YOUR HOUSE\n")
+    print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n YOUR HOUSE\n")
     print(Style.RESET_ALL+ " Someone is constantly ringing the doorbell.\n\n DING! DONG! DING! DONG!\n\n You are standing in the main hallway of your house. The front door is just a few steps away from you.\n")
     print(" DING! DONG! DING! DONG!\n\n You were expecting no one and you didn't order anything either.")
 
@@ -90,10 +58,10 @@ def Instructions(playerName, inv, map):
     print(" You open the envelope, take out the letter and start reading.\n")
     PressEnter()
     
-    InvitationLetter(playerName)
+    Letter_Invitation(playerName)
 	
     # Tomorrow
-    print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n TOMORROW\n")
+    print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n TOMORROW\n")
     print(Style.RESET_ALL+ " It is ten to six and you are on your way to the old house mentioned in the letter. You stop for a while\n before a crosswalk and tell yourself: Okay, this is the last chance to turn back.")
     print(" If the next person passing is a woman, I will go. If it is a man, I won't.\n")
     PressEnter()
@@ -106,27 +74,30 @@ def Instructions(playerName, inv, map):
     PressEnter()
 
     # At the house
-    print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n FRONT PORCH\n")
+    print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n FRONT PORCH\n")
     print(Style.RESET_ALL+ " It's 6 p.m. and you are standing on a front porch of the huge old house not really sure what to do.\n The creaking of planks under your feet combined with the howling of the autumn wind and a ticking")
     print(" of your watch gives you an unsettling feeling. It is gettig darker by every second passed and all you see\n is a rusty mailbox and a massive main door. However, there's nothing out of ordinary.")
 
     # Enter command -look at mailbox-
     ActCompare("look at mailbox")
-    print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n MAILBOX\n")
-    print(Style.RESET_ALL+ " You look into the mailbox just in case, already feeling stupid for letting someone prank you.\n\n And you can't believe your eyes...\n\n There is a note! Athough it is barely visible because of the deepenning darkness around you.")
+    print(" You look into the mailbox just in case, already feeling stupid for letting someone prank you.\n\n And you can't believe your eyes...\n\n There is a note! Athough it is barely visible because of the deepenning darkness around you.")
     
     # Enter command -take note-
     ActCompare("take note")
     print(" You fish the note out of the mailbox by your hand and start reading.")
-    MailboxNote(playerName)
+    Note_Mailbox(playerName)
 
-    print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n FRONT PORCH\n")
-    print(Style.RESET_ALL+ " You look up to inspect the door frame and notice a tiny button way above your head behind a small piece\n of a plank that is sticking out from the frame.\n\n It must be the doorbell!")
+    print(" You look up to inspect the door frame and notice a tiny button way above your head behind a small piece\n of a plank that is sticking out from the frame.\n\n It must be the doorbell!")
 
     # Enter command -use doorbell-
     ActCompare("use doorbell")
     print(" You had to get on your tiptoes to reach it. The bell didn't let you wait for itself too long. It sounded\n vintage, almost ancient. After three loud DING-DONGS, the door opend and created a small crack\n in otherwise impregnable wall.")
 
+    # Enter command -open door-
+    ActCompare("open door")
+
+    print(" You opend the door.")
+    
     # Enter command -go straight-
     ActCompare("go straight")
 
@@ -137,17 +108,18 @@ def Instructions(playerName, inv, map):
     ActCompare("inventory")
 
     # Print inventory
-    print(Fore.YELLOW+ "------------------------------------------------------------------------\n INVENTORY\n")
+    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------\n INVENTORY\n")
     print(Style.RESET_ALL+ " invitation letter, flashlight, mailbox note")
-    print(Fore.YELLOW+ "------------------------------------------------------------------------")
+    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------")
     print(Style.RESET_ALL)
 
-    print(" Quick tip: You can access your inventory any time during your game by simply writing -inventory-\n and use any item if it suits the situation by typing -use [item]-.\n")
+    print(" Quick tip: You can access your inventory any time during your game by simply writing -inventory-\n and use any item if it suits the situation by typing -use [item]-,")
+    print(" You can read any note or letter by typing -read [item]- and look at any key by typing -look at [item]-.\n")
     PressEnter()
 
     # Enter command -use flashlight-
     ActCompare("use flashlight")
-    print(" Now that you can see better, you look aroud yourself and notice door on the left and fuses on the right.")
+    print(" Now that you can see better, you look around yourself and notice door on the left and fuses on the right.")
 
     # Enter command -use fuses-
     ActCompare("use fuses")
@@ -158,10 +130,11 @@ def Instructions(playerName, inv, map):
     ActCompare("map")
     
     # Print map
-    print(Fore.YELLOW+ "------------------------------------------------------------------------\n MAP\n")
+    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------\n MAP\n")
     print(Style.RESET_ALL+ " front porch, main hallway downstairs")
-    print(Fore.YELLOW+ "------------------------------------------------------------------------")
+    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------")
     print(Style.RESET_ALL)
 
     print(" Quick tip: You can access your map any time during your game by simply writing -map- and go back\n to any place you like by typing -go to [place]-.\n")
     PressEnter()
+

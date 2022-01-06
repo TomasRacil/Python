@@ -1,6 +1,7 @@
 # Internal import
 from Classes import *
-from intro import Instructions
+from Functions.intro_fct import Instructions
+from Functions.outro_fct import Outro
 
 
 def NewGame(choicePlayer, filePath):
@@ -18,16 +19,13 @@ def NewGame(choicePlayer, filePath):
     player = Cplayer(choicePlayer, filePath)    # creates Cplayer instance
 
     player.NewGame()
-    Instructions(player.name, player.inv, player.map)
+    Instructions(player.name)
 
-    room = Croom(player.name, player.inv, player.map, player.used)      # creates Croom instance 
+    room = Croom(player.name, player.inv, player.map, player.used, filePath)      # creates Croom instance
+
+    room.SaveFct()
 
     room.MainHallway_11()
-
-    player.inv = room.inv
-    player.map = room.map
-    player.used = room.used
-    player.SaveGame()
 
     return 0
 
@@ -48,13 +46,10 @@ def LoadGame(choicePlayer, filePath):
     
     player.LoadGame()
 
-    room = Croom(player.name, player.inv, player.map, player.used)   # creates Croom instance
-
-    room.FrontPorch()
-
-    player.inv = room.inv
-    player.map = room.map
-    player.used = room.used
-    player.SaveGame()
+    if(player.position == "outro"):
+        Outro(player.name, player.orderOfCoins)
+    else:
+        room = Croom(player.name, player.inv, player.map, player.used, filePath)   # creates Croom instance
+        room.FrontPorch()
 
     return 0

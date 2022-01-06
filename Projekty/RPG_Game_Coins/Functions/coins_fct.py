@@ -9,7 +9,7 @@ def DecoratorToColourCoins(func):
     # To colour all letters in light red colour.
 
     def wrapper(*args, **kwargs):
-        print(Fore.LIGHTRED_EX)
+        print(Fore.YELLOW)
         func(*args, **kwargs)
         print(Style.RESET_ALL)
         PressEnter()
@@ -27,12 +27,12 @@ def Coin_Vase():    # family, dining room
     print(" The coin depicts a branched tree with letters.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourCoins
-def Coin_MedicineBottle():  # health
+def Coin_MedicineBottle():  # health, bathroom_1
     print("---------------------------------------------------------------------------------------------------------------\n MEDICINE BOTTLE COIN\n")
     print(" The coin has a plus sign carved into it.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourCoins
-def Coin_Safe():    # money, workroom
+def Coin_Safe():    # wealth, workroom
     print("---------------------------------------------------------------------------------------------------------------\n SAFE COIN\n")
     print(" The coin has columns of coins carved into it.\n---------------------------------------------------------------------------------------------------------------")
 
@@ -42,9 +42,9 @@ def Coin_Doll():    # joy, childrens room
     print(" The coin has a smiley face carved into it.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourCoins
-def Coin_Trophy():   # success, attic
-    print("---------------------------------------------------------------------------------------------------------------\n TROPHY COIN\n")
-    print(" The coin depicts a trophy with number one.\n---------------------------------------------------------------------------------------------------------------")
+def Coin_Costume():   # freedom, attic
+    print("---------------------------------------------------------------------------------------------------------------\n COSTUME COIN\n")
+    print(" The coin depicts a dove breaking chains.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourCoins
 def Coin_Nest():    # nature, bedroom
