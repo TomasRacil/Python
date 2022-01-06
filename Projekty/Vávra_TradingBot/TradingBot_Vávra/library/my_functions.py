@@ -35,8 +35,8 @@ logger.addHandler(stream_handler)
 logger.addHandler(file_handler)
 
 # JUST OPTIONS TO IMMIDIATELY CREATE ORDER TO PROVE ITS WORKING
-# client2=BinanceFuturesClient(config.API_KEY, config.API_SECRET, True)
-# client2.place_order(TRADE_SYMBOL, "BUY", 0.01, "LIMIT", 20000, "GTC")
+# client3=BinanceFuturesClient(config.API_KEY, config.API_SECRET, True)
+# client3.place_order(TRADE_SYMBOL, "BUY", 0.01, "LIMIT", 20000, "GTC")
 
 # client1=BinanceFuturesClient(config.API_KEY, config.API_SECRET, True)
 # client1.place_order(TRADE_SYMBOL, "BUY", quantity=0.01, order_type="MARKET")
