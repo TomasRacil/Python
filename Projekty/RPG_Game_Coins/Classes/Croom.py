@@ -69,7 +69,7 @@ class Croom:
         # Prints inventory
         # Prints 4 items in row, if not less remaining, then less
 
-        __number = len(cls.inv)
+        __number = len(cls.__inv)
         __i = 0
 
         print(Fore.YELLOW+ "------------------------------------------------------------------------\n INVENTORY\n", Style.RESET_ALL)
@@ -77,19 +77,19 @@ class Croom:
         while(__number != 0):
             if(__number > 4 or __number == 4):
                 if(__number > 4):
-                    print(f" {cls.inv[__i + 0]}, {cls.inv[__i + 1]}, {cls.inv[__i + 2]}, {cls.inv[__i + 3]},")
+                    print(f" {cls.__inv[__i + 0]}, {cls.__inv[__i + 1]}, {cls.__inv[__i + 2]}, {cls.__inv[__i + 3]},")
                 else:
-                    print(f" {cls.inv[__i + 0]}, {cls.inv[__i + 1]}, {cls.inv[__i + 2]}, {cls.inv[__i + 3]}")
+                    print(f" {cls.__inv[__i + 0]}, {cls.__inv[__i + 1]}, {cls.__inv[__i + 2]}, {cls.__inv[__i + 3]}")
                 __number -= 4
                 __i += 4
             elif(__number == 3):
-                print(f" {cls.inv[__i + 0]}, {cls.inv[__i + 1]}, {cls.inv[__i + 2]}")
+                print(f" {cls.__inv[__i + 0]}, {cls.__inv[__i + 1]}, {cls.__inv[__i + 2]}")
                 __number -= 3
             elif(__number == 2):
-                print(f" {cls.inv[__i + 0]}, {cls.inv[__i + 1]}")
+                print(f" {cls.__inv[__i + 0]}, {cls.__inv[__i + 1]}")
                 __number -= 2
             elif(__number == 1):
-                print(f" {cls.inv[__i + 0]}")
+                print(f" {cls.__inv[__i + 0]}")
                 __number -= 1
 
         print(Fore.YELLOW+ "------------------------------------------------------------------------")
@@ -99,7 +99,7 @@ class Croom:
         # Prints map
         # Prints 4 items in row, if not less remaining, then less
 
-        __number = len(cls.map)
+        __number = len(cls.__map)
         __i = 0
 
         print(Fore.YELLOW+ "------------------------------------------------------------------------\n MAP\n", Style.RESET_ALL)
@@ -107,19 +107,19 @@ class Croom:
         while(__number != 0):
             if(__number > 4 or __number == 4):
                 if(__number > 4):
-                    print(f" {cls.map[__i + 0]}, {cls.map[__i + 1]}, {cls.map[__i + 2]}, {cls.map[__i + 3]},")
+                    print(f" {cls.__map[__i + 0]}, {cls.__map[__i + 1]}, {cls.__map[__i + 2]}, {cls.__map[__i + 3]},")
                 else:
-                    print(f" {cls.map[__i + 0]}, {cls.map[__i + 1]}, {cls.map[__i + 2]}, {cls.map[__i + 3]}")
+                    print(f" {cls.__map[__i + 0]}, {cls.__map[__i + 1]}, {cls.__map[__i + 2]}, {cls.__map[__i + 3]}")
                 __number -= 4
                 __i += 4
             elif(__number == 3):
-                print(f" {cls.map[__i + 0]}, {cls.map[__i + 1]}, {cls.map[__i + 2]}")
+                print(f" {cls.__map[__i + 0]}, {cls.__map[__i + 1]}, {cls.__map[__i + 2]}")
                 __number -= 3
             elif(__number == 2):
-                print(f" {cls.map[__i + 0]}, {cls.map[__i + 1]}")
+                print(f" {cls.__map[__i + 0]}, {cls.__map[__i + 1]}")
                 __number -= 2
             elif(__number == 1):
-                print(f" {cls.map[__i + 0]}")
+                print(f" {cls.__map[__i + 0]}")
                 __number -= 1
 
         print(Fore.YELLOW+ "------------------------------------------------------------------------")
@@ -237,12 +237,12 @@ class Croom:
             # Local command dictionary
             elif(__command in localComDict):
                 if(("take" in __command) and ("seeds" not in __command) and ("barrel" not in __command)):
-                    cls.InvIn(localComDict.get(__command))
+                    cls.__invIn(localComDict.get(__command))
                 elif("use" in __command):
-                    cls.InvOut(__command)
+                    cls.__invOut(__command)
                     return localComDict.get(__command)()
                 elif(("coin" in __command) and ("look at" not in __command)):
-                    cls.InvOut(__command)
+                    cls.__invOut(__command)
                 elif("read" in __command):
                     return localComDict.get(__command)(cls.__name)
                 else:
@@ -285,7 +285,7 @@ class Croom:
     # Underground
     def Cellar(self):
         self.__position = "cellar"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n CELLAR\n")
@@ -296,7 +296,7 @@ class Croom:
             print(" When you switch on the flashlight, a cone of light illuminates your surroundings. The cellar looks like\n a workshop. There are many various tools, tables and shelves, but only one table has", Fore.MAGENTA+ "a drawer.", Style.RESET_ALL)
             print(" There is also", Fore.MAGENTA+ "a basket", Style.RESET_ALL+ "in one corner of the cellar.")
 
-            self.__invIn("flashlight")
+            self.InvIn("flashlight")
 
             __localComDict["look at drawer"] = OpenDrawer_1
             __localComDict["open drawer"] = OpenDrawer_1
@@ -407,7 +407,7 @@ class Croom:
 
     def WorkRoom(self):         
         self.__position = "workroom"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+      "\n---------------------------------------------------------------------------------------------------------------\n WORKROOM\n")
@@ -560,7 +560,7 @@ class Croom:
 
     def Kitchen(self):          
         self.__position = "kitchen"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+      "\n---------------------------------------------------------------------------------------------------------------\n KITCHEN\n")
@@ -636,7 +636,7 @@ class Croom:
 
     def DiningRoom(self):       
         self.__position = "dining room"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n DINING ROOM\n")
@@ -721,7 +721,7 @@ class Croom:
 
     def Pantry(self):           
         self.__position = "pantry"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n PANTRY\n")
@@ -741,7 +741,7 @@ class Croom:
             print(" As you move a little closer to the barrel, a tiny mouse runs out towards you, but changes its mind\n halfway. She then makes two circles around the barrel and disppears under one of the shelves.")
             print(" After this, you are finaly allowed to scoop some seeds into the box.")
             
-            self.__invIn("box with seeds")
+            self.InvvIn("box with seeds")
 
         # Local dictionary
         __localComDict = {
@@ -801,7 +801,7 @@ class Croom:
 
     def Bathroom_1(self):       
         self.__position = "bathroom downstairs"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n BATHROOM DOWNSTAIRS\n")
@@ -857,7 +857,7 @@ class Croom:
 
     def WinterGarden(self):     
         self.__position = "winter garden"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n WINTER GARDEN\n")
@@ -894,7 +894,7 @@ class Croom:
 
     def Garden(self):           
         self.__position = "garden"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n GARDEN\n")
@@ -915,7 +915,7 @@ class Croom:
 
     def Shed(self):             
         self.__position = "shed"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n SHED\n")
@@ -974,7 +974,7 @@ class Croom:
 
     def Playground(self):       
         self.__position = "playground"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n PLAYGROUND\n")
@@ -1038,7 +1038,7 @@ class Croom:
 
     def Gazebo(self):
         self.__position = "gazebo"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n GAZEBO\n")
@@ -1072,34 +1072,34 @@ class Croom:
                 "use handle":PullHandle_2
             }
 
-            if(("fridge coin" in self.__inv) and ("fridge coin" not in __useCoinsDict)): __useCoinsDict["fridge coin"] = self.__invOut
+            if(("fridge coin" in self.__inv) and ("fridge coin" not in __useCoinsDict)): __useCoinsDict["fridge coin"] = self.InvOut
             else: __useCoinsDict.pop("fridge coin", None)
             
-            if(("vase coin" in self.__inv) and ("vase coin" not in __useCoinsDict)): __useCoinsDict["vase coin"] = self.__invOut
+            if(("vase coin" in self.__inv) and ("vase coin" not in __useCoinsDict)): __useCoinsDict["vase coin"] = self.InvOut
             else: __useCoinsDict.pop("vase coin", None)
             
-            if(("medicine bottle coin" in self.__inv) and ("medicine bottle coin" not in __useCoinsDict)): __useCoinsDict["medicine bottle coin"] = self.__invOut
+            if(("medicine bottle coin" in self.__inv) and ("medicine bottle coin" not in __useCoinsDict)): __useCoinsDict["medicine bottle coin"] = self.InvOut
             else: __useCoinsDict.pop("medicine bottle coin", None)
             
-            if(("safe coin" in self.__inv) and ("safe coin" not in __useCoinsDict)): __useCoinsDict["safe coin"] = self.__invOut
+            if(("safe coin" in self.__inv) and ("safe coin" not in __useCoinsDict)): __useCoinsDict["safe coin"] = self.InvOut
             else: __useCoinsDict.pop("safe coin ", None)
             
-            if(("doll coin" in self.__inv) and ("doll coin" not in __useCoinsDict)): __useCoinsDict["doll coin"] = self.__invOut
+            if(("doll coin" in self.__inv) and ("doll coin" not in __useCoinsDict)): __useCoinsDict["doll coin"] = self.InvOut
             else: __useCoinsDict.pop("doll coin", None)
             
-            if(("costume coin" in self.__inv) and ("costume coin" not in __useCoinsDict)): __useCoinsDict["costume coin"] = self.__invOut
+            if(("costume coin" in self.__inv) and ("costume coin" not in __useCoinsDict)): __useCoinsDict["costume coin"] = self.InvOut
             else: __useCoinsDict.pop("costume coin", None)
             
-            if(("nest coin" in self.__inv) and ("nest coin" not in __useCoinsDict)): __useCoinsDict["nest coin"] = self.__invOut
+            if(("nest coin" in self.__inv) and ("nest coin" not in __useCoinsDict)): __useCoinsDict["nest coin"] = self.InvOut
             else: __useCoinsDict.pop("nest coin", None)
             
-            if(("sandbox coin" in self.__inv) and ("sandbox coin" not in __useCoinsDict)): __useCoinsDict["sandbox coin"] = self.__invOut
+            if(("sandbox coin" in self.__inv) and ("sandbox coin" not in __useCoinsDict)): __useCoinsDict["sandbox coin"] = self.InvOut
             else: __useCoinsDict.pop("sandbox coin", None)
             
-            if(("rag coin" in self.__inv) and ("rag coin" not in __useCoinsDict)): __useCoinsDict["rag coin"] = self.__invOut
+            if(("rag coin" in self.__inv) and ("rag coin" not in __useCoinsDict)): __useCoinsDict["rag coin"] = self.InvOut
             else: __useCoinsDict.pop("rag coin", None)
             
-            if(("book coin" in self.__inv) and ("book coin" not in __useCoinsDict)): __useCoinsDict["book coin"] = self.__invOut
+            if(("book coin" in self.__inv) and ("book coin" not in __useCoinsDict)): __useCoinsDict["book coin"] = self.InvOut
             else: __useCoinsDict.pop("book coin", None)
             
             # Insert coins into slot machine
@@ -1197,7 +1197,7 @@ class Croom:
 
     def Library(self):              
         self.__position = "library"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n LIBRARY\n")
@@ -1252,7 +1252,7 @@ class Croom:
 
     def Terrace(self):              
         self.__position = "terrace"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n TERRACE\n")
@@ -1321,7 +1321,7 @@ class Croom:
 
     def MainHallway_22(self):       
         self.__position = "main hallway upstairs"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n MAIN HALLWAY UPSTAIRS\n")
@@ -1365,7 +1365,7 @@ class Croom:
 
     def Bathroom_2(self):           
         self.__position = "bathroom upstairs"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n BATHROOM UPSTAIRS\n")
@@ -1482,7 +1482,7 @@ class Croom:
 
     def ChildrensRoom(self):        
         self.__position = "childrens room"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n CHILDREN'S ROOM\n")
@@ -1531,7 +1531,7 @@ class Croom:
 
     def Bedroom(self):              
         self.__position = "bedroom"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n BEDROOM\n")
@@ -1570,7 +1570,7 @@ class Croom:
     # Roof
     def Attic(self):                
         self.__position = "attic"
-        self.__mapIn()
+        self.MapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n ATTIC\n")

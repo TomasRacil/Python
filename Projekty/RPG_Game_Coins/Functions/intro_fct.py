@@ -118,9 +118,9 @@ def Instructions(playerName):
     ActCompare(acts)
 
     # Print inventory
-    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------\n INVENTORY\n")
+    print(Fore.YELLOW+ "------------------------------------------------------------------------\n INVENTORY\n")
     print(Style.RESET_ALL+ " invitation letter, flashlight, mailbox note")
-    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------")
+    print(Fore.YELLOW+ "------------------------------------------------------------------------")
     print(Style.RESET_ALL)
 
     print(" Quick tip: You can access your inventory any time during your game by simply writing -inventory-\n and use any item if it suits the situation by typing -use [item]-,")
@@ -145,10 +145,12 @@ def Instructions(playerName):
     ActCompare(acts)
     
     # Print map
-    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------\n MAP\n")
+    print(Fore.YELLOW+ "------------------------------------------------------------------------\n MAP\n")
     print(Style.RESET_ALL+ " front porch, main hallway downstairs")
-    print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------")
+    print(Fore.YELLOW+ "------------------------------------------------------------------------")
     print(Style.RESET_ALL)
 
     print(" Quick tip: You can access your map any time during your game by simply writing -map- and go back\n to any place you like by typing -go to [place]-.\n")
     PressEnter()
+
+    print(" The introduction has ended.\n Now feel free to expore.")

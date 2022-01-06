@@ -69,12 +69,10 @@ def ActCompare(acts):
                 back = True
         
         else:
-            for actDef in acts:
-                if(actDef == actPl):
-                    back = True
-                    break
-                else:
-                    CantDoThat()    # error message
+            if(actPl in acts):
+                back = True
+            else:
+                CantDoThat()    # Error message
 
 
 def PressEnter():
