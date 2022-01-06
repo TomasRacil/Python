@@ -237,12 +237,12 @@ class Croom:
             # Local command dictionary
             elif(__command in localComDict):
                 if(("take" in __command) and ("seeds" not in __command) and ("barrel" not in __command)):
-                    cls.__invIn(localComDict.get(__command))
+                    cls.InvIn(localComDict.get(__command))
                 elif("use" in __command):
-                    cls.__invOut(__command)
+                    cls.InvOut(__command)
                     return localComDict.get(__command)()
                 elif(("coin" in __command) and ("look at" not in __command)):
-                    cls.__invOut(__command)
+                    cls.InvOut(__command)
                 elif("read" in __command):
                     return localComDict.get(__command)(cls.__name)
                 else:
@@ -349,7 +349,7 @@ class Croom:
 
 
     # First floor
-    def FrontPorch(self):       
+    def FrontPorch(self):
         self.__position = "front porch"
 
         # Description
@@ -371,7 +371,7 @@ class Croom:
 
             self.UpdateGCD_inv()
 
-    def MainHallway_11(self):   
+    def MainHallway_11(self):
         self.__position = "MainHallway_11"
 
         # Description
@@ -405,7 +405,7 @@ class Croom:
 
             self.UpdateGCD_inv()
 
-    def WorkRoom(self):         
+    def WorkRoom(self):
         self.__position = "workroom"
         self.MapIn()
 
@@ -502,7 +502,7 @@ class Croom:
 
             self.UpdateGCD_inv()
 
-    def MainHallway_12(self):   
+    def MainHallway_12(self):
         self.__position = "MainHallway_12"
 
         # Description
@@ -522,7 +522,7 @@ class Croom:
 
             self.UpdateGCD_inv()
 
-    def Stairs_1(self):         
+    def Stairs_1(self):
         self.__position = "Stairs_1"
 
         # Description
@@ -558,7 +558,7 @@ class Croom:
 
             self.UpdateGCD_inv()
 
-    def Kitchen(self):          
+    def Kitchen(self):
         self.__position = "kitchen"
         self.MapIn()
 
@@ -634,7 +634,7 @@ class Croom:
 
             self.UpdateGCD_inv()
 
-    def DiningRoom(self):       
+    def DiningRoom(self):
         self.__position = "dining room"
         self.MapIn()
 
@@ -719,7 +719,7 @@ class Croom:
 
             self.UpdateGCD_inv()
 
-    def Pantry(self):           
+    def Pantry(self):
         self.__position = "pantry"
         self.MapIn()
 
