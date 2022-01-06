@@ -16,7 +16,11 @@ class Vehicle:
         self.x += self.avgSpeed*dobaCesty
 
     def info(self):
-        print(f'Auto je na místě {self.x} a má průměrnou rychlost {self.avgSpeed} auto na jednu nadrz uraazi {self.fuelCapacity/self.avgFuelConsumption*100}')
+        print(
+            f'Auto je na místě {self.x} a má průměrnou rychlost'\
+            f' {self.avgSpeed}' auto na jednu nadrz uraazi '\ 
+            f'{self.fuelCapacity/self.avgFuelConsumption*100}'
+            )
 
     def fuelConsumption(self, distance):
         return distance/100*self.avgFuelConsumption
