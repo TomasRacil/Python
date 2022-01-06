@@ -741,7 +741,7 @@ class Croom:
             print(" As you move a little closer to the barrel, a tiny mouse runs out towards you, but changes its mind\n halfway. She then makes two circles around the barrel and disppears under one of the shelves.")
             print(" After this, you are finaly allowed to scoop some seeds into the box.")
             
-            self.InvvIn("box with seeds")
+            self.InvIn("box with seeds")
 
         # Local dictionary
         __localComDict = {
