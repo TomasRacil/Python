@@ -10,12 +10,13 @@ col_aboutToDie = (200, 200, 225)
 col_alive = (255, 255, 215)
 
 
-def clickHandler(coords):
+def clickHandler(coords, surface):
     """
 	Function for handling on what user clicked: game board, Start/stop button, clear all button.
 	
 	Args:
 		coords (Tuple[int, int]): Coordinates where left mouse button was clicked
+        surface (pygame.Surface): pygame surface where we want to make a next step
 	"""
     global running
     global board
@@ -41,6 +42,13 @@ def clickHandler(coords):
     elif coords[0] >= 600 and coords[0] <= 745 and coords[1] >= 0 and coords[1] < 50:
         if not running:
             board = np.zeros((80, 120))
+
+    # STEP
+    elif coords[0] >= 900 and coords[0] <= 940 and coords[1] >= 0 and coords[1] < 50:
+        if not running:
+            running = True
+            boardUpdate(surface)
+            running = False
 
 
 def boardUpdate(surface):
@@ -68,7 +76,7 @@ def boardUpdate(surface):
 
         pygame.draw.rect(surface, col, (column*10, (row*10) + 50, 9, 9))
 
-    if running:  # Hra neběží, nový board se neukládá
+    if running:  # Hra běží, nový board se ukládá
         board = newBoard
 
 
