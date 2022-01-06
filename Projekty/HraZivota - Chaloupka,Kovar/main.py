@@ -5,6 +5,6 @@ def main():
         if eventHandler() == 0:
             break
         updateSurface()
-   
+
 if __name__ == "__main__":
     main()

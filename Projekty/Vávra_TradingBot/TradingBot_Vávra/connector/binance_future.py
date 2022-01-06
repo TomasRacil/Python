@@ -32,7 +32,7 @@ class BinanceFuturesClient:
 
         self.prices = dict()
 
-        logger.info("BINANCE FUTURE CLIENT SUCCESSFULLY INITIALIZED")
+        logger.info("BINANCE FUTURE CLIENT CONNECTED")
 
     def _generate_signature(self, data: typing.Dict):
         """
@@ -52,7 +52,8 @@ class BinanceFuturesClient:
         """
 
         if method == "POST":
-            response = requests.post(self.base_url + endpoint, params=data, headers=self.headers)
+            response = requests.post(
+                self.base_url + endpoint, params=data, headers=self.headers)
         else:
             raise ValueError
 

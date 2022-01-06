@@ -1,7 +1,7 @@
 """
 Python poskytuje jednu velice užitečnou schopnost a tou je vytvářet vlastních generátorů posloupnosti.
 Tyto generátory nám umožňují vytvořit posloupnosti a přistupovat k nim prvek po prvku, nebo je využít v rámci cyklů.
-Genrátory jsou velice jsdnoduché na implementaci v různých situacích, efektivně pracují s pamětí systému 
+Generátory jsou velice jednoduché na implementaci v různých situacích, efektivně pracují s pamětí systému 
 a jsou výborné pro vytváření nekončných posloupností (správně využité chrání proti nekonečným cyklům)
 """
 
@@ -27,15 +27,13 @@ def prvniGenerator():
 #vytvoříme instanci našeho generátoru
 instancePrvnihoGeneratoru = prvniGenerator()
 
-print("První prvek:")
+print(f"První prvek: {next(instancePrvnihoGeneratoru)}")
 #k prvkům generátoru přistupujeme postupne zavoláním funkce next
-next(instancePrvnihoGeneratoru)
 
-print("Druhý prvek:")
-next(instancePrvnihoGeneratoru)
 
-print("Třetí prvek:")
-next(instancePrvnihoGeneratoru)
+print(f"Druhý prvek: {next(instancePrvnihoGeneratoru)}")
+
+print(f"Třetí prvek: {next(instancePrvnihoGeneratoru)}")
 
 print("Čtvrtý prvek:")
 #Jak je možné vidět na dalším řádků pokus o získání čtrvtého prvku vyvolá vyjímku StopIteration
@@ -86,9 +84,9 @@ print(f"Obrácený řetězec: {obracene}\n")
 generator = (x**2 for x in range(0,10,2))
 
 #Můžeme zde vidět že generator je objekt typy genexpr
-print(f"O jakou třídu se jedná? {generator}")
-print(f"První prvek genratoru: {next(generator)}")
-print(f"Druhý prvek genratoru: {next(generator)}")
+print(f"O jakou třídu se jedná? {type(generator)}")
+print(f"Prvni prvek generatoru: {next(generator)}")
+print(f"Druhý prvek generatoru: {next(generator)}")
 print(f"atd..\n")
 
 #Na závěr ukázka několika generátorů pro spočítání průměrné hodnoty čísel fibonciho posloupnosti na druhou

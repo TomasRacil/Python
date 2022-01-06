@@ -6,17 +6,21 @@ pygame.display.set_caption("Hra života")
 surface = pygame.display.set_mode((1200, 800))
 
 col_background = (30, 30, 60)
-col_button = (255,255,255)
+col_button = (255, 255, 255)
 
 pygame.font.init()
 buttonFont = pygame.font.SysFont('Century Gothic', 35)
-clearButton= buttonFont.render('Clear All' , True , col_button)
+clearButton = buttonFont.render('Clear All', True, col_button)
+
 
 def updateSurface():
-    if getRunning() == False:
-        startButton = buttonFont.render('Start' , True , col_button)
+    """
+    This function fills surface with colors, buttons and updated game board.
+	"""
+    if not getRunning():
+        startButton = buttonFont.render('Start', True, col_button)
     else:
-        startButton = buttonFont.render('Stop' , True , col_button)
+        startButton = buttonFont.render('Stop', True, col_button)
 
     surface.fill(col_background)
     surface.blit(startButton, (400, 5))
@@ -24,7 +28,13 @@ def updateSurface():
     boardUpdate(surface)
     pygame.display.update()
 
+
 def eventHandler():
+    """
+    Event handler function for following events:
+        Quit, 
+        Mouse Button Down
+	"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
