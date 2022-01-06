@@ -12,7 +12,7 @@ def Instructions(playerName):
 
     print(Fore.YELLOW+     "\n\n------------------------------------------------------------------------\n\n                          Welcome to game\n\n                             C O I N S")
     print(Style.RESET_ALL+ "\n\n You are going to get through the game using a few easy commands that\n can be found in Main menu after choosing an option Help or during\n the game after typing a command -help-.\n")
-    print(" You can go back to Main menu after writing a command -exit- and save a game using -save-.\n\n Now, try to look at all of the commands.")
+    print(" You can go back to Main menu after writing a command -exit- and save\n a game using -save-.\n\n Now, try to look at all of the commands.")
 
     # Enter command -help-
     acts = ["help"]
@@ -123,8 +123,8 @@ def Instructions(playerName):
     print(Fore.YELLOW+ "------------------------------------------------------------------------")
     print(Style.RESET_ALL)
 
-    print(" Quick tip: You can access your inventory any time during your game by simply writing -inventory-\n and use any item if it suits the situation by typing -use [item]-,")
-    print(" You can read any note or letter by typing -read [item]- and look at any key by typing -look at [item]-.\n")
+    print(             " Quick tip: You can access your inventory any time during your game\n by simply writing -inventory- and use any item if it suits\n the situation by typing -use [item]-,")
+    print(             " You can read any note or letter by typing -read [item]- and look\n at any key by typing -look at [item]-.\n")
     PressEnter()
 
     # Enter command -use flashlight-
@@ -150,7 +150,7 @@ def Instructions(playerName):
     print(Fore.YELLOW+ "------------------------------------------------------------------------")
     print(Style.RESET_ALL)
 
-    print(" Quick tip: You can access your map any time during your game by simply writing -map- and go back\n to any place you like by typing -go to [place]-.\n")
+    print(             " Quick tip: You can access your map any time during your game by simply\n writing -map- and go back to any place you like\n by typing -go to [place]-.\n")
     PressEnter()
 
     print(" The introduction has ended.\n Now feel free to expore.")
