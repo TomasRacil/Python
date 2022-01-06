@@ -159,54 +159,54 @@ class Croom:
 
         # Letters
         if(("fridge letter" in self.__inv) and ("read fridge letter" not in self.__globalComDict)): self.__globalComDict["read fridge letter"] = Letter_Fridge
-        if(("pigeon note" in self.__inv)   and ("read pigeon note" not in self.__globalComDict)):   self.__globalComDict["read pigeon note"] = Note_Pigeon
+        if(("pigeon note" in self.__inv) and ("read pigeon note" not in self.__globalComDict)):   self.__globalComDict["read pigeon note"] = Note_Pigeon
 
         # Keys
         if(("table key" in self.__inv) and ("look at table key" not in self.__globalComDict)): self.__globalComDict["look at table key"] = Key_Table
-        else: self.__globalComDict.pop("look at table key", None)
+        elif("table key" in self.__used): self.__globalComDict.pop("look at table key", None)
 
         if(("chest key" in self.__inv) and ("look at chest key" not in self.__globalComDict)): self.__globalComDict["look at chest key"] = Key_Chest
-        else: self.__globalComDict.pop("look at chest key", None)
+        elif("chest key" in self.__used): self.__globalComDict.pop("look at chest key", None)
 
         if(("soap key" in self.__inv) and ("look at soap key" not in self.__globalComDict)): self.__globalComDict["look at soap key"] = Key_Soap
-        else: self.__globalComDict.pop("look at soap key", None)
+        elif("soap key" in self.__used): self.__globalComDict.pop("look at soap key", None)
 
         if(("safe key" in self.__inv)  and ("look at safe key" not in self.__globalComDict)):  self.__globalComDict["look at safe key"] = Key_Safe
-        else: self.__globalComDict.pop("look at safe key", None)
+        elif("safe key" in self.__used): self.__globalComDict.pop("look at safe key", None)
 
         if(("swing key" in self.__inv) and ("look at swing key" not in self.__globalComDict)): self.__globalComDict["look at swing key"] = Key_Swing
-        else: self.__globalComDict.pop("look at swing key", None)
+        elif("swing key" in self.__used): self.__globalComDict.pop("look at swing key", None)
 
         # Coins
         if(("fridge coin" in self.__inv) and ("look at fridge coin" not in self.__globalComDict)): self.__globalComDict["look at fridge coin"] = Coin_Fridge
-        else: self.__globalComDict.pop("look at fridge coin", None)
+        elif("fridge coin" in self.__used): self.__globalComDict.pop("look at fridge coin", None)
         
         if(("vase coin" in self.__inv) and ("look at vase coin" not in self.__globalComDict)): self.__globalComDict["look at vase coin"] = Coin_Vase
-        else: self.__globalComDict.pop("look at vase coin", None)
+        elif("vase coin" in self.__used): self.__globalComDict.pop("look at vase coin", None)
         
         if(("medicine bottle coin" in self.__inv) and ("look at medicine bottle coin" not in self.__globalComDict)): self.__globalComDict["look at medicine bottle coin"] = Coin_MedicineBottle
-        else: self.__globalComDict.pop("look at medicine bottle coin", None)
+        elif("medicine bottle coin" in self.__used): self.__globalComDict.pop("look at medicine bottle coin", None)
         
         if(("safe coin" in self.__inv) and ("look at safe coin" not in self.__globalComDict)): self.__globalComDict["look at safe coin"] = Coin_Safe
-        else: self.__globalComDict.pop("look atsafe coin ", None)
+        elif("safe coin" in self.__used): self.__globalComDict.pop("look atsafe coin ", None)
         
         if(("doll coin" in self.__inv) and ("look at doll coin" not in self.__globalComDict)): self.__globalComDict["look at doll coin"] = Coin_Doll
-        else: self.__globalComDict.pop("look at doll coin", None)
+        elif("doll coin" in self.__used): self.__globalComDict.pop("look at doll coin", None)
         
         if(("costume coin" in self.__inv) and ("look at costume coin" not in self.__globalComDict)): self.__globalComDict["look at costume coin"] = Coin_Costume
-        else: self.__globalComDict.pop("look at costume coin", None)
+        elif("costume coin" in self.__used): self.__globalComDict.pop("look at costume coin", None)
         
         if(("nest coin" in self.__inv) and ("look at nest coin" not in self.__globalComDict)): self.__globalComDict["look at nest coin"] = Coin_Nest
-        else: self.__globalComDict.pop("look at nest coin", None)
+        elif("nest coin" in self.__used): self.__globalComDict.pop("look at nest coin", None)
         
         if(("sandbox coin" in self.__inv) and ("look at sandbox coin" not in self.__globalComDict)): self.__globalComDict["look at sandbox coin"] = Coin_Sandbox
-        else: self.__globalComDict.pop("look at sandbox coin", None)
+        elif("sandbox coin" in self.__used): self.__globalComDict.pop("look at sandbox coin", None)
         
         if(("rag coin" in self.__inv) and ("look at rag coin" not in self.__globalComDict)): self.__globalComDict["look at rag coin"] = Coin_Rag 
-        else: self.__globalComDict.pop("look at rag coin", None)
+        elif("rag coin" in self.__used): self.__globalComDict.pop("look at rag coin", None)
         
         if(("book coin" in self.__inv) and ("look at book coin" not in self.__globalComDict)): self.__globalComDict["look at book coin"] = Coin_Book
-        else: self.__globalComDict.pop("look at book coin", None)
+        elif("book coin" in self.__used): self.__globalComDict.pop("look at book coin", None)
 
     def GetCommand(cls, localComDict):
         '''
@@ -258,12 +258,15 @@ class Croom:
         if(item not in self.__inv):
             self.__inv.append(item)
             self.UpdateGCD_inv()
-            print(f"\n You took the {item}.\n")
+            
+            if(item != "flashlight"):
+                print(f"\n You took the {item}.\n")
 
     def InvOut(self, command):
         # Deletes an item from __inv after using it
 
         command = command.replace("use ", "")
+        
         try:
             self.__inv.remove(command)
             self.UpdateGCD_inv()
@@ -355,7 +358,7 @@ class Croom:
         # Description
         print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n FRONT PORCH\n")
         print(Style.RESET_ALL+ " And here you are, standing on the front porch of the old house once again. Its distinct sound never changes.\n Although the creaking of planks under your feet combined with the sounds of the Grey Forest nearby")
-        print(" still gives you an unsettling feeling, it doesn't seem so haunting anymore. The mailbox and the doorbell are\n still the same. As you reach out for the doorknob, the massive wooden door open\n for you on its own accord.\n\n The only thing left for you to do, is to step into the warm yellow welcoming light that awaits you.")
+        print(" still gives you an unsettling feeling, it doesn't seem so haunting anymore. The mailbox and the doorbell are\n still the same. As you reach out for the doorknob, the massive wooden door open for you on its own\n accord.\n\n The only thing left for you to do, is to step into the warm yellow welcoming light that awaits you.")
 
         def LookAtMailbox():
             print(" There is no other note in the mailbox.")
@@ -424,7 +427,7 @@ class Croom:
         def LookAtStatue():
             print(" The golden statue looks like a man, an older gentleman, to be precise. His walking stick is pointing toward\n", Fore.MAGENTA+ "a painting", Style.RESET_ALL+ "on the wall. You would bet anything, that just a second ago, it was ponting to his feet.")
             PressEnter()
-            print("\n ...")
+            print(" ...")
             sleep(3)
             print("\n Weird.")
 
@@ -450,7 +453,7 @@ class Croom:
             if(codeDef == codePl):
                 print(" You entered the right code!\n\n You hear the ratchets unlock and then...")
                 sleep(3)
-                print(" There is", Fore.YELLOW+ "a COIN!", Style.RESET_ALL+ "And far in the back lies", Fore.MAGENTA+ " a key.", Style.RESET_ALL)
+                print("\n There is", Fore.YELLOW+ "a COIN!", Style.RESET_ALL+ "And far in the back lies", Fore.MAGENTA+ "a key.", Style.RESET_ALL)
 
                 __localComDict["look at coin"] = Coin_Safe
                 __localComDict["take coin"] = "safe coin"
@@ -591,12 +594,12 @@ class Croom:
         def OpenFridge_1():
             print(" When you open the fridge, you can't believe your eyes! There is...")
             sleep(3)
-            print(" absolutely nothing...\n\n You are closing the fridge feeling disappointed.")
+            print("\n absolutely nothing. You are closing the fridge feeling disappointed.")
 
         def OpenFridge_2():
             print(" When you open the fridge, you can't believe your eyes! There is...")
             sleep(3)
-            print("", Fore.YELLOW+ "a COIN!!", Style.RESET_ALL)
+            print("\n", Fore.YELLOW+ "a COIN!!", Style.RESET_ALL)
 
             __localComDict["look at coin"] = Coin_Fridge
             __localComDict["take coin"] = "fridge coin"
@@ -663,7 +666,7 @@ class Croom:
             __localComDict["take key"] = "table key"
 
         def LookAtTable_4():
-            print(" There are dead flowers on the table lying among the shards of their vase. They look even more sad and abandoned now.")
+            print(" There are dead flowers on the table lying among the shards of their vase. They look even more sad\n and abandoned now.")
 
         # Vase
         def LookAtVase():
@@ -935,7 +938,7 @@ class Croom:
             print(" You try to open the door of the shed, but they're locked with a strong chain and a padlock.")
 
         def OpenDoor_2():
-            print(" The shed full of garden supplies and other craft tools. There is also a wooden", Fore.MAGENTA+ " ladder.", Style.RESET_ALL)
+            print(" The shed is full of garden supplies and other craft tools. There is also a wooden", Fore.MAGENTA+ "ladder.", Style.RESET_ALL)
 
             __localComDict["take ladder"] = "ladder"
 
@@ -992,7 +995,7 @@ class Croom:
         def UseSieve_1():
             print(" You take the sieve and start sieving the sand in the sandbox little by little, until...")
             sleep(3)
-            print("", Fore.YELLOW+ "A COIN", Style.RESET_ALL+ "has stayed in the sieve!")
+            print("\n", Fore.YELLOW+ "A COIN", Style.RESET_ALL+ "has stayed in the sieve!")
 
             __localComDict["look at coin"] = Coin_Sandbox
             __localComDict["take coin"] = "sandbox coin"
@@ -1043,8 +1046,8 @@ class Croom:
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n GAZEBO\n")
         print(Style.RESET_ALL+ " You let the path lead you. As soon as you step into the forest, you start to have a strange feelig in your\n gut. You try to ignore it and continue walking, passing hight trees and dodging branches,")
-        print(" that are trying to touch your shouldres and head as they swing in the wind. You come to a stop, when you\n notice a small glass gazebo, whose golden light shines through the forest,")
-        print(" making it look like a star. You close the distance rather quickly, wanting to be in the soothing light again.\n\n You halt in front of the glass door. You can not regognize anything inside, since the image is fuzzy.")
+        print(" that are trying to touch your shouldres and head as they swing in the wind. You come to a stop, when you\n notice a small glass gazebo, whose golden light shines through the forest, making it look like")
+        print(" a star. You close the distance rather quickly, wanting to be in the soothing light again.\n\n You halt in front of the glass door. You can not regognize anything inside, since the image is fuzzy.")
         
         def LockedDoor():
             print(" You grab the door handle and try to open the door, but you can't. It is probably locked.")
@@ -1054,10 +1057,12 @@ class Croom:
             self.__used.append("safe key")
 
         def Inside():
-            print(" You step into the gazebo and a star-like light embraces you, a golden slot machine standing in the center.\n You blink a few to times in order to get used to the strong glow...")
+            print(" You step into the gazebo and a star-like light embraces you,", Fore.YELLOW+ "a golden slot machine", Style.RESET_ALL+ "standing in the center.\n You blink a few to times in order to get used to the strong glow.\n")
+            PressEnter()
+            print(" ...")
             sleep(3)
-            print(" Then you take two steps toward the slot machine and expect it. There is a coin hole and a long handle\n with a sphere at the of it. The display is empty.")
-            print(" There is a riddle at the top of the slot machine saying:\n\n  With hands full of gold, pull on the globe.\n  Wishing for your gain, I must obtain.\n  Align your needs, wait for my deeds.\n  Cast findings away, let me travail.\n  With one last blink, pull the handgrip.")
+            print("\n Then you take two steps toward the slot machine and inspect it. There is a coin hole and a long", Fore.MAGENTA+ "handle", Style.RESET_ALL+ "\n with a sphere at the end of it. The display is empty.")
+            print("\n There is a riddle at the top of the slot machine saying:\n\n  With hands full of gold, pull on the globe.\n  Wishing for your gain, I must obtain.\n  Align your needs, wait for my deeds.\n  Cast findings away, let me travail.\n  With one last blink, pull the handgrip.")
 
         def PullHandle_1():
             self.__position = "slot machine"
@@ -1073,44 +1078,46 @@ class Croom:
             }
 
             if(("fridge coin" in self.__inv) and ("fridge coin" not in __useCoinsDict)): __useCoinsDict["fridge coin"] = self.InvOut
-            else: __useCoinsDict.pop("fridge coin", None)
+            elif("fridge coin" in self.__orderOfCoins): __useCoinsDict.pop("fridge coin", None)
             
             if(("vase coin" in self.__inv) and ("vase coin" not in __useCoinsDict)): __useCoinsDict["vase coin"] = self.InvOut
-            else: __useCoinsDict.pop("vase coin", None)
+            elif("vase coin" in self.__orderOfCoins): __useCoinsDict.pop("vase coin", None)
             
             if(("medicine bottle coin" in self.__inv) and ("medicine bottle coin" not in __useCoinsDict)): __useCoinsDict["medicine bottle coin"] = self.InvOut
-            else: __useCoinsDict.pop("medicine bottle coin", None)
+            elif("medicine bottle coin" in self.__orderOfCoins): __useCoinsDict.pop("medicine bottle coin", None)
             
             if(("safe coin" in self.__inv) and ("safe coin" not in __useCoinsDict)): __useCoinsDict["safe coin"] = self.InvOut
-            else: __useCoinsDict.pop("safe coin ", None)
+            elif("safe coin" in self.__orderOfCoins): __useCoinsDict.pop("safe coin ", None)
             
             if(("doll coin" in self.__inv) and ("doll coin" not in __useCoinsDict)): __useCoinsDict["doll coin"] = self.InvOut
-            else: __useCoinsDict.pop("doll coin", None)
+            elif("doll coin" in self.__orderOfCoins): __useCoinsDict.pop("doll coin", None)
             
             if(("costume coin" in self.__inv) and ("costume coin" not in __useCoinsDict)): __useCoinsDict["costume coin"] = self.InvOut
-            else: __useCoinsDict.pop("costume coin", None)
+            elif("costume coin" in self.__orderOfCoins): __useCoinsDict.pop("costume coin", None)
             
             if(("nest coin" in self.__inv) and ("nest coin" not in __useCoinsDict)): __useCoinsDict["nest coin"] = self.InvOut
-            else: __useCoinsDict.pop("nest coin", None)
+            elif("nest coin" in self.__orderOfCoins): __useCoinsDict.pop("nest coin", None)
             
             if(("sandbox coin" in self.__inv) and ("sandbox coin" not in __useCoinsDict)): __useCoinsDict["sandbox coin"] = self.InvOut
-            else: __useCoinsDict.pop("sandbox coin", None)
+            elif("sandbox coin" in self.__orderOfCoins): __useCoinsDict.pop("sandbox coin", None)
             
             if(("rag coin" in self.__inv) and ("rag coin" not in __useCoinsDict)): __useCoinsDict["rag coin"] = self.InvOut
-            else: __useCoinsDict.pop("rag coin", None)
+            elif("rag coin" in self.__orderOfCoins): __useCoinsDict.pop("rag coin", None)
             
             if(("book coin" in self.__inv) and ("book coin" not in __useCoinsDict)): __useCoinsDict["book coin"] = self.InvOut
-            else: __useCoinsDict.pop("book coin", None)
+            elif("book coin" in self.__orderOfCoins): __useCoinsDict.pop("book coin", None)
             
             # Insert coins into slot machine
             while(self.__position == "slot machine"):
-                __actPl = input(Fore.MAGENTA+ "\n Insert coin: ")
-                print(Style.RESET_ALL)
+                if(__numOfInsert < 10):
+                    __actPl = input(Fore.MAGENTA+ "\n Insert coin: ")
+                    print(Style.RESET_ALL)
+                
+                elif(__numOfInsert == 10):
+                    __actPl = input(Fore.MAGENTA+ "\n I choose action: ")
+                    print(Style.RESET_ALL)
 
-                # Case control
                 __actPl = __actPl.lower()
-
-                # Article control
                 __actPl = ArticleCheck(__actPl)
 
                 # "use" control
@@ -1140,13 +1147,13 @@ class Croom:
 
                 for item in self.__orderOfCoins:
                     self.__inv.append(item)
-                    #self.__used.remove(item)
             else:
                 print(" The slot machine starts to play a victorious, but crazy hotchpotch and gradually shines more and more\n until you are completely blinded by it...\n\n")
-                print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n", Style.RESET_ALL)
+                PressEnter()
 
                 self.__position = "outro"
                 self.SaveFct()
+
                 Outro(self.__name, self.__orderOfCoins)
 
         # Local dictionary
@@ -1256,7 +1263,7 @@ class Croom:
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n TERRACE\n")
-        print(Style.RESET_ALL+ " You step on the terrace and immediately start to shiver. Cold wind welcomes you outside together with\n the rustling of fourteen bird's wings. You look around the corner to see a dovecote with", Fore.MAGENTA+ "pigeons.", Style.RESET_ALL)
+        print(Style.RESET_ALL+ " You step on the terrace and immediately start to shiver. Cold wind welcomes you outside together with\n the rustling of twelve bird's wings. You look around the corner to see a dovecote with", Fore.MAGENTA+ "pigeons.", Style.RESET_ALL)
         print(" One of them has a rolled up piece of paper attached to his leg.")
 
         # Pigeon
@@ -1269,7 +1276,7 @@ class Croom:
             while(__attempt < 2):
                 print(" You slowly approach the pigeons and with one swift movement catch one of them...")
                 sleep(2)
-                print(" But it is not the right one. Try again.")
+                print("\n But it is not the right one. Try again.")
 
                 acts = ["catch pigeon", "take pigeon"]
                 ActCompare(acts)
@@ -1278,14 +1285,14 @@ class Croom:
                 
             print(" You slowly approach the pigeons and with one swift movement catch one of them...")
             sleep(2)
-            print(" A note is hanging from his leg! Third one's the charm, right?\n\n You notice, that the box is nearly empty by now, so you take the note, let the pigeon go\n and decide to not bother them again.")
+            print("\n A note is hanging from his leg! Third one's the charm, right?\n\n You notice, that the box is nearly empty by now, so you take the note, let the pigeon go\n and decide to not bother them again.")
 
-            self.__invIn("pigeon note")
+            self.InvIn("pigeon note")
 
         def UseBoxWithSeeds():
             print(" You put the box with seeds on the ground under the dovecote and step aside...")
             sleep(3)
-            print(" It doesn't take long and the pigeons, one by one, fly down and start devouring the seeds.\n You have to act quickly, it won't take long and they will be back in their dovecote\n and out of your reach.")
+            print("\n It doesn't take long and the pigeons, one by one, fly down and start devouring the seeds.\n You have to act quickly, it won't take long and they will be back in their dovecote\n and out of your reach.")
 
             self.__used.append("box with seeds")
 

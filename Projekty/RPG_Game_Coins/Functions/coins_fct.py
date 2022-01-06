@@ -25,7 +25,7 @@ def Coin_Fridge():  # love, kitchen
 @DecoratorToColourCoins
 def Coin_Vase():    # family, dining room
     print("---------------------------------------------------------------------------------------------------------------\n VASE COIN\n")
-    print(" The coin depicts a branched tree with letters.\n---------------------------------------------------------------------------------------------------------------")
+    print(" The coin depicts a branched tree with names.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourCoins
 def Coin_MedicineBottle():  # health, bathroom_1
@@ -50,12 +50,12 @@ def Coin_Costume():   # freedom, attic
 @DecoratorToColourCoins
 def Coin_Nest():    # nature, bedroom
     print("---------------------------------------------------------------------------------------------------------------\n NEST COIN\n")
-    print(" The coin depicts a leaf and head of some animal.\n---------------------------------------------------------------------------------------------------------------")
+    print(" The coin depicts a plant and an animal.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourCoins
-def Coin_Sandbox():    # popularity, playgroung
+def Coin_Sandbox():    # power, playgroung
     print("---------------------------------------------------------------------------------------------------------------\n SANDBOX COIN\n")
-    print(" The coin depicts a person wearing a crown and two people hugging him.\n---------------------------------------------------------------------------------------------------------------")
+    print(" The coin depicts a person wearing a crown and two people kneeling him.\n---------------------------------------------------------------------------------------------------------------")
 
 @DecoratorToColourCoins
 def Coin_Rag():    # peace, cellar
