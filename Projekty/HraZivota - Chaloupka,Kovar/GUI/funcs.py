@@ -11,7 +11,7 @@ col_button = (255, 255, 255)
 pygame.font.init()
 buttonFont = pygame.font.SysFont('Century Gothic', 35)
 clearButton = buttonFont.render('Clear All', True, col_button)
-
+stepButton = buttonFont.render('>>', True, col_button)
 
 def updateSurface():
     """
@@ -25,6 +25,7 @@ def updateSurface():
     surface.fill(col_background)
     surface.blit(startButton, (400, 5))
     surface.blit(clearButton, (600, 5))
+    surface.blit(stepButton, (900, 5))
     boardUpdate(surface)
     pygame.display.update()
 
@@ -43,4 +44,4 @@ def eventHandler():
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_presses = pygame.mouse.get_pressed()
             if mouse_presses[0]:
-                clickHandler(pygame.mouse.get_pos())
+                clickHandler(pygame.mouse.get_pos(), surface)
