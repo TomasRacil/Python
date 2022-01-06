@@ -3,26 +3,8 @@ from time import sleep
 from colorama import Fore, Style
 
 # Internal import
-from Functions.versatile_fct import PressEnter, ArticleCheck, CantDoThat
+from Functions.versatile_fct import ActCompare, PressEnter
 from Functions.outcomes_fct import *
-
-
-def ActEnter(acts):
-    back = False
-
-    while(back == False):
-        actPl = input(Fore.MAGENTA+"\n I choose action: ")
-        print(Style.RESET_ALL)
-        
-        actPl = actPl.lower()
-        actPl = ArticleCheck(actPl)
-
-        for actDef in acts:
-            if(actDef == actPl):
-                back = True
-                break
-            else:
-                CantDoThat()
 
 
 def Outro(playerName, orderOfCoins):
@@ -55,8 +37,7 @@ def Outro(playerName, orderOfCoins):
     print(" the same you remeber from the library.")
 
     acts = ["open book", "look at book", "read book"]
-    ActEnter(acts)
-    acts = acts.clear()
+    ActCompare(acts)
 
     print(f" The book is now titled \"{playerName}\'s beginning\". You open it and start reading...")
 
@@ -77,14 +58,12 @@ def Outro(playerName, orderOfCoins):
     print(" You flip through the empty pages to the back of the book and indeed find a key.")
 
     acts = ["look at key", "take key"]
-    ActEnter(acts)
-    acts = acts.clear()
+    ActCompare(acts)
 
     print(" You take the key and look at it. Its handle is pretty long and ends with a small model of the house.\n You have to go try it!\n\n Like right now!")
 
     acts = ["go to villa", "go to house", "go to old house"]
-    ActEnter(acts)
-    acts = acts.clear()
+    ActCompare(acts)
 
     print(" You jump out of the bed, take a jacket and in hurry put the shoes on. As you run down the street, you\n remeber your first trip to the old house and how uncertain and scared you were. Total opposite to now.")
     
@@ -92,8 +71,7 @@ def Outro(playerName, orderOfCoins):
     print(Style.RESET_ALL+ " When you finaly run up to the house, your jaw drops open. The villa looks like the house\n at the tapestry in the dining room. It is clean, bright and fixed. You go to the front\n porch and stop in front of the main door.")
 
     acts = ["use key", "open door"]
-    ActEnter(acts)
-    acts = acts.clear()
+    ActCompare(acts)
 
     print(" You put easily the key into the key hole and unlock the door. The door opens without hesistation as if it\n was awaiting your arrival. You enter the house, going swiftly form room to room,")
     print(" you look for signs of destruction. But they are just not there. Everything is neat, beautiful and\n according to your liking. Even the vase you broke is now fixed and well, nourishing its")

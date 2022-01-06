@@ -23,15 +23,16 @@ def Instructions(playerName):
     print(" You can go back to Main menu after writing a command -exit- and save a game using -save-.\n\n Now, try to look at all of the commands.")
 
     # Enter command -help-
-    ActCompare("help")
-    PrintHelp()
-    PressEnter()
+    acts = []
+    ActCompare(acts)
 
     print((" Congratulations! You made it!\n\n Now, try to get back to the Main menu."))
 
     # Enter command -exit-
-    ActCompare("exit")
-    print(" You didn't think I would let you quit so soon, did you?\n Consider next part a small film, that can not be skipped\n and where you can not use -help-, -exit-, -save-, etc.\n\n Brace yourself, your adventure is beginning...\n")
+    acts = ["exit"]
+    ActCompare(acts)
+
+    print(" You didn't think I would let you quit so soon, did you?\n Consider next part a small film, that can not be skipped\n and where you can not use -exit- and -save-.\n\n Brace yourself, your adventure is beginning...\n")
     PressEnter()
 
     # Intro to the story
@@ -40,21 +41,29 @@ def Instructions(playerName):
     print(" DING! DONG! DING! DONG!\n\n You were expecting no one and you didn't order anything either.")
 
     # Enter command -go straight-
-    ActCompare("go straight")
+    acts = ["go straight"]
+    ActCompare(acts)
+    
     print(" You walk up to the door and are now right in front of it.")
 
     # Enter command -open door-
-    ActCompare("open door")
+    acts = ["open door"]
+    ActCompare(acts)
+    
     print(" You are slowly openning the door while carefully looking behind it. Suddenly you smash it open.\n\n You stumble back, your eyes wide open.\n")
     PressEnter()
-    print(" There's no one, but an envelope. It lies on the ground, your name and address nicely written on the top of it.\n\n DING! DONG! DING! DONG!")
+    print(" There's no one, but", Fore.MAGENTA+ "an envelope.", Style.RESET_ALL+ " It lies on the ground, your name and address nicely written on the top of it.\n\n DING! DONG! DING! DONG!")
 
     # Enter command -take envelope-
-    ActCompare("take envelope")
+    acts = ["take envelope"]
+    ActCompare(acts)
+    
     print(" You picked up the envelope and the ringing stopped. It looks rather old and the paper is smooth. You play with it\n in your hands a bit scared to look what's inside.")
 
 	# Enter command -open envelope-
-    ActCompare("open envelope")
+    acts = ["open envelope"]
+    ActCompare(acts)
+    
     print(" You open the envelope, take out the letter and start reading.\n")
     PressEnter()
     
@@ -76,36 +85,45 @@ def Instructions(playerName):
     # At the house
     print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n FRONT PORCH\n")
     print(Style.RESET_ALL+ " It's 6 p.m. and you are standing on a front porch of the huge old house not really sure what to do.\n The creaking of planks under your feet combined with the howling of the autumn wind and a ticking")
-    print(" of your watch gives you an unsettling feeling. It is gettig darker by every second passed and all you see\n is a rusty mailbox and a massive main door. However, there's nothing out of ordinary.")
+    print(" of your watch gives you an unsettling feeling. It is gettig darker by every second passed and all you see\n is a rusty", Fore.MAGENTA+ "mailbox", Style.RESET_ALL+ " and a massive main door. However, there's nothing out of ordinary.")
 
     # Enter command -look at mailbox-
-    ActCompare("look at mailbox")
-    print(" You look into the mailbox just in case, already feeling stupid for letting someone prank you.\n\n And you can't believe your eyes...\n\n There is a note! Athough it is barely visible because of the deepenning darkness around you.")
+    acts = ["look at mailbox", "open mailbox"]
+    ActCompare(acts)
+
+    print(" You look into the mailbox just in case, already feeling stupid for letting someone prank you.\n\n And you can't believe your eyes...\n\n There is", Fore.MAGENTA+ "a note!", Style.RESET_ALL+ " Athough it is barely visible because of the deepenning darkness around you.")
     
     # Enter command -take note-
-    ActCompare("take note")
+    acts = ["take note"]
+    ActCompare(acts)
+
     print(" You fish the note out of the mailbox by your hand and start reading.")
     Note_Mailbox(playerName)
 
-    print(" You look up to inspect the door frame and notice a tiny button way above your head behind a small piece\n of a plank that is sticking out from the frame.\n\n It must be the doorbell!")
+    print(" You look up to inspect the door frame and notice a tiny button way above your head behind a small piece\n of a plank that is sticking out from the frame.\n\n It must be", Fore.MAGENTA+ "the doorbell!", Style.RESET_ALL)
 
     # Enter command -use doorbell-
-    ActCompare("use doorbell")
+    acts = ["use doorbell"]
+    ActCompare(acts)
+    
     print(" You had to get on your tiptoes to reach it. The bell didn't let you wait for itself too long. It sounded\n vintage, almost ancient. After three loud DING-DONGS, the door opend and created a small crack\n in otherwise impregnable wall.")
 
     # Enter command -open door-
-    ActCompare("open door")
+    acts = ["open door"]
+    ActCompare(acts)
 
-    print(" You opend the door.")
+    print(" You opened the door.")
     
     # Enter command -go straight-
-    ActCompare("go straight")
+    acts = ["go straight"]
+    ActCompare(acts)
 
     print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n MAIN HALLWAY\n")
     print(Style.RESET_ALL+ " You are standing in the Main hallway, but can't see anything. It's pitch dark inside. Your're not sure,\n what you have packed in your backpack, but maybe you can find there something useful.")
     
     # Enter command -inventory-
-    ActCompare("inventory")
+    acts = ["inventory"]
+    ActCompare(acts)
 
     # Print inventory
     print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------\n INVENTORY\n")
@@ -118,16 +136,21 @@ def Instructions(playerName):
     PressEnter()
 
     # Enter command -use flashlight-
-    ActCompare("use flashlight")
-    print(" Now that you can see better, you look around yourself and notice door on the left and fuses on the right.")
+    acts = ["use flashlight"]
+    ActCompare(acts)
+
+    print(" Now that you can see better, you look around yourself and notice door on the left and", Fore.MAGENTA+ "fuses", Style.RESET_ALL+ " on the right.")
 
     # Enter command -use fuses-
-    ActCompare("use fuses")
+    acts = ["use fuses"]
+    ActCompare(acts)
+
     print(" Nothing is happening for a few seconds, but then you almost go blind, when a dim light lits up the house.\n You have no use for your flashlight now, so you put it back in your backpack.")
     print("\n Then you draw on a piece of paper your position in the house creating a simple map.\n\n Look at the map.")
 
     # Enter command -map-
-    ActCompare("map")
+    acts = ["map"]
+    ActCompare(acts)
     
     # Print map
     print(Fore.YELLOW+ "---------------------------------------------------------------------------------------------------------------\n MAP\n")
@@ -137,4 +160,3 @@ def Instructions(playerName):
 
     print(" Quick tip: You can access your map any time during your game by simply writing -map- and go back\n to any place you like by typing -go to [place]-.\n")
     PressEnter()
-

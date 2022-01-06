@@ -39,7 +39,7 @@ def Menu(low, high, plus):
             print(Style.RESET_ALL)
 
 
-def ActCompare(actDef):
+def ActCompare(acts):
     '''
     This function lets user enter his desired command and compares it with
     a command that he is supposed to enter according to the storymaker.
@@ -52,17 +52,26 @@ def ActCompare(actDef):
 
     '''
     
-    while(True):
+    back = False
+
+    while(back == False):
         actPl = input(Fore.MAGENTA+"\n I choose action: ")
         print(Style.RESET_ALL)
-
+        
         actPl = actPl.lower()
         actPl = ArticleCheck(actPl)
+
+        if(actPl == "help"):
+            PrintHelp()
+            back = True
         
-        if(actPl == actDef):
-            break
         else:
-            CantDoThat()
+            for actDef in acts:
+                if(actDef == actPl):
+                    back = True
+                    break
+                else:
+                    CantDoThat()
 
 
 def PressEnter():   # Lets user press enter to continue. Exists to stop loading loads of text all at once
@@ -75,6 +84,7 @@ def PrintHelp():  # Prints all possible commands or parts of them
     print(Style.RESET_ALL+ "  Crucial commands:  help, save, exit, inventory, map\n  Moving  commands:  go + /straight/back/left/right/down/up/to [place]\n  Action  commands:  take/use/look at/open/break/pull + [item]")
     print(Fore.YELLOW+ "------------------------------------------------------------------------")
     print(Style.RESET_ALL)
+    PressEnter()
 
 
 def ArticleCheck(command):
