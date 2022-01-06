@@ -14,6 +14,9 @@ clearButton = buttonFont.render('Clear All', True, col_button)
 
 
 def updateSurface():
+    """
+    This function fills surface with colors, buttons and updated game board.
+	"""
     if not getRunning():
         startButton = buttonFont.render('Start', True, col_button)
     else:
@@ -27,6 +30,11 @@ def updateSurface():
 
 
 def eventHandler():
+    """
+    Event handler function for following events:
+        Quit, 
+        Mouse Button Down
+	"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()

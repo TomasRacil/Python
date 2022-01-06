@@ -4,12 +4,19 @@ import pygame
 board = np.zeros((80, 120))
 running = False
 
+#Colors in RGB
 col_dead = (10, 10, 40)
 col_aboutToDie = (200, 200, 225)
 col_alive = (255, 255, 215)
 
 
 def clickHandler(coords):
+    """
+	Function for handling on what user clicked: game board, Start/stop button, clear all button.
+	
+	Args:
+		coords (Tuple[int, int]): Coordinates where left mouse button was clicked
+	"""
     global running
     global board
     # GAME BOARD
@@ -37,6 +44,13 @@ def clickHandler(coords):
 
 
 def boardUpdate(surface):
+    """
+    This function calculates next state of game board after applying 4 rules of
+    Conway's game of life.
+	
+	Args:
+		surface (pygame.Surface): pygame surface that this function draws on
+	"""
     global board
     newBoard = np.zeros((board.shape[0], board.shape[1]))
 
@@ -59,4 +73,8 @@ def boardUpdate(surface):
 
 
 def getRunning():
+    """
+	Returns:
+		bool: wheter game is running or paused
+	"""
     return running
