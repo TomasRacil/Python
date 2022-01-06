@@ -6,7 +6,7 @@ from Functions.versatile_fct import PressEnter
 
 
 def DecoratorToColourLetters(func):
-    # To colour all letters in light blue colour.
+    # Colours letters in blue colour.
 
     def wrapper(*args, **kwargs):
         print(Fore.BLUE)
@@ -16,6 +16,7 @@ def DecoratorToColourLetters(func):
     return wrapper
 
 
+# Funcions printing letters
 @DecoratorToColourLetters
 def Letter_Invitation(playerName):
     print("---------------------------------------------------------------------------------------------------------------\n INVITATION LETTER\n")

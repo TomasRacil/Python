@@ -13,6 +13,7 @@ def NewGame(choicePlayer, filePath):
         filePath(str):      The path to the file that is going to store info about player and his progress.
 
     Returns:
+        0
         
     '''
 
@@ -39,6 +40,7 @@ def LoadGame(choicePlayer, filePath):
         filePath(str):      The path to the file that is going to store info about player and his progress.
 
     Returns:
+        0
         
     '''
 
@@ -46,7 +48,7 @@ def LoadGame(choicePlayer, filePath):
     
     player.LoadGame()
 
-    if(player.position == "outro"):
+    if(player.position == "outro"):     # if the game has been played to the end, only the ending story will be replayed
         Outro(player.name, player.orderOfCoins)
     else:
         room = Croom(player.name, player.inv, player.map, player.used, filePath)   # creates Croom instance

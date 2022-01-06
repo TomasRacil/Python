@@ -6,7 +6,7 @@ from Functions.versatile_fct import PressEnter
 
 
 def DecoratorToColourCoins(func):
-    # To colour all letters in light red colour.
+    # Colours coin descriptions in yellow colour.
 
     def wrapper(*args, **kwargs):
         print(Fore.YELLOW)
@@ -16,6 +16,7 @@ def DecoratorToColourCoins(func):
     return wrapper
 
 
+# Funcions printing coin descriptions
 @DecoratorToColourCoins
 def Coin_Fridge():  # love, kitchen
     print("---------------------------------------------------------------------------------------------------------------\n FRIDGE COIN\n")

@@ -8,7 +8,7 @@ class Cplayer:
         self.inv = []       # list of items in inventory
         self.map = []       # list of places in map
         self.used = []      # used items from inventory
-        self.orderOfCoins = []
+        self.orderOfCoins = []      # list of the coins in order that they were used
         
         # Private
         self.__player = choicePlayer     # number of player that user chose

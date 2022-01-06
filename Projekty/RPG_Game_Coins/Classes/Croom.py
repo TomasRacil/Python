@@ -16,14 +16,15 @@ from Functions.outro_fct import *
 class Croom:
     def __init__(self, name, inv, map, used, filePath):
         self.__name = name
-        self.inv = inv
-        self.map = map
-        self.used = used
+        self.__inv = inv
+        self.__map = map
+        self.__used = used
         self.__filePath = filePath
 
         self.__position = "start"
         self.__orderOfCoins = []
 
+        # Commands that can be called any time
         self.__globalComDict = {
             "help":PrintHelp,
             "exit":self.ExitFct,
@@ -43,33 +44,36 @@ class Croom:
 
 
     # System functions
-    def ExitFct(self):          # D
+    def ExitFct(self):
+        # Exits the game
+
         self.SaveFct()
         self.__position = "exit"
     
     def SaveFct(self):
-        # Saves player's progress by saving his name, inventory and map to a file.
+        # Saves player's progress.
 
         print(Fore.RED+ " Game saved", Style.RESET_ALL)
 
         self.__file = open(self.__filePath, "w")
         
-        self.__invStr = "".join([self.__thing + ";" for self.__thing in self.inv])
-        self.__mapStr = "".join([self.__place + ";" for self.__place in self.map])
-        self.__usedStr = "".join([self.__thing + ";" for self.__thing in self.used])
+        self.__invStr = "".join([self.__thing + ";" for self.__thing in self.__inv])
+        self.__mapStr = "".join([self.__place + ";" for self.__place in self.__map])
+        self.__usedStr = "".join([self.__thing + ";" for self.__thing in self.__used])
         self.__orderOfCoinsStr = "".join([self.__coin + ";" for self.__coin in self.__orderOfCoins])
 
         self.__file.write(f"{self.__name}\n{self.__position}\n{self.__invStr}\n{self.__mapStr}\n{self.__usedStr}\n{self.__orderOfCoinsStr}\n")
         self.__file.close()
 
     def PrintInv(cls):
+        # Prints inventory
+        # Prints 4 items in row, if not less remaining, then less
+
         __number = len(cls.inv)
         __i = 0
 
         print(Fore.YELLOW+ "------------------------------------------------------------------------\n INVENTORY\n", Style.RESET_ALL)
-        
-        #print(cls.inv)
-        
+                
         while(__number != 0):
             if(__number > 4 or __number == 4):
                 if(__number > 4):
@@ -92,13 +96,14 @@ class Croom:
         print(Style.RESET_ALL)
 
     def PrintMap(cls):
+        # Prints map
+        # Prints 4 items in row, if not less remaining, then less
+
         __number = len(cls.map)
         __i = 0
 
         print(Fore.YELLOW+ "------------------------------------------------------------------------\n MAP\n", Style.RESET_ALL)
-        
-        #print(cls.map)
-        
+                
         while(__number != 0):
             if(__number > 4 or __number == 4):
                 if(__number > 4):
@@ -120,86 +125,101 @@ class Croom:
         print(Fore.YELLOW+ "------------------------------------------------------------------------")
         print(Style.RESET_ALL)
 
-    def UpdateGCD_map(self):    # D
+    def UpdateGCD_map(self):
+        # Updates map commands in __globalComDict according to the __map list
+
         # Underground
-        if(("cellar" in self.map) and ("go to cellar" not in self.__globalComDict)):    self.__globalComDict["go to cellar"] = self.Cellar
+        if(("cellar" in self.__map) and ("go to cellar" not in self.__globalComDict)):    self.__globalComDict["go to cellar"] = self.Cellar
         
         # First floor
-        if(("workroom" in self.map)            and ("go to workroom" not in self.__globalComDict)):            self.__globalComDict["go to workroom"] = self.WorkRoom
-        if(("kitchen" in self.map)             and ("go to kitchen" not in self.__globalComDict)):             self.__globalComDict["go to kitchen"] = self.Kitchen
-        if(("dining room" in self.map)         and ("go to dining room" not in self.__globalComDict)):         self.__globalComDict["go to dining room"] = self.DiningRoom
-        if(("pantry" in self.map               and ("go to pantry" not in self.__globalComDict))):             self.__globalComDict["go to pantry"] = self.Pantry
-        if(("bathroom downstairs" in self.map) and ("go to bathroom downstairs" not in self.__globalComDict)): self.__globalComDict["go to bathroom downstairs"] = self.Bathroom_1
-        if(("winter garden" in self.map        and ("go to winter garden" not in self.__globalComDict))):      self.__globalComDict["go to winter garden"] = self.WinterGarden
-        if(("garden" in self.map)              and ("go to garden" not in self.__globalComDict)):              self.__globalComDict["go to garden"] = self.Garden
-        if(("shed" in self.map)                and ("go to shed" not in self.__globalComDict)):                self.__globalComDict["go to shed"] = self.Shed
-        if(("playground" in self.map)          and ("go to playground" not in self.__globalComDict)):          self.__globalComDict["go to playground"] = self.Playground
-        if(("gazebo" in self.map)              and ("go to gazebo" not in self.__globalComDict)):              self.__globalComDict["go to gazebo"] = self.Gazebo
+        if(("workroom" in self.__map)            and ("go to workroom" not in self.__globalComDict)):            self.__globalComDict["go to workroom"] = self.WorkRoom
+        if(("kitchen" in self.__map)             and ("go to kitchen" not in self.__globalComDict)):             self.__globalComDict["go to kitchen"] = self.Kitchen
+        if(("dining room" in self.__map)         and ("go to dining room" not in self.__globalComDict)):         self.__globalComDict["go to dining room"] = self.DiningRoom
+        if(("pantry" in self.__map               and ("go to pantry" not in self.__globalComDict))):             self.__globalComDict["go to pantry"] = self.Pantry
+        if(("bathroom downstairs" in self.__map) and ("go to bathroom downstairs" not in self.__globalComDict)): self.__globalComDict["go to bathroom downstairs"] = self.Bathroom_1
+        if(("winter garden" in self.__map        and ("go to winter garden" not in self.__globalComDict))):      self.__globalComDict["go to winter garden"] = self.WinterGarden
+        if(("garden" in self.__map)              and ("go to garden" not in self.__globalComDict)):              self.__globalComDict["go to garden"] = self.Garden
+        if(("shed" in self.__map)                and ("go to shed" not in self.__globalComDict)):                self.__globalComDict["go to shed"] = self.Shed
+        if(("playground" in self.__map)          and ("go to playground" not in self.__globalComDict)):          self.__globalComDict["go to playground"] = self.Playground
+        if(("gazebo" in self.__map)              and ("go to gazebo" not in self.__globalComDict)):              self.__globalComDict["go to gazebo"] = self.Gazebo
         
         # Second floor
-        if(("main hallway upstairs" in self.map) and ("go to main hallway upstairs" not in self.__globalComDict)): self.__globalComDict["go to main hallway upstairs"] = self.MainHallway_22
-        if(("library" in self.map)               and ("go to library" not in self.__globalComDict)):               self.__globalComDict["go to library"] = self.Library
-        if(("terrace" in self.map)               and ("go to terrace" not in self.__globalComDict)):               self.__globalComDict["go to terrace"] = self.Terrace
-        if(("bathroom upstairs" in self.map)     and ("go to bathroom upstairs" not in self.__globalComDict)):     self.__globalComDict["go to bathroom upstairs"] = self.Bathroom_2
-        if(("childrens room" in self.map)        and ("go to childrens room" not in self.__globalComDict)):        self.__globalComDict["go to childrens room"] = self.ChildrensRoom
-        if(("bedroom" in self.map)               and ("go to bedroom" not in self.__globalComDict)):               self.__globalComDict["go to bedroom"] = self.Bedroom
+        if(("main hallway upstairs" in self.__map) and ("go to main hallway upstairs" not in self.__globalComDict)): self.__globalComDict["go to main hallway upstairs"] = self.MainHallway_22
+        if(("library" in self.__map)               and ("go to library" not in self.__globalComDict)):               self.__globalComDict["go to library"] = self.Library
+        if(("terrace" in self.__map)               and ("go to terrace" not in self.__globalComDict)):               self.__globalComDict["go to terrace"] = self.Terrace
+        if(("bathroom upstairs" in self.__map)     and ("go to bathroom upstairs" not in self.__globalComDict)):     self.__globalComDict["go to bathroom upstairs"] = self.Bathroom_2
+        if(("childrens room" in self.__map)        and ("go to childrens room" not in self.__globalComDict)):        self.__globalComDict["go to childrens room"] = self.ChildrensRoom
+        if(("bedroom" in self.__map)               and ("go to bedroom" not in self.__globalComDict)):               self.__globalComDict["go to bedroom"] = self.Bedroom
 
         # Roof
-        if(("attic" in self.map) and ("go to attic" not in self.__globalComDict)): self.__globalComDict["go to attic"] = self.Attic
+        if(("attic" in self.__map) and ("go to attic" not in self.__globalComDict)): self.__globalComDict["go to attic"] = self.Attic
 
     def UpdateGCD_inv(self):
+        # Updates inventory commands in __globalComDict according to the __inv list
+
         # Letters
-        if(("fridge letter" in self.inv) and ("read fridge letter" not in self.__globalComDict)): self.__globalComDict["read fridge letter"] = Letter_Fridge
-        if(("pigeon note" in self.inv)   and ("read pigeon note" not in self.__globalComDict)):   self.__globalComDict["read pigeon note"] = Note_Pigeon
+        if(("fridge letter" in self.__inv) and ("read fridge letter" not in self.__globalComDict)): self.__globalComDict["read fridge letter"] = Letter_Fridge
+        if(("pigeon note" in self.__inv)   and ("read pigeon note" not in self.__globalComDict)):   self.__globalComDict["read pigeon note"] = Note_Pigeon
 
         # Keys
-        if(("table key" in self.inv) and ("look at table key" not in self.__globalComDict)): self.__globalComDict["look at table key"] = Key_Table
+        if(("table key" in self.__inv) and ("look at table key" not in self.__globalComDict)): self.__globalComDict["look at table key"] = Key_Table
         else: self.__globalComDict.pop("look at table key", None)
 
-        if(("chest key" in self.inv) and ("look at chest key" not in self.__globalComDict)): self.__globalComDict["look at chest key"] = Key_Chest
+        if(("chest key" in self.__inv) and ("look at chest key" not in self.__globalComDict)): self.__globalComDict["look at chest key"] = Key_Chest
         else: self.__globalComDict.pop("look at chest key", None)
 
-        if(("soap key" in self.inv) and ("look at soap key" not in self.__globalComDict)): self.__globalComDict["look at soap key"] = Key_Soap
+        if(("soap key" in self.__inv) and ("look at soap key" not in self.__globalComDict)): self.__globalComDict["look at soap key"] = Key_Soap
         else: self.__globalComDict.pop("look at soap key", None)
 
-        if(("safe key" in self.inv)  and ("look at safe key" not in self.__globalComDict)):  self.__globalComDict["look at safe key"] = Key_Safe
+        if(("safe key" in self.__inv)  and ("look at safe key" not in self.__globalComDict)):  self.__globalComDict["look at safe key"] = Key_Safe
         else: self.__globalComDict.pop("look at safe key", None)
 
-        if(("swing key" in self.inv) and ("look at swing key" not in self.__globalComDict)): self.__globalComDict["look at swing key"] = Key_Swing
+        if(("swing key" in self.__inv) and ("look at swing key" not in self.__globalComDict)): self.__globalComDict["look at swing key"] = Key_Swing
         else: self.__globalComDict.pop("look at swing key", None)
 
         # Coins
-        if(("fridge coin" in self.inv) and ("look at fridge coin" not in self.__globalComDict)): self.__globalComDict["look at fridge coin"] = Coin_Fridge
+        if(("fridge coin" in self.__inv) and ("look at fridge coin" not in self.__globalComDict)): self.__globalComDict["look at fridge coin"] = Coin_Fridge
         else: self.__globalComDict.pop("look at fridge coin", None)
         
-        if(("vase coin" in self.inv) and ("look at vase coin" not in self.__globalComDict)): self.__globalComDict["look at vase coin"] = Coin_Vase
+        if(("vase coin" in self.__inv) and ("look at vase coin" not in self.__globalComDict)): self.__globalComDict["look at vase coin"] = Coin_Vase
         else: self.__globalComDict.pop("look at vase coin", None)
         
-        if(("medicine bottle coin" in self.inv) and ("look at medicine bottle coin" not in self.__globalComDict)): self.__globalComDict["look at medicine bottle coin"] = Coin_MedicineBottle
+        if(("medicine bottle coin" in self.__inv) and ("look at medicine bottle coin" not in self.__globalComDict)): self.__globalComDict["look at medicine bottle coin"] = Coin_MedicineBottle
         else: self.__globalComDict.pop("look at medicine bottle coin", None)
         
-        if(("safe coin" in self.inv) and ("look at safe coin" not in self.__globalComDict)): self.__globalComDict["look at safe coin"] = Coin_Safe
+        if(("safe coin" in self.__inv) and ("look at safe coin" not in self.__globalComDict)): self.__globalComDict["look at safe coin"] = Coin_Safe
         else: self.__globalComDict.pop("look atsafe coin ", None)
         
-        if(("doll coin" in self.inv) and ("look at doll coin" not in self.__globalComDict)): self.__globalComDict["look at doll coin"] = Coin_Doll
+        if(("doll coin" in self.__inv) and ("look at doll coin" not in self.__globalComDict)): self.__globalComDict["look at doll coin"] = Coin_Doll
         else: self.__globalComDict.pop("look at doll coin", None)
         
-        if(("costume coin" in self.inv) and ("look at costume coin" not in self.__globalComDict)): self.__globalComDict["look at costume coin"] = Coin_Costume
+        if(("costume coin" in self.__inv) and ("look at costume coin" not in self.__globalComDict)): self.__globalComDict["look at costume coin"] = Coin_Costume
         else: self.__globalComDict.pop("look at costume coin", None)
         
-        if(("nest coin" in self.inv) and ("look at nest coin" not in self.__globalComDict)): self.__globalComDict["look at nest coin"] = Coin_Nest
+        if(("nest coin" in self.__inv) and ("look at nest coin" not in self.__globalComDict)): self.__globalComDict["look at nest coin"] = Coin_Nest
         else: self.__globalComDict.pop("look at nest coin", None)
         
-        if(("sandbox coin" in self.inv) and ("look at sandbox coin" not in self.__globalComDict)): self.__globalComDict["look at sandbox coin"] = Coin_Sandbox
+        if(("sandbox coin" in self.__inv) and ("look at sandbox coin" not in self.__globalComDict)): self.__globalComDict["look at sandbox coin"] = Coin_Sandbox
         else: self.__globalComDict.pop("look at sandbox coin", None)
         
-        if(("rag coin" in self.inv) and ("look at rag coin" not in self.__globalComDict)): self.__globalComDict["look at rag coin"] = Coin_Rag 
+        if(("rag coin" in self.__inv) and ("look at rag coin" not in self.__globalComDict)): self.__globalComDict["look at rag coin"] = Coin_Rag 
         else: self.__globalComDict.pop("look at rag coin", None)
         
-        if(("book coin" in self.inv) and ("look at book coin" not in self.__globalComDict)): self.__globalComDict["look at book coin"] = Coin_Book
+        if(("book coin" in self.__inv) and ("look at book coin" not in self.__globalComDict)): self.__globalComDict["look at book coin"] = Coin_Book
         else: self.__globalComDict.pop("look at book coin", None)
 
-    def GetCommand(cls, localComDict):  # D
+    def GetCommand(cls, localComDict):
+        '''
+        Lets user enter his choice of action. Controls thatit is a defined
+        option, corrects it to lower case and gets rid of articles.
+
+        Args:
+            localComDict(dict): Local dictionary passed from a room.
+
+        Returns:
+            A value corresponding to the command in either of dictionaries.
+        '''
+
         while(True):
             __command = input(Fore.MAGENTA+ "\n I choose action: ")
             print(Style.RESET_ALL)
@@ -232,32 +252,40 @@ class Croom:
             else:
                 CantDoThat()
 
-    def InvIn(self, item):      # D
-        if(item not in self.inv):
-            self.inv.append(item)
+    def InvIn(self, item):
+        # Stores item in __inv list
+
+        if(item not in self.__inv):
+            self.__inv.append(item)
             self.UpdateGCD_inv()
             print(f"\n You took the {item}.\n")
 
-    def InvOut(self, command):  # D
+    def InvOut(self, command):
+        # Deletes an item from __inv after using it
+
         command = command.replace("use ", "")
         try:
-            self.inv.remove(command)
+            self.__inv.remove(command)
             self.UpdateGCD_inv()
         except:
             pass
 
-    def MapIn(self):            # D
-        if(self.__position not in self.map):
-            self.map.append(self.__position)
+    def MapIn(self):
+        # Stores place in __map list
+
+        if(self.__position not in self.__map):
+            self.__map.append(self.__position)
             self.UpdateGCD_map()
 
-    def UnlockedDoor(self):     # D
+    def UnlockedDoor(self):
+        # Prints that you have unlocked the door
+
         print(" You have unlocked the door.")
 
     # Underground
-    def Cellar(self):           # DC
+    def Cellar(self):
         self.__position = "cellar"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n CELLAR\n")
@@ -268,7 +296,7 @@ class Croom:
             print(" When you switch on the flashlight, a cone of light illuminates your surroundings. The cellar looks like\n a workshop. There are many various tools, tables and shelves, but only one table has", Fore.MAGENTA+ "a drawer.", Style.RESET_ALL)
             print(" There is also", Fore.MAGENTA+ "a basket", Style.RESET_ALL+ "in one corner of the cellar.")
 
-            self.InvIn("flashlight")
+            self.__invIn("flashlight")
 
             __localComDict["look at drawer"] = OpenDrawer_1
             __localComDict["open drawer"] = OpenDrawer_1
@@ -299,15 +327,15 @@ class Croom:
         }
 
         def UpdateLCD():
-            if(("flashlight" in self.inv) and ("open drawer" not in __localComDict)):
+            if(("flashlight" in self.__inv) and ("open drawer" not in __localComDict)):
                 __localComDict["use flashlight"] = UseFlashlight
 
-            if("pliers" in self.inv):
+            if("pliers" in self.__inv):
                 __localComDict.update({"open drawer":OpenDrawer_2})
                 __localComDict.pop("look at drawer", None)
                 __localComDict.pop("take pliers", None)
 
-            if("rag coin" in self.inv):
+            if("rag coin" in self.__inv):
                 __localComDict.update({"look at basket":LookAtBasket_2})
                 __localComDict.pop("look at coin", None)
                 __localComDict.pop("take coin", None)
@@ -315,10 +343,13 @@ class Croom:
         while(self.__position == "cellar"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
+
+            self.UpdateGCD_inv()
 
 
     # First floor
-    def FrontPorch(self):       # DC
+    def FrontPorch(self):       
         self.__position = "front porch"
 
         # Description
@@ -338,7 +369,9 @@ class Croom:
         while(self.__position == "front porch"):
             self.GetCommand(__localComDict)
 
-    def MainHallway_11(self):   # DC
+            self.UpdateGCD_inv()
+
+    def MainHallway_11(self):   
         self.__position = "MainHallway_11"
 
         # Description
@@ -350,7 +383,7 @@ class Croom:
         
         def UseKey():
             self.UnlockedDoor()
-            self.used.append("table key")
+            self.__used.append("table key")
 
         # Local dictionary
         __localComDict = {
@@ -360,18 +393,21 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("table key" in self.used):
+            if("table key" in self.__used):
                 __localComDict.update({"go left":self.WorkRoom})
-            elif("table key" in self.inv):
+            elif("table key" in self.__inv):
                 __localComDict["use table key"] = UseKey
 
         while(self.__position == "MainHallway_11"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def WorkRoom(self):         # DC
+            self.UpdateGCD_inv()
+
+    def WorkRoom(self):         
         self.__position = "workroom"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+      "\n---------------------------------------------------------------------------------------------------------------\n WORKROOM\n")
@@ -386,9 +422,11 @@ class Croom:
 
         # Statue
         def LookAtStatue():
-            print(" The golden statue looks like a man, an older gentleman, to be precise. His walking stick is pointing toward\n", Fore.MAGENTA+ "a painting", Style.RESET_ALL+ "on the wall. You would bet anything, that just a second ago, it was ponting to his feet.\n ...")
+            print(" The golden statue looks like a man, an older gentleman, to be precise. His walking stick is pointing toward\n", Fore.MAGENTA+ "a painting", Style.RESET_ALL+ "on the wall. You would bet anything, that just a second ago, it was ponting to his feet.")
+            PressEnter()
+            print("\n ...")
             sleep(3)
-            print(" Weird.")
+            print("\n Weird.")
 
             __localComDict["look at painting"] = LookAtPainting
 
@@ -438,11 +476,11 @@ class Croom:
         }
 
         def UpdateLCD():
-            if(("safe key" in self.inv) or ("safe key" in self.used)):
+            if(("safe key" in self.__inv) or ("safe key" in self.__used)):
                 __localComDict.pop("look at key", None)
                 __localComDict.pop("take key", None)
 
-                if("safe coin" in self.inv):
+                if("safe coin" in self.__inv):
                     __localComDict.update({"open safe":OpenSafe_4})
                     __localComDict.pop("look at coin", None)
                     __localComDict.pop("take coin", None)
@@ -452,7 +490,7 @@ class Croom:
                     __localComDict["take coin"] = "safe coin"
             
             else:
-                if("safe coin" in self.inv):
+                if("safe coin" in self.__inv):
                     __localComDict.update({"open safe":OpenSafe_2})
                     __localComDict.pop("look at coin", None)
                     __localComDict.pop("take coin", None)
@@ -460,8 +498,11 @@ class Croom:
         while(self.__position == "workroom"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def MainHallway_12(self):   # DC
+            self.UpdateGCD_inv()
+
+    def MainHallway_12(self):   
         self.__position = "MainHallway_12"
 
         # Description
@@ -479,7 +520,9 @@ class Croom:
         while(self.__position == "MainHallway_12"):
             self.GetCommand(__localComDict)
 
-    def Stairs_1(self):         # DC
+            self.UpdateGCD_inv()
+
+    def Stairs_1(self):         
         self.__position = "Stairs_1"
 
         # Description
@@ -491,7 +534,7 @@ class Croom:
         
         def UseKey():
             self.UnlockedDoor()
-            self.used.append("chest key")
+            self.__used.append("chest key")
 
         # Local dictionary
         __localComDict = {
@@ -502,19 +545,22 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("chest key" in self.inv):
+            if("chest key" in self.__inv):
                 __localComDict["use chest key"] = UseKey
-            elif("chest key" in self.used):
+            elif("chest key" in self.__used):
                 __localComDict.update({"go down":self.Cellar})
                 __localComDict.update({"go straight":self.Cellar})
 
         while(self.__position == "Stairs_1"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Kitchen(self):          # DC
+            self.UpdateGCD_inv()
+
+    def Kitchen(self):          
         self.__position = "kitchen"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+      "\n---------------------------------------------------------------------------------------------------------------\n KITCHEN\n")
@@ -567,13 +613,13 @@ class Croom:
         }
 
         def UpdateLCD():
-            if(("pocket knife" in self.inv) or ("pocket knife" in self.used)):
+            if(("pocket knife" in self.__inv) or ("pocket knife" in self.__used)):
                 __localComDict.update({"open cupboard":OpenCupboard_2})
                 __localComDict.pop("take knife", None)
                 __localComDict.pop("take pocket knife", None)
 
-            if("fridge letter" in self.inv):
-                if("fridge coin" in self.inv):
+            if("fridge letter" in self.__inv):
+                if("fridge coin" in self.__inv):
                     __localComDict.update({"look at fridge":LookAtFridge_2})
                     __localComDict.update({"open fridge":OpenFridge_1})
                     __localComDict.pop("look at coin", None)
@@ -584,10 +630,13 @@ class Croom:
         while(self.__position == "kitchen"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def DiningRoom(self):       # DC
+            self.UpdateGCD_inv()
+
+    def DiningRoom(self):       
         self.__position = "dining room"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n DINING ROOM\n")
@@ -643,11 +692,11 @@ class Croom:
         }
 
         def UpdateLCD():
-            if(("table key" in self.inv) or ("table key" in self.used)):
+            if(("table key" in self.__inv) or ("table key" in self.__used)):
                 __localComDict.pop("look at key", None)
                 __localComDict.pop("take key", None)
 
-                if("vase coin" in self.inv):
+                if("vase coin" in self.__inv):
                     __localComDict.update({"look at table":LookAtTable_4})
                     __localComDict.pop("look at vase", None)
                     __localComDict.pop("break vase", None)
@@ -658,7 +707,7 @@ class Croom:
                     __localComDict["look at vase"] = LookAtVase
 
             else:
-                if("vase coin" in self.inv):
+                if("vase coin" in self.__inv):
                     __localComDict.update({"look at table":LookAtTable_3})
                     __localComDict["look at key"] = Key_Table
                     __localComDict["take key"] = "table key"
@@ -666,10 +715,13 @@ class Croom:
         while(self.__position == "dining room"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Pantry(self):           # DC
+            self.UpdateGCD_inv()
+
+    def Pantry(self):           
         self.__position = "pantry"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n PANTRY\n")
@@ -689,7 +741,7 @@ class Croom:
             print(" As you move a little closer to the barrel, a tiny mouse runs out towards you, but changes its mind\n halfway. She then makes two circles around the barrel and disppears under one of the shelves.")
             print(" After this, you are finaly allowed to scoop some seeds into the box.")
             
-            self.InvIn("box with seeds")
+            self.__invIn("box with seeds")
 
         # Local dictionary
         __localComDict = {
@@ -701,17 +753,20 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("box" in self.inv):
+            if("box" in self.__inv):
                 __localComDict["use box"] = UseBox
             
-            if(("box with seeds" in self.inv) or ("box with seeds" in self.used)):
+            if(("box with seeds" in self.__inv) or ("box with seeds" in self.__used)):
                 __localComDict.pop("use box", None)
 
         while(self.__position == "pantry"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def MainHallway_13(self):   # DC
+            self.UpdateGCD_inv()
+
+    def MainHallway_13(self):   
         self.__position = "MainHallway_13"
 
         # Description
@@ -723,7 +778,7 @@ class Croom:
 
         def UseKey():
             self.UnlockedDoor()
-            self.used.append("soap key")
+            self.__used.append("soap key")
 
         __localComDict = {
             "go back":self.MainHallway_12,
@@ -732,18 +787,21 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("soap key" in self.used):
+            if("soap key" in self.__used):
                 __localComDict.update({"go straight":self.WinterGarden})
-            elif("soap key" in self.inv):
+            elif("soap key" in self.__inv):
                 __localComDict["use soap key"] = UseKey
 
         while(self.__position == "MainHallway_13"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Bathroom_1(self):       # DC
+            self.UpdateGCD_inv()
+
+    def Bathroom_1(self):       
         self.__position = "bathroom downstairs"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n BATHROOM DOWNSTAIRS\n")
@@ -784,7 +842,7 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("medicine bottle coin" in self.inv):
+            if("medicine bottle coin" in self.__inv):
                 __localComDict.update({"open medicine bottle":OpenMedicineBottle_2})
                 __localComDict.update({"open bottle":OpenMedicineBottle_2})
                 __localComDict.pop("look at coin", None)
@@ -793,15 +851,18 @@ class Croom:
         while(self.__position == "bathroom downstairs"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def WinterGarden(self):     # DC
+            self.UpdateGCD_inv()
+
+    def WinterGarden(self):     
         self.__position = "winter garden"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n WINTER GARDEN\n")
         print(Style.RESET_ALL+ " You step into an unkept, otherwise beautiful, winter garden. There is a fireplace, few chairs, a sofa and\n a coffe table on one side and many gorgeous plants and flowers on the other. There is only one")
-        print(" empty", Fore.MAGENTA+ " flowerpot", Style.RESET_ALL+ "amongst them. Another glass door is in front of you.")
+        print(" empty", Fore.MAGENTA+ "flowerpot", Style.RESET_ALL+ "amongst them. Another glass door is in front of you.")
 
         # Flowerpot
         def LookAtFlowerpot_1():
@@ -820,17 +881,20 @@ class Croom:
         }
 
         def UpdateLCD():
-            if(("box" in self.inv) or ("box with seeds" in self.inv) or ("box with seeds" in self.used)):
+            if(("box" in self.__inv) or ("box with seeds" in self.__inv) or ("box with seeds" in self.__used)):
                 __localComDict.update({"look at flowerpot":LookAtFlowerpot_2})
                 __localComDict.pop("take box", None)
 
         while(self.__position == "winter garden"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Garden(self):           # DC
+            self.UpdateGCD_inv()
+
+    def Garden(self):           
         self.__position = "garden"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n GARDEN\n")
@@ -847,9 +911,11 @@ class Croom:
         while(self.__position == "garden"):
             self.GetCommand(__localComDict)
 
-    def Shed(self):             # DC
+            self.UpdateGCD_inv()
+
+    def Shed(self):             
         self.__position = "shed"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n SHED\n")
@@ -859,7 +925,7 @@ class Croom:
             print(" You gather all your strength and try to cut the chain with the pliers. It takes you a while,\n but in the end, you manage to do it. With relieve, you throw the dull pliers on the ground")
             print(" along with the chain and padlock.")
 
-            self.used.append("pliers")
+            self.__used.append("pliers")
 
             __localComDict.update({"go straight":OpenDoor_2})
             __localComDict.update({"open door":OpenDoor_2})
@@ -885,15 +951,15 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("pliers" in self.inv):
+            if("pliers" in self.__inv):
                 __localComDict["use pliers"] = UsePliers
 
-            if("pliers" in self.used):
+            if("pliers" in self.__used):
                 __localComDict.update({"go straight":OpenDoor_2})
                 __localComDict.update({"open door":OpenDoor_2})
                 __localComDict.update({"open shed":OpenDoor_2})
 
-            if("ladder" in self.inv):
+            if("ladder" in self.__inv):
                 __localComDict.update({"go straight":OpenDoor_3})
                 __localComDict.update({"open door":OpenDoor_3})
                 __localComDict.update({"open shed":OpenDoor_3})
@@ -902,10 +968,13 @@ class Croom:
         while(self.__position == "shed"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Playground(self):       # DC
+            self.UpdateGCD_inv()
+
+    def Playground(self):       
         self.__position = "playground"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n PLAYGROUND\n")
@@ -933,7 +1002,7 @@ class Croom:
         
         # Swing
         def LookAtSwing_1():
-            print(" The swing is moving on its own accord. You would like to think it's because of the wind, but it is not\n strong enough. Then you notice there is", Fore.MAGENTA+ " a key", Style.RESET_ALL+ "on the ground under it!")
+            print(" The swing is moving on its own accord. You would like to think it's because of the wind, but it is not\n strong enough. Then you notice there is", Fore.MAGENTA+ "a key", Style.RESET_ALL+ "on the ground under it!")
 
             __localComDict["look at key"] = Key_Swing
             __localComDict["take key"] = "swing key"
@@ -950,12 +1019,12 @@ class Croom:
         }
 
         def UpdateLCD():
-            if(("swing key" in self.inv) or ("swing key" in self.used)):
+            if(("swing key" in self.__inv) or ("swing key" in self.__used)):
                 __localComDict.update({"look at swing":LookAtSwing_2})
                 __localComDict.pop("look at key", None)
                 __localComDict.pop("take key", None)
 
-            if("sandbox coin" in self.map):
+            if("sandbox coin" in self.__inv):
                 __localComDict.update({"use sieve":UseSieve_2})
                 __localComDict.pop("look at coin", None)
                 __localComDict.pop("take coin", None)
@@ -963,10 +1032,13 @@ class Croom:
         while(self.__position == "playground"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Gazebo(self):           # D
+            self.UpdateGCD_inv()
+
+    def Gazebo(self):
         self.__position = "gazebo"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n GAZEBO\n")
@@ -979,7 +1051,7 @@ class Croom:
 
         def UseKey():
             self.UnlockedDoor()
-            self.used.append("safe key")
+            self.__used.append("safe key")
 
         def Inside():
             print(" You step into the gazebo and a star-like light embraces you, a golden slot machine standing in the center.\n You blink a few to times in order to get used to the strong glow...")
@@ -1000,34 +1072,34 @@ class Croom:
                 "use handle":PullHandle_2
             }
 
-            if(("fridge coin" in self.inv) and ("fridge coin" not in __useCoinsDict)): __useCoinsDict["fridge coin"] = self.InvOut
+            if(("fridge coin" in self.__inv) and ("fridge coin" not in __useCoinsDict)): __useCoinsDict["fridge coin"] = self.__invOut
             else: __useCoinsDict.pop("fridge coin", None)
             
-            if(("vase coin" in self.inv) and ("vase coin" not in __useCoinsDict)): __useCoinsDict["vase coin"] = self.InvOut
+            if(("vase coin" in self.__inv) and ("vase coin" not in __useCoinsDict)): __useCoinsDict["vase coin"] = self.__invOut
             else: __useCoinsDict.pop("vase coin", None)
             
-            if(("medicine bottle coin" in self.inv) and ("medicine bottle coin" not in __useCoinsDict)): __useCoinsDict["medicine bottle coin"] = self.InvOut
+            if(("medicine bottle coin" in self.__inv) and ("medicine bottle coin" not in __useCoinsDict)): __useCoinsDict["medicine bottle coin"] = self.__invOut
             else: __useCoinsDict.pop("medicine bottle coin", None)
             
-            if(("safe coin" in self.inv) and ("safe coin" not in __useCoinsDict)): __useCoinsDict["safe coin"] = self.InvOut
+            if(("safe coin" in self.__inv) and ("safe coin" not in __useCoinsDict)): __useCoinsDict["safe coin"] = self.__invOut
             else: __useCoinsDict.pop("safe coin ", None)
             
-            if(("doll coin" in self.inv) and ("doll coin" not in __useCoinsDict)): __useCoinsDict["doll coin"] = self.InvOut
+            if(("doll coin" in self.__inv) and ("doll coin" not in __useCoinsDict)): __useCoinsDict["doll coin"] = self.__invOut
             else: __useCoinsDict.pop("doll coin", None)
             
-            if(("costume coin" in self.inv) and ("costume coin" not in __useCoinsDict)): __useCoinsDict["costume coin"] = self.InvOut
+            if(("costume coin" in self.__inv) and ("costume coin" not in __useCoinsDict)): __useCoinsDict["costume coin"] = self.__invOut
             else: __useCoinsDict.pop("costume coin", None)
             
-            if(("nest coin" in self.inv) and ("nest coin" not in __useCoinsDict)): __useCoinsDict["nest coin"] = self.InvOut
+            if(("nest coin" in self.__inv) and ("nest coin" not in __useCoinsDict)): __useCoinsDict["nest coin"] = self.__invOut
             else: __useCoinsDict.pop("nest coin", None)
             
-            if(("sandbox coin" in self.inv) and ("sandbox coin" not in __useCoinsDict)): __useCoinsDict["sandbox coin"] = self.InvOut
+            if(("sandbox coin" in self.__inv) and ("sandbox coin" not in __useCoinsDict)): __useCoinsDict["sandbox coin"] = self.__invOut
             else: __useCoinsDict.pop("sandbox coin", None)
             
-            if(("rag coin" in self.inv) and ("rag coin" not in __useCoinsDict)): __useCoinsDict["rag coin"] = self.InvOut
+            if(("rag coin" in self.__inv) and ("rag coin" not in __useCoinsDict)): __useCoinsDict["rag coin"] = self.__invOut
             else: __useCoinsDict.pop("rag coin", None)
             
-            if(("book coin" in self.inv) and ("book coin" not in __useCoinsDict)): __useCoinsDict["book coin"] = self.InvOut
+            if(("book coin" in self.__inv) and ("book coin" not in __useCoinsDict)): __useCoinsDict["book coin"] = self.__invOut
             else: __useCoinsDict.pop("book coin", None)
             
             # Insert coins into slot machine
@@ -1060,8 +1132,6 @@ class Croom:
                 else:
                     CantDoThat()
 
-
-
         def PullHandle_2(numOfInsert):
             self.__position = "gazebo"
 
@@ -1069,8 +1139,8 @@ class Croom:
                 print(" All the coins, that you have just inserted into the slot machine, fall out and its display goes blank again.\n You take the coins back thinking about your next step.")
 
                 for item in self.__orderOfCoins:
-                    self.inv.append(item)
-                    #self.used.remove(item)
+                    self.__inv.append(item)
+                    #self.__used.remove(item)
             else:
                 print(" The slot machine starts to play a victorious, but crazy hotchpotch and gradually shines more and more\n until you are completely blinded by it...\n\n")
                 print(Fore.YELLOW+ "\n---------------------------------------------------------------------------------------------------------------\n", Style.RESET_ALL)
@@ -1087,9 +1157,9 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("safe key" in self.inv):
+            if("safe key" in self.__inv):
                 __localComDict["use safe key"] = UseKey
-            elif("safe key" in self.used):
+            elif("safe key" in self.__used):
                 __localComDict["pull handle"] = PullHandle_1
                 __localComDict["use handle"] = PullHandle_1
                 __localComDict.update({"go straight":Inside})
@@ -1099,10 +1169,13 @@ class Croom:
         while(self.__position == "gazebo"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
+
+            self.UpdateGCD_inv()
 
 
     # Second floor
-    def MainHallway_21(self):       # DC
+    def MainHallway_21(self):       
         self.__position = "MainHallway_21"
 
         # Description
@@ -1120,9 +1193,11 @@ class Croom:
         while(self.__position == "MainHallway_21"):
             self.GetCommand(__localComDict)
 
-    def Library(self):              # DC
+            self.UpdateGCD_inv()
+
+    def Library(self):              
         self.__position = "library"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n LIBRARY\n")
@@ -1138,7 +1213,7 @@ class Croom:
         def UseLadder():
             print(" You put the ladder carefuly on the ground and lean the other side on the bookcase, where the emerald book is.")
 
-            self.used.append("ladder")
+            self.__used.append("ladder")
 
         def LookAtEmeraldBook_1():
             print(" The emerald book is an encyclopedia, but surprisingly light, cosidering its size. So you climb down\n the ladder, open the book and find the center of the book missing.\n There is", Fore.YELLOW+ "a COIN", Style.RESET_ALL+ "in an carved out square instead of the pages.")
@@ -1156,14 +1231,14 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("ladder" in self.inv):
+            if("ladder" in self.__inv):
                 __localComDict["use ladder"] = UseLadder
 
-            if("ladder" in self.used):
+            if("ladder" in self.__used):
                 __localComDict.pop("use ladder", None)
                 __localComDict["look at emerald book"] = LookAtEmeraldBook_1
 
-            if("book coin" in self.inv):
+            if("book coin" in self.__inv):
                 __localComDict.update({"look at emerald book":LookAtEmeraldBook_2})
                 __localComDict.pop("look at coin", None)
                 __localComDict.pop("take coin", None)
@@ -1171,10 +1246,13 @@ class Croom:
         while(self.__position == "library"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Terrace(self):              # DC
+            self.UpdateGCD_inv()
+
+    def Terrace(self):              
         self.__position = "terrace"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n TERRACE\n")
@@ -1193,7 +1271,8 @@ class Croom:
                 sleep(2)
                 print(" But it is not the right one. Try again.")
 
-                ActCompare("catch pigeon")
+                acts = ["catch pigeon", "take pigeon"]
+                ActCompare(acts)
 
                 __attempt += 1
                 
@@ -1201,14 +1280,14 @@ class Croom:
             sleep(2)
             print(" A note is hanging from his leg! Third one's the charm, right?\n\n You notice, that the box is nearly empty by now, so you take the note, let the pigeon go\n and decide to not bother them again.")
 
-            self.InvIn("pigeon note")
+            self.__invIn("pigeon note")
 
         def UseBoxWithSeeds():
             print(" You put the box with seeds on the ground under the dovecote and step aside...")
             sleep(3)
             print(" It doesn't take long and the pigeons, one by one, fly down and start devouring the seeds.\n You have to act quickly, it won't take long and they will be back in their dovecote\n and out of your reach.")
 
-            self.used.append("box with seeds")
+            self.__used.append("box with seeds")
 
             __localComDict.update({"catch pigeon":CatchPigeon_2})
             __localComDict.update({"look at pigeon":CatchPigeon_2})
@@ -1217,27 +1296,32 @@ class Croom:
         __localComDict = {
             "go back":self.MainHallway_21,
             "catch pigeon":CatchPigeon_1,
+            "take pigeon":CatchPigeon_1,
             "look at pigeon":CatchPigeon_1,
             "use box with seeds":UseBoxWithSeeds
         }
 
         def UpdateLCD():
-            if("box with seeeds" in self.inv):
+            if("box with seeeds" in self.__inv):
                 __localComDict["use box with seeds"] = UseBoxWithSeeds
-            elif(("box with seeds" in self.used) and ("pigeon note" not in self.inv)):
+            elif(("box with seeds" in self.__used) and ("pigeon note" not in self.__inv)):
                 __localComDict.update({"catch pigeon":CatchPigeon_2})
                 __localComDict.update({"look at pigeon":CatchPigeon_2})
-            elif("pigeon note" in self.inv):
+            elif("pigeon note" in self.__inv):
                 __localComDict.pop("use box with seeds", None)
                 __localComDict.pop("catch pigeon", None)
+                __localComDict.pop("take pigeon", None)
 
         while(self.__position == "terrace"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def MainHallway_22(self):       # DC
+            self.UpdateGCD_inv()
+
+    def MainHallway_22(self):       
         self.__position = "main hallway upstairs"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n MAIN HALLWAY UPSTAIRS\n")
@@ -1254,7 +1338,9 @@ class Croom:
         while(self.__position == "main hallway upstairs"):
             self.GetCommand(__localComDict)
 
-    def Stairs_2(self):             # DC
+            self.UpdateGCD_inv()
+
+    def Stairs_2(self):             
         self.__position = "Stairs_2"
 
         # Description
@@ -1275,9 +1361,11 @@ class Croom:
         while(self.__position == "Stairs_2"):
             self.GetCommand(__localComDict)
 
-    def Bathroom_2(self):           # DC
+            self.UpdateGCD_inv()
+
+    def Bathroom_2(self):           
         self.__position = "bathroom upstairs"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n BATHROOM UPSTAIRS\n")
@@ -1290,9 +1378,11 @@ class Croom:
             print(" You look at the mirror and there seems to be nothing out of ordinary.")
 
         def OpenMirror():
-            print(" You suddenly remebered the crazed sentences appearing in the bathroom downstairs and out of a pure\n curiosity, you try to open the big mirror. You pull it from the side...")
+            print(" You suddenly remebered the crazed sentences appearing in the bathroom downstairs and out of a pure\n curiosity, you try to open the big mirror. You pull it from the side.")
+            PressEnter()
+            print("\n ...")
             sleep(2)
-            print(" And it doesn't move a bit.\n\n You try the opposite side and to your surprise, there is a small handle,\n so you pull again and the mirror opens revealing it is a door from the other side.")
+            print("\n And it doesn't move a bit.\n\n You try the opposite side and to your surprise, there is a small handle,\n so you pull again and the mirror opens revealing it is a door from the other side.")
 
             __localComDict.pop("open mirror", None)
             __localComDict["go left"] = self.Bedroom
@@ -1334,11 +1424,11 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("bedroom" in self.map):
+            if("bedroom" in self.__map):
                 __localComDict.pop("open mirror", None)
                 __localComDict["go left"] = self.Bedroom
 
-            if(("soap key" in self.inv) or ("soap key" in self.used)):
+            if(("soap key" in self.__inv) or ("soap key" in self.__used)):
                 __localComDict.update({"look at bathtub":LookAtBathtub_2})
                 __localComDict.pop("look at key", None)
                 __localComDict.pop("take key", None)
@@ -1346,8 +1436,11 @@ class Croom:
         while(self.__position == "bathroom upstairs"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def MainHallway_23(self):       # DC
+            self.UpdateGCD_inv()
+
+    def MainHallway_23(self):       
         self.__position = "MainHallway_23"
 
         # Description
@@ -1363,7 +1456,7 @@ class Croom:
 
         def UseKey():
             self.UnlockedDoor()
-            self.used.append("swing key")
+            self.__used.append("swing key")
 
         # Local dictionary
         __localComDict = {
@@ -1373,20 +1466,23 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("swing key" in self.inv):
+            if("swing key" in self.__inv):
                 __localComDict["use swing key"] = UseKey
 
-            elif("swing key" in self.used):
+            elif("swing key" in self.__used):
                 __localComDict.pop("use swing key", None)
                 __localComDict.update({"go left":self.ChildrensRoom})
 
         while(self.__position == "MainHallway_23"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def ChildrensRoom(self):        # DC
+            self.UpdateGCD_inv()
+
+    def ChildrensRoom(self):        
         self.__position = "childrens room"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n CHILDREN'S ROOM\n")
@@ -1403,7 +1499,7 @@ class Croom:
         def UsePocketKnife():
             print(" You cut the doll's head off and find", Fore.YELLOW+ "a COIN!", Style.RESET_ALL+ "You destroyed the pocket knife, though.\n It was a hard material.")
 
-            self.used.append("pocket knife")
+            self.__used.append("pocket knife")
 
             __localComDict["look at coin"] = Coin_Doll
             __localComDict["take coin"] = "doll coin"
@@ -1416,23 +1512,26 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("pocket knife" in self.inv):
+            if("pocket knife" in self.__inv):
                 __localComDict["use pocket knife"] = UsePocketKnife
-            elif("pocket knife" in self.used):
+            elif("pocket knife" in self.__used):
                 __localComDict.update({"look at doll":LookAtDoll_2})
                 __localComDict.pop("use pocket knife", None)
 
-            if("doll coin" in self.inv):
+            if("doll coin" in self.__inv):
                 __localComDict.pop("look at coin", None)
                 __localComDict.pop("take coin", None)
 
         while(self.__position == "childrens room"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
 
-    def Bedroom(self):              # DC
+            self.UpdateGCD_inv()
+
+    def Bedroom(self):              
         self.__position = "bedroom"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n BEDROOM\n")
@@ -1455,7 +1554,7 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("nest coin" in self.inv):
+            if("nest coin" in self.__inv):
                 __localComDict.update({"look at nest":LookAtNest_2})
                 __localComDict.pop("look at coin", None)
                 __localComDict.pop("take coin", None)
@@ -1463,12 +1562,15 @@ class Croom:
         while(self.__position == "bedroom"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
+
+            self.UpdateGCD_inv()
 
 
     # Roof
-    def Attic(self):                # DC
+    def Attic(self):                
         self.__position = "attic"
-        self.MapIn()
+        self.__mapIn()
 
         # Description
         print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n ATTIC\n")
@@ -1488,7 +1590,7 @@ class Croom:
         # Chest
         def LookAtChest_1():
             print(" When you step closer, suddenly one of the boxes falls down and you see a squirel running away\n from you to the other side of the attic. You must have scared it. The same way it has scared you.")
-            print(" You notice clean white", Fore.MAGENTA+ "costume wings", Style.RESET_ALL+ "shining among the dirt and dust in this place, where the box used to be.\n\n You take the chest and inspect it. In spite of the dusty enviroment, it is surprisingly clean.\n Also, it is not locked, so you are free to open it.")
+            print(" You notice clean white", Fore.MAGENTA+ "costume wings", Style.RESET_ALL+ "shining among the dirt and dust in this place, where the box used to be.\n\n You take", Fore.MAGENTA+ "the chest", Style.RESET_ALL+ "and inspect it. In spite of the dusty enviroment, it is surprisingly clean.\n Also, it is not locked, so you are free to open it.")
 
             __localComDict["open chest"] = OpenChest
             __localComDict["look at wings"] = LookAtCostume_1
@@ -1510,19 +1612,19 @@ class Croom:
         }
 
         def UpdateLCD():
-            if("costume coin" in self.inv):
+            if("costume coin" in self.__inv):
                 __localComDict.update({"look at wings":LookAtCostume_2})
                 __localComDict.update({"look at costume wings":LookAtCostume_2})
                 __localComDict.pop("look at coin", None)
                 __localComDict.pop("take coin", None)
 
-            if(("chest key" in self.inv) or ("chest key" in self.used)):
+            if(("chest key" in self.__inv) or ("chest key" in self.__used)):
                 __localComDict.update({"look at chest":LookAtChest_2})
                 __localComDict.pop("open chest", None)
                 __localComDict.pop("take key", None)
                 __localComDict.pop("look at key", None)
 
-                if("costume coin" not in self.inv):
+                if("costume coin" not in self.__inv):
                     __localComDict["look at wings"] = LookAtCostume_1
                     __localComDict["look at costume wings"] = LookAtCostume_1
                 else:
@@ -1534,3 +1636,6 @@ class Croom:
         while(self.__position == "attic"):
             UpdateLCD()
             self.GetCommand(__localComDict)
+            UpdateLCD()
+
+            self.UpdateGCD_inv()

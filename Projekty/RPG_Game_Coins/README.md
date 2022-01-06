@@ -1,7 +1,7 @@
-# RPG Game Coins
+## RPG Game Coins
 RPG textová hra, ve které hráč prozkoumává starý dům a hledá mince.
 
-## O hře
+# O hře
 - Po spuštění se zobrazí hlavní menu
     - Start vede k výběru hráče
         - Hráč má možnost pokračovat, začít novou hru nebo hru smazat
@@ -18,7 +18,7 @@ RPG textová hra, ve které hráč prozkoumává starý dům a hledá mince.
     - Lze používat inventář a pohybovat se po domě pomocí mapy
     - V průběhu hraní lze hru kdykoliv uložit
 
-## TODO
+# TODO
 - Komentáře
 - Možnost interakce s více předměty
 

@@ -6,16 +6,17 @@ from Functions.versatile_fct import PressEnter
 
 
 def DecoratorToColourOutcomes(func):
-    # To colour all letters in light blue colour.
+    # Colours outcomes in blue colour
 
     def wrapper(*args, **kwargs):
-        print(Fore.LIGHTBLUE_EX)
+        print(Fore.BLUE)
         func(*args, **kwargs)
         print(Style.RESET_ALL)
         PressEnter()
     return wrapper
 
 
+# Functions printing outcomes
 @DecoratorToColourOutcomes
 def Outcome_Fridge():
     print("---------------------------------------------------------------------------------------------------------------\n LOVE\n")

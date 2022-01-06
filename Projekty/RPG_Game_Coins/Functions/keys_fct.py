@@ -6,7 +6,7 @@ from Functions.versatile_fct import PressEnter
 
 
 def DecoratorToColourKeys(func):
-    # To colour all letters in cyan colour.
+    # Colours key descriptions in cyan colour.
 
     def wrapper(*args, **kwargs):
         print(Fore.CYAN)
@@ -16,6 +16,7 @@ def DecoratorToColourKeys(func):
     return wrapper
 
 
+# Funcions printing key descriptions
 @DecoratorToColourKeys
 def Key_Table():    # to workroom, dining room
     print("---------------------------------------------------------------------------------------------------------------\n TABLE KEY\n")

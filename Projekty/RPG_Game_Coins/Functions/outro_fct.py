@@ -8,6 +8,17 @@ from Functions.outcomes_fct import *
 
 
 def Outro(playerName, orderOfCoins):
+    '''
+    Goes through the ending story. Prints three outcomes depending on the 
+
+    Args:
+        playerName(str):    Name of the player.
+        orderOfCoins(list): List of coins saved in the order they were inserted into the slot machine.
+
+    Returns:
+    '''
+
+    # Dictionary to call the outcomes.
     storySwitcher = {
         "fridge coin":Outcome_Fridge,
         "vase coin":Outcome_Vase,
@@ -33,7 +44,8 @@ def Outro(playerName, orderOfCoins):
     print(Style.RESET_ALL+ " You rapidly sit up and feel a pang in your head. You are hundred percent sure you were in the old house\n just a second ago... How is it possible?!")
     print(" Feeling you might be the house's next victim that was driven crazy and need a headshrinker's special care now,\n you look around yourself.")
     PressEnter()
-    print(" For a moment you think you have hallucinations. There is a small golden book. You swiftly touch it. Feeling\n the smooth cover of the book, you are surprised it didn't vanish into the thin air, because it is\n")
+
+    print(" For a moment you think you have hallucinations. There is a small golden", Fore.MAGENTA+ "book.", Style.RESET_ALL+ "You swiftly touch it. Feeling\n the smooth cover of the book, you are surprised it didn't vanish into the thin air, because it is\n")
     print(" the same you remeber from the library.")
 
     acts = ["open book", "look at book", "read book"]
@@ -47,6 +59,7 @@ def Outro(playerName, orderOfCoins):
     print(f" yourself worthy. Since the fist three coins you have inserted into the slot machine were ", Fore.YELLOW+ f"{orderOfCoins[0]}", Fore.LIGHTBLUE_EX+ ",", Fore.YELLOW+ f"\n {orderOfCoins[1]}", Fore.LIGHTBLUE_EX+ "and ", Fore.YELLOW+ f"{orderOfCoins[2]}", Fore.LIGHTBLUE_EX+ ", your life will take quite a turn!")
     PressEnter()
 
+    # Call the three different outcomes
     storySwitcher.get(orderOfCoins[0])()
     storySwitcher.get(orderOfCoins[1])()
     storySwitcher.get(orderOfCoins[2])()
@@ -55,12 +68,12 @@ def Outro(playerName, orderOfCoins):
     print(" Your choice is final and you can not use the slot machine ever again.")
     print(" And one last thing before I say my final goodbyes. The villa is now yours. You will find a key to it\n glued to the back of the book.\n\n Enjoy your new life and take care.\n\n It was pleasure to get to know you.", Style.RESET_ALL)
     
-    print(" You flip through the empty pages to the back of the book and indeed find a key.")
+    print(" You flip through the empty pages to the back of the book and indeed find", Fore.MAGENTA+ "a key.", Style.RESET_ALL)
 
     acts = ["look at key", "take key"]
     ActCompare(acts)
 
-    print(" You take the key and look at it. Its handle is pretty long and ends with a small model of the house.\n You have to go try it!\n\n Like right now!")
+    print(" You take the key and look at it. Its handle is pretty long and ends with a small model of", Fore.MAGENTA+ "the house.", Style.RESET_ALL+ "\n You have to go try it!\n\n Like right now!")
 
     acts = ["go to villa", "go to house", "go to old house"]
     ActCompare(acts)
@@ -77,7 +90,7 @@ def Outro(playerName, orderOfCoins):
     print(" you look for signs of destruction. But they are just not there. Everything is neat, beautiful and\n according to your liking. Even the vase you broke is now fixed and well, nourishing its")
     print(" lively and colourful flowers. You go up to the library and notice, there is't any empty frame anymore.\n The seventh frame now bears your portrait.")
     print(" You absentmindedly walk down to the beautiful winter garden and out to the back of the house.\n As you are taking everything that's happend in, you take a deep breath in and out. You smell the grass,")
-    print(" the flovers, the forest...\n\n", Fore.YELLOW+ " THIS IS YOUR NEW HOME", Style.RESET_ALL)
+    print(" the flovers, the forest...\n\n", Fore.YELLOW+ " This is your new home.", Style.RESET_ALL)
 
     print(Fore.YELLOW+     "\n---------------------------------------------------------------------------------------------------------------\n END CREDITS\n")
     print(Style.RESET_ALL+ " Game\t\tDaniela Zavadova\n Story\t\tDaniela Zavadova\n Visual\t\tDaniela Zavadova")
