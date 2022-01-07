@@ -1056,7 +1056,7 @@ class Croom:
             self.UnlockedDoor()
             self.__used.append("safe key")
 
-        def Inside():
+        def Inside_1():
             print(" You step into the gazebo and a star-like light embraces you,", Fore.YELLOW+ "a golden slot machine", Style.RESET_ALL+ "standing in the center.\n You blink a few to times in order to get used to the strong glow.\n")
             PressEnter()
             print(" ...")
@@ -1064,9 +1064,18 @@ class Croom:
             print("\n Then you take two steps toward the slot machine and inspect it. There is a coin hole and a long", Fore.MAGENTA+ "handle", Style.RESET_ALL+ "\n with a sphere at the end of it. The display is empty.")
             print("\n There is a riddle at the top of the slot machine saying:\n\n  With hands full of gold, pull on the globe.\n  Wishing for your gain, I must obtain.\n  Align your needs, wait for my deeds.\n  Cast findings away, let me travail.\n  With one last blink, pull the handgrip.")
 
+        def Inside_2():
+            print("\n You take the coins back and step aside, thinking about your next step.")
+
         def PullHandle_1():
             self.__position = "slot machine"
             __numOfInsert = 0
+            __numOfCoinsInInv = 0
+
+            for item in self.__inv:
+                if("coin" in item):
+                    __numOfCoinsInInv += 1
+
 
             print(" You pull on the handle and colorful lights start to flicker, the display suddenly showing \"0\".")
 
@@ -1109,11 +1118,11 @@ class Croom:
             
             # Insert coins into slot machine
             while(self.__position == "slot machine"):
-                if(__numOfInsert < 10):
+                if(__numOfInsert < __numOfCoinsInInv):
                     __actPl = input(Fore.MAGENTA+ "\n Insert coin: ")
                     print(Style.RESET_ALL)
                 
-                elif(__numOfInsert == 10):
+                elif(__numOfInsert == __numOfCoinsInInv):
                     __actPl = input(Fore.MAGENTA+ "\n I choose action: ")
                     print(Style.RESET_ALL)
 
@@ -1143,10 +1152,15 @@ class Croom:
             self.__position = "gazebo"
 
             if(numOfInsert != 10):
-                print(" All the coins, that you have just inserted into the slot machine, fall out and its display goes blank again.\n You take the coins back thinking about your next step.")
+                print(" All the coins, that you have just inserted into the slot machine, fall out and its display goes blank again.")
 
                 for item in self.__orderOfCoins:
                     self.__inv.append(item)
+
+                self.__position = "gazebo"
+
+                Inside_2()
+
             else:
                 print(" The slot machine starts to play a victorious, but crazy hotchpotch and gradually shines more and more\n until you are completely blinded by it...\n\n")
                 PressEnter()
@@ -1169,8 +1183,8 @@ class Croom:
             elif("safe key" in self.__used):
                 __localComDict["pull handle"] = PullHandle_1
                 __localComDict["use handle"] = PullHandle_1
-                __localComDict.update({"go straight":Inside})
-                __localComDict.update({"open door":Inside})
+                __localComDict.update({"go straight":Inside_1})
+                __localComDict.update({"open door":Inside_1})
                 __localComDict.pop("use safe key", None)
 
         while(self.__position == "gazebo"):
