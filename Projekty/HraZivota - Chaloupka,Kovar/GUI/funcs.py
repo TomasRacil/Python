@@ -12,6 +12,11 @@ pygame.font.init()
 buttonFont = pygame.font.SysFont('Century Gothic', 35)
 clearButton = buttonFont.render('Clear All', True, col_button)
 stepButton = buttonFont.render('>>', True, col_button)
+speedUpButton = buttonFont.render('>', True, col_button)
+speedDownButton = buttonFont.render('<', True, col_button)
+
+lblFont = pygame.font.SysFont('Century Gothic', 20)
+speedLbl = lblFont.render('Game speed:', True, col_button)
 
 def updateSurface():
     """
@@ -26,6 +31,9 @@ def updateSurface():
     surface.blit(startButton, (400, 5))
     surface.blit(clearButton, (600, 5))
     surface.blit(stepButton, (900, 5))
+    surface.blit(speedUpButton,(225, 5))
+    surface.blit(speedDownButton, (200, 5))
+    surface.blit(speedLbl, (50, 12))
     boardUpdate(surface)
     pygame.display.update()
 

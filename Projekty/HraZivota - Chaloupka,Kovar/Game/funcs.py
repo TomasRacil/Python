@@ -1,8 +1,10 @@
 import numpy as np
 import pygame
+from time import sleep
 
 board = np.zeros((80, 120))
 running = False
+gameSpeed = 0
 
 #Colors in RGB
 col_dead = (10, 10, 40)
@@ -12,14 +14,17 @@ col_alive = (255, 255, 215)
 
 def clickHandler(coords, surface):
     """
-	Function for handling on what user clicked: game board, Start/stop button, clear all button.
+	Function for handling on what user clicked:
+        game board, Start/stop btn, clear all btn,
+        next step btn, speed up btn, speed down btn,
 	
 	Args:
-		coords (Tuple[int, int]): Coordinates where left mouse button was clicked
-        surface (pygame.Surface): pygame surface where we want to make a next step
+		coords (Tuple[int, int]): Coordinates where left mouse button was clicked.
+        surface (pygame.Surface): Pygame surface where we want to make a next step.
 	"""
     global running
     global board
+    global gameSpeed
     # GAME BOARD
     if coords[0] >= 0 and coords[0] <= 1200 and coords[1] >= 50 and coords[1] <= 800:
         if not running:
@@ -33,6 +38,7 @@ def clickHandler(coords, surface):
 
     # START / STOP
     elif coords[0] >= 400 and coords[0] <= 480 and coords[1] >= 0 and coords[1] < 50:
+        gameSpeed = 0
         if running:
             running = False
         else:
@@ -49,7 +55,20 @@ def clickHandler(coords, surface):
             running = True
             boardUpdate(surface)
             running = False
+    
+    # Speed Up
+    elif coords[0] >= 225 and coords[0] <= 265 and coords[1] >= 0 and coords[1] < 50:       
+        if running:
+            gameSpeed = 0
+ 
+        print(gameSpeed)
+            
+    # Speed Down
+    elif coords[0] >= 200 and coords[0] <= 220 and coords[1] >= 0 and coords[1] < 50:
+        if running:
+            gameSpeed = 0.2
 
+        print(gameSpeed)
 
 def boardUpdate(surface):
     """
@@ -57,8 +76,11 @@ def boardUpdate(surface):
     Conway's game of life.
 	
 	Args:
-		surface (pygame.Surface): pygame surface that this function draws on
+		surface (pygame.Surface): Pygame surface that this function draws on.
 	"""
+    if running:
+        sleep(gameSpeed)
+
     global board
     newBoard = np.zeros((board.shape[0], board.shape[1]))
 
