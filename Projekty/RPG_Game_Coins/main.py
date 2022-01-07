@@ -39,7 +39,7 @@ if __name__ == "__main__":
                     print("\n  9 ... Go back\n")
                     choicePlayer = Menu(1, 5, 9)        # user chooses his game spot (1 - 5)
 
-                    filePath = path.join('Saves', ("player" + str(choicePlayer) + ".txt"))      # creates a path to file of the choosen player
+                    filePath = path.join(path.dirname(path.realpath(__file__)),'Saves', ("player" + str(choicePlayer) + ".txt"))      # creates a path to file of the choosen player
 
                     # Menu of next steps
                     # For empty slots

@@ -134,3 +134,6 @@ dmypy.json
 # VSCode files
 .vs/
 .vscode/
+
+# pip wheel
+*.whl
