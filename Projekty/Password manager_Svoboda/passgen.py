@@ -43,10 +43,10 @@ def passGenerator():
     myFrame.pack(pady=20)
 
     # Create buttons
-    myButton = Button(myFrame, text="Generovat heslo", command=newRand)
+    myButton = Button(myFrame, text="Generate Passport", command=newRand)
     myButton.grid(row=0, column=0, padx=10)
 
-    clipBtn = Button(myFrame, text="Kopirovat", command=clipper)
+    clipBtn = Button(myFrame, text="Copy", command=clipper)
     clipBtn.grid(row=0, column=1, padx=10)
 
 
