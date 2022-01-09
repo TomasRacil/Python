@@ -2,38 +2,45 @@ import pygame
 from Game import clickHandler, boardUpdate, getRunning
 
 pygame.init()
-pygame.display.set_caption("Hra života")
+pygame.display.set_caption("Conway's Game of Life")
 surface = pygame.display.set_mode((1200, 800))
 
 col_background = (30, 30, 60)
 col_button = (255, 255, 255)
 
 pygame.font.init()
-buttonFont = pygame.font.SysFont('Century Gothic', 35)
-clearButton = buttonFont.render('Clear All', True, col_button)
-stepButton = buttonFont.render('>>', True, col_button)
-speedUpButton = buttonFont.render('>', True, col_button)
-speedDownButton = buttonFont.render('<', True, col_button)
+font = pygame.font.SysFont('Century Gothic', 35)
 
-lblFont = pygame.font.SysFont('Century Gothic', 20)
-speedLbl = lblFont.render('Game speed:', True, col_button)
+
+clearButton = font.render('Clear All', True, col_button)
+stepButton = font.render('>>', True, col_button)
+speedUpButton = font.render('+', True, col_button)
+speedDownButton = font.render('-', True, col_button)
+
+speedLbl = font.render('Speed:', True, col_button)
+stepLbl = font.render('Step:', True, col_button)
 
 def updateSurface():
     """
     This function fills surface with colors, buttons and updated game board.
 	"""
-    if not getRunning():
-        startButton = buttonFont.render('Start', True, col_button)
-    else:
-        startButton = buttonFont.render('Stop', True, col_button)
-
     surface.fill(col_background)
-    surface.blit(startButton, (400, 5))
-    surface.blit(clearButton, (600, 5))
-    surface.blit(stepButton, (900, 5))
-    surface.blit(speedUpButton,(225, 5))
-    surface.blit(speedDownButton, (200, 5))
-    surface.blit(speedLbl, (50, 12))
+
+    if not getRunning():
+        startButton = font.render('Start', True, col_button)
+    else:
+        startButton = font.render('Stop', True, col_button)  
+
+    surface.blit(speedLbl, (50, 3))
+    surface.blit(speedDownButton, (190, 3))
+    surface.blit(speedUpButton, (220, 5))
+
+    surface.blit(startButton, (400, 3))
+    surface.blit(clearButton, (650, 3))
+    
+    surface.blit(stepLbl, (1000, 3))
+    surface.blit(stepButton, (1100, 5))
+
     boardUpdate(surface)
     pygame.display.update()
 

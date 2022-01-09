@@ -45,30 +45,27 @@ def clickHandler(coords, surface):
             running = True
 
     # CLEAR ALL
-    elif coords[0] >= 600 and coords[0] <= 745 and coords[1] >= 0 and coords[1] < 50:
+    elif coords[0] >= 650 and coords[0] <= 795 and coords[1] >= 0 and coords[1] < 50:
         if not running:
             board = np.zeros((80, 120))
 
     # STEP
-    elif coords[0] >= 900 and coords[0] <= 940 and coords[1] >= 0 and coords[1] < 50:
+    elif coords[0] >= 1100 and coords[0] <= 1142 and coords[1] >= 0 and coords[1] < 50:
         if not running:
             running = True
             boardUpdate(surface)
             running = False
     
-    # Speed Up
-    elif coords[0] >= 225 and coords[0] <= 265 and coords[1] >= 0 and coords[1] < 50:       
-        if running:
-            gameSpeed = 0
- 
-        print(gameSpeed)
-            
     # Speed Down
-    elif coords[0] >= 200 and coords[0] <= 220 and coords[1] >= 0 and coords[1] < 50:
+    elif coords[0] >= 190 and coords[0] <= 200 and coords[1] >= 0 and coords[1] < 50:       
         if running:
             gameSpeed = 0.2
+            
+    # Speed Up
+    elif coords[0] >= 220 and coords[0] <= 240 and coords[1] >= 0 and coords[1] < 50:
+        if running:
+            gameSpeed = 0
 
-        print(gameSpeed)
 
 def boardUpdate(surface):
     """
