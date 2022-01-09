@@ -231,6 +231,8 @@ def main():
                         help='define number of vertices in polygon | example: --polygon 20')
     parser.add_argument('-e', '--ellipse', dest='e_param', nargs='+', required=False,
                         help='define width and height values of ellipse | example: --ellipse 10 15')
+    parser.add_argument('-i','--interval', dest='interval', required=False, 
+                        help='set delay between frames in milliseconds | example: -i 100 | default: 50')
 
     args = parser.parse_args()
 
@@ -310,9 +312,7 @@ def main():
     fig, ax = plt.subplots()
     img = ax.imshow(grid, interpolation='nearest')
     ani = animation.FuncAnimation(fig, update, fargs=(img, grid, N, positionX, positionY, polygon, circle, ellipse),
-                                  frames=10,
-                                  interval=updateInterval,
-                                  save_count=50)
+                                  interval=updateInterval)
 
     if polygon is True:
         plt.plot(xs, ys)
