@@ -1,6 +1,6 @@
-Daniela
-main hallway upstairs
+Test
+main hallway downstairs
 invitation letter;flashlight;mailbox note;
-front porch;main hallway downstairs;kitchen;dining room;pantry;main hallway upstairs;
+front porch;main hallway downstairs;
 ;
 
