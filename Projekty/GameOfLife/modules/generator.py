@@ -3,7 +3,6 @@ import numpy as np
 from shapely.geometry import Point
 from shapely.prepared import prep
 
-
 def gen_point_in_circle(radius, x0, y0):
     """
     -----------
