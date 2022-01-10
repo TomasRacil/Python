@@ -1,5 +1,6 @@
 import hashlib
 import sqlite3
+from os import path
 from functools import partial
 from tkinter import *
 from tkinter import simpledialog
@@ -8,7 +9,7 @@ from tkinter import ttk
 from passgen import passGenerator
 
 # Database Code 
-with sqlite3.connect("Database.db") as db:
+with sqlite3.connect(path.join(path.dirname(path.realpath(__file__)),'database.db')) as db:
     cursor = db.cursor()
 
 cursor.execute("""

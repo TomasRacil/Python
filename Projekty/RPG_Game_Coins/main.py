@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
                     # Menu of players
                     for i in range(1, 6):       # prints out menu of free or occupied spots (1 - 5)
-                        filePath = path.join('Saves', ("player" + str(i) + ".txt"))         # creates a path to the supposed files
+                        filePath = path.join(path.dirname(path.realpath(__file__)),'Saves', ("player" + str(i) + ".txt"))         # creates a path to the supposed files
 
                         if(path.exists(filePath)):      # prints either "empty" or "player name" depending on the state (exist/does not exist) of the corresponding file
                             print(f"  {i} ... {(open(filePath).readline().strip())}")
