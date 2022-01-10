@@ -46,7 +46,7 @@ def LoadGame(choicePlayer, filePath):
     
     player.LoadGame()
 
-    if(player.position == "intro"):
+    if(player.position == "intro"):       # game was started, but intro was not played till the end
         Instructions(player.name)
 
         room = Croom(player.name, player.inv, player.map, player.used, filePath)      # creates Croom instance
