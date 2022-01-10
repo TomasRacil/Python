@@ -1,6 +1,6 @@
 Test
-main hallway downstairs
+intro
 invitation letter;flashlight;mailbox note;
 front porch;main hallway downstairs;
-;
+
 
