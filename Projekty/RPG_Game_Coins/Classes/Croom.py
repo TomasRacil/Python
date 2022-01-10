@@ -92,8 +92,7 @@ class Croom:
                 print(f" {cls.__inv[__i + 0]}")
                 __number -= 1
 
-        print(Fore.YELLOW+ "------------------------------------------------------------------------")
-        print(Style.RESET_ALL)
+        print(Fore.YELLOW+ "------------------------------------------------------------------------", Style.RESET_ALL)
 
     def PrintMap(cls):
         # Prints map
@@ -122,8 +121,7 @@ class Croom:
                 print(f" {cls.__map[__i + 0]}")
                 __number -= 1
 
-        print(Fore.YELLOW+ "------------------------------------------------------------------------")
-        print(Style.RESET_ALL)
+        print(Fore.YELLOW+ "------------------------------------------------------------------------", Style.RESET_ALL)
 
     def UpdateGCD_map(self):
         # Updates map commands in __globalComDict according to the __map list

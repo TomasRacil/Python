@@ -86,7 +86,7 @@ def Instructions(playerName):
     print(" You look into the mailbox just in case, already feeling stupid for letting someone prank you.\n\n And you can't believe your eyes...\n\n There is", Fore.MAGENTA+ "a note!", Style.RESET_ALL+ "Athough it is barely visible because of the deepenning darkness around you.")
     
     # Enter command -take note-
-    acts = ["take note"]
+    acts = ["take note", "look at note"]
     ActCompare(acts)
 
     print(" You fish the note out of the mailbox by your hand and start reading.")
@@ -123,8 +123,8 @@ def Instructions(playerName):
     print(Fore.YELLOW+ "------------------------------------------------------------------------")
     print(Style.RESET_ALL)
 
-    print(             " Quick tip: You can access your inventory any time during your game\n by simply writing -inventory- and use any item if it suits\n the situation by typing -use [item]-,")
-    print(             " You can read any note or letter by typing -read [item]- and look\n at any key by typing -look at [item]-.\n")
+    print(             " Quick tip: You can access your inventory any time during your game\n by simply writing -inventory- and use any item if it suits\n the situation by typing -use [item]-. You can read")
+    print(             " any note or letter by typing -read [item]- and look\n at any key by typing -look at [item]-.\n")
     PressEnter()
 
     # Enter command -use flashlight-
@@ -153,4 +153,5 @@ def Instructions(playerName):
     print(             " Quick tip: You can access your map any time during your game by simply\n writing -map- and go back to any place you like\n by typing -go to [place]-.\n")
     PressEnter()
 
-    print(" The introduction has ended.\n Now feel free to expore.")
+    print(" The introduction has ended.\n Now feel free to expore.\n")
+    PressEnter()

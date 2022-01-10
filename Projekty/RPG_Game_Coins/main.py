@@ -106,12 +106,7 @@ if __name__ == "__main__":
         
             # Help
             case 2:     # prints function Help()
-                print(Fore.YELLOW+ "------------------------------------------------------------------------\n HELP\n")
-                print(Style.RESET_ALL+ "  Crucial commands:  help, save, exit, inventory, map")
-                print("  Moving  commands:  go + /straight/back/left/right/down/up/to [place]")
-                print("  Action  commands:  take/use/look at/open/break/pull/catch + [item]")
-                print(Fore.YELLOW+ "------------------------------------------------------------------------", Style.RESET_ALL)
-                
+                PrintHelp()
                 print("\n  9 ... Go back\n")
                 Menu(9, 9, 9)
                 MainMenuChoice = 0         # lets user choose to go back to main menu
