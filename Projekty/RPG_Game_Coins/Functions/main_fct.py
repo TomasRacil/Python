@@ -53,7 +53,7 @@ def LoadGame(choicePlayer, filePath):
         room.SaveFct()
         room.MainHallway_11()
 
-    elif(player.position == "outro"):     # if the game has been played to the end, only the ending story will be replayed
+    elif(player.position == "outro"):     # game has been played to the end, only the ending story will be replayed
         Outro(player.name, player.orderOfCoins)
     else:
         room = Croom(player.name, player.inv, player.map, player.used, filePath)   # creates Croom instance
