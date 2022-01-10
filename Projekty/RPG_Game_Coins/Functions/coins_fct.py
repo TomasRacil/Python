@@ -1,0 +1,68 @@
+# External import
+from colorama import Fore, Style
+
+# Internal import
+from Functions.versatile_fct import PressEnter
+
+
+def DecoratorToColourCoins(func):
+    # Colours coin descriptions in yellow colour.
+
+    def wrapper(*args, **kwargs):
+        print(Fore.YELLOW)
+        func(*args, **kwargs)
+        print(Style.RESET_ALL)
+        PressEnter()
+    return wrapper
+
+
+# Funcions printing coin descriptions
+@DecoratorToColourCoins
+def Coin_Fridge():  # love, kitchen
+    print("---------------------------------------------------------------------------------------------------------------\n FRIDGE COIN\n")
+    print(" The coin has a heart carved into it.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Vase():    # family, dining room
+    print("---------------------------------------------------------------------------------------------------------------\n VASE COIN\n")
+    print(" The coin depicts a branched tree with names.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_MedicineBottle():  # health, bathroom_1
+    print("---------------------------------------------------------------------------------------------------------------\n MEDICINE BOTTLE COIN\n")
+    print(" The coin has a plus sign carved into it.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Safe():    # wealth, workroom
+    print("---------------------------------------------------------------------------------------------------------------\n SAFE COIN\n")
+    print(" The coin has columns of coins carved into it.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Doll():    # joy, childrens room
+    print("---------------------------------------------------------------------------------------------------------------\n DOLL COIN\n")
+    print(" The coin has a smiley face carved into it.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Costume():   # freedom, attic
+    print("---------------------------------------------------------------------------------------------------------------\n COSTUME COIN\n")
+    print(" The coin depicts a dove breaking chains.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Nest():    # nature, bedroom
+    print("---------------------------------------------------------------------------------------------------------------\n NEST COIN\n")
+    print(" The coin depicts a plant and an animal.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Sandbox():    # power, playgroung
+    print("---------------------------------------------------------------------------------------------------------------\n SANDBOX COIN\n")
+    print(" The coin depicts a person wearing a crown and two people kneeling him.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Rag():    # peace, cellar
+    print("---------------------------------------------------------------------------------------------------------------\n RAG COIN\n")
+    print(" The coin depicts a hand making a V sign.\n---------------------------------------------------------------------------------------------------------------")
+
+@DecoratorToColourCoins
+def Coin_Book():    # wisdom, library
+    print("---------------------------------------------------------------------------------------------------------------\n BOOK COIN\n")
+    print(" The coin has a brain carved into it.\n---------------------------------------------------------------------------------------------------------------")
