@@ -7,10 +7,6 @@ Hlavní body aplikace:
 3. Tlačítka start a stop, pro spuštění a zastavení běhu hry
 4. Samotná logika hry
 
-TODO:
-
-- DONE - Doplnit komentáře u jednotlivých funkcí (docstring)
-- Přidat možnost krokování a možnost ovládat rychlost s jakou jsou kroky uskutečňovány
 
 Body k budoucímu zpracování:
 
@@ -21,3 +17,7 @@ Body k budoucímu zpracování:
 
 2. Optimalizace vyhodnocování následujcího stavu hry
     - např. pomocí uchovávání listu živých buněk
+
+3. Přidání oživování a umrtvování buněk pomocí tahu myši
+
+4. Lepší řešení nastavování rychlosti hry (nejspíše přes multiprocessing)

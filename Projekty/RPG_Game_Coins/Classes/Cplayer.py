@@ -22,8 +22,19 @@ class Cplayer:
         self.name = input(Fore.MAGENTA+ "  Enter your in-game name: ")
         print(Style.RESET_ALL)
 
+        self.position = "intro"
         self.inv = ["invitation letter", "flashlight","mailbox note"]
         self.map = ["front porch","main hallway downstairs"]
+
+        self.__file = open(self.__filePath, "w")
+        
+        self.__invStr = "".join([self.__thing + ";" for self.__thing in self.inv])
+        self.__mapStr = "".join([self.__place + ";" for self.__place in self.map])
+        self.__usedStr = "".join([self.__thing + ";" for self.__thing in self.used])
+        self.__orderOfCoinsStr = "".join([self.__coin + ";" for self.__coin in self.orderOfCoins])
+
+        self.__file.write(f"{self.name}\n{self.position}\n{self.__invStr}\n{self.__mapStr}\n{self.__usedStr}\n{self.__orderOfCoinsStr}\n")
+        self.__file.close()
         
     def LoadGame(self):
         # Loads the in-game name and the stored inventory and map into corresponding lists.

@@ -19,6 +19,7 @@ RPG textová hra, ve které hráč prozkoumává starý dům a hledá mince.
     - V průběhu hraní lze hru kdykoliv uložit
 
 # TODO
+- Komentáře
 - Možnost interakce s více předměty
 
 #

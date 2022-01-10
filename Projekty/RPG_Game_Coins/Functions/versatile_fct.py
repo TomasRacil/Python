@@ -89,9 +89,7 @@ def PrintHelp():
     print(Style.RESET_ALL+ "  Crucial commands:  help, save, exit, inventory, map")
     print("  Moving  commands:  go + /straight/back/left/right/down/up/to [place]")
     print("  Action  commands:  take/use/look at/open/break/pull/catch + [item]")
-    print(Fore.YELLOW+ "------------------------------------------------------------------------")
-    print(Style.RESET_ALL)
-    PressEnter()
+    print(Fore.YELLOW+ "------------------------------------------------------------------------", Style.RESET_ALL)
 
 
 def ArticleCheck(command):

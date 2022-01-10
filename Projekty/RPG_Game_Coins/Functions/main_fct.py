@@ -23,9 +23,7 @@ def NewGame(choicePlayer, filePath):
     Instructions(player.name)
 
     room = Croom(player.name, player.inv, player.map, player.used, filePath)      # creates Croom instance
-
     room.SaveFct()
-
     room.MainHallway_11()
 
     return 0
@@ -48,7 +46,14 @@ def LoadGame(choicePlayer, filePath):
     
     player.LoadGame()
 
-    if(player.position == "outro"):     # if the game has been played to the end, only the ending story will be replayed
+    if(player.position == "intro"):       # game was started, but intro was not played till the end
+        Instructions(player.name)
+
+        room = Croom(player.name, player.inv, player.map, player.used, filePath)      # creates Croom instance
+        room.SaveFct()
+        room.MainHallway_11()
+
+    elif(player.position == "outro"):     # game has been played to the end, only the ending story will be replayed
         Outro(player.name, player.orderOfCoins)
     else:
         room = Croom(player.name, player.inv, player.map, player.used, filePath)   # creates Croom instance

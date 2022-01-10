@@ -1,3 +1,5 @@
+NGUYEN THANH HIEP 22-5-KB-C
+
 The reason I created this project:
     I want to create a program that can encrypt a piece of text.
 
