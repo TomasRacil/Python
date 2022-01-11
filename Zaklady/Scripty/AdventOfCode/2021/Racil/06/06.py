@@ -28,4 +28,7 @@ with open(path.join(
         fishes[int(fish)] += 1
 
 # sum whole population of fishes
-print(sum(lanternFishReproduction(fishes, 80)))
+pop80 = lanternFishReproduction(fishes, 80)
+print(f"80 dni: {sum(pop80)}")
+pop256 = lanternFishReproduction(pop80, 256-80)
+print(f"256 dni: {sum(pop256)}")
