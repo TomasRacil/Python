@@ -1,33 +1,43 @@
 from tkinter import Tk, Label, Text, Button, CENTER, BOTTOM, WORD, END
+from sys import platform
 
+#zkontrolovat jaky je system
+if platform=="linux": 
+    print("To je Linux OS") 
+    hostsFile='/etc/hosts'  
+elif platform=="win32":
+    print("To je Windows OS")
+    hostsFile='C:\Windows\System32\drivers\etc\hosts'
+
+#Vytvorim tkinter
 root = Tk()
 root.title("HIEU- Website Blocker")
-root.geometry('600x400')  # dimension ngang * doc
+root.geometry('600x400')  # dimension y*x
 root.resizable(height=True, width=True)
 root.minsize(height=300, width=300)
-# tao ra 1 noi lay gia tri
+
 Label(root, text='WEBSITE BLOCKER', justify=CENTER,
-      fg="red", font='arial 15 bold').pack()
-# Label(root, text ='HIEU-PROJECT' , font ='arial 20 bold').pack(side=BOTTOM)
-# host_path = 'C:\Windows\System32\drivers\etc\hosts'
+      fg="red", font='arial 15 bold').pack()  #Hlavni Nazev
+
+
 ip_local = "127.0.0.1"  # ip local host
+
 Label(root, text='Enter Website :', font='arial 14 bold').place(x=5, y=65)
 Websites = Text(root, font='arial 10', height='2',
-                width='40', wrap=WORD, padx=5, pady=5)
+                width='40', wrap=WORD, padx=5, pady=5) #Zadej nazev website, abyste blokoval 
 Websites.place(x=150, y=60)
+
 
 Label(root, text='Unblock Website :', font='arial 14 bold').place(x=5, y=195)
 WebsitesUn = Text(root, font='arial 10', height='2',
-                  width='40', wrap=WORD, padx=5, pady=5)
+                  width='40', wrap=WORD, padx=5, pady=5)  #Zadej nazev website, abyste unblokoval
 WebsitesUn.place(x=180, y=190)
 
-# ham xu ly chan
-
-
+#Funkce , ktera pomuze blokovat
 def Blocker():
     website_lists = Websites.get(1.0, END)
     Website = list(website_lists.split(","))
-    with open(r"C:\Windows\System32\drivers\etc\hosts", 'r+') as host_file:
+    with open(hostsFile, 'r+') as host_file:
         file_content = host_file.read()
         for website in Website:
             if website in file_content:
@@ -41,17 +51,15 @@ def Blocker():
                       font='arial 12 bold').place(x=290, y=120)
                 Button(root, text="exit", command=root.quit).pack(side=BOTTOM)
 
-# ham go chan
-
-
+#Funkce , ktera unblokovat
 def UnBlocker():
     websiteUn_lists = WebsitesUn.get(1.0, END)
     Removedwebsites = list(websiteUn_lists.split(","))
-    with open(r"C:\Windows\System32\drivers\etc\hosts", 'r+') as host_fileUn:
+    with open(hostsFile, 'r+') as host_fileUn:
         file_content = host_fileUn.read()
         for websiteUn in Removedwebsites:
             if websiteUn in file_content:
-                with open(r"C:\Windows\System32\drivers\etc\hosts", 'r+') as host_fileUn:
+                with open(hostsFile, 'r+') as host_fileUn:
                     lines = host_fileUn.readlines()
                     host_fileUn.seek(0)
                     for line in lines:
@@ -72,11 +80,11 @@ def UnBlocker():
                 Button(root, text="exit", command=root.quit).pack(side=BOTTOM)
 
 
-# nut click chan
+#click Blokovani
 Button(root, text='Block', font='arial 12 bold', pady=5, command=Blocker,
        width=6, bg='royal blue1', activebackground='red').place(x=200, y=110)
 
-# nut click remove chan
+#click Unblokovani
 Button(root, text='UnBlock', font='arial 12 bold', pady=5, command=UnBlocker,
        width=6, bg='royal blue1', activebackground='red').place(x=200, y=240)
 
