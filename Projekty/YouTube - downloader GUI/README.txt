@@ -1,0 +1,1 @@
+WIP projekt - stále nefunkční titulky, GUI pro titulky dodělám podle toho jak jsme se domluvili
