@@ -154,6 +154,8 @@ class Stego_encode:
                                     # other options see https://trac.ffmpeg.org/wiki/Encode/H.264
         })
 
+	#PROBLEM TO SOLVE
+	#After saving back to video few values change -> not possible to extract information
         for image in frames:
             # writing to a image array
             writer.writeFrame(image[:,:,::-1])
