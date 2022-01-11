@@ -1,4 +1,0 @@
-tyna, 1234
-rohlik, 123
-jojo, 1234
-ja, 123
