@@ -3,19 +3,6 @@ omdb_api_key = "fe23422a"
 i = "tt3896198" #param_Omdp
 tastedive_key = "367007-dangquyt-VSK39QKH"
 
-"""
-    Function to place order on binance
-    :param symbol: {str} currency symbol in uppercase
-    :param side: {str} SELL/BUY
-    :param quantity: {int} how much you want to buy/sell
-    :param order_type: {str} MARKET/STOP/LIMIT
-    :param price: {int} price for LIMIT AND STOP order
-    :param tif: {int} time in force-> how long order should stay active, only STOP/LIMIT
-    :return:
-
-"""
-
-
 def get_movies_from_tastedive(name):      
     """
     Function to extract from tastedive.com 
