@@ -68,8 +68,6 @@ def get_related_movies(list_movies_title):
 
 #The function should return a dictionary with information about that movie.
 def get_movie_data(movie):
-    movie = movie.lower() 
-    baseurl = "https://www.omdbapi.com/"
     """
     Function to extract from omdbapi.com information about movie.
         parameter movie :{str} name of movie
@@ -84,6 +82,8 @@ def get_movie_data(movie):
 
         return {json}
     """
+    movie = movie.lower() 
+    baseurl = "https://www.omdbapi.com/"
     params_diction = {}
     params_diction["i"] = i
     params_diction["apikey"] = omdb_api_key
