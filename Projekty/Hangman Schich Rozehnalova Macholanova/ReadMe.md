@@ -4,9 +4,9 @@
     *pokud si zvolíme Singup, tak sleduje, jestli už uživatele nemáme v souboru
 - následuje zvolení úrovně
     * najdeme v Score.py 
-        1. úroveň = slova od 1 - 5 znaků a bez složitějších znaků
-        2. úroveň = slova od 6 - 8 znaků a bez složitějších znaků
-        3. úroveň = vygeneruje se slovo od 9 - 10 znaků, nebo slovo, které obsahuje složitější znaky 
+     1. úroveň = slova od 1 - 5 znaků a bez složitějších znaků
+     2. úroveň = slova od 6 - 8 znaků a bez složitějších znaků
+     3. úroveň = vygeneruje se slovo od 9 - 10 znaků, nebo slovo, které obsahuje složitější znaky 
 - uživatel hádá random generované slovo
     *najdeme v Draw.py
     * pokud uživatel uhodne písmenko, tak se nakreslí a dá se do listu, následně se sleduje, zda uživatel nezadal vícekrát stejné písmenko
