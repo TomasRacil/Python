@@ -1,7 +1,7 @@
 # HANGMAN
 - uživatel se může přihlásit a registrovat, modul LogReg.py, uživatele a heslo najdeme v souboru uzivatele.txt
-    *program sleduje zda uživatel zadal správně heslo a jméno
-    *pokud si zvolíme Singup, tak sleduje, jestli už uživatele nemáme v souboru
+    * program sleduje zda uživatel zadal správně heslo a jméno
+    * pokud si zvolíme Singup, tak sleduje, jestli už uživatele nemáme v souboru
 - následuje zvolení úrovně
    * najdeme v Score.py 
    1. úroveň = slova od 1 - 5 znaků a bez složitějších znaků
