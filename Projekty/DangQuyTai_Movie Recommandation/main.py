@@ -3,20 +3,38 @@ omdb_api_key = "fe23422a"
 i = "tt3896198" #param_Omdp
 tastedive_key = "367007-dangquyt-VSK39QKH"
 
+"""
+    Function to place order on binance
+    :param symbol: {str} currency symbol in uppercase
+    :param side: {str} SELL/BUY
+    :param quantity: {int} how much you want to buy/sell
+    :param order_type: {str} MARKET/STOP/LIMIT
+    :param price: {int} price for LIMIT AND STOP order
+    :param tif: {int} time in force-> how long order should stay active, only STOP/LIMIT
+    :return:
 
-#extracted from tastedive.com 
+"""
+
+
 def get_movies_from_tastedive(name):      
-    baseurl = "https://tastedive.com/api/similar"
     """
-    Parameter of URL:
-    -k: Your API access key
-    -type: type of results(music, movies, shows, podcasts, books, authors, games...)
-    -limit: maximum number of recommendations to retrieve.
-    Base endpoint:
-    #print(tastedive_req.url)
-    #https://tastedive.com/api/similar?k=367007-dangquyt-VSK39QKH&q="movie_name"&type=movies&limit=5
+    Function to extract from tastedive.com 
+        parameter name :{str} name of movie
+
+        url:
+            k: Your API access key
+            q: the search query; consists of a series (at least one) of bands, movies, TV shows, podcasts, books, authors and/or games, separated by commas
+            type: type of results(music, movies, shows, podcasts, books, authors, games...)
+            limit: maximum number of recommendations to retrieve.
+
+            Base endpoint:
+                #print(tastedive_req.url)
+                #https://tastedive.com/api/similar?k=367007-dangquyt-VSK39QKH&q="movie_name"&type=movies&limit=5
+        
+        return {json}
 
     """
+    baseurl = "https://tastedive.com/api/similar"
     params_diction = {}
     params_diction["k"] = tastedive_key
     params_diction["q"] = name
@@ -24,21 +42,32 @@ def get_movies_from_tastedive(name):
     params_diction["limit"] = 5
     tastedive_req = requests.get(baseurl, params = params_diction)
     return tastedive_req.json()
-    #return result in json format (JavaScript Object Notation (JSON) is a standardized format commonly used to transfer data as text that can be sent over a network.)
 
 
-
-# extracts just the list of movie titles from a dictionary returned by get_movies_from_tastedive 
-def extract_movie_titles(dit_from_tastedive):
+def extract_movie_titles(dict_from_tastedive):
+    """
+    Function to extract the list of movie titles from a dictionary returned by get_movies_from_tastedive
+        parameter dict_from_tastedive :{dict} 
+        return {list}
+    """
     movies_titles = []
-    for movie in dit_from_tastedive["Similar"]["Results"]:
+    for movie in dict_from_tastedive["Similar"]["Results"]:
         movies_titles.append(movie["Name"])
     return movies_titles
 
 
-# Called get_related_titles. It takes a list of movie titles as input. 
-# It gets five related movies for each from TasteDive, extracts the titles for all of them, and combines them all into a single list
-def get_related_movies(list_movies_title): 
+
+def get_related_movies(list_movies_title):
+    """
+    Function to call get_related_titles
+        #It takes a list of movie titles as input.
+        #It gets five related movies for each from TasteDive, extracts the titles for all of them, and combines them all into a single list
+
+        parameter list_movies_title : {list}
+
+        return {list}
+
+    """
     related_movies = []
     for movie in list_movies_title:
         if movie not in related_movies:
@@ -55,13 +84,18 @@ def get_movie_data(movie):
     movie = movie.lower() 
     baseurl = "https://www.omdbapi.com/"
     """
-    Parameter of URL:
-    -i: A valid IMDb ID
-    -apikey
-    -t: Type of result to return (movie, series...)
-    Base endpoint:
-    #print(omdb_api_req.url)
-    #https://www.omdbapi.com/?i=tt3896198&apikey=fe23422a&t="movie_name"
+    Function to extract from omdbapi.com information about movie.
+        parameter movie :{str} name of movie
+
+        url:
+            -i: A valid IMDb ID
+            -apikey
+            -t: Type of result to return (movie, series...)
+            Base endpoint:
+                #print(omdb_api_req.url)
+                #https://www.omdbapi.com/?i=tt3896198&apikey=fe23422a&t="movie_name"
+
+        return {json}
     """
     params_diction = {}
     params_diction["i"] = i
@@ -73,6 +107,11 @@ def get_movie_data(movie):
 
 # It takes an OMDB dictionary result for one movie and extracts the Rotten Tomatoes rating as an integer
 def get_movie_rating(data_from_omdb):
+    """
+    Function to extracts the Rotten Tomatoes rating
+        parameter data_from_omdb : {list}
+        return {int}
+    """
     if "Error" in data_from_omdb:
         return "Error"
     else:
@@ -92,9 +131,12 @@ def sort_score(score):
     return i
 
 
-# It takes a list of movie titles as an input. 
-# It returns a sorted list of related movie titles as output, up to five related movies for each input movie title.
 def get_sorted_recommendations(related_movies): 
+    """
+    Function to get sorted list of related movie titles as output, up to five related movies for each input movie title.
+        parameter related_movies : {list}
+        return {list}
+    """
     dict_movies = {}
     for movie in related_movies:
         dict_movies[movie] = get_movie_rating(get_movie_data(movie))
