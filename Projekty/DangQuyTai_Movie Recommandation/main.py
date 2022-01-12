@@ -7,15 +7,24 @@ tastedive_key = "367007-dangquyt-VSK39QKH"
 #extracted from tastedive.com 
 def get_movies_from_tastedive(name):      
     baseurl = "https://tastedive.com/api/similar"
+    """
+    Parameter of URL:
+    -k: Your API access key
+    -type: type of results(music, movies, shows, podcasts, books, authors, games...)
+    -limit: maximum number of recommendations to retrieve.
+    Base endpoint:
+    #print(tastedive_req.url)
+    #https://tastedive.com/api/similar?k=367007-dangquyt-VSK39QKH&q="movie_name"&type=movies&limit=5
+
+    """
     params_diction = {}
     params_diction["k"] = tastedive_key
     params_diction["q"] = name
     params_diction["type"] = "movies"
     params_diction["limit"] = 5
     tastedive_req = requests.get(baseurl, params = params_diction)
-    #print(tastedive_req.url)
-    #https://tastedive.com/api/similar?k=367007-dangquyt-VSK39QKH&q="movie_name"&type=movies&limit=5
     return tastedive_req.json()
+    #return result in json format (JavaScript Object Notation (JSON) is a standardized format commonly used to transfer data as text that can be sent over a network.)
 
 
 
@@ -45,13 +54,20 @@ def get_related_movies(list_movies_title):
 def get_movie_data(movie):
     movie = movie.lower() 
     baseurl = "https://www.omdbapi.com/"
+    """
+    Parameter of URL:
+    -i: A valid IMDb ID
+    -apikey
+    -t: Type of result to return (movie, series...)
+    Base endpoint:
+    #print(omdb_api_req.url)
+    #https://www.omdbapi.com/?i=tt3896198&apikey=fe23422a&t="movie_name"
+    """
     params_diction = {}
     params_diction["i"] = i
     params_diction["apikey"] = omdb_api_key
     params_diction["t"] = movie
     omdb_api_req = requests.get(baseurl, params = params_diction)
-    #print(omdb_api_req.url)
-    #https://www.omdbapi.com/?i=tt3896198&apikey=fe23422a&t="movie_name"
     return omdb_api_req.json()
 
 
@@ -64,6 +80,7 @@ def get_movie_rating(data_from_omdb):
             if dit["Source"] == "Rotten Tomatoes":
                 return dit["Value"]
         return "Dont have Rotteen's rating"
+ 
  
 #Sort movie by socre
 def sort_score(score):
