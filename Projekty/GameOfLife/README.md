@@ -31,6 +31,4 @@ Possible future extensions:
 - more polygons determined by shape - square,.. - polygons with predetermined location on grid (only playing with numbers in shapely.Polygon)
 - make more shapes viable at the same time (make more lists so that shapes dont rewrite themselves and change Update to use intersection or union for them)
 - make it faster = scrap the Update algorithm and compute only the area within polygon
-- combine this with game of life by Chaloupka,Kovar
-
-email: skerik.dan@gmail.com
+- combine it with game of life by Chaloupka,Kovar
