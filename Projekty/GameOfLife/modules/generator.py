@@ -47,8 +47,8 @@ def gen_point_in_polygon(polygon):
     # determine maximum edges
     minx, miny, maxx, maxy = polygon.bounds
 
-    # create prepared polygon
-    prep_polygon = prep(polygon)
+    # create prepared polygon - needed for usage of "contains"
+    prep_polygon = prep(polygon) #<shapely.prepared.PreparedGeometry object at 0x...>
 
     # construct a rectangular mesh
     points = []
