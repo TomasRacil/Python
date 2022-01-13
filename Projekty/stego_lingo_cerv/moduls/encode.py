@@ -28,7 +28,7 @@ def encodeCore(three_pixels, bit_character):
 
 def preEncode(image, message):
 	"""Checks if target is big enought to encode to"""
-	old_image_data = list(image.getdata())
+	old_image_data = list(image.getdata()) #problem 1
 	if (len(old_image_data) > (len(message)*3)):
 		new_image = image.copy()
 		image.close()
