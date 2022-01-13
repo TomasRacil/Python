@@ -33,4 +33,4 @@ Possible future extensions:
 - make it faster = scrap the Update algorithm and compute only the area within polygon
 - combine this with game of life by Chaloupka,Kovar
 
-my email: skerik.dan@gmail.com
+email: skerik.dan@gmail.com
