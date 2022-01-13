@@ -11,9 +11,9 @@ numpy, matplotlib and shapely needed - there can be problem with instalation of 
 to proper install and manage all your libraries install Anaconda to create custom enviroments: https://www.anaconda.com/products/individual
 conda guide: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 
-To create an environment: conda create --name myenv
-To activate an env: conda activate myenv
-To install needed libraries: conda install -c conda-forge shapely matplotlib numpy
+- To create an environment: conda create --name myenv
+- To activate an env: conda activate myenv
+- To install needed libraries: conda install -c conda-forge shapely matplotlib numpy
 
 to run the game from conda, activate ur enviroment, set it to game dir and run with command: python main.py (with args to control the game, args in -h)
 
