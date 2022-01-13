@@ -1,5 +1,6 @@
 # Website blocker
 Cíl:
+
   -Vytvořím aplikaci na blokování webových stránek.
   -Aplikace bude mít možnost Blokovat a Odblokovat.
   -Aplikace je kompatibilní s operačními systémy Windows i Linux.
