@@ -1,5 +1,5 @@
 # External import
-from os import path, remove         # to create a path to a file, to delete a file
+from os import path, remove, system         # to create a path to a file, to delete a file
 from colorama import Fore, Style
 
 # Internal import
@@ -9,6 +9,7 @@ from Functions.versatile_fct import Menu, PrintHelp
 
 # Main
 if __name__ == "__main__":
+    system('color')     # to colour windows console output
 
     # Local variable
     # variable of the main menu; makes sure the game is in a loop, until it is ended manually
@@ -29,35 +30,31 @@ if __name__ == "__main__":
                 # loop of the player menu
                 while((choicePlayer < 1) or (choicePlayer > 5) and (choicePlayer != 9)):
 
-                    print(
-                        Fore.YELLOW + "\n------------------------------------------------------------------------\n START - Choose a game")
+                    print(Fore.YELLOW + "\n------------------------------------------------------------------------\n START - Choose a game")
                     print(Style.RESET_ALL)
 
                     # Menu of players
                     for i in range(1, 6):       # prints out menu of free or occupied spots (1 - 5)
-                        filePath = path.join(path.dirname(path.realpath(__file__)), 'Saves', (
-                            "player" + str(i) + ".txt"))         # creates a path to the supposed files
+                        filePath = path.join(path.dirname(path.realpath(__file__)), 'Saves', ("player" + str(i) + ".txt"))         # creates a path to the supposed files
+                        #filePath = path.join('Saves', ("player" + str(i) + ".txt"))     #... for exe to work
 
                         # prints either "empty" or "player name" depending on the state (exist/does not exist) of the corresponding file
                         if(path.exists(filePath)):
-                            print(
-                                f"  {i} ... {(open(filePath).readline().strip())}")
+                            print(f"  {i} ... {(open(filePath).readline().strip())}")
                         else:
                             print(f"  {i} ... Empty")
                     print("\n  9 ... Go back\n")
                     # user chooses his game spot (1 - 5)
                     choicePlayer = Menu(1, 5, 9)
 
-                    filePath = path.join(path.dirname(path.realpath(__file__)), 'Saves', ("player" + str(
-                        choicePlayer) + ".txt"))      # creates a path to file of the choosen player
+                    filePath = path.join(path.dirname(path.realpath(__file__)), 'Saves', ("player" + str(choicePlayer) + ".txt"))      # creates a path to file of the choosen player
+                    #filePath = path.join('Saves', ("player" + str(choicePlayer) + ".txt"))    #... for exe to work
 
                     # Menu of next steps
                     # For empty slots
                     if((choicePlayer > 0) and (choicePlayer < 6) and (choicePlayer != 9) and not (path.exists(filePath))):
-                        print(
-                            Fore.YELLOW + f"\n------------------------------------------------------------------------\n START - Game {choicePlayer}")
-                        print(Style.RESET_ALL +
-                              "\n  1 ... New game\n\n  9 ... Go back\n")
+                        print(Fore.YELLOW + f"\n------------------------------------------------------------------------\n START - Game {choicePlayer}")
+                        print(Style.RESET_ALL + "\n  1 ... New game\n\n  9 ... Go back\n")
 
                         # Start new game
                         # user chooses to start a new game or go back to player menu
@@ -72,10 +69,8 @@ if __name__ == "__main__":
                     elif((choicePlayer > 0) and (choicePlayer < 6) and (choicePlayer != 9) and path.exists(filePath)):
                         choice = 0
 
-                        print(
-                            Fore.YELLOW + f"\n------------------------------------------------------------------------\n START - Game {choicePlayer}")
-                        print(
-                            Style.RESET_ALL + "\n  1 ... Load game\n  2 ... New game\n  3 ... Delete game\n\n  9 ... Go back\n")
+                        print(Fore.YELLOW + f"\n------------------------------------------------------------------------\n START - Game {choicePlayer}")
+                        print(Style.RESET_ALL + "\n  1 ... Load game\n  2 ... New game\n  3 ... Delete game\n\n  9 ... Go back\n")
                         # user chooses his next step (load, new, delete, exit)
                         choice = Menu(1, 3, 9)
 
@@ -87,10 +82,8 @@ if __name__ == "__main__":
 
                             # Start new game
                             case 2:
-                                print(
-                                    Fore.YELLOW + f"\n------------------------------------------------------------------------\n  NEW GAME - Game {choicePlayer}")
-                                print(
-                                    Style.RESET_ALL + "\n  All the progress will be lost.\n  Are you sure you want to proceed?\n\n  1 ... No\n  2 ... Yes\n")
+                                print(Fore.YELLOW + f"\n------------------------------------------------------------------------\n  NEW GAME - Game {choicePlayer}")
+                                print(Style.RESET_ALL + "\n  All the progress will be lost.\n  Are you sure you want to proceed?\n\n  1 ... No\n  2 ... Yes\n")
 
                                 # Go back to player menu
                                 if(Menu(1, 2, 101) == 1):
@@ -104,10 +97,8 @@ if __name__ == "__main__":
 
                             # Delete game
                             case 3:
-                                print(
-                                    Fore.YELLOW + f"\n------------------------------------------------------------------------\n  DELETE GAME - Game {choicePlayer}")
-                                print(
-                                    Style.RESET_ALL + "\n  All the progress will be lost.\n  Are you sure you want to proceed?\n\n  1 ... No\n  2 ... Yes\n")
+                                print(Fore.YELLOW + f"\n------------------------------------------------------------------------\n  DELETE GAME - Game {choicePlayer}")
+                                print(Style.RESET_ALL + "\n  All the progress will be lost.\n  Are you sure you want to proceed?\n\n  1 ... No\n  2 ... Yes\n")
 
                                 # Go back to player menu
                                 if(Menu(1, 2, 101) == 1):
@@ -136,8 +127,7 @@ if __name__ == "__main__":
             # End game
             case 3:         # asks to confirm the choice to end game
                 print(Fore.YELLOW + "\n------------------------------------------------------------------------\n END GAME - Are you sure?")
-                print(Style.RESET_ALL +
-                      "\n  1 ... No, continue\n  2 ... Yes, exit\n")
+                print(Style.RESET_ALL + "\n  1 ... No, continue\n  2 ... Yes, exit\n")
 
                 # Back to main menu
                 if(Menu(1, 2, 101) == 1):
@@ -145,7 +135,6 @@ if __name__ == "__main__":
                     MainMenuChoice = 0
                 # Exit
                 else:
-                    print(
-                        Fore.YELLOW + "\n------------------------------------------------------------------------\n Good bye...\n")
+                    print(Fore.YELLOW + "\n------------------------------------------------------------------------\n Good bye...\n")
                     print(Style.RESET_ALL)
                     exit()
