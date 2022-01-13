@@ -99,15 +99,32 @@ if IsPassed==True:
         ciphertext=StringVar()
         encoded_Vysledek=StringVar()
         decoded_Vysledek= StringVar()
-        
+        orderedList= sorted(m_Keyword)
         def Desifrovej():
             decoded=""
             temp=ciphertext.get()
+            t=len(temp)//len(m_Keyword)
+            for m in range(t):
+                for j in range(len(orderedList)):
+                    for i in range(len(m_Keyword)):
+                        if orderedList[j]==m_Keyword[i]:
+                            decoded+= temp[i*t+m]
             decoded_Vysledek.set(decoded)
             Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
         def Sifrovej():
             temp=plaintext.get()
             encoded=""
+            for i in range(len(m_Keyword)):
+                for j in range(len(orderedList)):
+                    if orderedList[j]==m_Keyword[i]:
+                        k=j
+                        while(k+1<=len(temp)+len(m_Keyword)-len(temp)%len(m_Keyword)):
+                            if k+1<=len(temp):
+                                encoded+= temp[k]
+                                k+= len(m_Keyword)
+                            else:
+                                encoded+= "*" #libovolny znak
+                                break
             encoded_Vysledek.set(encoded)
             Entry(root,textvariable=encoded_Vysledek,width=30).place(x=100,y=150)
         def ClearAll():
@@ -139,7 +156,7 @@ if IsPassed==True:
             temp=plaintext.get()
             encoded=""
             for i in range(len(temp)):
-                cislo=ord(temp[i])^m_KeyNumber
+                cislo=(m_IndexVariable+ ord(temp[i]))^m_KeyNumber
                 encoded+= chr(cislo)
             encoded_Vysledek.set(encoded)
             Entry(root,textvariable=encoded_Vysledek,width=30).place(x=100,y=150)
@@ -147,7 +164,7 @@ if IsPassed==True:
             decoded=""
             temp=ciphertext.get()
             for i in range(len(temp)):
-                cislo=ord(temp[i])^m_KeyNumber
+                cislo=(m_IndexVariable+ord(temp[i]))^m_KeyNumber
                 decoded+= chr(cislo)
             decoded_Vysledek.set(decoded)
             Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
