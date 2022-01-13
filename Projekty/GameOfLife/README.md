@@ -34,4 +34,3 @@ Possible future extensions:
 - combine this with game of life by Chaloupka,Kovar
 
 my email: skerik.dan@gmail.com
-dont expect me to remember things after 1+ year, thats why there re so many comments
