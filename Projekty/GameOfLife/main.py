@@ -12,7 +12,6 @@ def main():
     parser = argparse.ArgumentParser(description="Runs Conway's Game of Life simulation. See options for controlling the game. Rules will apply to only one shape. With ellipse theres need to define its width and also height.")
     # add arguments
     parser.add_argument('-g','--grid', dest='N', required=False, default=100, help='define size of grid | example: --grid 20 | default: 100')
-    parser.add_argument('-i','--interval', dest='interval', required=False)
     parser.add_argument('-c','--circle', dest='radius', required=False, help='define radius of circle, default maximun = grid/2 | example: --circle 20')
     parser.add_argument('-p','--polygon', dest='verts', required=False, help='define number of vertices in polygon | example: --polygon 20')
     parser.add_argument('-e','--ellipse', dest='e_param', nargs='+', required=False, help='define width and height values of ellipse | example: --ellipse 10 15')
