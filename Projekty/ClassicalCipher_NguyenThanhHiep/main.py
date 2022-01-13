@@ -80,6 +80,7 @@ if IsPassed==True:
             encoded_Vysledek.set("")
             decoded_Vysledek.set("")
         
+        Label(root,text="SUBSTITUTION",fg="green",font=("tohama",10),justify=CENTER).pack()
         Entry(root,textvariable=plaintext,width=30).place(x=100,y=100)
         Button(root, text="ENCRYPT",command=Sifrovej).place(x=300,y=100)
         Entry(root,textvariable=ciphertext,width=30).place(x=100,y=300)
@@ -133,6 +134,7 @@ if IsPassed==True:
             encoded_Vysledek.set("")
             decoded_Vysledek.set("")
         
+        Label(root,text="COLUMNAR",fg="green",font=("tohama",10),justify=CENTER).pack()
         Entry(root,textvariable=plaintext,width=30).place(x=100,y=100)
         Button(root, text="ENCRYPT",command=Sifrovej).place(x=300,y=100)
         Entry(root,textvariable=ciphertext,width=30).place(x=100,y=300)
@@ -156,7 +158,7 @@ if IsPassed==True:
             temp=plaintext.get()
             encoded=""
             for i in range(len(temp)):
-                cislo=(m_IndexVariable+ ord(temp[i]))^m_KeyNumber
+                cislo=(m_IndexVariable+ ord(temp[i]))^m_XoredNumber
                 encoded+= chr(cislo)
             encoded_Vysledek.set(encoded)
             Entry(root,textvariable=encoded_Vysledek,width=30).place(x=100,y=150)
@@ -164,7 +166,7 @@ if IsPassed==True:
             decoded=""
             temp=ciphertext.get()
             for i in range(len(temp)):
-                cislo=(m_IndexVariable+ord(temp[i]))^m_KeyNumber
+                cislo=(m_IndexVariable+ord(temp[i]))^m_XoredNumber
                 decoded+= chr(cislo)
             decoded_Vysledek.set(decoded)
             Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
@@ -174,6 +176,7 @@ if IsPassed==True:
             encoded_Vysledek.set("")
             decoded_Vysledek.set("")
 
+        Label(root,text="XOR",fg="green",font=("tohama",10),justify=CENTER).pack()
         Entry(root,textvariable=plaintext,width=30).place(x=100,y=100)
         Button(root, text="ENCRYPT",command=Sifrovej).place(x=300,y=100)
         Entry(root,textvariable=ciphertext,width=30).place(x=100,y=300)
@@ -216,6 +219,7 @@ if IsPassed==True:
             encoded_Vysledek.set("")
             decoded_Vysledek.set("")
         
+        Label(root,text="SHIFT",fg="green",font=("tohama",10),justify=CENTER).pack()
         Entry(root,textvariable=plaintext,width=30).place(x=100,y=100)
         Button(root, text="ENCRYPT",command=Sifrovej).place(x=300,y=100)
         Entry(root,textvariable=ciphertext,width=30).place(x=100,y=300)

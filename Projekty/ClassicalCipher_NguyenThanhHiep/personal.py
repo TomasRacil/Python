@@ -11,7 +11,7 @@ m_KeyShift=5
 m_Keyword="Vietnam" 
 
 #XOR
-m_KeyNumber=10 
+m_XoredNumber=13
 m_IndexVariable=0
 
 def MakeCenter(root):  #Move tkinter to center of screen
