@@ -64,38 +64,55 @@ def decode_dns_message(message):
     rcode = misc & 0xF
 
     offset = DNS_QUERY_MESSAGE_HEADER.size
-    questions, offset = decode_question_section(message, offset, qdcount)
+   # questions, offset = decode_question_section(message, offset, qdcount)
+
+   #if qr == True:
+   # answers, offset = decode_answers(message,offset,ancount)    
+   
    
     # result = {"id": id,
-    #             "is_response": qr,
-    #             "opcode": opcode,
-    #             "is_authoritative": aa,
-    #             "is_truncated": tc,
-    #             "recursion_desired": rd,
-    #             "recursion_available": ra,
-    #             "reserved": z,
-    #             "response_code": rcode,
-    #             "question_count": qdcount,
-    #             "answer_count": ancount,
-    #             "authority_count": nscount,
-    #             "additional_count": arcount}
+    #           "is_response": qr,
+    #           "opcode": opcode,
+    #           "is_authoritative": aa,
+    #           "is_truncated": tc,
+    #           "recursion_desired": rd,
+    #           "recursion_available": ra,
+    #           "reserved": z,
+    #           "response_code": rcode,
+    #           "question_count": qdcount,
+    #           "answer_count": ancount,
+    #           "authority_count": nscount,
+    #           "additional_count": arcount,
+    #           "questions": questions}
 
-    #print(result)
+    return [id,qr,opcode,aa,tc,rd,ra,z,rcode,qdcount,ancount,nscount,arcount]
+    r#eturn result
 
-    result = {"id": id,
-              "is_response": qr,
-              "opcode": opcode,
-              "is_authoritative": aa,
-              "is_truncated": tc,
-              "recursion_desired": rd,
-              "recursion_available": ra,
-              "reserved": z,
-              "response_code": rcode,
-              "question_count": qdcount,
-              "answer_count": ancount,
-              "authority_count": nscount,
-              "additional_count": arcount,
-              "questions": questions}
+def decode_answers(message,offset,ancount):
+   
+    DNS_ANSWER_HEADER = struct.Struct("!5H")
+    answers = []
 
-    # return [id,qr,opcode,aa,tc,rd,ra,z,rcode,qdcount,ancount,nscount,arcount]
-    return result
+    for _ in range(ancount):
+        qname,qtype,qclass,ttl,data_length = DNS_ANSWER_HEADER.unpack_from(message,offset)
+        offset += DNS_ANSWER_HEADER.size
+        
+        answer =   {"domain_name": qname,
+                    "query_type": qtype,
+                    "query_class": qclass,
+                    "ttl": ttl,
+                    "data_length": data_length}
+                     #qtype: 
+        answers.append(answer)
+
+def decode_cname(byte_stream, offset):
+    pass
+
+# def decode_a(byte_stream, offset):
+#     pass
+# def decode_aaaa(byte_stream, offset):
+#     pass
+# def decode_ns(byte_stream, offset):
+#     pass
+# def decode_mx(byte_stream, offset):
+#     pass
