@@ -1,32 +1,68 @@
+
 import queue
 import time
+from tkinter import *
+from sniffer import Sniffer
+from scapy.all import *
+from scapy.layers.dns import *
 from threading import Thread
+from csv_parser import CSVParser
+
 
 
 exitFlag = False
+gui = None
+sniffer= None
 
+def init():
+    workQueue = queue.Queue()
+    csvQueue = queue.Queue()
+    gui = GUI('GUI ID', workQueue)
 
-class Sniffer(Thread):
+    sniffer = Sniffer('Sniffer ID',workQueue,exitFlag)
+    return [gui,sniffer]
 
-    def __init__(self, id, q):
-        super().__init__()
-        self.id = id
-        self.q = q
-        print(f"{id}: Sniffer vytvoren")
+def startScript():
+    print('Hello')
+    global exitFlag, gui, sniffer
+    [gui,sniffer] = init()
+    exitFlag = False
+    gui.start()
+    sniffer.start()
 
-    def run(self):
-        print(f"{self.id} spousteni ... ")
-        self.snif()
-        print(f"{self.id}: ukoncuji se...")
+def stopScript():
+    global exitFlag
+    exitFlag = True
+    sniffer.flag = exitFlag
+    sniffer.join()
 
-    def snif(self):
-        i = 0
-        while True:
-            self.q.put(i)
-            i += 1
-            time.sleep(1)
-            if exitFlag:
-                break
+    gui.join()
+    print("Exiting Main Thread")
+
+# class Snif(Thread):
+
+#     def __init__(self, id, q):
+#         super().__init__()
+#         self.id = id
+#         self.q = q
+#         print(f"{id}: Sniffer vytvoren")
+
+#     def run(self):
+#         print(f"{self.id} spousteni ... ")
+#         self.snif()
+#         print(f"{self.id}: ukoncuji se...")
+#     def process_packet(self,pkt):  
+#             if pkt.haslayer(TCP):
+#                self.q.put(str("[")+str(time)+str("]")+"  "+"TCP-IN:{}".format(len(pkt[TCP]))+" Bytes"+"    "+"SRC-MAC:" +str(pkt.src)+"    "+ "DST-MAC:"+str(pkt.dst)+"    "+ "SRC-PORT:"+str(pkt.sport)+"    "+"DST-PORT:"+str(pkt.dport)+"    "+"SRC-IP:"+str(pkt[IP].src  )+"    "+"DST-IP:"+str(pkt[IP].dst ))
+
+#     def snif(self,iface='eth0'):
+#         data = AsyncSniffer(prn=self.process_packet, iface=iface, store=False)
+#         data.start()
+#         while True:
+#             # print(data.results)
+#             if exitFlag:
+#                 data.stop()
+#                 break
 
 
 class GUI(Thread):
@@ -54,26 +90,22 @@ class GUI(Thread):
 
 
 if __name__ == "__main__":
+    
 
-    workQueue = queue.Queue()
-    gui = GUI(1, workQueue)
-    gui.start()
+    # # sniffer.start()t(gui, sniffer):
 
-    time.sleep(1)
-    ids = [1]
-    sniffers = []
+    # # time.sleep(30)
+    # workQueue = queue.Queue()
+    # csvQueue = queue.Queue()
+    # gui = GUI('GUI ID', workQueue)
 
-    for id in ids:
-        sniffer = Sniffer(id, workQueue)
-        sniffer.start()
-        sniffers.append(sniffer)
+    # sniffer = Sniffer('Sniffer ID',workQueue,exitFlag)
 
-    time.sleep(5)
+    root = Tk()
+    startButton = Button(root, text="Start",command= lambda:startScript())
+    stopButton = Button(root, text="Stop",command=lambda:stopScript())
+    startButton.pack()
+    stopButton.pack()
+    root.mainloop()
 
-    exitFlag = True
 
-    for sniffer in sniffers:
-        sniffer.join()
-
-    gui.join()
-    print("Exiting Main Thread")

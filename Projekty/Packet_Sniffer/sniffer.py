@@ -1,5 +1,4 @@
 from itertools import count
-from struct import pack
 from scapy.all import *
 
 from scapy.layers.http import *
@@ -12,18 +11,37 @@ password = ''
 start_time = time.time()
 
 
-class Sniffer:
-    @classmethod
+class Sniffer(Thread):
+
+    def __init__(self, id, q,exit_flag):
+     super().__init__()
+     self.id = id
+     self.q = q
+     self.flag = exit_flag
+     print(f"{id}: Sniffer vytvoren")
+
+    def run(self):
+        print(f"{self.id} spousteni ... ")
+        self.sniff_packet('eth0')
+        print(f"{self.id}: ukoncuji se...")
+
     def sniff_packet(self,iface=None):
-
+  
         if iface:
-            print(sniff(filter="port 80 or port 21 or port 53",prn=self.process_packet, iface=iface, store=False))
+          data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, iface=iface, store=False)
+          data.start()
         else:
-            return sniff(filter="port 80 or port 21 or port 53",prn=self.process_packet, store=False)
+          data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, store=False)
+          data.start()
+        while True:
+            # print(data.results)
+            if self.flag:
+                data.join()
+                break
 
-    @classmethod
     def process_packet(self,packet):
-    
+        print(self.id)
+        print(self.flag)
         timestmap = time.time() - start_time
         timestmap = int(timestmap * 1000)/1000.0
         packet_len = len(packet)
@@ -56,7 +74,7 @@ class Sniffer:
                     payload = method+" "+url+" "+version
 
                     if packet.haslayer(Raw) and method == "POST":
-                        postedData = str(packet[Raw].load.decode('utf-8'))
+                        postedData = str(packet[Raw].load)
                         keywords = ["login", "password", "username", "user", "pass"]
                         for keyword in keywords:
                          if keyword in postedData:
@@ -71,7 +89,7 @@ class Sniffer:
                     payload = code+" "+reason_phrase+" "+version 
 
     
-                return [packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials]
+                self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
             #FTP
             if (dst_port == 21 or src_port == 21) and (packet.haslayer(Raw)):
                 protocol = "FTP"
@@ -89,7 +107,7 @@ class Sniffer:
                         password = ''
                         print(credentials)
 
-                return [packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials]
+                self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
         
         if packet.haslayer(UDP):    
             if packet.haslayer(DNS):
@@ -101,7 +119,7 @@ class Sniffer:
                 if packet.haslayer(DNSRR):
                     payload = "Standard response " + str(dnstypes[packet[DNSRR].type]) + " " + str(packet[DNSRR].rrname)+ " " + str(packet[DNSRR].rdata)
 
-            return [packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials]
+            self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
 
 # def main():
 #     Sniffer.sniff_packet('eth0')
@@ -109,4 +127,4 @@ class Sniffer:
 
 # if __name__  == "__main__":
 #     main()
-   #
+   

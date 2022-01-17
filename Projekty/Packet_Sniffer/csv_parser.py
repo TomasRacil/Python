@@ -1,8 +1,8 @@
 import csv
-from datetime import datetime
 import os.path
+from threading import Thread
 
-class CSVParser:
+class CSVParser(Thread):
     @classmethod
     def read(self,filename):
         with open(filename, 'r') as csv_file:
