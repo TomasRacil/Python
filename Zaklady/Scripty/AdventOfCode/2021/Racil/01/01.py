@@ -12,6 +12,8 @@ def countPositiveChanges(numberList):
     for i in range(1, len(numberList)):
         if numberList[i-1] < numberList[i]:
             count += 1
+    # for i, number in enumerate(numberList[1:]):
+    #     if numberList[i] < number:
     return count
 
 
@@ -25,5 +27,8 @@ print(f"Počet navýšení o jedna: {countPositiveChanges(numbers)}")
 # vytvoření pole obsahující součty tří po sobě jdoucích čísel
 slidingWindow = [numbers[i]+numbers[i+1]+numbers[i+2]
                  for i in range(len(numbers)-2)]
+
+# slidingWindow = [number+numbers[i+1]+numbers[i+2]
+#                  for i,number in enumerate(numbers[:-2])]
 
 print(f"Počet navýšení sliding window: {countPositiveChanges(slidingWindow)}")
