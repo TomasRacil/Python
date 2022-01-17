@@ -229,5 +229,5 @@ class ScrollbarFrame(Frame):
 
 
 
-if __name__ == "__main__":
-    GUI().mainloop()
+# if __name__ == "__main__":
+#     GUI().mainloop()

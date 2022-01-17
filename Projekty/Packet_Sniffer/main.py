@@ -1,3 +1,4 @@
-import os
+from gui import GUI
 
-print(os.getcwd())
+if __name__ == '__main__':
+    GUI().mainloop()
