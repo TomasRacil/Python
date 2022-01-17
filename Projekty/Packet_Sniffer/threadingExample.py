@@ -27,6 +27,7 @@ def startScript():
     global exitFlag, gui, sniffer
     [gui,sniffer] = init()
     exitFlag = False
+    sniffer.flag = exitFlag
     gui.start()
     sniffer.start()
 

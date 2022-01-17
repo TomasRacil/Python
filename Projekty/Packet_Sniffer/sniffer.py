@@ -27,7 +27,7 @@ class Sniffer(Thread):
 
     def sniff_packet(self,iface=None):
   
-        if iface:
+        if iface and self.flag == False:
           data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, iface=iface, store=False)
           data.start()
         else:
@@ -36,12 +36,11 @@ class Sniffer(Thread):
         while True:
             # print(data.results)
             if self.flag:
-                data.join()
+                data.stop()
                 break
 
     def process_packet(self,packet):
         print(self.id)
-        print(self.flag)
         timestmap = time.time() - start_time
         timestmap = int(timestmap * 1000)/1000.0
         packet_len = len(packet)
