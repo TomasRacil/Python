@@ -24,3 +24,4 @@ class CSVParser:
             if not file_exists:
                 csv_writer.writerow(fieldnames)
             csv_writer.writerow(record)
+#
