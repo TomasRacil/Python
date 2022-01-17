@@ -34,7 +34,7 @@ class GUI(Thread):
         super().__init__()
         self.id = id
         self.q = q
-        print(f"{id}: Sniffer vytvoren")
+        print(f"{id}: GUI vytvoren")
 
     def run(self):
         print(f"{self.id} spousteni ... ")
@@ -58,6 +58,8 @@ if __name__ == "__main__":
     workQueue = queue.Queue()
     gui = GUI(1, workQueue)
     gui.start()
+
+    time.sleep(1)
     ids = [1]
     sniffers = []
 
