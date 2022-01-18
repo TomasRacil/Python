@@ -1,0 +1,161 @@
+No.|Time|Source|Destination|Protocol|Length|Info|No.|ScrapedData
+1|9.991|10.0.2.15|192.168.1.1|DNS|85|Standard query A b'vortex.data.microsoft.com.'|
+2|10.032|192.168.1.1|10.0.2.15|DNS|469|Standard response CNAME b'vortex.data.microsoft.com.' b'asimov.vortex.data.trafficmanager.net.'|
+3|10.04|10.0.2.15|192.168.1.1|DNS|85|Standard query AAAA b'vortex.data.microsoft.com.'|
+4|10.063|192.168.1.1|10.0.2.15|DNS|85|Standard query AAAA b'vortex.data.microsoft.com.'|
+5|12.825|10.0.2.15|192.168.1.1|DNS|81|Standard query A b'www.malakopanabrno.cz.'|
+6|12.827|10.0.2.15|192.168.1.1|DNS|75|Standard query A b'maps.google.com.'|
+7|12.828|192.168.1.1|10.0.2.15|DNS|97|Standard response A b'www.malakopanabrno.cz.' 91.239.200.182|
+11|12.834|192.168.1.1|10.0.2.15|DNS|227|Standard response A b'maps.google.com.' 172.217.17.142|
+13|12.937|10.0.2.15|91.239.200.182|HTTP|786|POST www.malakopanabrno.cz/dokumenty/kategorie/smernice/ HTTP/1.1b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'|b'username=sdf&password=sdfs
+17|13.694|91.239.200.182|10.0.2.15|HTTP|1514|200 OK HTTP/1.1|
+54|14.301|10.0.2.15|192.168.1.1|DNS|84|Standard query A b'www.googletagmanager.com.'|
+55|14.305|10.0.2.15|192.168.1.1|DNS|84|Standard query AAAA b'www.googletagmanager.com.'|
+56|14.329|192.168.1.1|10.0.2.15|DNS|464|Standard response CNAME b'www.googletagmanager.com.' b'www-googletagmanager.l.google.com.'|
+57|14.379|10.0.2.15|91.239.200.182|HTTP|614|GET www.malakopanabrno.cz/app/js/jquery/jquery.min.js HTTP/1.1|
+64|14.461|192.168.1.1|10.0.2.15|DNS|492|Standard response CNAME b'www.googletagmanager.com.' b'www-googletagmanager.l.google.com.'|
+67|14.493|10.0.2.15|91.239.200.182|HTTP|618|GET www.malakopanabrno.cz/app/js/jquery/jquery-ui.min.js HTTP/1.1|
+69|14.498|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+71|14.502|10.0.2.15|91.239.200.182|HTTP|603|GET www.malakopanabrno.cz/auth/js/ankety.js HTTP/1.1|
+75|14.546|10.0.2.15|192.168.1.1|DNS|75|Standard query A b'maps.google.com.'|
+82|14.577|192.168.1.1|10.0.2.15|DNS|91|Standard response A b'maps.google.com.' 172.217.17.142|
+83|14.58|10.0.2.15|91.239.200.182|HTTP|618|GET www.malakopanabrno.cz/app/js/jquery/jquery.bookmark.js HTTP/1.1|
+84|14.597|10.0.2.15|91.239.200.182|HTTP|620|GET www.malakopanabrno.cz/app/js/jquery/jquery.mousewheel.js HTTP/1.1|
+85|14.599|10.0.2.15|91.239.200.182|HTTP|621|GET www.malakopanabrno.cz/app/js/jquery/jquery.scrollPane.js HTTP/1.1|
+87|14.609|10.0.2.15|91.239.200.182|HTTP|619|GET www.malakopanabrno.cz/app/js/jquery/jquery.countdown.js HTTP/1.1|
+92|14.628|91.239.200.182|10.0.2.15|HTTP|295|304 Not Modified HTTP/1.1|
+94|14.667|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+96|14.673|10.0.2.15|91.239.200.182|HTTP|619|GET www.malakopanabrno.cz/app/js/jquery/jquery.colorbox.js HTTP/1.1|
+97|14.677|10.0.2.15|91.239.200.182|HTTP|616|GET www.malakopanabrno.cz/app/js/jquery/jquery.pngfix.js HTTP/1.1|
+100|14.68|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+102|14.689|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+104|14.698|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+106|14.702|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+108|14.707|10.0.2.15|91.239.200.182|HTTP|622|GET www.malakopanabrno.cz/app/js/jquery/jquery.nivo.slider.js HTTP/1.1|
+110|14.719|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+112|14.788|10.0.2.15|91.239.200.182|HTTP|610|GET www.malakopanabrno.cz/app/js/jquery/jquery.js HTTP/1.1|
+113|14.789|10.0.2.15|91.239.200.182|HTTP|607|GET www.malakopanabrno.cz/app/js/swfobjects.js HTTP/1.1|
+114|14.807|10.0.2.15|91.239.200.182|HTTP|614|GET www.malakopanabrno.cz/app/js/jquery/jquery.menu.js HTTP/1.1|
+115|14.815|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+120|14.843|10.0.2.15|91.239.200.182|HTTP|616|GET www.malakopanabrno.cz/app/js/jquery/jquery.jNice.js HTTP/1.1|
+122|14.861|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+1|8.255|10.0.2.15|192.168.1.1|DNS|85|Standard query A b'vortex.data.microsoft.com.'|
+2|8.302|192.168.1.1|10.0.2.15|DNS|469|Standard response CNAME b'vortex.data.microsoft.com.' b'asimov.vortex.data.trafficmanager.net.'|
+3|8.322|10.0.2.15|192.168.1.1|DNS|85|Standard query AAAA b'vortex.data.microsoft.com.'|
+4|8.339|192.168.1.1|10.0.2.15|DNS|85|Standard query AAAA b'vortex.data.microsoft.com.'|
+5|8.895|10.0.2.15|192.168.1.1|DNS|81|Standard query A b'www.malakopanabrno.cz.'|
+6|8.908|10.0.2.15|192.168.1.1|DNS|75|Standard query A b'maps.google.com.'|
+7|8.911|192.168.1.1|10.0.2.15|DNS|97|Standard response A b'www.malakopanabrno.cz.' 91.239.200.182|
+11|8.983|10.0.2.15|91.239.200.182|HTTP|786|POST www.malakopanabrno.cz/dokumenty/kategorie/smernice/ HTTP/1.1b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'b'username=sdf&password=sdfs&submit=p%C5%99ihl%C3%A1sit+se'|b'username=sdf&password=sdfs
+13|9.002|192.168.1.1|10.0.2.15|DNS|227|Standard response A b'maps.google.com.' 216.58.201.78|
+17|9.816|91.239.200.182|10.0.2.15|HTTP|1514|200 OK HTTP/1.1|
+58|10.034|10.0.2.15|192.168.1.1|DNS|84|Standard query A b'www.googletagmanager.com.'|
+59|10.079|10.0.2.15|192.168.1.1|DNS|84|Standard query AAAA b'www.googletagmanager.com.'|
+60|10.093|10.0.2.15|91.239.200.182|HTTP|614|GET www.malakopanabrno.cz/app/js/jquery/jquery.min.js HTTP/1.1|
+63|10.116|192.168.1.1|10.0.2.15|DNS|159|Standard response CNAME b'www.googletagmanager.com.' b'www-googletagmanager.l.google.com.'|
+65|10.173|192.168.1.1|10.0.2.15|DNS|464|Standard response CNAME b'www.googletagmanager.com.' b'www-googletagmanager.l.google.com.'|
+69|10.19|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+71|10.193|10.0.2.15|91.239.200.182|HTTP|619|GET www.malakopanabrno.cz/app/js/jquery/jquery.countdown.js HTTP/1.1|
+75|10.215|10.0.2.15|91.239.200.182|HTTP|616|GET www.malakopanabrno.cz/app/js/jquery/jquery.jNice.js HTTP/1.1|
+81|10.278|10.0.2.15|91.239.200.182|HTTP|618|GET www.malakopanabrno.cz/app/js/jquery/jquery.bookmark.js HTTP/1.1|
+82|10.279|10.0.2.15|91.239.200.182|HTTP|620|GET www.malakopanabrno.cz/app/js/jquery/jquery.mousewheel.js HTTP/1.1|
+87|10.282|10.0.2.15|91.239.200.182|HTTP|621|GET www.malakopanabrno.cz/app/js/jquery/jquery.scrollPane.js HTTP/1.1|
+89|10.293|10.0.2.15|192.168.1.1|DNS|75|Standard query A b'maps.google.com.'|
+92|10.296|10.0.2.15|91.239.200.182|HTTP|614|GET www.malakopanabrno.cz/app/js/jquery/jquery.menu.js HTTP/1.1|
+93|10.298|192.168.1.1|10.0.2.15|DNS|91|Standard response A b'maps.google.com.' 216.58.201.78|
+96|10.302|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+98|10.303|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+100|10.318|10.0.2.15|91.239.200.182|HTTP|618|GET www.malakopanabrno.cz/app/js/jquery/jquery-ui.min.js HTTP/1.1|
+101|10.32|10.0.2.15|91.239.200.182|HTTP|619|GET www.malakopanabrno.cz/app/js/jquery/jquery.colorbox.js HTTP/1.1|
+104|10.325|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+106|10.346|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+108|10.347|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+110|10.348|10.0.2.15|91.239.200.182|HTTP|616|GET www.malakopanabrno.cz/app/js/jquery/jquery.pngfix.js HTTP/1.1|
+111|10.349|10.0.2.15|91.239.200.182|HTTP|622|GET www.malakopanabrno.cz/app/js/jquery/jquery.nivo.slider.js HTTP/1.1|
+112|10.356|10.0.2.15|91.239.200.182|HTTP|610|GET www.malakopanabrno.cz/app/js/jquery/jquery.js HTTP/1.1|
+118|10.36|10.0.2.15|216.58.201.78|HTTP|591|GET maps.google.com/maps/api/js HTTP/1.1|
+120|10.374|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+122|10.375|10.0.2.15|91.239.200.182|HTTP|607|GET www.malakopanabrno.cz/app/js/swfobjects.js HTTP/1.1|
+124|10.377|91.239.200.182|10.0.2.15|HTTP|295|304 Not Modified HTTP/1.1|
+126|10.378|10.0.2.15|91.239.200.182|HTTP|603|GET www.malakopanabrno.cz/auth/js/ankety.js HTTP/1.1|
+128|10.38|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+130|10.381|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+132|10.393|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+134|10.395|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+136|10.397|91.239.200.182|10.0.2.15|HTTP|294|304 Not Modified HTTP/1.1|
+138|10.4|91.239.200.182|10.0.2.15|HTTP|293|304 Not Modified HTTP/1.1|
+139|10.401|216.58.201.78|10.0.2.15|HTTP|1484|200 OK HTTP/1.1|
+170|10.633|10.0.2.15|192.168.1.1|DNS|79|Standard query A b'maps.googleapis.com.'|
+171|10.637|192.168.1.1|10.0.2.15|DNS|95|Standard response A b'maps.googleapis.com.' 172.217.23.202|
+175|10.677|10.0.2.15|172.217.23.202|HTTP|424|GET maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true HTTP/1.1|
+177|10.709|172.217.23.202|10.0.2.15|HTTP|680|403 Forbidden HTTP/1.1|
+179|10.933|10.0.2.15|91.239.200.182|HTTP|541|GET www.malakopanabrno.cz/stat/stat.php?rozliseni=2560x1335&bit=24&st=1&cache=1642510663_2 HTTP/1.1|
+181|10.957|10.0.2.15|91.239.200.182|HTTP|616|GET www.malakopanabrno.cz/img/arrows/arrow.png HTTP/1.1|
+183|10.966|10.0.2.15|91.239.200.182|HTTP|617|GET www.malakopanabrno.cz/img/layout/bsmk.png HTTP/1.1|
+185|10.976|10.0.2.15|91.239.200.182|HTTP|628|GET www.malakopanabrno.cz/img/clubs/thumbs/agrostroj.png HTTP/1.1|
+187|10.98|10.0.2.15|91.239.200.182|HTTP|623|GET www.malakopanabrno.cz/img/clubs/thumbs/bkmk.png HTTP/1.1|
+189|10.999|10.0.2.15|91.239.200.182|HTTP|629|GET www.malakopanabrno.cz/img/clubs/thumbs/cordoba-06.png HTTP/1.1|
+191|11.001|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+193|11.014|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+195|11.02|91.239.200.182|10.0.2.15|HTTP|297|304 Not Modified HTTP/1.1|
+197|11.033|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+199|11.036|10.0.2.15|91.239.200.182|HTTP|633|GET www.malakopanabrno.cz/img/clubs/thumbs/cz-spieler-brno.png HTTP/1.1|
+200|11.041|10.0.2.15|91.239.200.182|HTTP|627|GET www.malakopanabrno.cz/img/clubs/thumbs/km-prona.png HTTP/1.1|
+201|11.043|10.0.2.15|91.239.200.182|HTTP|635|GET www.malakopanabrno.cz/img/clubs/thumbs/mf-nove-vinarstvi.png HTTP/1.1|
+204|11.048|10.0.2.15|91.239.200.182|HTTP|629|GET www.malakopanabrno.cz/img/clubs/thumbs/mfc-srandy.png HTTP/1.1|
+207|11.054|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+209|11.07|10.0.2.15|91.239.200.182|HTTP|634|GET www.malakopanabrno.cz/img/clubs/thumbs/mk-slatina-brno.png HTTP/1.1|
+211|11.088|91.239.200.182|10.0.2.15|HTTP|318|200 OK HTTP/1.1|
+213|11.107|10.0.2.15|91.239.200.182|HTTP|629|GET www.malakopanabrno.cz/img/clubs/thumbs/royal-flush.png HTTP/1.1|
+215|11.128|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+217|11.134|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+219|11.152|10.0.2.15|91.239.200.182|HTTP|639|GET www.malakopanabrno.cz/img/clubs/thumbs/sport-centrum-srbska.png HTTP/1.1|
+220|11.177|10.0.2.15|91.239.200.182|HTTP|632|GET www.malakopanabrno.cz/img/clubs/thumbs/senk-okna-reds.png HTTP/1.1|
+223|11.184|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+225|11.186|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+226|11.202|10.0.2.15|91.239.200.182|HTTP|631|GET www.malakopanabrno.cz/img/clubs/thumbs/vyssi-princip.png HTTP/1.1|
+227|11.206|10.0.2.15|91.239.200.182|HTTP|615|GET www.malakopanabrno.cz/img/icons/page.png HTTP/1.1|
+229|11.209|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+232|11.21|10.0.2.15|91.239.200.182|HTTP|624|GET www.malakopanabrno.cz/img/icons/filetypes/pdf.png HTTP/1.1|
+234|11.225|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+236|11.233|10.0.2.15|91.239.200.182|HTTP|623|GET www.malakopanabrno.cz/img/icons/small/submit.png HTTP/1.1|
+238|11.242|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+239|11.247|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+240|11.249|10.0.2.15|91.239.200.182|HTTP|621|GET www.malakopanabrno.cz/img/icons/small/info.png HTTP/1.1|
+241|11.251|10.0.2.15|91.239.200.182|HTTP|618|GET www.malakopanabrno.cz/img/icons/hotline.png HTTP/1.1|
+244|11.253|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+245|11.255|10.0.2.15|91.239.200.182|HTTP|625|GET www.malakopanabrno.cz/img/partners/new/simost.jpg HTTP/1.1|
+247|11.257|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+248|11.258|10.0.2.15|91.239.200.182|HTTP|628|GET www.malakopanabrno.cz/img/partners/new/starobrno.png HTTP/1.1|
+250|11.26|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+252|11.262|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+254|11.263|10.0.2.15|91.239.200.182|HTTP|631|GET www.malakopanabrno.cz/img/partners/new/digamma-brno.png HTTP/1.1|
+255|11.264|10.0.2.15|91.239.200.182|HTTP|627|GET www.malakopanabrno.cz/img/partners/new/11teams2.png HTTP/1.1|
+258|11.266|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+259|11.267|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+260|11.268|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+261|11.27|10.0.2.15|91.239.200.182|HTTP|623|GET www.malakopanabrno.cz/img/partners/new/sabe.png HTTP/1.1|
+262|11.273|10.0.2.15|91.239.200.182|HTTP|635|GET www.malakopanabrno.cz/img/partners/new/jihomoravsky-kraj.png HTTP/1.1|
+263|11.274|10.0.2.15|91.239.200.182|HTTP|629|GET www.malakopanabrno.cz/img/partners/new/mesto-brno.png HTTP/1.1|
+267|11.293|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+268|11.294|10.0.2.15|91.239.200.182|HTTP|632|GET www.malakopanabrno.cz/img/partners/new/brno-bohunice.png HTTP/1.1|
+270|11.309|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+271|11.332|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+272|11.334|10.0.2.15|91.239.200.182|HTTP|624|GET www.malakopanabrno.cz/img/partners/new/bystrc.png HTTP/1.1|
+273|11.337|10.0.2.15|91.239.200.182|HTTP|632|GET www.malakopanabrno.cz/img/partners/new/brno-cernovice.png HTTP/1.1|
+276|11.351|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+277|11.368|10.0.2.15|91.239.200.182|HTTP|626|GET www.malakopanabrno.cz/img/partners/new/brno-jih.png HTTP/1.1|
+279|11.39|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+280|11.4|10.0.2.15|91.239.200.182|HTTP|629|GET www.malakopanabrno.cz/img/partners/new/brno-komin.png HTTP/1.1|
+282|11.413|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+283|11.422|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+284|11.432|10.0.2.15|91.239.200.182|HTTP|630|GET www.malakopanabrno.cz/img/partners/new/brno-krpole.png HTTP/1.1|
+285|11.435|10.0.2.15|91.239.200.182|HTTP|631|GET www.malakopanabrno.cz/img/partners/new/brno-medlanky.png HTTP/1.1|
+288|11.456|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+289|11.461|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+290|11.463|10.0.2.15|91.239.200.182|HTTP|632|GET www.malakopanabrno.cz/img/partners/new/brno-reckovice.png HTTP/1.1|
+292|11.478|10.0.2.15|91.239.200.182|HTTP|630|GET www.malakopanabrno.cz/img/partners/new/brno-slatina.png HTTP/1.1|
+293|11.481|91.239.200.182|10.0.2.15|HTTP|299|304 Not Modified HTTP/1.1|
+294|11.492|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+295|11.497|91.239.200.182|10.0.2.15|HTTP|298|304 Not Modified HTTP/1.1|
+296|11.509|10.0.2.15|91.239.200.182|HTTP|633|GET www.malakopanabrno.cz/img/partners/new/uniligasponzor.png HTTP/1.1|

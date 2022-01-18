@@ -37,10 +37,12 @@ class GUI(Tk, Thread):
         self.id = ''
         self.q = None
         self.flag = exit_flag
+        self.interface = ''
         print(f"{id}: GUI vytvoren")
 
         self._snifferRecordsWrapperFrame = None
         self._snifferVulnRecordsWrapperFrame = None
+        self.interfaceCombobox = None
         self._create_control_menu()
         self._create_packets_window()
         self._create_vulnerabilities_window()
@@ -75,7 +77,7 @@ class GUI(Tk, Thread):
         self.q = workQueue
         gui = self
 
-        sniffer = Sniffer('Sniffer ID',workQueue,self.flag)
+        sniffer = Sniffer('Sniffer ID',workQueue,self.flag,self.interface)
         return [gui,sniffer]
 
     def startSniffing(self):
@@ -152,6 +154,11 @@ class GUI(Tk, Thread):
         rec7.grid(row=0,column=1,padx=(20,0))
         ROW_COUNTER_VULN +=1
 
+
+    def _selectedItem(self,event):
+            self.interface = self.interfaceCombobox.get()
+            print(self.interface)
+
     def _create_control_menu(self):
         controlsFrame = Frame(self,padx=5, pady= 5)
         controlsFrame.pack(anchor=W)
@@ -163,9 +170,10 @@ class GUI(Tk, Thread):
 
 
         interfaceOptions = netifaces.interfaces()
-        interfaceCombobox = ttk.Combobox(controlsFrame,value = interfaceOptions)
-        interfaceCombobox.current(0)
-        interfaceCombobox.grid(row=0,column=3,padx=20)
+        self.interfaceCombobox = ttk.Combobox(controlsFrame,value = interfaceOptions)
+        self.interfaceCombobox.current(0)
+        self.interfaceCombobox.bind("<<ComboboxSelected>>",self._selectedItem)
+        self.interfaceCombobox.grid(row=0,column=3,padx=20)
 
         startButton.grid(row=0,column=0)
         stopButton.grid(row=0,column=1)

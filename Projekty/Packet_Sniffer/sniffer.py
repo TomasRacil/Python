@@ -6,6 +6,8 @@ from scapy.layers.http import *
 from scapy.layers.dns import *
 import time
 from csv_parser import CSVParser
+from datetime import datetime
+
 
 packet_num = 0
 username = ''
@@ -15,17 +17,18 @@ start_time = time.time()
 
 class Sniffer(Thread):
 
-    def __init__(self, id, q,exit_flag):
+    def __init__(self, id, q,exit_flag,interface):
      super().__init__()
      self.id = id
      self.q = q
+     self.interface = interface
      self.csvQueue = queue.Queue(20)
      self.flag = exit_flag
      print(f"{id}: Sniffer vytvoren")
 
     def run(self):
         print(f"{self.id} spousteni ... ")
-        self.sniff_packet('eth0')
+        self.sniff_packet(self.interface)
         print(f"{self.id}: ukoncuji se...")
 
     def sniff_packet(self,iface=None):
@@ -36,13 +39,17 @@ class Sniffer(Thread):
         else:
           data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, store=False)
           data.start()
+          csvThread = None
         while True:
+            
             # print(data.results)
             if(self.csvQueue.full()):
-                csvThread = Thread(CSVParser.write,args=["Test",self.csvQueue])
+                csvThread = Thread(target=CSVParser.write,args=[str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")),self.csvQueue])
+                csvThread.start()
                 csvThread.join()
             if self.flag:
                 data.stop()
+            
                 break
 
     def process_packet(self,packet):
@@ -85,7 +92,7 @@ class Sniffer(Thread):
                             if keyword in postedData:
                                 credentials = "&".join(postedData.split("&",2)[:2])
                             payload+=postedData
-                    self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                    # self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
                     self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
                 elif packet.haslayer(HTTPResponse):
                     code = packet[HTTPResponse].Status_Code.decode()

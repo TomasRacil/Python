@@ -1,11 +1,19 @@
 import csv
 import os.path
 import queue
-# from threading import Thread
+from threading import Thread
 
 class CSVParser():
+
+    # super().__init__(self)
+   
+    # def run(self):
+    #     print(f" CSV spousteni ... ")
+
+
     @classmethod
     def read(self,filename):
+        #self.run()
         with open(filename, 'r') as csv_file:
              csv_reader = csv.reader(csv_file, delimiter='|')
              next(csv_reader)
@@ -14,6 +22,7 @@ class CSVParser():
    
     @classmethod
     def write(self,filename,records):
+        #self.run()
         file_exists = os.path.isfile(filename)
         if file_exists:
             attr = 'a'
@@ -35,6 +44,3 @@ class CSVParser():
 
 #     CSVParser.write('Test.1.csv',data)
    
-
-# from datetime import datetime
-# now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
