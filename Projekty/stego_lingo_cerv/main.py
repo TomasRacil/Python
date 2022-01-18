@@ -16,6 +16,7 @@ def main():
 	try:
 		if (sys.argv[1] == "-e"): 
 			switch = 1
+			input_image = sys.argv[2]
 			input_message = sys.argv[3]
 		if (sys.argv[1] == "-d"): switch = 2		
 		input_image = sys.argv[2]
@@ -24,14 +25,15 @@ def main():
 		exit()
 
 	check(input_image)
+	img = openImage(input_image)
 
 #try:
 	if (int(switch) == 1): #Encode
 
-		preEncode(openImage(input_image), input_message)
+		preEncode(img, input_message) #Mozny problem
 	elif (int(switch) == 2): #Decode
 
-		print("Message: " + decode(openImage(input_image)) + "\n")
+		print("Message: " + decode(img) + "\n")
 	else:
 		print("Error in command parsing!")
 		exit()
