@@ -9,15 +9,20 @@ def check(i):
 
 
 def main():
+	outfname = "out.png"
 	"""Function dealing with user input"""
 	if ((len(sys.argv) == 2) and (sys.argv[1] == "--help") or (len(sys.argv) == 1)):	
-		print("\n Syntax: *.py <mode> <input file> <input text>\n -e\tEncode\n -d\tDecode")
+		print("\n Syntax: *.py <mode> <input file> <input text> <output file>\n -e\tEncode\n -d\tDecode")
 		exit()
 	try:
 		if (sys.argv[1] == "-e"): 
 			switch = 1
 			input_image = sys.argv[2]
 			input_message = sys.argv[3]
+			if (len(sys.argv) == 5):
+				outfname = sys.argv[4]
+			else:
+				print("No output filename given, defaulting to out.<format>!")
 		if (sys.argv[1] == "-d"): switch = 2		
 		input_image = sys.argv[2]
 	except:
@@ -30,7 +35,7 @@ def main():
 #try:
 	if (int(switch) == 1): #Encode
 
-		preEncode(img, input_message) #Mozny problem
+		preEncode(img, input_message, outfname) #Mozny problem
 	elif (int(switch) == 2): #Decode
 
 		print("Message: " + decode(img) + "\n")
