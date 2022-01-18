@@ -1,9 +1,8 @@
 from PIL import Image #Module for image manipulation
-from os import path
 
 def openImage(image_name):
 	"""Returns pointer to readable image"""
-	return Image.open(path.join(path.dirname(path.realpath(__file__)),image_name), 'r')
+	return Image.open(image_name, 'r')
 
 def textToBinary(text):
 	"""Rewrites text message into binary values"""

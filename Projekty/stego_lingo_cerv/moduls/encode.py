@@ -26,18 +26,19 @@ def encodeCore(three_pixels, bit_character):
 		bit += 1
 	return new_pixels
 
-def preEncode(image, message):
+def preEncode(img, message, outfname):
 	"""Checks if target is big enought to encode to"""
-	old_image_data = list(image.getdata()) #problem 1
+
+	old_image_data = list(img.getdata()) #problem 1
 	if (len(old_image_data) > (len(message)*3)):
-		new_image = image.copy()
-		image.close()
-		encode(old_image_data, new_image, message)
+		new_image = img.copy()
+		img.close()
+		encode(old_image_data, new_image, message, outfname)
 	else:
-		image.close()
+		img.close()
 		print("Not enought target space! Aborting...\n")
 
-def encode(pixel_list, new_image, message):
+def encode(pixel_list, new_image, message, outfname):
 	"""
 	Encodes text into image
 	Args:
@@ -56,10 +57,10 @@ def encode(pixel_list, new_image, message):
 			bit_character = list(textToBinary(character) + '1') #Appends odd number if no more characters are left, end condition
 		new_pixel = encodeCore(three_pixels, bit_character) #Core of encoding
 		x, y = alterPixels(new_image, x, y, new_pixel, width) #Inserts altered pixels into new image
-	postEncode(new_image)
+	postEncode(new_image, outfname)
 
-def postEncode(altered_image):
+def postEncode(altered_image, outfname):
 	"""Saves altered image"""
-	image_name = input("Name of new image [with extension]: ")
-	altered_image.save(image_name, str(image_name.split(".")[1].upper()))
+	image_name = outfname
+	altered_image.save(image_name)
 	print("Done encoding...\n")
