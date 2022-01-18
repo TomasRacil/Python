@@ -1,16 +1,28 @@
+from asyncore import read
+from concurrent.futures import thread
+from threading import Thread
+import queue
+
 from tkinter import *
 from tkinter import ttk, filedialog
-import os
 from csv_parser import CSVParser
+from sniffer import Sniffer
  
+import os
 import netifaces
 
 ROW_COUNTER_PACKETS =0
 ROW_COUNTER_VULN=0
 
-class GUI(Tk):
-    def __init__(self):
-        super().__init__()
+gui = None
+sniffer= None
+# 
+
+class GUI(Tk, Thread):
+    def __init__(self,exit_flag):
+        Tk.__init__(self)
+        Thread.__init__(self)
+
         w = 1280
         h = 720
         ws = self.winfo_screenwidth() # width of the screen
@@ -22,6 +34,10 @@ class GUI(Tk):
         self.title('Packet sniffer')
         
         self._capturedPackets = []
+        self.id = ''
+        self.q = None
+        self.flag = exit_flag
+        print(f"{id}: GUI vytvoren")
 
         self._snifferRecordsWrapperFrame = None
         self._snifferVulnRecordsWrapperFrame = None
@@ -31,7 +47,56 @@ class GUI(Tk):
 
         # self._clear_packets_window()
         # self._clear_vulnerabilities_windows()
+    def run(self):
+        print(f" GUI spousteni ... ")
+        self.launchGUI()
+        print(f" GUI ukoncuji se...")
 
+
+    def launchGUI(self):
+        recordWrapper = self._snifferRecordsWrapperFrame
+        vulnRecordWrapper = self._snifferVulnRecordsWrapperFrame
+        
+        while True:
+            try:
+                packet = self.q.get(timeout=0.01)
+                self._add_record_to_packet_window(recordWrapper,packet)
+                if(packet[7] != ""):
+                 self._add_record_to_vuln_window(vulnRecordWrapper, packet[::len(packet)-1])
+            except queue.Empty:
+                print(f"No item in que")
+                pass
+            if self.flag:
+                break
+
+    def initializeThreads(self):
+        workQueue = queue.Queue()
+        # csvQueue = queue.Queue()
+        self.q = workQueue
+        gui = self
+
+        sniffer = Sniffer('Sniffer ID',workQueue,self.flag)
+        return [gui,sniffer]
+
+    def startSniffing(self):
+        if len(self._snifferRecordsWrapperFrame.winfo_children()) > 0:
+                self._clear_packets_window()
+                self._clear_vulnerabilities_windows()
+        global gui, sniffer
+        [gui,sniffer] = self.initializeThreads()
+        self.flag = False
+        sniffer.flag = self.flag
+        if not gui.is_alive():
+            gui.start()
+        sniffer.start()
+
+    def stopSniffing(self):
+        self.flag = True
+        sniffer.flag = self.flag
+        sniffer.join()
+        gui.join()
+        print("Exiting Main Thread")
+ 
     def _openDialog(self):
 
         fileName = filedialog.askopenfilename(initialdir=str(os.getcwd()),title="Select A Capture(CSV file)",filetypes = [("CSV", "*.csv")])        
@@ -91,8 +156,8 @@ class GUI(Tk):
         controlsFrame = Frame(self,padx=5, pady= 5)
         controlsFrame.pack(anchor=W)
 
-        startButton = Button(controlsFrame, text="Start")
-        stopButton = Button(controlsFrame, text="Stop")
+        startButton = Button(controlsFrame, text="Start",command= lambda:self.startSniffing())
+        stopButton = Button(controlsFrame, text="Stop",command= lambda:self.stopSniffing())
 
         laodButton = Button(controlsFrame, text="Load", command=self._openDialog)
 
@@ -229,7 +294,6 @@ class ScrollbarFrame(Frame):
 
 
 
-# if __name__ == "__main__":
-#     GUI().mainloop()
+if __name__ == "__main__":
+    GUI(False).mainloop()
 
-#

@@ -1,8 +1,9 @@
 import csv
 import os.path
-from threading import Thread
+import queue
+# from threading import Thread
 
-class CSVParser(Thread):
+class CSVParser():
     @classmethod
     def read(self,filename):
         with open(filename, 'r') as csv_file:
@@ -12,7 +13,7 @@ class CSVParser(Thread):
         
    
     @classmethod
-    def write(self,filename,record):
+    def write(self,filename,records):
         file_exists = os.path.isfile(filename)
         if file_exists:
             attr = 'a'
@@ -23,5 +24,17 @@ class CSVParser(Thread):
             csv_writer = csv.writer(new_file, delimiter='|')
             if not file_exists:
                 csv_writer.writerow(fieldnames)
-            csv_writer.writerow(record)
-#
+            while not records.empty():
+                csv_writer.writerow(records.get())
+
+# if __name__  == "__main__":
+#     data = queue.Queue(3)
+#     data.put(["1|0.023|192.168.1.129|192.168.1.1|TELNET|10000000|Standard query response 0x0002 A www.reddit.com CNAME reddit.map.fastly.net A 199.232.17.140|1|Login:den9k12 Password:Bromabora1"])
+#     data.put(["1|0.023|192.168.1.129|192.168.1.1|TELNET|10000000|Standard query response 0x0002 A www.reddit.com CNAME reddit.map.fastly.net A 199.232.17.140|1|Login:den9k12 Password:Bromabora1"])
+#     data.put(["1|0.023|192.168.1.129|192.168.1.1|TELNET|10000000|Standard query response 0x0002 A www.reddit.com CNAME reddit.map.fastly.net A 199.232.17.140|1|Login:den9k12 Password:Bromabora1"])
+
+#     CSVParser.write('Test.1.csv',data)
+   
+
+# from datetime import datetime
+# now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

@@ -22,7 +22,7 @@ def init():
     sniffer = Sniffer('Sniffer ID',workQueue,exitFlag)
     return [gui,sniffer]
 
-def startScript():
+def startSniffing():
     print('Hello')
     global exitFlag, gui, sniffer
     [gui,sniffer] = init()
@@ -31,7 +31,7 @@ def startScript():
     gui.start()
     sniffer.start()
 
-def stopScript():
+def stopSniffing():
     global exitFlag
     exitFlag = True
     sniffer.flag = exitFlag
