@@ -23,6 +23,7 @@ class CSVParser():
     @classmethod
     def write(self,filename,records):
         #self.run()
+        filename +=".csv"
         file_exists = os.path.isfile(filename)
         if file_exists:
             attr = 'a'

@@ -32,19 +32,19 @@ class Sniffer(Thread):
         print(f"{self.id}: ukoncuji se...")
 
     def sniff_packet(self,iface=None):
-  
         if iface and self.flag == False:
           data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, iface=iface, store=False)
           data.start()
         else:
           data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, store=False)
           data.start()
-          csvThread = None
+       
+        fileName = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         while True:
             
             # print(data.results)
             if(self.csvQueue.full()):
-                csvThread = Thread(target=CSVParser.write,args=[str(datetime.now().strftime("%Y-%m-%d %H:%M:%S")),self.csvQueue])
+                csvThread = Thread(target=CSVParser.write,args=[fileName,self.csvQueue])
                 csvThread.start()
                 csvThread.join()
             if self.flag:
@@ -92,8 +92,8 @@ class Sniffer(Thread):
                             if keyword in postedData:
                                 credentials = "&".join(postedData.split("&",2)[:2])
                             payload+=postedData
-                    # self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-                    self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                    self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                    self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
                 elif packet.haslayer(HTTPResponse):
                     code = packet[HTTPResponse].Status_Code.decode()
                     reason_phrase = packet[HTTPResponse].Reason_Phrase.decode()
@@ -101,7 +101,7 @@ class Sniffer(Thread):
                     
                     payload = code+" "+reason_phrase+" "+version 
                     self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-                    self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                    self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
 
             if (dst_port == 21 or src_port == 21) and (packet.haslayer(Raw)):
                 protocol = "FTP"
@@ -119,7 +119,7 @@ class Sniffer(Thread):
                         password = ''
                         print(credentials)
                 self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-                self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
 
         if packet.haslayer(UDP):    
             if packet.haslayer(DNS):
@@ -132,7 +132,7 @@ class Sniffer(Thread):
                     payload = "Standard response " + str(dnstypes[packet[DNSRR].type]) + " " + str(packet[DNSRR].rrname)+ " " + str(packet[DNSRR].rdata)
 
             self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-            self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+            self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
 
 
 def main():
