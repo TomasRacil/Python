@@ -1,12 +1,14 @@
-from itertools import count
-import queue
-from scapy.all import *
 
+
+from scapy.all import *
 from scapy.layers.http import *
 from scapy.layers.dns import *
+
 import time
-from csv_parser import CSVParser
-from datetime import datetime
+from time import sleep
+from threading import Thread
+from queue import Queue
+
 
 
 packet_num = 0
@@ -17,43 +19,56 @@ start_time = time.time()
 
 class Sniffer(Thread):
 
-    def __init__(self, id, q,exit_flag,interface):
+    def __init__(self, graphicalQueue: Queue, fileQueue: Queue):
      super().__init__()
-     self.id = id
-     self.q = q
-     self.interface = interface
-     self.csvQueue = queue.Queue(20)
-     self.flag = exit_flag
-     print(f"{id}: Sniffer vytvoren")
+     self.gq = graphicalQueue
+     self.fq = fileQueue
+     self.pauseFlag = False
+     self.stopFlag = False
+     
+     
+
+    #  self.interface = interface
+    
+     print("Sniffer vytvoren")
 
     def run(self):
-        print(f"{self.id} spousteni ... ")
-        self.sniff_packet(self.interface)
-        print(f"{self.id}: ukoncuji se...")
+        print("Spousteni Snifferu... ")
+        self.sniff_packet('eth0')
+        print("Ukonceni Snifferu...")
 
     def sniff_packet(self,iface=None):
-        if iface and self.flag == False:
+        print("SNIFFER CALLEd")
+        global packet_num
+        packet_num =0
+        
+        print(f"Packet Num: {packet_num}")
+        data = None
+
+        if iface:
+        #  pdb.set_trace()
           data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, iface=iface, store=False)
           data.start()
+ 
         else:
           data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, store=False)
           data.start()
-       
-        fileName = str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-        while True:
-            
-            # print(data.results)
-            if(self.csvQueue.full()):
-                csvThread = Thread(target=CSVParser.write,args=[fileName,self.csvQueue])
-                csvThread.start()
-                csvThread.join()
-            if self.flag:
+     
+        while not self.stopFlag:
+            if self.pauseFlag:
+                sleep(0.1)
+                print("Kill sniffer")
                 data.stop()
-            
                 break
+            else:
+               if not self.is_alive():
+                # self.sniff_packet('eth0')
+                sleep(0.01)
+        # print("Kill sniffer")
+        # data.stop()
 
     def process_packet(self,packet):
-        print(self.id)
+
         timestmap = time.time() - start_time
         timestmap = int(timestmap * 1000)/1000.0
         packet_len = len(packet)
@@ -92,16 +107,17 @@ class Sniffer(Thread):
                             if keyword in postedData:
                                 credentials = "&".join(postedData.split("&",2)[:2])
                             payload+=postedData
-                    self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-                    self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
+                    self.gq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                    self.fq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
+               
                 elif packet.haslayer(HTTPResponse):
                     code = packet[HTTPResponse].Status_Code.decode()
                     reason_phrase = packet[HTTPResponse].Reason_Phrase.decode()
                     version = packet[HTTPResponse].Http_Version.decode()
                     
                     payload = code+" "+reason_phrase+" "+version 
-                    self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-                    self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
+                    self.gq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                    self.fq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
 
             if (dst_port == 21 or src_port == 21) and (packet.haslayer(Raw)):
                 protocol = "FTP"
@@ -117,9 +133,9 @@ class Sniffer(Thread):
                         credentials = username+"&"+password
                         username = ''
                         password = ''
-                        print(credentials)
-                self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-                self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
+                
+                self.gq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+                self.fq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
 
         if packet.haslayer(UDP):    
             if packet.haslayer(DNS):
@@ -131,14 +147,15 @@ class Sniffer(Thread):
                 if packet.haslayer(DNSRR):
                     payload = "Standard response " + str(dnstypes[packet[DNSRR].type]) + " " + str(packet[DNSRR].rrname)+ " " + str(packet[DNSRR].rdata)
 
-            self.q.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
-            self.csvQueue.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
+            self.gq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
+            self.fq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
+            print([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
 
 
-def main():
+# def main():
     
-    sniffer = Sniffer('Sniffer ID',queue.Queue,False)
-    sniffer.start()
-if __name__  == "__main__":
-    main()
+#     sniffer = Sniffer('Sniffer ID',queue.Queue(),queue.Queue(),False,'')
+#     sniffer.start()
+# if __name__  == "__main__":
+#     main()
    

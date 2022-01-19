@@ -1,122 +1,97 @@
-from asyncore import read
-from concurrent.futures import thread
+
 from threading import Thread
-import queue
+from queue import Empty, Queue
+from typing import Callable
 
 from tkinter import *
 from tkinter import ttk, filedialog
-from csv_parser import CSVParser
-from sniffer import Sniffer
- 
+from rwCSV import csvRead
+from datetime import datetime
 import os
 import netifaces
 
 ROW_COUNTER_PACKETS =0
 ROW_COUNTER_VULN=0
 
-gui = None
-sniffer= None
-# 
 
-class GUI(Tk, Thread):
-    def __init__(self,exit_flag):
-        Tk.__init__(self)
-        Thread.__init__(self)
+class GUI(Tk):
+    def __init__(self, startSniffing: Callable, stopSniffing: Callable, graphicalQueue: Queue):
+        super().__init__()
+        w, h = 1280, 720
+        ws, hs = self.winfo_screenwidth(), self.winfo_screenheight()
+        x, y = (ws/2) - (w/2), (hs/2) - (h/2)
 
-        w = 1280
-        h = 720
-        ws = self.winfo_screenwidth() # width of the screen
-        hs = self.winfo_screenheight() # height of the screen
-
-        x = (ws/2) - (w/2)
-        y = (hs/2) - (h/2)
         self.geometry('%dx%d+%d+%d' % (w, h, x, y))
         self.title('Packet sniffer')
+
+        self.graphicalQueue = graphicalQueue
+        self.startSniffing = startSniffing
+        self.stopSniffing = stopSniffing
+        self.endUpdating = False
+
         
-        self._capturedPackets = []
-        self.id = ''
-        self.q = None
-        self.flag = exit_flag
+        self._loadedPacketsFromCSV = []
+
         self.interface = ''
-        print(f"{id}: GUI vytvoren")
+        print(" GUI vytvoren")
 
         self._snifferRecordsWrapperFrame = None
         self._snifferVulnRecordsWrapperFrame = None
         self.interfaceCombobox = None
+       
         self._create_control_menu()
         self._create_packets_window()
         self._create_vulnerabilities_window()
 
-        # self._clear_packets_window()
-        # self._clear_vulnerabilities_windows()
-    def run(self):
-        print(f" GUI spousteni ... ")
-        self.launchGUI()
-        print(f" GUI ukoncuji se...")
 
 
-    def launchGUI(self):
-        recordWrapper = self._snifferRecordsWrapperFrame
-        vulnRecordWrapper = self._snifferVulnRecordsWrapperFrame
-        
-        while True:
-            try:
-                packet = self.q.get(timeout=0.01)
-                self._add_record_to_packet_window(recordWrapper,packet)
-                if(packet[7] != ""):
-                 self._add_record_to_vuln_window(vulnRecordWrapper, packet[::len(packet)-1])
-            except queue.Empty:
-                print(f"No item in que")
-                pass
-            if self.flag:
-                break
+    def startCapturingButtonPush(self):
 
-    def initializeThreads(self):
-        workQueue = queue.Queue()
-        # csvQueue = queue.Queue()
-        self.q = workQueue
-        gui = self
-
-        sniffer = Sniffer('Sniffer ID',workQueue,self.flag,self.interface)
-        return [gui,sniffer]
-
-    def startSniffing(self):
         if len(self._snifferRecordsWrapperFrame.winfo_children()) > 0:
                 self._clear_packets_window()
                 self._clear_vulnerabilities_windows()
-        global gui, sniffer
-        [gui,sniffer] = self.initializeThreads()
-        self.flag = False
-        sniffer.flag = self.flag
-        if not gui.is_alive():
-            gui.start()
-        sniffer.start()
+        self.endUpdating = False
+        self.updatePackets()
+        self.startSniffing()
 
-    def stopSniffing(self):
-        self.flag = True
-        sniffer.flag = self.flag
-        sniffer.join()
-        gui.join()
-        print("Exiting Main Thread")
+    def stopCapturingButtonPush(self):
+        self.stopSniffing()
+        self.endUpdating = True
+         
+    def updatePackets(self):
+        recordWrapper = self._snifferRecordsWrapperFrame
+        vulnRecordWrapper = self._snifferVulnRecordsWrapperFrame
+        print("UPDATE packets called")
+        try:
+            packet = self.graphicalQueue.get_nowait()
+            self._add_record_to_packet_window(recordWrapper,packet)
+            if(packet[7] != ""):
+                 self._add_record_to_vuln_window(vulnRecordWrapper, packet[::len(packet)-1])
+        except Empty:
+            pass
+        if not(self.graphicalQueue.empty() and self.endUpdating):
+            self.after(100, self.updatePackets) 
  
     def _openDialog(self):
-
+        pass
         fileName = filedialog.askopenfilename(initialdir=str(os.getcwd()),title="Select A Capture(CSV file)",filetypes = [("CSV", "*.csv")])        
         if(len(fileName) != 0):
+            pass
             recordWrapper = self._snifferRecordsWrapperFrame
             if len(recordWrapper.winfo_children()) > 0:
                 self._clear_packets_window()
                 self._clear_vulnerabilities_windows()
-            self._capturedPackets = CSVParser.read(fileName)
-        
-            [self._add_record_to_packet_window(recordWrapper,row) for row in self._capturedPackets]
-            vulnList = [row[7:] for row in self._capturedPackets if row[7:][1].strip()]
+            
+            self._loadedPacketsFromCSV = csvRead(fileName)
+            print(self._loadedPacketsFromCSV[0][5])
+            [self._add_record_to_packet_window(recordWrapper,row) for row in self._loadedPacketsFromCSV]
+            vulnList = [row[7:] for row in self._loadedPacketsFromCSV if row[7:][1].strip()]
 
             if vulnList:
-                print(vulnList)
                 [self._add_record_to_vuln_window(self._snifferVulnRecordsWrapperFrame,row) for row in vulnList]
 
 
+    
     def _add_record_to_packet_window(self,parent, record):
         packets = record
         global ROW_COUNTER_PACKETS
@@ -163,8 +138,8 @@ class GUI(Tk, Thread):
         controlsFrame = Frame(self,padx=5, pady= 5)
         controlsFrame.pack(anchor=W)
 
-        startButton = Button(controlsFrame, text="Start",command= lambda:self.startSniffing())
-        stopButton = Button(controlsFrame, text="Stop",command= lambda:self.stopSniffing())
+        startButton = Button(controlsFrame, text="Start",command= lambda:self.startCapturingButtonPush())
+        stopButton = Button(controlsFrame, text="Stop",command= lambda:self.stopCapturingButtonPush())
 
         laodButton = Button(controlsFrame, text="Load", command=self._openDialog)
 
@@ -203,7 +178,7 @@ class GUI(Tk, Thread):
         destinationLabel = Label(snifferHeaderFrame, text="Destination",bg="white",width=14, anchor="w")
         protocolLabel = Label(snifferHeaderFrame, text="Protocol",bg="white",width=12, anchor="w")
         packetLengthLabel = Label(snifferHeaderFrame, text="Length",bg="white",width=12, anchor="w")
-        packetBodyLabel = Label(snifferHeaderFrame, text="Info",bg="white",width=67, anchor="w")
+        packetBodyLabel = Label(snifferHeaderFrame, text="Info",bg="white",width=77, anchor="w")
 
         self._snifferRecordsWrapperFrame.grid(row=0)
 
@@ -232,7 +207,7 @@ class GUI(Tk, Thread):
         
 
         packetNumberVulnLabel = Label(snifferVulnerabilitesHeaderFrame, text="No.",bg="white", width=10, anchor="w")
-        packetBodyVulnLabel = Label(snifferVulnerabilitesHeaderFrame, text="Scraped Data",bg="white",width=129, anchor="w")
+        packetBodyVulnLabel = Label(snifferVulnerabilitesHeaderFrame, text="Scraped Data",bg="white",width=148, anchor="w")
 
         packetNumberVulnLabel.grid(row=0,column=0)
         packetBodyVulnLabel.grid(row=0,column=1,padx=(20,0))
@@ -246,7 +221,6 @@ class GUI(Tk, Thread):
         # for x in range(30):
         #     self._add_record_to_vuln_window(self._snifferVulnRecordsWrapperFrame)
         # pass
-
     def _clear_packets_window(self):
         for widget in self._snifferRecordsWrapperFrame.winfo_children():
             widget.destroy()
@@ -254,9 +228,6 @@ class GUI(Tk, Thread):
     def _clear_vulnerabilities_windows(self):
          for widget in self._snifferVulnRecordsWrapperFrame.winfo_children():
             widget.destroy()
-        
-    
-
 class ScrollbarFrame(Frame):
     """
     Extends class tk.Frame to support a scrollable Frame 
@@ -303,5 +274,5 @@ class ScrollbarFrame(Frame):
 
 
 if __name__ == "__main__":
-    GUI(False).mainloop()
+    GUI().mainloop()
 

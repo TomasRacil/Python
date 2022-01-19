@@ -1,6 +1,6 @@
 from os.path import dirname, realpath, join, isfile
 
-folder = dirname(dirname(realpath(__file__)))
+folder = dirname(realpath(__file__))
 file = join(folder, 'data.csv')
 
 

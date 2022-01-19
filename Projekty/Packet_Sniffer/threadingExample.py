@@ -6,7 +6,7 @@ from sniffer import Sniffer
 from scapy.all import *
 from scapy.layers.dns import *
 from threading import Thread
-from csv_parser import CSVParser
+from rwCSV import CSVParser
 
 
 
