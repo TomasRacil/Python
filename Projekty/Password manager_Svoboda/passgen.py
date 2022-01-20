@@ -2,6 +2,7 @@ from tkinter import *
 from random import randint
 
 
+
 def passGenerator():
     # Password Generator window.
     window = Tk()
