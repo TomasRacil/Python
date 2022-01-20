@@ -1,5 +1,4 @@
 from function import *
-from tkinter import *
 
 def main():
 
