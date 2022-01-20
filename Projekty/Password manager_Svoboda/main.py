@@ -1,7 +1,9 @@
-from Funkce import *
+from function import *
 from tkinter import *
 
 def main():
+
+    #Window createtion and database initialization
     window = Tk()
     window.update()
     window.title("Password Vault")

@@ -17,5 +17,5 @@ TODO:
   
   - Práce přímo se stránkami na automatické vkládání hesel 
   - Vylepšení generátoru hesel pomocí bezpečnostních otázek a přidáním podmínek na hesla
-  - Zjednodušení programu přehlednější strukturou
+  - Vyřešit nefunkčnost generátoru hesel na Linuxu
 

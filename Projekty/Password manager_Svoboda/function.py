@@ -5,8 +5,6 @@ from tkinter import *
 from tkinter import simpledialog
 from functools import partial
 from tkinter import ttk
-
-
 from passgen import passGenerator
 
 def sqlinitialize():
@@ -29,20 +27,18 @@ def sqlinitialize():
     """)
     return cursor
 
-# Create PopUp
+#   Create PopUp
 def popUp(text):
     answer = simpledialog.askstring("input string", text)
-
     return answer
 
-# Initiate Window
+#   Initiate Window
 def hashPassword(input):
     hash1 = hashlib.md5(input)
     hash1 = hash1.hexdigest()
-
     return hash1
 
-#   Set up master password screen #######################################
+#   Set up master password screen 
 def firstTimeScreen(window):
     window.geometry("250x150")
 
@@ -64,7 +60,6 @@ def firstTimeScreen(window):
     def savePassword():
         if txt.get() == txt1.get():
             hashedPassword = hashPassword(txt.get().encode('utf-8'))
-
             insert_password = """INSERT INTO masterpassword(password)
             VALUES(?) """
             cursor.execute(insert_password, [hashedPassword])
@@ -77,7 +72,7 @@ def firstTimeScreen(window):
     btn = Button(window, text="Save", command=savePassword)
     btn.pack(pady=5)
 
-#   Login screen #######################################
+#   Login screen 
 def loginScreen(window):
     window.geometry("250x100")
 
@@ -111,12 +106,12 @@ def loginScreen(window):
     btn = Button(window, text="Submit", command=checkPassword)
     btn.pack(pady=5)
 
-#   Window layout #######################################
+#   Window layout 
 def vaultScreen(window):
     for widget in window.winfo_children():
         widget.destroy()
 
-#   Vault functionalities #######################################
+#   Vault functionalities 
     def addEntry():
         text1 = "Platform"
         text2 = "Account"
@@ -147,6 +142,7 @@ def vaultScreen(window):
         cursor.execute("DELETE FROM vault WHERE id = ?", (input,))
         db.commit()
         vaultScreen(window)
+
     #ctrl+c ctrl+v
     def copyAcc(input):
         window.clipboard_clear()
@@ -191,7 +187,7 @@ def vaultScreen(window):
 
     cursor.execute("SELECT * FROM vault")
 
-#   Buttons Layout #######################################
+#   Buttons Layout 
     if len(cursor.fetchall()) is not 0:
         i = 0
         while True:
