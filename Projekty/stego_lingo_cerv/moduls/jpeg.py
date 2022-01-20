@@ -35,7 +35,7 @@ def PlaceAtEoi(infile):
     while(1):
         byte = infile.read(1)
         if (byte == ''):
-            printf("\nEOF ERROR! Is this really JPEG?")
+            print("\nEOF ERROR! Is this really JPEG?")
             exit()
         if (byte == (b'\xFF')):
             byte = infile.read(1)
