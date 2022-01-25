@@ -188,7 +188,7 @@ def vaultScreen(window):
     cursor.execute("SELECT * FROM vault")
 
 #   Buttons Layout 
-    if len(cursor.fetchall()) is not 0:
+    if len(cursor.fetchall()) != 0:
         i = 0
         while True:
             cursor.execute("SELECT * FROM vault")
