@@ -1,15 +1,18 @@
 import hashlib
 import sqlite3
 from os import path
-from tkinter import *
-from tkinter import simpledialog
+from tkinter import Frame, Canvas, Label, Button, Entry, simpledialog,\
+    CENTER, BOTH, LEFT, VERTICAL, RIGHT, Y
 from functools import partial
 from tkinter import ttk
 from passgen import passGenerator
 
+
 def sqlinitialize():
     global cursor, db
-    with sqlite3.connect(path.join(path.dirname(path.realpath(__file__)),'database.db')) as db:
+    with sqlite3.connect(path.join(
+            path.dirname(path.realpath(__file__)),
+            'database.db')) as db:
         cursor = db.cursor()
 
     cursor.execute("""
@@ -28,17 +31,23 @@ def sqlinitialize():
     return cursor
 
 #   Create PopUp
+
+
 def popUp(text):
     answer = simpledialog.askstring("input string", text)
     return answer
 
 #   Initiate Window
+
+
 def hashPassword(input):
     hash1 = hashlib.md5(input)
     hash1 = hash1.hexdigest()
     return hash1
 
-#   Set up master password screen 
+#   Set up master password screen
+
+
 def firstTimeScreen(window):
     window.geometry("250x150")
 
@@ -72,7 +81,9 @@ def firstTimeScreen(window):
     btn = Button(window, text="Save", command=savePassword)
     btn.pack(pady=5)
 
-#   Login screen 
+#   Login screen
+
+
 def loginScreen(window):
     window.geometry("250x100")
 
@@ -89,7 +100,10 @@ def loginScreen(window):
 
     def getMasterPassword():
         checkhashedpassword = hashPassword(txt.get().encode("utf-8"))
-        cursor.execute("SELECT * FROM masterpassword WHERE id = 1 AND password = ?", [checkhashedpassword])
+        cursor.execute(
+            "SELECT * FROM masterpassword WHERE id = 1 AND password = ?",
+            [checkhashedpassword]
+        )
 
         return cursor.fetchall()
 
@@ -106,12 +120,14 @@ def loginScreen(window):
     btn = Button(window, text="Submit", command=checkPassword)
     btn.pack(pady=5)
 
-#   Window layout 
+#   Window layout
+
+
 def vaultScreen(window):
     for widget in window.winfo_children():
         widget.destroy()
 
-#   Vault functionalities 
+#   Vault functionalities
     def addEntry():
         text1 = "Platform"
         text2 = "Account"
@@ -127,23 +143,24 @@ def vaultScreen(window):
         cursor.execute(insert_fields, (platform, account, password))
         db.commit()
         vaultScreen(window)
-    
-    #Rewrite in database
+
+    # Rewrite in database
     def updateEntry(input):
         update = "Type new password"
         password = popUp(update)
 
-        cursor.execute("UPDATE vault SET password = ? WHERE id = ?", (password, input,))
+        cursor.execute(
+            "UPDATE vault SET password = ? WHERE id = ?", (password, input,))
         db.commit()
         vaultScreen(window)
 
-    #Delete from database
+    # Delete from database
     def removeEntry(input):
         cursor.execute("DELETE FROM vault WHERE id = ?", (input,))
         db.commit()
         vaultScreen(window)
 
-    #ctrl+c ctrl+v
+    # ctrl+c ctrl+v
     def copyAcc(input):
         window.clipboard_clear()
         window.clipboard_append(input)
@@ -151,7 +168,7 @@ def vaultScreen(window):
     def copyPass(input):
         window.clipboard_clear()
         window.clipboard_append(input)
-    
+
     window.geometry("750x372")
     main_frame = Frame(window)
     main_frame.pack(fill=BOTH, expand=1)
@@ -159,11 +176,13 @@ def vaultScreen(window):
     my_canvas = Canvas(main_frame)
     my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
 
-    my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
+    my_scrollbar = ttk.Scrollbar(
+        main_frame, orient=VERTICAL, command=my_canvas.yview)
     my_scrollbar.pack(side=RIGHT, fill=Y)
 
     my_canvas.configure(yscrollcommand=my_scrollbar.set)
-    my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))
+    my_canvas.bind('<Configure>', lambda e: my_canvas.configure(
+        scrollregion=my_canvas.bbox("all")))
 
     second_frame = Frame(my_canvas)
 
@@ -172,7 +191,8 @@ def vaultScreen(window):
     lbl = Label(second_frame, text="Password Vault")
     lbl.grid(column=2)
 
-    btn2 = Button(second_frame, text="Generate Password", command=passGenerator)
+    btn2 = Button(second_frame, text="Generate Password",
+                  command=passGenerator)
     btn2.grid(column=2, pady=10)
 
     btn = Button(second_frame, text="Store New", command=addEntry)
@@ -187,7 +207,7 @@ def vaultScreen(window):
 
     cursor.execute("SELECT * FROM vault")
 
-#   Buttons Layout 
+#   Buttons Layout
     if len(cursor.fetchall()) != 0:
         i = 0
         while True:
@@ -200,14 +220,18 @@ def vaultScreen(window):
             lbl2.grid(column=1, row=i + 3)
             lbl3 = Label(second_frame, text='*******')
             lbl3.grid(column=2, row=i + 3)
-            
-            btn2 = Button(second_frame, text="Copy Account", command=partial(copyAcc, array[i][2]))
+
+            btn2 = Button(second_frame, text="Copy Account",
+                          command=partial(copyAcc, array[i][2]))
             btn2.grid(column=3, row=i + 3, pady=10)
-            btn3 = Button(second_frame, text="Copy Passport", command=partial(copyPass, array[i][3]))
+            btn3 = Button(second_frame, text="Copy Passport",
+                          command=partial(copyPass, array[i][3]))
             btn3.grid(column=4, row=i + 3, pady=10)
-            btn1 = Button(second_frame, text="Update Passport", command=partial(updateEntry, array[i][0]))
+            btn1 = Button(second_frame, text="Update Passport",
+                          command=partial(updateEntry, array[i][0]))
             btn1.grid(column=5, row=i + 3, pady=10)
-            btn = Button(second_frame, text="Delete", command=partial(removeEntry, array[i][0]))
+            btn = Button(second_frame, text="Delete",
+                         command=partial(removeEntry, array[i][0]))
             btn.grid(column=6, row=i + 3, pady=10)
 
             i = i + 1
@@ -215,4 +239,3 @@ def vaultScreen(window):
             cursor.execute("SELECT * FROM vault")
             if len(cursor.fetchall()) <= i:
                 break
-
