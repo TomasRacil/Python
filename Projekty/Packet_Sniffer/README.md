@@ -8,6 +8,6 @@ Před spuštěním:
 2. V případě spuštění na Linuxové distrubuci musí být program spuštěň s emulovat práva administrátora(sudo) - "sudo python3 main.py"
 
 
-## TODO
+## Návrhy na vylepšení
 - Přidat barvy k jednotlivým paketům(rozlišení protokolů)
 - Přidaní podopory dalších protokolů(TELNET..)
