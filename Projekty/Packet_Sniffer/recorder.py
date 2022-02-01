@@ -3,7 +3,7 @@ from queue import Queue
 from time import sleep
 from rwCSV import csvWrite
 
-# This module is started in parallel with the sniffer module. It takes a queue filled with captured packed by the sniffer module and dumps it into a csv file.
+# This module is started in parallel with the sniffer module. It takes a queue filled with captured packed by the sniffer module and writes queue content into a csv file(rwCSV module).
 class Recorder(Thread):
 
     def __init__(self, queue: Queue, packetGroupLen: int = 20):
