@@ -9,6 +9,8 @@ from gui import GUI
 
 sniffer =None
 
+# Program entry point - it initializes and declares start, pause and closing threading functions 
+
 def initSniffer():
     global sniffer
     sniffer = Sniffer(graphicalQueue, fileQueue,interface)
