@@ -5,10 +5,13 @@ import base64
 ## message = base64_bytes.decode('ascii')
 
 
-def jpencode(infile, message, outfile):
+def jpencode(infile, message, outname):
     
-    if (outfile[-4] != ".jpg"):
-	    outfile + ".jpg"
+
+    if (len(outname) < 5):
+        outfile = outname + ".jpg"
+    elif (outname[-4] != ".jpg"):
+	    outfile = outname + ".jpg"
 
     message_bytes = message.encode('ascii')
     message = base64.b64encode(message_bytes)

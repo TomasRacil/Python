@@ -60,9 +60,10 @@ def encode(pixel_list, new_image, message, outfname):
 	postEncode(new_image, outfname)
 
 def postEncode(altered_image, outfname):
-	"""Saves altered image"""
-	image_name = outfname
-	if(image_name[-4] != ".png"):
-		image_name + ".png"
-	altered_image.save(image_name)
+	"""Saves altered image"""	
+	if(len(outfname) < 5):
+		image_name = outfname + ".png"
+	elif(outfname[-4] != ".png"):
+		image_name = outfname + ".png"
+	altered_image.save(image_name, "PNG")
 	print("Done encoding...\n")
