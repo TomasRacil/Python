@@ -9,13 +9,16 @@ from time import sleep
 from threading import Thread
 from queue import Queue
 
-
+# Intialization of global variables
 
 packet_num = 0
 username = ''
 password = ''
 start_time = time.time()
 
+# This module utilizes a scapy utility to captures packet on specified network interface. 
+# On class intialization run funciton starts async scapy function "AsyncSniffer" in a new thread a captures communication on ports 80, 53 and 21.
+# In order to pass captured packets into the gui module and the recorder module, two queues(graphicalQueue and fileQueue) are filled.
 
 class Sniffer(Thread):
 
