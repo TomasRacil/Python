@@ -1,5 +1,5 @@
-Pokracovani na steganograficke funkce:
-    hlavni: Enkodovani audio souboru do fotky
-            sifrovani schovanyho souboru
-    vedlejsi: Pokus o enkodovani videa do videa
-                Pokus o enkodovani mikrovidea do fotky
+Rozšíření předešlého steganografického projektu o možnost užívat JPEGy, a předělání CLI na klasický argumenty jako z linuxu
+
+možné pokracovani na steganograficke funkce:
+    Šifrování schovaných dat
+    Schovávání souborů do souborů (to by mělo být easy)

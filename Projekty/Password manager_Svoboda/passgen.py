@@ -1,14 +1,12 @@
-from tkinter import *
+from tkinter import Tk, Entry, LabelFrame, Frame, Button, END
 from random import randint
 
 
 def passGenerator():
     # Password Generator window.
     window = Tk()
-
     window.title("Password Generator")
-
-    myPassword = chr(randint(33,126))
+    myPassword = chr(randint(33, 126))  # ! not used
 
     def newRand():
         pwEntry.delete(0, END)
@@ -25,7 +23,6 @@ def passGenerator():
         window.clipboard_clear()
         window.clipboard_append(pwEntry.get())
 
-
     # Label frame.
     lf = LabelFrame(window, text="Pozadovany pocet znaku hesla?")
     lf.pack(pady=20)
@@ -35,7 +32,8 @@ def passGenerator():
     myEntry.pack(pady=20, padx=20)
 
     # Create entry box for returned password.
-    pwEntry = Entry(window, text="", font=("Helvetica", 12), bd=0, bg="systembuttonface")
+    pwEntry = Entry(window, text="", font=(
+        "Helvetica", 12), bd=0, bg="systembuttonface")
     pwEntry.pack(pady=20)
 
     # Frame for buttons.
@@ -46,8 +44,8 @@ def passGenerator():
     myButton = Button(myFrame, text="Generate Passport", command=newRand)
     myButton.grid(row=0, column=0, padx=10)
 
+    # Copy buttons
     clipBtn = Button(myFrame, text="Copy", command=clipper)
     clipBtn.grid(row=0, column=1, padx=10)
-
 
     window.mainloop()
