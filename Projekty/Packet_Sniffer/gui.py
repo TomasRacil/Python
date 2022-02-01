@@ -13,6 +13,7 @@ import netifaces
 ROW_COUNTER_PACKETS =0
 ROW_COUNTER_VULN=0
 
+# Initializing GUI window params
 
 class GUI(Tk):
     def __init__(self, startSniffing: Callable, stopSniffing: Callable, graphicalQueue: Queue,interface):
@@ -43,13 +44,13 @@ class GUI(Tk):
         self._snifferVulnRecordsWrapperFrame = None
         self.interfaceCombobox = None
 
-       
+
         self._create_control_menu()
         self._create_packets_window()
         self._create_vulnerabilities_window()
 
 
-
+     # Function starts on button click - clears screen if there are any records left and intiate sniffing and gui threads
     def startCapturingButtonPush(self):
 
         if len(self._snifferRecordsWrapperFrame.winfo_children()) > 0:
@@ -64,7 +65,7 @@ class GUI(Tk):
         self.startButton['state'] = DISABLED
 
 
-
+   # Function stop on button click - it stops sniffing by changing flag value
     def stopCapturingButtonPush(self):
 
         self.stopSniffing()
@@ -75,7 +76,7 @@ class GUI(Tk):
         
 
 
-
+    # Handler funciton which periodacally add records into main window
     def updatePackets(self):
         recordWrapper = self._snifferRecordsWrapperFrame
         vulnRecordWrapper = self._snifferVulnRecordsWrapperFrame
@@ -93,7 +94,7 @@ class GUI(Tk):
 
 
 
-
+    # Function opens dialog and allows user to load a csv file
     def _openDialog(self):
         pass
         fileName = filedialog.askopenfilename(initialdir=str(os.getcwd()),title="Select A Capture(CSV file)",filetypes = [("CSV", "*.csv")])        
@@ -111,7 +112,7 @@ class GUI(Tk):
             if vulnList:
                 [self._add_record_to_vuln_window(self._snifferVulnRecordsWrapperFrame,row) for row in vulnList]
 
-
+    #  An implementation of packets(record) appendation into the main window
     
     def _add_record_to_packet_window(self,parent, record):
         packets = record
@@ -138,6 +139,8 @@ class GUI(Tk):
         rec7.grid(row=0,column=6)
         ROW_COUNTER_PACKETS +=1
 
+    # An implementation of packets(record) appendation into bottom window
+    
     def _add_record_to_vuln_window(self,parent,record):
         global ROW_COUNTER_VULN
         recordFrame = Frame(parent)
@@ -153,7 +156,9 @@ class GUI(Tk):
 
     def _selectedItem(self,event):
             self.interface = self.interfaceCombobox.get()
-
+    
+    # An implementation of the control menu
+    
     def _create_control_menu(self):
         controlsFrame = Frame(self,padx=5, pady= 5)
         controlsFrame.pack(anchor=W)
@@ -175,7 +180,8 @@ class GUI(Tk):
         self.startButton.grid(row=0,column=0)
         self.stopButton.grid(row=0,column=1)
         laodButton.grid(row=0,column=2)
-
+        
+    # A GUI implementation of the main window
     def _create_packets_window(self):
         snifferWrapperFrame = Frame(self)
         snifferWrapperFrame.pack(anchor=W, expand=True, fill=Y)
@@ -213,7 +219,7 @@ class GUI(Tk):
         packetBodyLabel.grid(row=0,column=6)
         timestampFrame.grid(row=0,column=1)
 
-
+     # A GUI implementation of the bottom window
     def _create_vulnerabilities_window(self,):
 
         snifferVulnWrapperFrame = Frame(self)
@@ -239,10 +245,8 @@ class GUI(Tk):
         # self._snifferVulnRecordsWrapperFrame.pack(anchor=W)
         self._snifferVulnRecordsWrapperFrame.grid(row=0)
 
-
-        # for x in range(30):
-        #     self._add_record_to_vuln_window(self._snifferVulnRecordsWrapperFrame)
-        # pass
+    # Clearing records from last sniffing operation
+    
     def _clear_packets_window(self):
         self._snifferRecordsWrapperFrame.configure(background="#F0F0F0")
         for widget in self._snifferRecordsWrapperFrame.winfo_children():
