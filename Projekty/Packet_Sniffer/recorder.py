@@ -22,7 +22,7 @@ class Recorder(Thread):
     def checkQueue(self):
         while not ((emptyQueue := self.q.empty()) & (packetsLen := len(self.packets)) == 0 and self.stopFlag):
             if self.pauseFlag and emptyQueue and packetsLen == 0:
-                sleep(0.5)
+                sleep(0.01)
             else:
                 if not emptyQueue:
                     self.packets.append(self.q.get(timeout=0.01))

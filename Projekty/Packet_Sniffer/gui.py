@@ -33,11 +33,16 @@ class GUI(Tk):
         self._loadedPacketsFromCSV = []
 
         self.interface = interface
-        print(" GUI vytvoren")
+        # print(" GUI vytvoren")
+        
+
+        self.startButton = None
+        self.stopButton = None
 
         self._snifferRecordsWrapperFrame = None
         self._snifferVulnRecordsWrapperFrame = None
         self.interfaceCombobox = None
+
        
         self._create_control_menu()
         self._create_packets_window()
@@ -50,18 +55,31 @@ class GUI(Tk):
         if len(self._snifferRecordsWrapperFrame.winfo_children()) > 0:
                 self._clear_packets_window()
                 self._clear_vulnerabilities_windows()
+
         self.endUpdating = False
         self.updatePackets()
         self.startSniffing()
+        
+        self.stopButton['state'] = NORMAL
+        self.startButton['state'] = DISABLED
+
+
 
     def stopCapturingButtonPush(self):
+
         self.stopSniffing()
         self.endUpdating = True
-         
+
+        self.stopButton['state'] = DISABLED
+        self.startButton['state'] = NORMAL
+        
+
+
+
     def updatePackets(self):
         recordWrapper = self._snifferRecordsWrapperFrame
         vulnRecordWrapper = self._snifferVulnRecordsWrapperFrame
-        print("UPDATE packets called")
+
         try:
             packet = self.graphicalQueue.get_nowait()
             self._add_record_to_packet_window(recordWrapper,packet)
@@ -70,8 +88,12 @@ class GUI(Tk):
         except Empty:
             pass
         if not(self.graphicalQueue.empty() and self.endUpdating):
-            self.after(100, self.updatePackets) 
+            self.after(250, self.updatePackets) 
  
+
+
+
+
     def _openDialog(self):
         pass
         fileName = filedialog.askopenfilename(initialdir=str(os.getcwd()),title="Select A Capture(CSV file)",filetypes = [("CSV", "*.csv")])        
@@ -83,7 +105,6 @@ class GUI(Tk):
                 self._clear_vulnerabilities_windows()
             
             self._loadedPacketsFromCSV = csvRead(fileName)
-            print(self._loadedPacketsFromCSV[0][5])
             [self._add_record_to_packet_window(recordWrapper,row) for row in self._loadedPacketsFromCSV]
             vulnList = [row[7:] for row in self._loadedPacketsFromCSV if row[7:][1].strip()]
 
@@ -132,14 +153,14 @@ class GUI(Tk):
 
     def _selectedItem(self,event):
             self.interface = self.interfaceCombobox.get()
-            print(self.interface)
 
     def _create_control_menu(self):
         controlsFrame = Frame(self,padx=5, pady= 5)
         controlsFrame.pack(anchor=W)
 
-        startButton = Button(controlsFrame, text="Start",command= lambda:self.startCapturingButtonPush())
-        stopButton = Button(controlsFrame, text="Stop",command= lambda:self.stopCapturingButtonPush())
+        self.startButton = Button(controlsFrame, text="Start",command= lambda:self.startCapturingButtonPush())
+        self.stopButton = Button(controlsFrame, text="Stop",command= lambda:self.stopCapturingButtonPush())
+        self.stopButton["state"] = "disabled"
 
         laodButton = Button(controlsFrame, text="Load", command=self._openDialog)
 
@@ -151,8 +172,8 @@ class GUI(Tk):
         self.interfaceCombobox.bind("<<ComboboxSelected>>",self._selectedItem)
         self.interfaceCombobox.grid(row=0,column=3,padx=20)
 
-        startButton.grid(row=0,column=0)
-        stopButton.grid(row=0,column=1)
+        self.startButton.grid(row=0,column=0)
+        self.stopButton.grid(row=0,column=1)
         laodButton.grid(row=0,column=2)
 
     def _create_packets_window(self):
@@ -223,12 +244,18 @@ class GUI(Tk):
         #     self._add_record_to_vuln_window(self._snifferVulnRecordsWrapperFrame)
         # pass
     def _clear_packets_window(self):
+        self._snifferRecordsWrapperFrame.configure(background="#F0F0F0")
         for widget in self._snifferRecordsWrapperFrame.winfo_children():
             widget.destroy()
 
     def _clear_vulnerabilities_windows(self):
+         self._snifferVulnRecordsWrapperFrame.configure(background="#F0F0F0")
          for widget in self._snifferVulnRecordsWrapperFrame.winfo_children():
             widget.destroy()
+
+
+
+
 class ScrollbarFrame(Frame):
     """
     Extends class tk.Frame to support a scrollable Frame 
@@ -242,7 +269,7 @@ class ScrollbarFrame(Frame):
        
 
         # The Canvas which supports the Scrollbar Interface, layout to the left
-        self.canvas = Canvas(self, borderwidth=0, background="#fff",width=1280)
+        self.canvas = Canvas(self, borderwidth=0, background="#F0F0F0",width=1280)
 
         vsb = Scrollbar(self)
        
@@ -271,9 +298,3 @@ class ScrollbarFrame(Frame):
     def on_configure(self, event):
         """Set the scroll region to encompass the scrolled frame"""
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-
-
-
-if __name__ == "__main__":
-    GUI().mainloop()
-

@@ -6,7 +6,7 @@ folder = dirname(dirname(realpath(__file__)))
 file = join(folder, 'data.csv')
 
 def csvRead(filename):
-    #self.run()
+
     with open(filename, 'r') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter='|')
             next(csv_reader)
@@ -27,11 +27,5 @@ def csvWrite(packets: list):
         for packet in packets:
             csv_writer.writerow(packet)
 
-# if __name__  == "__main__":
-#     data = queue.Queue(3)
-#     data.put(["1|0.023|192.168.1.129|192.168.1.1|TELNET|10000000|Standard query response 0x0002 A www.reddit.com CNAME reddit.map.fastly.net A 199.232.17.140|1|Login:den9k12 Password:Bromabora1"])
-#     data.put(["1|0.023|192.168.1.129|192.168.1.1|TELNET|10000000|Standard query response 0x0002 A www.reddit.com CNAME reddit.map.fastly.net A 199.232.17.140|1|Login:den9k12 Password:Bromabora1"])
-#     data.put(["1|0.023|192.168.1.129|192.168.1.1|TELNET|10000000|Standard query response 0x0002 A www.reddit.com CNAME reddit.map.fastly.net A 199.232.17.140|1|Login:den9k12 Password:Bromabora1"])
 
-#     CSVParser.write('Test.1.csv',data)
    
