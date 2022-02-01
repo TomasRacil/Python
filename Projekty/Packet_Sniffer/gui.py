@@ -15,7 +15,7 @@ ROW_COUNTER_VULN=0
 
 
 class GUI(Tk):
-    def __init__(self, startSniffing: Callable, stopSniffing: Callable, graphicalQueue: Queue):
+    def __init__(self, startSniffing: Callable, stopSniffing: Callable, graphicalQueue: Queue,interface):
         super().__init__()
         w, h = 1280, 720
         ws, hs = self.winfo_screenwidth(), self.winfo_screenheight()
@@ -32,7 +32,7 @@ class GUI(Tk):
         
         self._loadedPacketsFromCSV = []
 
-        self.interface = ''
+        self.interface = interface
         print(" GUI vytvoren")
 
         self._snifferRecordsWrapperFrame = None
@@ -147,6 +147,7 @@ class GUI(Tk):
         interfaceOptions = netifaces.interfaces()
         self.interfaceCombobox = ttk.Combobox(controlsFrame,value = interfaceOptions)
         self.interfaceCombobox.current(0)
+        self.interface = self.interfaceCombobox.get()
         self.interfaceCombobox.bind("<<ComboboxSelected>>",self._selectedItem)
         self.interfaceCombobox.grid(row=0,column=3,padx=20)
 

@@ -1,4 +1,5 @@
 from queue import Queue
+from sqlite3 import InterfaceError
 from time import sleep
 
 from sniffer import Sniffer
@@ -37,12 +38,14 @@ def closeProgram(recorderInstance: Recorder, snifferInstance: Sniffer):
 if __name__ == '__main__':
     graphicalQueue = Queue()
     fileQueue = Queue()
-    sniffer = Sniffer(graphicalQueue, fileQueue)
+    interface = ""
+    sniffer = Sniffer(graphicalQueue, fileQueue,interface)
     recorder = Recorder(fileQueue, 50)
     app = GUI(
         lambda: startSniffing(recorder, sniffer),
         lambda: pauseSniffing(recorder, sniffer),
-        graphicalQueue
+        graphicalQueue,
+        interface
     )
     app.mainloop()
 

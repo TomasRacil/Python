@@ -19,22 +19,20 @@ start_time = time.time()
 
 class Sniffer(Thread):
 
-    def __init__(self, graphicalQueue: Queue, fileQueue: Queue):
+    def __init__(self, graphicalQueue: Queue, fileQueue: Queue, interface):
      super().__init__()
      self.gq = graphicalQueue
      self.fq = fileQueue
      self.pauseFlag = False
      self.stopFlag = False
-     
-     
-
-    #  self.interface = interface
+    
+     self.interface = interface
     
      print("Sniffer vytvoren")
 
     def run(self):
         print("Spousteni Snifferu... ")
-        self.sniff_packet('eth0')
+        self.sniff_packet(self.interface)
         print("Ukonceni Snifferu...")
 
     def sniff_packet(self,iface=None):
