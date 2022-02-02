@@ -1,5 +1,5 @@
 
-##Editor Markup dokumentů
+## Editor Markup dokumentů
 
 Bradáč Tomáš
 
@@ -10,7 +10,7 @@ Potřebné knihovny:
 - markdown2
 - tkhtmlview
 
-####TODO:
+#### TODO:
 - Zkrášlit GUI
 - Rozšíření o některé HTML f-ce
 - Vylepšit funkčnost seznamů a podseznamů

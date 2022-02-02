@@ -1,9 +1,3 @@
-from tkinter import *
-from tkinter import font , filedialog
-from tkinter import messagebox as mbox
-from tkinter.scrolledtext import *
-from markdown2 import Markdown
-from tkhtmlview import HTMLLabel
 from funkce_pro_praci_s_textem import *
 from funkcni_casti import *
 """
