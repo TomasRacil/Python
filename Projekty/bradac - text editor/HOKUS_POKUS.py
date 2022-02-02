@@ -48,7 +48,7 @@ class Window(Frame):
         if (args) == 8:
             self.podseznam()
 
-
+    #vyuziti velikosti z vyberu
     def sizecorrection(self, nadpis_size):
         if(nadpis_size == "Moc velky"):
             self.buttonclick(3)
@@ -62,41 +62,85 @@ class Window(Frame):
             print("NECO SE POSRALO!")
             print(nadpis_size)
 
+    #detekce jiz pouziteho zvetseni a pripadne odstraneni
+    def checknadpis(self):
+        if(self.inputeditor.get('%s-1c'%SEL_FIRST, SEL_FIRST) == "#"):
+            self.inputeditor.delete('%slinestart-1c'%SEL_FIRST, SEL_FIRST)
+            if(self.inputeditor.get(SEL_LAST, '%s+1c'%SEL_LAST) == "\n"):
+                self.inputeditor.delete(SEL_LAST, '%s+1c'%SEL_LAST)
+            return True
+        else:
+            return False
 
 
     # funkce pro vložení formátu text/nadpisů,... do txt pole, při stisknutí tlačítka
     def tucne(self):
-        self.inputeditor.insert(SEL_FIRST, "**")
-        self.inputeditor.insert(SEL_LAST, "**")
+        if(self.inputeditor.get('%s-2c'%SEL_FIRST, SEL_FIRST) == "**"):
+            self.inputeditor.delete('%s-2c'%SEL_FIRST, SEL_FIRST)
+            self.inputeditor.delete(SEL_LAST, '%s+2c'%SEL_LAST)
+        else:
+            self.inputeditor.insert(SEL_FIRST, "**")
+            self.inputeditor.insert(SEL_LAST, "**")
     def kurziva(self):
-        self.inputeditor.insert(SEL_FIRST, "*")
-        self.inputeditor.insert(SEL_LAST, "*")
+        if(self.inputeditor.get('%s-1c'%SEL_FIRST) == "*"):  
+            if ((self.inputeditor.get('%s-2c'%SEL_FIRST, '%s-1c'%SEL_FIRST)) == (self.inputeditor.get('%s-3c'%SEL_FIRST,'%s-2c'%SEL_FIRST)) == "*"):
+                self.inputeditor.delete('%s-1c'%SEL_FIRST, SEL_FIRST)
+                self.inputeditor.delete(SEL_LAST,'%s+1c'%SEL_LAST)
+            elif (((self.inputeditor.get('%s-2c'%SEL_FIRST, '%s-1c'%SEL_FIRST))!= "*") and ("*" !=(self.inputeditor.get('%s-3c'%SEL_FIRST,'%s-2c'%SEL_FIRST)))): #za tohle se omlouvám
+                self.inputeditor.delete('%s-1c'%SEL_FIRST, SEL_FIRST)
+                self.inputeditor.delete(SEL_LAST,'%s+1c'%SEL_LAST)
+            else:
+                self.inputeditor.insert(SEL_FIRST, "*")
+                self.inputeditor.insert(SEL_LAST, "*")
+        else:
+            self.inputeditor.insert(SEL_FIRST, "*")
+            self.inputeditor.insert(SEL_LAST, "*")
     def nadpis1(self):
+        if self.checknadpis():
+            return        
         if(self.inputeditor.get('%s-1c'%SEL_FIRST) != "\n"):
             self.inputeditor.insert(SEL_FIRST, "\n")
         self.inputeditor.insert(SEL_FIRST, "#")
         self.inputeditor.insert(SEL_LAST, "\n")
-        print(INSERT)
     def nadpis2(self):
+        if self.checknadpis():
+            return   
         if(self.inputeditor.get('%s-1c'%SEL_FIRST) != "\n"):
             self.inputeditor.insert(SEL_FIRST, "\n")
         self.inputeditor.insert(SEL_FIRST, "##")
         self.inputeditor.insert(SEL_LAST, "\n")
     def nadpis3(self):
+        if self.checknadpis():
+            return   
         if(self.inputeditor.get('%s-1c'%SEL_FIRST) != "\n"):
             self.inputeditor.insert(SEL_FIRST, "\n")
         self.inputeditor.insert(SEL_FIRST, "###")
         self.inputeditor.insert(SEL_LAST, "\n")
     def nadpis4(self):
+        if self.checknadpis():
+            return   
         if(self.inputeditor.get('%s-1c'%SEL_FIRST) != "\n"):
             self.inputeditor.insert(SEL_FIRST, "\n")
         self.inputeditor.insert(SEL_FIRST, "####")
         self.inputeditor.insert(SEL_LAST, "\n")
     def seznam(self):
-        self.inputeditor.insert(SEL_FIRST, "\n- ")
-        self.inputeditor.insert(SEL_LAST, "\n")
+        if(self.inputeditor.get('%s-3c'%SEL_FIRST, SEL_FIRST) == "\n- "):
+            self.inputeditor.delete('%s-4c'%SEL_FIRST, SEL_FIRST)
+            self.inputeditor.delete(SEL_LAST, '%s+1c'%SEL_LAST)
+        else:
+            if(self.inputeditor.get('%s-1c'%SEL_FIRST, SEL_FIRST) != "\n"):
+                self.inputeditor.insert(SEL_FIRST, "\n")
+                if(self.inputeditor.get('%s-2c'%SEL_FIRST, '%s-1c'%SEL_FIRST) != "\n"):
+                    self.inputeditor.insert(SEL_FIRST, "\n")
+            self.inputeditor.insert(SEL_FIRST, "- ")
+            self.inputeditor.insert(SEL_LAST, "\n")
     def podseznam(self):
-        self.inputeditor.insert(SEL_FIRST, "     - ")
+        if(self.inputeditor.get('%s-7c'%SEL_FIRST, SEL_FIRST) == "     - "):
+            self.inputeditor.delete('%s-7c'%SEL_FIRST, SEL_FIRST)
+        else:
+            if(self.inputeditor.get('%s-1c'%SEL_FIRST, SEL_FIRST) != "\n"):
+                self.inputeditor.insert(SEL_FIRST, "\n")
+            self.inputeditor.insert(SEL_FIRST, "     - ")
 
     # tlačítka pro vkládání nadpisů, seznamů, ...
     def buttonbox(self):
