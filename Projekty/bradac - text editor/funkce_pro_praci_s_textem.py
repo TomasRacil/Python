@@ -34,8 +34,9 @@ class Functions():
         elif(nadpis_size == "Maly"):
             self.buttonclick(6)
         else:
-            print("NECO SE POSRALO!")
+            print("Chyba ve vyberu velikosti!")
             print(nadpis_size)
+            exit()
 
     #detekce jiz pouziteho zvetseni a pripadne odstraneni
     def checknadpis(self):
