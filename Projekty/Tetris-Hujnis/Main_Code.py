@@ -12,9 +12,10 @@ block_size = 30
 top_left_x = (screen_width - play_width) // 2   #šířka okna - šířka hry = top_RIGHT_x ..... //2 = top_left_x .... dvojité lomítko = zaokrouhlení dělení k nejbližšímu celému číslu 15//2 = 7
 top_left_y = screen_height - play_height
 
- #vykreslení okna
+ #vykreslení okna, výstupem je plocha v určité barvě
 def draw_window(surface):
     surface.fill((125,125,125))
+
     #nadpis Tetris uprostřed okna nad hrací plochou
     font = pygame.font.SysFont('arial', 60, bold=True)
     label = font.render('TETRIS', 1, (0,0,0))
@@ -34,7 +35,7 @@ def draw_window(surface):
     surface.fill((0,0,0), ((play_width*2) - 5, play_height - 310, (play_width/2) + 40 , (play_height/2) - 130))
     # pygame.display.update()
 
- 
+
 def main():
     global grid
  
@@ -128,7 +129,7 @@ def main():
         draw_next_shape(next_piece, win, top_left_x, play_width, top_left_y, play_height)   #vykreslení Next Shape
         pygame.display.update()                                                             #update okna
  
-        # Check if user lost
+        #kontrola, jestli hráč neprohrál
         if check_lost(locked_positions):
             run = False
  
@@ -136,7 +137,7 @@ def main():
     pygame.display.update()
     pygame.time.delay(2000)
  
-
+# smyčka spuštění programu, obsahuje main funkci
 def main_menu():
     run = True
     while run:

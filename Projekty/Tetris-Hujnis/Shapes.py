@@ -120,7 +120,9 @@ class Shape(object):
             self.color = color[type.index(shape)]
             self.rotation = 0 #0-3
 
-#rozpoznání Shape z listu
+#rozpoznání Shape z listu "type"
+# vstup  = shape v podobě listu
+# výstup = shape v podobě pozice a určité rotace shape
 def convert_shape_format(shape):
       positions =[]
       format = shape.shape[shape.rotation % len(shape.shape)] #rozpoznání rotace v listu
@@ -132,7 +134,10 @@ def convert_shape_format(shape):
                         positions.append((shape.x + j, shape.y + i)) #přidání pozice, která byla rozpoznána, jako část Shape
       return positions
       
-#check, jestli pohyb je možný
+#check, jestli pohyb je možný - kontrola pozic
+# vstup  = shape, grid
+# výstup = seřazené pozice podle y_coord jsme získali list pozic, které jsou seřazené po řadách => lepší orientace
+#          - porovnání těchto pozic s pozicemi, které jsou přípustné pro pohyb (accepted_positions)
 def valid_space(shape, grid):
     accepted_positions = [[(j, i) for j in range(10) if grid[i][j] == (0,0,0)] for i in range(20)] #přidávání do accepted, pokud je i,j v barvě (0,0,0)
     accepted_positions = [j for sub in accepted_positions for j in sub] #předělání 2 dimenzionálního listu do 1 dimenzionálního  ...  [ [(0,1)] , [(2,3)] ] --> [ (0,1) , (2,3)]
@@ -145,7 +150,10 @@ def valid_space(shape, grid):
  
     return True
 
-
+#check, jestli shape nedosáhli horní hranice hrací plochy => uživatel prohrál
+# vstup  = positions
+# výstup = true - konec hry
+#          false - hra jde dál
 def check_lost(positions):
     for pos in positions:
         x, y = pos
@@ -153,12 +161,16 @@ def check_lost(positions):
             return True
     return False
 
- #vrátí náhodnou Shape na souřadnicích column=5,row=0 v gridu == na středu hrací plochy nahoře
+#vrátí náhodnou Shape na souřadnicích v gridu == na středu hrací plochy nahoře
 def get_shape():
     global type, color
  
     return Shape(3, -3, random.choice(type))
 
+#tisk následující shape vpravo od hrací plochy
+# vstup  = shape, vrstva tisku, souřadnice
+# výstup = vytisknutá shape na určitých souřadnicích
+#          + texty kolem hrací plochy pomocí funkcí z modulu Text
 def draw_next_shape(shape, surface, top_left_x, play_width, top_left_y, play_height):
 
     sx = top_left_x + play_width + 55
@@ -171,7 +183,7 @@ def draw_next_shape(shape, surface, top_left_x, play_width, top_left_y, play_hei
             if column == '0':
                 pygame.draw.rect(surface, shape.color, (sx + j*30 + 10, sy + i*30 + 10, 30, 30), 0)
  
-   
+    #text
     draw_right_big_text('Next Shape: ', (0,0,0), surface, sx + 5, sy - 30)
     draw_left_big_text('Controls: ', (0,0,0), surface, sy - 30)
 

@@ -1,6 +1,8 @@
 import pygame
 
 #vytvoření hrací plochy - backgroundu, na které reagují padající Shapes
+# vstup  = locked_positions
+# výstup = hrací plocha v kombinaci barev černé a barev již spadlých Shapes, které jsou již součástí gridu v podobě locked_positions
 def create_grid(locked_positions={}):
     grid = [[(0,0,0) for x in range(10)] for x in range(20)]
     #list pro každou řadu(row) v gridu barvy(0,0,0) ... 10 čtverců v řadě(column), 20 řad 
@@ -15,6 +17,8 @@ def create_grid(locked_positions={}):
     return grid
 
 #nakreslení mřížované hrací plochy pro lepší přehlednost během hry
+# vstup  = vrstva tisku, souřadnice, velikost kostky
+# výstup = v gridu vytisklá mřížka, pro přehlednost hrací plochy
 def draw_grid(surface, row, col, top_left_x, play_width, top_left_y, play_height, block_size):
     surface_x = top_left_x
     surface_y = top_left_y 
@@ -24,6 +28,8 @@ def draw_grid(surface, row, col, top_left_x, play_width, top_left_y, play_height
             pygame.draw.line(surface, (128,128,128), (surface_x + j * block_size, surface_y), (surface_x + j * block_size, surface_y + play_height))  # vertical
  
 #smazání zaplněné řady, posunutí o řádek níž
+# vstup  = plocha, spadlé Shapes
+# výstup = při zaplnění celé řady jinou barvou než je (0,0,0) se daná řada smaže a zbytek gridu se posune o řadu dolů
 def full_rows(grid, locked):
     full_rows = 0
     for i in range(len(grid)-1,-1,-1):      #smyčka probíhá od spodu gridu
