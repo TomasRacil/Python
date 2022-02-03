@@ -132,6 +132,9 @@ def convert_shape_format(shape):
             for j, column in enumerate(row):
                   if column == '0':
                         positions.append((shape.x + j, shape.y + i)) #přidání pozice, která byla rozpoznána, jako část Shape
+      for i, pos in enumerate(positions):
+        positions[i] = (pos[0] - 2, pos[1] - 4) 
+
       return positions
       
 #check, jestli pohyb je možný - kontrola pozic
@@ -145,7 +148,7 @@ def valid_space(shape, grid):
  
     for pos in formatted:
         if pos not in accepted_positions:
-            if pos[1] > -1: #kontrolujeme pozice na hraací ploše ... negativní hodnota = poloha mimo plochu => bez pohybu
+            if pos[1] > -1: #kontrolujeme pozice na hrací ploše ... negativní hodnota = poloha mimo plochu => bez pohybu
                 return False
  
     return True
@@ -164,8 +167,9 @@ def check_lost(positions):
 #vrátí náhodnou Shape na souřadnicích v gridu == na středu hrací plochy nahoře
 def get_shape():
     global type, color
- 
-    return Shape(3, -3, random.choice(type))
+    x = random.randrange(2, 8)
+    #return Shape(3, -1, random.choice(type))
+    return Shape(x, 0, random.choice(type))
 
 #tisk následující shape vpravo od hrací plochy
 # vstup  = shape, vrstva tisku, souřadnice
