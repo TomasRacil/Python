@@ -12,8 +12,14 @@ block_size = 30
 top_left_x = (screen_width - play_width) // 2   #šířka okna - šířka hry = top_RIGHT_x ..... //2 = top_left_x .... dvojité lomítko = zaokrouhlení dělení k nejbližšímu celému číslu 15//2 = 7
 top_left_y = screen_height - play_height
 
- #vykreslení okna, výstupem je plocha v určité barvě
+
 def draw_window(surface):
+    """
+    Tato funkce vykresluje okno konzole.
+
+    vstup  = background hrací plochy (surface)
+    výstup = vykreslený background
+    """
     surface.fill((125,125,125))
 
     #nadpis Tetris uprostřed okna nad hrací plochou
@@ -37,6 +43,13 @@ def draw_window(surface):
 
 
 def main():
+    """
+    Tato funkce je hlavní smyčka hry.
+
+          - padání a pohyb Shape
+          - přidání Shape do vykreslení v hrací ploše(Grid)
+          - změna Shape při ukončení pohybu předchozího
+    """
     global grid
  
     locked_positions = {}  
@@ -136,9 +149,18 @@ def main():
     draw_central_text("You Lost", 40, (255,255,255), win, top_left_x, play_width, top_left_y, play_height)
     pygame.display.update()
     pygame.time.delay(2000)
- 
-# smyčka spuštění programu, obsahuje main funkci
+
+
+
 def main_menu():
+    """
+    Tato funkce spouští celý program.
+
+    Obsahuje main funkci. 
+    Zajišťuje spuštění hry při zmáčknutí klávesy a ukončení, při zavření okna.
+    """ 
+
+
     run = True
     while run:
         win.fill((0,0,0))
@@ -151,9 +173,10 @@ def main_menu():
             if event.type == pygame.KEYDOWN:
                 main()
     pygame.quit()
- 
+
  
 win = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Tetris')
- 
-main_menu()  # start game
+
+#Start GAME
+main_menu()  
