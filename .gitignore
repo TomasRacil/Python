@@ -138,3 +138,15 @@ dmypy.json
 
 # pip wheel
 *.whl
+
+# media file
+*.avi
+*.mp4
+*.jpg
+*.png
+*.jpeg
+*.mkv
+*.webm
+
+#binaries
+*.exe
