@@ -18,6 +18,6 @@ for line in data:
     depthR+=1
     input((depthL, depthR))
     while depthR>4 or depthL>4:
-        
+        pass
 
 print(fishes)
