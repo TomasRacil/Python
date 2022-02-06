@@ -136,6 +136,9 @@ dmypy.json
 .vs/
 .vscode/
 
+#OSx
+.idea/
+
 # pip wheel
 *.whl
 
