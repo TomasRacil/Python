@@ -21,7 +21,10 @@ start_time = time.time()
 # In order to pass captured packets into the gui module and the recorder module, two queues(graphicalQueue and fileQueue) are filled.
 
 class Sniffer(Thread):
-
+    """ Constructor - it takes graphicalQueue and fileQueue which are filled with captured packets.
+	    Args:
+		    parameters: graphicalQueue: Queue, fileQueue: Queue, interface(str) - sets network interface which will be sniffed
+    """
     def __init__(self, graphicalQueue: Queue, fileQueue: Queue, interface):
      super().__init__()
      self.gq = graphicalQueue
@@ -32,15 +35,23 @@ class Sniffer(Thread):
      self.interface = interface
 
     def run(self):
+        """ Fucntion - it starts sniffPacket function in new thread.
+	        Args:
+		        parameters: instance of Sniffer
+        """
         print("Spousteni Snifferu... ")
         self.sniff_packet(self.interface)
         print("Ukonceni Snifferu...")
 
     def sniff_packet(self,iface=None):
+        """ Function - Initializes packet counter and initializes async class AsyncSniffer, which captures packet in non-blocking way. 
+	        Args:
+		        parameters: instance of Sniffer, iface(str) - interface name
+        """
         global packet_num
         packet_num =0
         data = None
-
+# docs https://scapy.readthedocs.io/en/latest/usage.html#asynchronous-sniffing
         if iface:
           data = AsyncSniffer(filter="port 80 or port 21 or port 53",prn=self.process_packet, iface=iface, store=False)
  
@@ -57,7 +68,10 @@ class Sniffer(Thread):
 
 
     def process_packet(self,packet):
-
+        """ Callback funciton - it measure elapsed time of sniffing, parses captured packet by layers and application protocol.
+	        Args:
+		        parameters: instance of Sniffer, rawSocket output
+        """
         timestmap = time.time() - start_time
         timestmap = int(timestmap * 1000)/1000.0
         packet_len = len(packet)
@@ -118,10 +132,11 @@ class Sniffer(Thread):
                     password = payload.split('PASS ')[1].strip().replace("\\r\\n'","")
                 else:
                     if '230' in payload:
+                        "230 message  = successful login - capture data only if the credentials are valid"
                         credentials = username+"&"+password
                         username = ''
                         password = ''
-                
+                # Fill graphical and file queue with parsed packet strings
                 self.gq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
                 self.fq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
 
@@ -134,7 +149,7 @@ class Sniffer(Thread):
                 
                 if packet.haslayer(DNSRR):
                     payload = "Standard response " + str(dnstypes[packet[DNSRR].type]) + " " + str(packet[DNSRR].rrname)+ " " + str(packet[DNSRR].rdata)
-
+             # Fill graphical and file queue with parsed packet strings
             self.gq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,credentials])
             self.fq.put([packet_num,timestmap,src_ip,dst_ip,protocol,packet_len,payload,packet_num,credentials])
             sleep(0.012)
