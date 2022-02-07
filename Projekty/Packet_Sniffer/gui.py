@@ -16,6 +16,11 @@ ROW_COUNTER_VULN=0
 # Initializing GUI window params
 
 class GUI(Tk):
+    
+    """ GUI class create user interface, initializes control buttons (Start sniffing, Stop sniffing and Load)
+	Args:
+		parameters: startSniffing function(starts sniffer), stopSniffing function(stops sniffer), graphicalQueue(queue filled with sniffed packets), intreface string(stores selected interface)
+    """
     def __init__(self, startSniffing: Callable, stopSniffing: Callable, graphicalQueue: Queue,interface):
         super().__init__()
         w, h = 1280, 720
@@ -49,10 +54,11 @@ class GUI(Tk):
         self._create_packets_window()
         self._create_vulnerabilities_window()
 
-
-     # Function starts on button click - clears screen if there are any records left and intiate sniffing and gui threads
     def startCapturingButtonPush(self):
-
+     """Function starts on button click - clears screen if there are any records left and intiate sniffing and gui threads
+	    Args:
+		    parameter: self - instance of GUI
+	 """
         if len(self._snifferRecordsWrapperFrame.winfo_children()) > 0:
                 self._clear_packets_window()
                 self._clear_vulnerabilities_windows()
@@ -65,19 +71,27 @@ class GUI(Tk):
         self.startButton['state'] = DISABLED
 
 
-   # Function stop on button click - it stops sniffing by changing flag value
     def stopCapturingButtonPush(self):
-
+   
+     """ Function stops on button click - it stops sniffing by changing flag value
+	    Args:
+		    parameter (str): self - instance of GUI
+	   
+	 """
         self.stopSniffing()
         self.endUpdating = True
 
         self.stopButton['state'] = DISABLED
         self.startButton['state'] = NORMAL
         
-
-
-    # Handler funciton which periodacally add records into main window
+ 
     def updatePackets(self):
+        """Handler funciton which periodacally add records into main window
+	     Args:
+		    parameter: instance of GUI
+	     Returns:
+		    str: return parameter
+	    """
         recordWrapper = self._snifferRecordsWrapperFrame
         vulnRecordWrapper = self._snifferVulnRecordsWrapperFrame
 
@@ -92,10 +106,13 @@ class GUI(Tk):
             self.after(250, self.updatePackets) 
  
 
-
-
-    # Function opens dialog and allows user to load a csv file
     def _openDialog(self):
+         """ Function opens dialog and allows user to load a csv file
+	        Args:
+		        parameter: instance of GUI
+	         Returns:
+		        str: return parameter
+	    """
         pass
         fileName = filedialog.askopenfilename(initialdir=str(os.getcwd()),title="Select A Capture(CSV file)",filetypes = [("CSV", "*.csv")])        
         if(len(fileName) != 0):
@@ -112,9 +129,13 @@ class GUI(Tk):
             if vulnList:
                 [self._add_record_to_vuln_window(self._snifferVulnRecordsWrapperFrame,row) for row in vulnList]
 
-    #  An implementation of packets(record) appendation into the main window
     
     def _add_record_to_packet_window(self,parent, record):
+        
+         """ An implementation of packets(record) appendation into the main window
+	    Args:
+		    parameters:  instance of GUI, parent(Frame) - reference to _snifferRecordsWrapperFrame into which records are appended, record(str) - packet content
+	     """
         packets = record
         global ROW_COUNTER_PACKETS
         recordFrame = Frame(parent)
@@ -139,9 +160,13 @@ class GUI(Tk):
         rec7.grid(row=0,column=6)
         ROW_COUNTER_PACKETS +=1
 
-    # An implementation of packets(record) appendation into bottom window
+   
     
     def _add_record_to_vuln_window(self,parent,record):
+         """ An implementation of packets(record) appendation into bottom window
+	        Args:
+		         parameters:  instance of GUI, parent(Frame) - reference to _snifferVulnRecordsWrapperFrame into which records are appended, record(str) - captured plaintext credentials
+	     """
         global ROW_COUNTER_VULN
         recordFrame = Frame(parent)
         recordFrame.grid(row= ROW_COUNTER_VULN,column=0)
@@ -157,9 +182,12 @@ class GUI(Tk):
     def _selectedItem(self,event):
             self.interface = self.interfaceCombobox.get()
     
-    # An implementation of the control menu
     
     def _create_control_menu(self):
+         """An implementation of the control menu
+	        Args:
+		        parameter:  instance of GUI
+	    """
         controlsFrame = Frame(self,padx=5, pady= 5)
         controlsFrame.pack(anchor=W)
 
@@ -181,8 +209,11 @@ class GUI(Tk):
         self.stopButton.grid(row=0,column=1)
         laodButton.grid(row=0,column=2)
         
-    # A GUI implementation of the main window
     def _create_packets_window(self):
+         """ A GUI implementation of the main window
+	        Args:
+		        parameter: instance of GUI
+	    """
         snifferWrapperFrame = Frame(self)
         snifferWrapperFrame.pack(anchor=W, expand=True, fill=Y)
 
@@ -219,9 +250,14 @@ class GUI(Tk):
         packetBodyLabel.grid(row=0,column=6)
         timestampFrame.grid(row=0,column=1)
 
-     # A GUI implementation of the bottom window
-    def _create_vulnerabilities_window(self,):
-
+    
+    def _create_vulnerabilities_window(self):
+         """ GUI implementation of the bottom window
+	        Args:
+		        parameter: instance of GUI
+	        Returns:
+		        str: return parameter
+	     """
         snifferVulnWrapperFrame = Frame(self)
         snifferVulnWrapperFrame.pack(anchor=W, expand=True, fill=Y)
         
@@ -245,14 +281,21 @@ class GUI(Tk):
         # self._snifferVulnRecordsWrapperFrame.pack(anchor=W)
         self._snifferVulnRecordsWrapperFrame.grid(row=0)
 
-    # Clearing records from last sniffing operation
-    
+
     def _clear_packets_window(self):
+         """Clearing records from last sniffing operation
+	        Args:
+		        parameter: instance of GUI
+	    """
         self._snifferRecordsWrapperFrame.configure(background="#F0F0F0")
         for widget in self._snifferRecordsWrapperFrame.winfo_children():
             widget.destroy()
 
     def _clear_vulnerabilities_windows(self):
+         """Clearing credential records from last sniffing operation
+	        Args:
+		        parameter: instance of GUI
+	    """
          self._snifferVulnRecordsWrapperFrame.configure(background="#F0F0F0")
          for widget in self._snifferVulnRecordsWrapperFrame.winfo_children():
             widget.destroy()
