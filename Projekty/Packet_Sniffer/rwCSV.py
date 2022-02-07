@@ -7,7 +7,10 @@ folder = dirname(dirname(realpath(__file__)))
 file = join(folder, 'data.csv')
 
 def csvRead(filename):
-
+    """ Fucntion - it reads content of csv file. On openning it skips header("next" fucntion) and reads file line by line 
+	    Args:
+		    parameters: filename(str)
+    """
     with open(filename, 'r') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter='|')
             next(csv_reader)
@@ -15,6 +18,10 @@ def csvRead(filename):
     
 
 def csvWrite(packets: list):
+    """ Fucntion - it write packets list into csv file. If file does not exists then create it otherwise append the list content to the file
+	    Args:
+		    parameters: packets(list)
+    """
     file_exists = isfile(file)
     if file_exists:
         attr = 'a'
