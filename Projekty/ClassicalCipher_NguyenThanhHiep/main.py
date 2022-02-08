@@ -27,6 +27,7 @@ if IsPassed==True:
     Selection.resizable(height=False, width=False)
     Selection.minsize(height=300,width=500)
     
+    
     def Substitution():
         Selection.destroy()
         root= Tk()
@@ -38,24 +39,7 @@ if IsPassed==True:
         encoded_Vysledek=StringVar()
         decoded_Vysledek= StringVar()
         
-        def Desifrovej():
-            decoded=""
-            temp=ciphertext.get()
-            for i in range(len(temp)):
-                isFounded=False
-                for j in range(len(m_Zobrazeni)):
-                    index = m_Zobrazeni[j].find(temp[i])
-                    if ( index!= -1):
-                        isFounded= True
-                        if (index == 0):
-                            decoded+=m_Zobrazeni[j][len(m_Zobrazeni[j])-1]
-                        else:
-                            decoded+=m_Zobrazeni[j][index-1]
-                        break
-                if(isFounded== False):
-                    decoded+=temp[i]
-            decoded_Vysledek.set(decoded)
-            Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
+        #Substitution: najit znak plaintextu v list retezcu a nahradit tento znak dalsim znakem ve tomto retezci
         def Sifrovej():
             temp=plaintext.get()
             encoded=""
@@ -74,6 +58,25 @@ if IsPassed==True:
                     encoded+=temp[i]
             encoded_Vysledek.set(encoded)
             Entry(root,textvariable=encoded_Vysledek,width=30).place(x=100,y=150)
+        def Desifrovej():
+            decoded=""
+            temp=ciphertext.get()
+            for i in range(len(temp)):
+                isFounded=False
+                for j in range(len(m_Zobrazeni)):
+                    index = m_Zobrazeni[j].find(temp[i])
+                    if ( index!= -1):
+                        isFounded= True
+                        if (index == 0):
+                            decoded+=m_Zobrazeni[j][len(m_Zobrazeni[j])-1]
+                        else:
+                            decoded+=m_Zobrazeni[j][index-1]
+                        break
+                if(isFounded== False):
+                    decoded+=temp[i]
+            decoded_Vysledek.set(decoded)
+            Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
+        
         def ClearAll():
             plaintext.set("")
             ciphertext.set("")
@@ -101,17 +104,7 @@ if IsPassed==True:
         encoded_Vysledek=StringVar()
         decoded_Vysledek= StringVar()
         orderedList= sorted(m_Keyword)
-        def Desifrovej():
-            decoded=""
-            temp=ciphertext.get()
-            t=len(temp)//len(m_Keyword)
-            for m in range(t):
-                for j in range(len(orderedList)):
-                    for i in range(len(m_Keyword)):
-                        if orderedList[j]==m_Keyword[i]:
-                            decoded+= temp[i*t+m]
-            decoded_Vysledek.set(decoded)
-            Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
+
         def Sifrovej():
             temp=plaintext.get()
             encoded=""
@@ -128,6 +121,18 @@ if IsPassed==True:
                                 break
             encoded_Vysledek.set(encoded)
             Entry(root,textvariable=encoded_Vysledek,width=30).place(x=100,y=150)
+        def Desifrovej():
+            decoded=""
+            temp=ciphertext.get()
+            t=len(temp)//len(m_Keyword)
+            for m in range(t):
+                for j in range(len(orderedList)):
+                    for i in range(len(m_Keyword)):
+                        if orderedList[j]==m_Keyword[i]:
+                            decoded+= temp[i*t+m]
+            decoded_Vysledek.set(decoded)
+            Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
+        
         def ClearAll():
             plaintext.set("")
             ciphertext.set("")
@@ -154,6 +159,8 @@ if IsPassed==True:
         ciphertext=StringVar()
         encoded_Vysledek=StringVar()
         decoded_Vysledek= StringVar()
+
+        #exkluzivni disjunkce mezi indexem znaku a danem cislem
         def Sifrovej():
             temp=plaintext.get()
             encoded=""
@@ -197,22 +204,23 @@ if IsPassed==True:
         encoded_Vysledek=StringVar()
         decoded_Vysledek= StringVar()
         
-        def Desifrovej():
-            decoded=""
-            temp=ciphertext.get()
-            for i in range(len(temp)):
-                cislo=((ord(temp[i])-m_KeyShift-32) % 95)+32  #there are 95 letters that can be printed
-                decoded += chr(cislo)
-            decoded_Vysledek.set(decoded)
-            Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
         def Sifrovej():
             temp=plaintext.get()
             encoded=""
             for i in range(len(temp)):
-                cislo=((ord(temp[i])+m_KeyShift-32) % 95)+32
+                cislo=((ord(temp[i])+m_KeyShift-32) % 95)+32 #there are 95 letters that can be printed(from index 32)
                 encoded+= chr(cislo)
             encoded_Vysledek.set(encoded)
             Entry(root,textvariable=encoded_Vysledek,width=30).place(x=100,y=150)
+        def Desifrovej():
+            decoded=""
+            temp=ciphertext.get()
+            for i in range(len(temp)):
+                cislo=((ord(temp[i])-m_KeyShift-32) % 95)+32  
+                decoded += chr(cislo)
+            decoded_Vysledek.set(decoded)
+            Entry(root,textvariable=decoded_Vysledek,width=30).place(x=100,y=350)
+       
         def ClearAll():
             plaintext.set("")
             ciphertext.set("")
