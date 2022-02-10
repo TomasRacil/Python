@@ -1,13 +1,13 @@
 from personal import *
 
 
-def Encrypt1(temp):
+def EncryptCaseShift(temp):
     encoded=""
     for i in range(len(temp)):
         cislo=((ord(temp[i])+m_KeyShift-32) % 95)+32 #there are 95 letters that can be printed(from index 32)
         encoded+= chr(cislo)
     return encoded
-def Encrypt2(temp):
+def EncryptCaseSubtitution(temp):
         encoded=""
         for i in range(len(temp)):
             isFounded= False
@@ -23,13 +23,13 @@ def Encrypt2(temp):
             if(isFounded==False):
                 encoded+=temp[i]
         return encoded
-def Encrypt3(temp):
+def EncryptCaseXor(temp):
         encoded=""
         for i in range(len(temp)):
             cislo=(m_IndexVariable+ ord(temp[i]))^m_XoredNumber
             encoded+= chr(cislo)
         return encoded
-def Encrypt4(temp):
+def EncryptCaseColumnar(temp):
         encoded=""
         orderedList= sorted(m_Keyword)
         for i in range(len(m_Keyword)):
@@ -45,13 +45,13 @@ def Encrypt4(temp):
                             break
         return encoded
     
-def Decrypt1(temp):
+def DecryptCaseShift(temp):
         decoded=""
         for i in range(len(temp)):
             cislo=((ord(temp[i])-m_KeyShift-32) % 95)+32  
             decoded += chr(cislo)
         return decoded
-def Decrypt2(temp):
+def DecryptCaseSubtitution(temp):
         decoded=""
         for i in range(len(temp)):
             isFounded=False
@@ -67,13 +67,13 @@ def Decrypt2(temp):
             if(isFounded== False):
                 decoded+=temp[i]
         return decoded
-def Decrypt3(temp):
+def DecryptCaseXor(temp):
         decoded=""
         for i in range(len(temp)):
             cislo=(m_IndexVariable+ord(temp[i]))^m_XoredNumber
             decoded+= chr(cislo)
         return decoded
-def Decrypt4(temp):
+def DecryptCaseColumnar(temp):
         decoded=""
         orderedList= sorted(m_Keyword)
         t=len(temp)//len(m_Keyword)
