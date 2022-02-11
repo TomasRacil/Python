@@ -10,7 +10,87 @@ import ffmpeg
 #kompilovany ffmpeg tools
 #zmena knihovny titulku
 
+#################################################################################################
 
+def zmeneni_title():
+    title = yt.title.replace('/', '')
+    title = title.replace('\\', '')
+    title = title + '.mp4'
+    return title
+
+
+#################################################################################################
+
+def stazeni_titulku():
+    caption = yt.captions.get_by_language_code(
+        captions[sub])
+    print(caption.xml_captions)
+    tit = caption.generate_srt_captions()
+    with open(target_path + '/titulky.srt', 'w') as f:
+        f.writelines(tit)
+
+
+#################################################################################################
+
+def vytvoreni_tmp():
+    script_path = dirname(abspath(__file__))
+    if not exists(join(script_path, 'tmp')):
+        makedirs(join(script_path, 'tmp'))
+    return script_path
+
+
+#################################################################################################
+
+def videoaudio():
+    #Download
+    video.download(output_path=join(script_path, 'tmp'),
+                   filename="video.webm")
+    audio.download(output_path=join(script_path, 'tmp'),
+                   filename="audio.webm")
+
+#######################################################
+    #Spojeni
+    source_audio = ffmpeg.input(
+        join(script_path, 'tmp', 'audio.webm'))
+    source_video = ffmpeg.input(
+        join(script_path, 'tmp', 'video.webm'))
+
+    title = zmeneni_title()
+
+    ffmpeg.concat(source_video, source_audio, v=1, a=1).output(
+        join(target_path, title)).run(
+        cmd=join(script_path, 'tools', 'ffmpeg'),
+        overwrite_output=True)
+
+
+#################################################################################################
+
+def odstraneni_tmp():
+    try:
+        remove(join(script_path, 'tmp', 'audio.webm'))
+        remove(join(script_path, 'tmp', 'video.webm'))
+        rmdir(join(script_path, 'tmp'))
+    except Exception as e:
+        print(e)
+
+
+#################################################################################################
+
+def stazeni_audia():
+    vid_url = values['url']
+    target_path = values['path']
+
+    yt = YouTube(vid_url)
+
+    ys = yt.streams.get_audio_only()
+    soubor = ys.download(target_path)
+
+    base, ext = os.path.splitext(soubor)
+    new_soubor = base + '.mp3'
+    rename(soubor, new_soubor)
+
+
+#################################################################################################
 
 sg.theme('DarkAmber')
 
