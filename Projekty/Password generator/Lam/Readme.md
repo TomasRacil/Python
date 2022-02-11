@@ -14,3 +14,11 @@ Příklad otázek: What's your first pet's name?, What's your dream job?, ...
 Pro odpověď na otázku používám náhodnou funkci vybrat odpověď, vzít první písmeno a velké.
 - Heslo tedy bude splňovat požadavky na číslice, malá a velká písmena,...
 - Heslo je ale také snadno zapamatovatelné, protože je tvořeno informacemi a otázkami, které uživatele zajímají, a tak ho jen těžko zapomene.
+
+
+TODO:
+
+- Pro otázku by mělo existovat samostatné rozhraní a uživatel otázku vybere a poté se objeví v hlavním rozhraní.
+- Délku hesla je třeba spravovat, u evropských jmen nepoužívejte celé jméno
+- Osobní údaje, které mnoho dalších lidí zná a může je použít, ale ne centrálně
+- Jsou tam některé zvláštní postavy navíc
