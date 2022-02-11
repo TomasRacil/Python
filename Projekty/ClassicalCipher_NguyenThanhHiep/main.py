@@ -64,6 +64,7 @@ if IsPassed==True:
     root.title("hello user!")
     root.resizable(height=True, width=True)
     root.minsize(height=500,width=500)
+    
     #sifrovaci text
     plaintext=StringVar()
     #desifrovaci text
