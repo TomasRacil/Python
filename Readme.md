@@ -1,24 +1,36 @@
-Vytvořím program pro návrh hesla
+První spuštění git 
+- zadejte následující příkazy do příkazového řádku  
+- zadejte vlastní uživatelské jméno a email použitý při registraci na github 
 
-- Heslo zajistí bezpečnostní kritéria
-- Pokud uživatel není spokojen s tímto heslem, poskytne další heslo
-- Můžete si vybrat více bezpečnostních otázek, aby byla vaše hesla rozmanitější.
-
-Popis:
-
-- Rozhraní Tkinder používám k vytvoření okna, kde může uživatel zadat osobní údaje jako: jméno, příjmení, datum narození,...
-- Kromě toho budou vyzváni k zadání dalších 7 bezpečnostních otázek.
-Příklad otázek: What's your first pet's name?, What's your dream job?, ...
-- Uživatelé si mohou vybrat otázku, na kterou chtějí odpovědět.
-- Ze vstupních dat vygeneruji seznam obsahující všechny odpovědi. U jména píšu první písmeno velké, beru datum a měsíc narození. 
-Pro odpověď na otázku používám náhodnou funkci vybrat odpověď, vzít první písmeno a velké.
-- Heslo tedy bude splňovat požadavky na číslice, malá a velká písmena,...
-- Heslo je ale také snadno zapamatovatelné, protože je tvořeno informacemi a otázkami, které uživatele zajímají, a tak ho jen těžko zapomene.
+git config --global user.name "Uživatelské jméno" \
+git config --global user.email email@domena.cz 
 
 
-TODO:
+Pro naklonování repozitáře 
+- zadejte následující příkaz do příkazového řádku  
 
-- Pro otázku by mělo existovat samostatné rozhraní a uživatel otázku vybere a poté se objeví v hlavním rozhraní.
-- Délku hesla je třeba spravovat, u evropských jmen nepoužívejte celé jméno
-- Osobní údaje, které mnoho dalších lidí zná a může je použít, ale ne centrálně
-- Jsou tam některé zvláštní postavy navíc
+ git clone https://github.com/TomasRacil/Python.git 
+
+
+Pokud nastane chyba Fatal: repository not found 
+- zkuste zadat následující příkaz s administrátorskými právy  
+
+git credential-manager remove -force 
+
+
+Pro nahrání změn do sdíleného repozitáře 
+- zadejte následující příkazy do příkazového řádku otevřeného ve vašem lokálním repozitáři 
+- pro přidání nově vytvořených souborů 
+
+git add .  
+- pro zavedení změn do lokálního repozitáře  
+- do zprávy uveďte jakou změnu jste provedli 
+
+git commit -m "Zpráva" 
+- pro zavedení změn do společného repozitáře 
+
+git push
+- poslání dat na mateřský odresář z mého lokálního úložiště
+
+git pull
+- aktualizace (stažení nových souborů z mateřského adresáře)
