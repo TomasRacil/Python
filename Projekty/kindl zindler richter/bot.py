@@ -36,6 +36,7 @@ center_y = int(screen_height/2 - window_height / 2)
 window.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 #offset okna, aby bylo ve středu obrazovky + jeho velikost(první dva řádky výška=500 šířka 1000)
 #ikona okna ale to neumím přidat... obrázek tu je...
+window.iconbitmap('/path/to/ico/icon.ico') #sem musíš najít cestu
 
 window.mainloop() #display window
 
