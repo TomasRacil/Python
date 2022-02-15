@@ -1,5 +1,7 @@
 #secret	Ckx7FHfiy6s6ZRDvNu3iw_Y2yFTbLA
 #web app  gUHWjSK1j1LsR9XH3dPX7w
+#Bot_741 /jméno
+#Unob123456789 /heslo
 
 import praw
 
