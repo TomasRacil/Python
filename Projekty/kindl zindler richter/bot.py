@@ -6,7 +6,7 @@
 #https://praw.readthedocs.io/en/stable/index.html Knihovna PRAW
 #https://docs.python.org/3/library/tkinter.html Knihovna TKINTER
 
-import praw
+import praw, urllib
 from tkinter import *
 
 reddit = praw.Reddit(
@@ -36,8 +36,27 @@ center_y = int(screen_height/2 - window_height / 2)
 window.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 #offset okna, aby bylo ve středu obrazovky + jeho velikost(první dva řádky výška=500 šířka 1000)
 #ikona okna ale to neumím přidat... obrázek tu je...
-window.iconbitmap('/path/to/ico/icon.ico') #sem musíš najít cestu
+#window.iconbitmap("icon_reddit.ico") #sem musíš najít cestu
 
-window.mainloop() #display window
+subreddit = reddit.subreddit("aww")
+count = 0
+
+# Iterate through top submissions
+for submission in subreddit.top(limit=None):
+
+    # Get the link of the submission    
+    url = str(submission.url)
+
+    # Check if the link is an image
+    if url.endswith("jpg") or url.endswith("jpeg") or url.endswith("png"):
+
+        # Retrieve the image and save it in current folder
+        urllib.request.urlretrieve(url, f"image{count}.jpg")
+        count += 1
+
+        # Stop once you have 10 images
+        if count == 1:
+            break
+
 
 
