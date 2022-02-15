@@ -1,3 +1,6 @@
+#secret	Ckx7FHfiy6s6ZRDvNu3iw_Y2yFTbLA
+#web app  gUHWjSK1j1LsR9XH3dPX7w
+
 import praw
 
 reddit = praw.Reddit(
