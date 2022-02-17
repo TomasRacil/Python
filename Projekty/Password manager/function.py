@@ -9,6 +9,12 @@ from passgen import passGenerator
 
 
 def sqlinitialize():
+    """
+    Function for creating the database and working with it.
+    Args:
+        db: database 
+        cursor: returnig value for calling database into another functions
+    """
     global cursor, db
     with sqlite3.connect(path.join(
             path.dirname(path.realpath(__file__)),
@@ -31,30 +37,36 @@ def sqlinitialize():
     return cursor
 
 #   Create PopUp
-
-
 def popUp(text):
     answer = simpledialog.askstring("input string", text)
     return answer
 
-#   Initiate Window
-
-
 def hashPassword(input):
+    """Function for hashing string with md5 hash a then into hexdigest hash
+    Returns a hash-value
+    hash1: input string
+     """
     hash1 = hashlib.md5(input)
     hash1 = hash1.hexdigest()
     return hash1
 
 #   Set up master password screen
-
-
 def firstTimeScreen(window):
+    """
+    First time screen with window geometry and function for masterpassword.
+    Args:
+        lbl: label
+        txt: for text-input
+        btn: button
+        hasedPassword: value of hashed input password
+        insert_password: place in database(db) to put value of password
+    """
     window.geometry("250x150")
 
     lbl = Label(window, text="Create Master Password")
     lbl.config(anchor=CENTER)
     lbl.pack()
-
+ 
     txt = Entry(window, width=20, show="*")
     txt.pack()
     txt.focus()
@@ -81,10 +93,13 @@ def firstTimeScreen(window):
     btn = Button(window, text="Save", command=savePassword)
     btn.pack(pady=5)
 
-#   Login screen
-
-
 def loginScreen(window):
+    """
+    Window for already created masterpassword with value check from database.
+    Args:
+        checkhashedpassword: value from database
+        password: input password
+    """
     window.geometry("250x100")
 
     lbl = Label(window, text="Enter Master Password")
@@ -104,12 +119,12 @@ def loginScreen(window):
             "SELECT * FROM masterpassword WHERE id = 1 AND password = ?",
             [checkhashedpassword]
         )
-
+        #print(checkhashedpassword)
         return cursor.fetchall()
 
     def checkPassword():
         password = getMasterPassword()
-
+        print(password)
         if password:
             vaultScreen(window)
 
@@ -122,8 +137,16 @@ def loginScreen(window):
 
 #   Window layout
 
-
 def vaultScreen(window):
+    """
+    Main screen with storage of platforms, accounts and passwords. 
+    Functions for saving, updating and copying values.
+    Args:
+        update: rewriting values in database
+        insert_fields: working with database to show where program, where to put values
+        All others are for working with window geometry. 
+
+    """
     for widget in window.winfo_children():
         widget.destroy()
 

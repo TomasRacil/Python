@@ -4,7 +4,7 @@ from function import sqlinitialize, loginScreen, firstTimeScreen
 
 def main():
 
-    # Window createtion and database initialization
+    """Window createtion and database initialization"""
     window = Tk()
     window.update()
     window.title("Password Vault")
