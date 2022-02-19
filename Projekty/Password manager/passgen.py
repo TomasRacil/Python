@@ -3,10 +3,16 @@ from random import randint
 
 
 def passGenerator():
-    # Password Generator window.
+    """
+    Function for simple string generator from ascii (33,126) with posible input to change lenght.
+    Args:
+        pwEntry: input label 
+        pwLenght: int for lengt of password
+        mypass: string to save value of password
+        + window functions
+    """
     window = Tk()
     window.title("Password Generator")
-    myPassword = chr(randint(33, 126))  # ! not used
 
     def newRand():
         pwEntry.delete(0, END)
@@ -15,7 +21,7 @@ def passGenerator():
         myPass = ""
 
         for x in range(pwLength):
-            myPass += chr(randint(33, 126))
+         myPass += chr(randint(33, 126))
 
         pwEntry.insert(0, myPass)
 
