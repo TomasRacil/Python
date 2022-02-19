@@ -6,6 +6,8 @@
 #https://praw.readthedocs.io/en/stable/index.html Knihovna PRAW
 #https://docs.python.org/3/library/tkinter.html Knihovna TKINTER
 
+#nový kód je dole!!!!!!!!!
+
 import praw, urllib
 from tkinter import *
 
@@ -58,5 +60,19 @@ for submission in subreddit.top(limit=None):
         if count == 1:
             break
 
+#client_id = 'SQH_PT8jleVf6tjGTHLOZg'
+#client_secret = '3AAep9CO2KH7X6cRUaZH6RzUldtxQg'
+#user_agent = 'Reddit image thing'
+
+#target_subreddit = 'memes'
+
+#reddit = praw.Reddit(client_id=client_id,
+                     #client_secret=client_secret, 
+                     #user_agent=user_agent)
+                     
+#for submission in reddit.subreddit(target_subreddit).new(limit=5):
+    #url = submission.url
+    #if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
+        #webbrowser.open_new(url)
 
 
