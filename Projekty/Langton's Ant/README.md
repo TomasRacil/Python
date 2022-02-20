@@ -16,3 +16,4 @@ Projekt je vytvořený za pomoci grafické knihovny Turtle, je přidané nastave
 - přidat GUI k nastavení
 - umožnit dělat mravencem zajímavější obrazce (na což ale pravděpodobně bude potřeba přepracovat celý projekt)
 - ošetřit vstup 
+- přidat počítadlo kroků
