@@ -20,18 +20,18 @@ client_id = 'SQH_PT8jleVf6tjGTHLOZg'
 client_secret = '3AAep9CO2KH7X6cRUaZH6RzUldtxQg'
 user_agent = 'Reddit image thing'
 
+def dejMeme():
+    target_subreddit = 'memes'
 
-target_subreddit = 'memes'
-
-reddit = praw.Reddit(client_id=client_id,
+    reddit = praw.Reddit(client_id=client_id,
                      client_secret=client_secret, 
                      user_agent=user_agent)
                      
-for submission in reddit.subreddit(target_subreddit).new(limit=5):
-    url = submission.url
-    if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
-        webbrowser.open_new(url)
+    for submission in reddit.subreddit(target_subreddit).new(limit=1):
+        url = submission.url
+        if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
+            webbrowser.open_new(url)
 
-print(reddit.read_only)
+    print(reddit.read_only)
 
-
+dejMeme()
