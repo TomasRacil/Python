@@ -35,9 +35,14 @@ def dejMeme():
         print(submission.id) #www.reddit.com/*id*
         if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
             webbrowser.open_new(url) # otevře v nastaveném browseru
-            submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
 
     print(reddit.read_only) #tohle ani nevím, co dělá
+
+def koment():
+    target_subreddit = 'memes' #odkud se meme bere                 
+    for submission in reddit.subreddit(target_subreddit).new(limit=1):
+        submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
+    
 
 def dejNazev():
     target_subreddit= 'memes'
@@ -45,10 +50,11 @@ def dejNazev():
                         client_secret=client_secret, 
                         user_agent=user_agent)
 
-    for submission in reddit.subreddit(target_subreddit).hot(limit=2):
+    for submission in reddit.subreddit(target_subreddit).new(limit=2):
         print("-------")
         print("Nazev postu:", submission.title)
         # Output: the submission's title
 
 dejMeme()
+koment()
 #dejNazev()
