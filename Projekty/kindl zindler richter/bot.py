@@ -40,39 +40,20 @@ window.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 #ikona okna ale to neumím přidat... obrázek tu je...
 #window.iconbitmap("icon_reddit.ico") #sem musíš najít cestu
 
-subreddit = reddit.subreddit("aww")
-count = 0
 
-# Iterate through top submissions
-for submission in subreddit.top(limit=None):
+client_id = 'SQH_PT8jleVf6tjGTHLOZg'
+client_secret = '3AAep9CO2KH7X6cRUaZH6RzUldtxQg'
+user_agent = 'Reddit image thing'
 
-    # Get the link of the submission    
-    url = str(submission.url)
+target_subreddit = 'memes'
 
-    # Check if the link is an image
-    if url.endswith("jpg") or url.endswith("jpeg") or url.endswith("png"):
-
-        # Retrieve the image and save it in current folder
-        urllib.request.urlretrieve(url, f"image{count}.jpg")
-        count += 1
-
-        # Stop once you have 10 images
-        if count == 1:
-            break
-
-#client_id = 'SQH_PT8jleVf6tjGTHLOZg'
-#client_secret = '3AAep9CO2KH7X6cRUaZH6RzUldtxQg'
-#user_agent = 'Reddit image thing'
-
-#target_subreddit = 'memes'
-
-#reddit = praw.Reddit(client_id=client_id,
-                     #client_secret=client_secret, 
-                     #user_agent=user_agent)
+reddit = praw.Reddit(client_id=client_id,
+                     client_secret=client_secret, 
+                     user_agent=user_agent)
                      
-#for submission in reddit.subreddit(target_subreddit).new(limit=5):
-    #url = submission.url
-    #if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
-        #webbrowser.open_new(url)
+for submission in reddit.subreddit(target_subreddit).new(limit=5):
+    url = submission.url
+    if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
+        webbrowser.open_new(url)
 
 
