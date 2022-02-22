@@ -8,6 +8,7 @@
 
 #nový kód je dole!!!!!!!!!
 
+from inspect import Parameter
 import praw, urllib
 from tkinter import *
 import webbrowser
@@ -35,26 +36,18 @@ def dejMeme():
         print(submission.id) #www.reddit.com/*id*
         if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
             webbrowser.open_new(url) # otevře v nastaveném browseru
+            #submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
 
     print(reddit.read_only) #tohle ani nevím, co dělá
-
-def koment():
-    target_subreddit = 'memes' #odkud se meme bere                 
-    for submission in reddit.subreddit(target_subreddit).new(limit=1):
-        submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
-    
-
-def dejNazev():
-    target_subreddit= 'memes'
-    reddit = praw.Reddit(client_id=client_id,
-                        client_secret=client_secret, 
-                        user_agent=user_agent)
-
-    for submission in reddit.subreddit(target_subreddit).new(limit=2):
-        print("-------")
-        print("Nazev postu:", submission.title)
-        # Output: the submission's title
+    global parametr
+    parametr = submission
 
 dejMeme()
-koment()
-#dejNazev()
+
+def Napis_koment():
+    #dejMeme()
+    print(parametr)
+
+Napis_koment()
+ 
+    
