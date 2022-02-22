@@ -20,18 +20,17 @@ client_id = 'SQH_PT8jleVf6tjGTHLOZg'
 client_secret = '3AAep9CO2KH7X6cRUaZH6RzUldtxQg'
 user_agent = 'Reddit image thing'
 
-def dejMeme():
-    target_subreddit = 'memes'
+reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny funkce
+            client_secret=client_secret, 
+            user_agent=user_agent)
 
-    reddit = praw.Reddit(client_id=client_id,
-                     client_secret=client_secret, 
-                     user_agent=user_agent)
-                     
-    for submission in reddit.subreddit(target_subreddit).new(limit=1):
+def dejMeme():
+    target_subreddit = 'memes' #odkud se meme bere                 
+    for submission in reddit.subreddit(target_subreddit).new(limit=1): # získání url jednoho obrázku/gifu
         url = submission.url
         if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
-            webbrowser.open_new(url)
+            webbrowser.open_new(url) # otevře v nastaveném browseru
 
-    print(reddit.read_only)
+    print(reddit.read_only) #tohle ani nevím, co dělá
 
-dejMeme()
+
