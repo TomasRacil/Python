@@ -34,4 +34,16 @@ def dejMeme():
 
     print(reddit.read_only)
 
+def dejNazev():
+    target_subreddit= 'memes'
+    reddit = praw.Reddit(client_id=client_id,
+                        client_secret=client_secret, 
+                        user_agent=user_agent)
+
+    for submission in reddit.subreddit(target_subreddit).hot(limit=2):
+        print("-------")
+        print("Nazev postu:", submission.title)
+        # Output: the submission's title
+
 dejMeme()
+#dejNazev()
