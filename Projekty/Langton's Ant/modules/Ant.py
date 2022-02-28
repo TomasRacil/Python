@@ -2,7 +2,7 @@ import turtle
 
 """
 Hlavní funkce mravence:
--načte plátno, barvu pozadí a velikost
+- načte plátno, barvu pozadí a velikost
 - vytvoří grafického mravence, určí tvar a velikost a rychlost
 - přiřadí souřadnice pro mravence -> funkce coordinate 
 
