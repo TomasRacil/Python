@@ -11,6 +11,8 @@ from tlacitka import *
 class Window(Frame):
     """
     Tato třída obsahuje naše vstupní, výstupní pole a formátování aplikace.
+    Obsahuje vytvoření a nastavení okna, buttonbox a menu.
+    Obsahuje funkce na otevírání a ukládání souboru.
     """
     def __init__(self, master=None):
         Frame.__init__(self, master)
@@ -18,54 +20,6 @@ class Window(Frame):
         self.myfont = font.Font(family="Helvetica", size=14)
         self.init_window()
         self.buttonbox()
-
-    # tlačítka - tučné písmo, kurzíva, odrážky:
-    def buttonbox(self):
-
-        box = Frame(master=self.master)
-
-        #priprava tlačítek ve výběru:
-        but_tuc = Button(box, text="tučné", fg="black", command=lambda:self.buttonclick(1))
-        but_tuc.grid(row=0, column=0,ipadx=8, ipady=1)
-        but_kurz = Button(box, text="kurzíva", fg="black", command=lambda:self.buttonclick(2))
-        but_kurz.grid(row=0, column=1,ipadx=8, ipady=1)
-        but_sez = Button(box, text="odrážka", fg="black", command=lambda: self.buttonclick(3))
-        but_sez.grid(row=0, column=2,ipadx=8, ipady=1)
-        box.grid(row=0, column=0, sticky="ew")
-        #.grid() je správce geometrie stejně jako .pack()
-        #vytvořenímřížky raw=řádek, column=sloupec, ipadx,ipady=vylnění na ose x a y
-        #stinky ew=roztahne se vodorovně
-
-    # funkce, které převádí input uživatele na html:
-    def onInputChange(self, event):
-        self.inputeditor.edit_modified(0)
-        md2html = Markdown()
-        self.outputbox.set_html(md2html.convert(self.inputeditor.get("1.0" , END))) 
-
-    # definujeme funkci pro otevírání souborů:
-    def openfile(self):
-        openfilename = filedialog.askopenfilename(filetypes=(("Markdown File", "*.md , *.mdown , *.markdown"),
-                                                            ("Text File", "*.txt"),
-                                                            ("All Files", "*.*")))
-        if openfilename:
-            try:
-                self.inputeditor.delete(1.0, END)
-                self.inputeditor.insert(END, open(openfilename).read())
-            except:
-                # print("Cannot Open File!")
-                mbox.showerror("Error Opening Selected File" , "Oops!, The file you selected : {} can not be opened!".format(openfilename))
-    
-    # definujeme funkci pro uložení našeho markdown vstupu:
-    def savefile(self):
-        filedata = self.inputeditor.get("1.0" , END)
-        savefilename = filedialog.asksaveasfilename(filetypes = (("Markdown File", "*.md"),
-                                                                  ("Text File", "*.txt")) , title="Save Markdown File")
-        if savefilename:
-            try:
-                f = open(savefilename , "w")
-                f.write(filedata)
-            except:
-                mbox.showerror("Error Saving File" , "Oops!, The File : {} can not be saved!".format(savefilename))
 
     #vytvoření a nastavení okna:
     def init_window(self):
@@ -103,5 +57,53 @@ class Window(Frame):
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", command=self.quit)
         self.master.config(menu=self.mainmenu)
-       
 
+    # tlačítka - tučné písmo, kurzíva, odrážky:
+    def buttonbox(self):
+
+        box = Frame(master=self.master)
+
+        #priprava tlačítek ve výběru:
+        but_tuc = Button(box, text="tučné", fg="black", command=lambda:self.buttonclick(1))
+        but_tuc.grid(row=0, column=0,ipadx=8, ipady=1)
+        but_kurz = Button(box, text="kurzíva", fg="black", command=lambda:self.buttonclick(2))
+        but_kurz.grid(row=0, column=1,ipadx=8, ipady=1)
+        but_sez = Button(box, text="odrážka", fg="black", command=lambda: self.buttonclick(3))
+        but_sez.grid(row=0, column=2,ipadx=8, ipady=1)
+        box.grid(row=0, column=0, sticky="ew")
+        #.grid() je správce geometrie stejně jako .pack()
+        #vytvořením řížky raw=řádek, column=sloupec, ipadx,ipady=vylnění na ose x a y
+        #sticky ew=roztahne se vodorovně
+
+    # funkce, které převádí input uživatele na html:
+    def onInputChange(self, event):
+        self.inputeditor.edit_modified(0)
+        md2html = Markdown()
+        self.outputbox.set_html(md2html.convert(self.inputeditor.get("1.0" , END))) 
+
+    # definujeme funkci pro otevírání souborů:
+    def openfile(self):
+        openfilename = filedialog.askopenfilename(filetypes=(("Markdown File", "*.md , *.mdown , *.markdown"),
+                                                            ("Text File", "*.txt"),
+                                                            ("All Files", "*.*")))
+        if openfilename:
+            try:
+                self.inputeditor.delete(1.0, END)
+                self.inputeditor.insert(END, open(openfilename).read())
+            except:
+                # print("Cannot Open File!")
+                mbox.showerror("Error Opening Selected File" , "Oops!, The file you selected : {} can not be opened!".format(openfilename))
+    
+    # definujeme funkci pro uložení našeho markdown vstupu:
+    def savefile(self):
+        filedata = self.inputeditor.get("1.0" , END)
+        savefilename = filedialog.asksaveasfilename(filetypes = (("Markdown File", "*.md"),
+                                                                  ("Text File", "*.txt")) , title="Save Markdown File")
+        if savefilename:
+            try:
+                f = open(savefilename , "w")
+                f.write(filedata)
+            except:
+                mbox.showerror("Error Saving File" , "Oops!, The File : {} can not be saved!".format(savefilename))
+
+    
