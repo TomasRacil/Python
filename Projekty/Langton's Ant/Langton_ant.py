@@ -10,18 +10,14 @@ print("Program \"Langtonův mravenec\"")
 
 # Hlavní funkce spouští varianty - s nastavením/bez nastavení
 def main():
-
     nastaveni = input("Přejete si vstoupit do nastavení? [y/n] ")
-
     if nastaveni == 'y':
         print("Jste v nastavení.")
         AntModified()
-
     elif nastaveni == 'n':
         print("Pokračujeme s přednastavenými hodnotami!")
         delay()
-        Ant()
-       
+        Ant()   
     else:
         Chyba()
        
@@ -54,14 +50,12 @@ def Ant():
 
     ant = turtle
     ant.shape('square')    
-    ant.shapesize(0.5)
-      
+    ant.shapesize(0.5)  
     ant.speed(10)    
     ant.tracer(2,0)  # pro zrychlení ruší VSync - plátno se neobnovuje s frekvencí obrazovky -> parametry: (počet přeskočených obnov, zpoždění)                          
     pos = coordinate(ant)                                   
 
-    for i in range(12000): 
-          
+    for i in range(12000):   
         step = 10                           
         if pos not in maps or maps[pos] == "white":
             ant.fillcolor("black")         
@@ -93,16 +87,12 @@ def AntModified():
 
     ant = turtle
     ant.shape('square')    
-    ant.shapesize(0.5)
-      
-    ant.speed(AntSpeed)     
-
+    ant.shapesize(0.5)   
+    ant.speed(AntSpeed) 
     Speed(AntSpeed,ant)
-    
     pos = coordinate(ant)                               
 
     for i in range(12000):  
-          
         step = 10
         if pos not in maps or maps[pos] == "white":
             ant.fillcolor(AntFillColor)         
@@ -143,7 +133,6 @@ def delay():
 
 # funkce na rychlost animace, vrací hodnoty do funkce ModifiedAnt
 def Speed(AntSpeed, ant):
-
     if AntSpeed == 1:
         return ant.speed(1), ant.delay(50)
     elif AntSpeed == 2:
