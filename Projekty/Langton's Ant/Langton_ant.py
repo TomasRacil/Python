@@ -1,14 +1,17 @@
+"""
+Langtonův mravenec
+    - dvourozměrný univerzální Turingův stroj s jednoduchým souborem pravidel, ale komplexním chováním
+"""
+
 import turtle #dokumentace: https://docs.python.org/3.3/library/turtle.html
 import time
-  
 
- #header
 print("Program \"Langtonův mravenec\"")
 
-    #buďto se spouští předefinované nastavení nebo si můžeme nastavení upravit sami
+# Hlavní funkce spouští varianty - s nastavením/bez nastavení
 def main():
 
-    nastaveni = input("Přejete si vstoupit do nastavení? [y/n]")
+    nastaveni = input("Přejete si vstoupit do nastavení? [y/n] ")
 
     if nastaveni == 'y':
         print("Jste v nastavení.")
@@ -23,44 +26,51 @@ def main():
         Chyba()
        
 
+#Funkce nastavení - uživatel vybírá barvy a rychlost mravence       
 def settings():
-    print("Výběr barev: \n [ yellow, gold, orange, red, maroon, \nviolet, magenta, purple, navy, blue, \nskyblue, cyan, turquoise, lightgreen, green, \ndarkgreen, chocolate, brown, black, gray, white]\n")
+    print("Výběr barev: \n[yellow, gold, orange, red, maroon, \nviolet, magenta, purple, navy, blue, \nskyblue, cyan, turquoise, lightgreen, green, \ndarkgreen, chocolate, brown, black, gray, white]\n")
     ScreenColor = str(input("Zadejte barvu pozadí: "))
-    AntFillColor = str(input("Zadejte barvu mravence: ")) #barva políček
-    AntSpeed = int(input("Zadejte rychlost [1-10]; nejpomalejší 1, nejrychlejší 10]: ")) # slowest 1; fastest 10 -> funkce Speed
+    AntFillColor = str(input("Zadejte barvu mravence: "))
+    AntSpeed = int(input("Zadejte rychlost [1-10]; nejpomalejší 1, nejrychlejší 10]: "))
     return ScreenColor, AntFillColor, AntSpeed
 
-def Ant():
+"""
+Hlavní funkce mravence:
+-načte plátno, barvu pozadí a velikost
+- vytvoří grafického mravence, určí tvar a velikost a rychlost
+- přiřadí souřadnice pro mravence -> funkce coordinate 
 
-    #načtení plátna, barva pozadí a velikost plátna
+Pravidla:
+- pokud mravenec ještě danou pozici nenavštívil a nebo je pozice bílá, změní se barva na černou, mravenec se otočí doprava a posune se
+- pokud je pozice černá, mravenec změní barvu na bílou, otočí se doleva a udělá krok dopředu
+
+- mravenec začíná dělat dálnici cca po 11000 cyklech, jinak program běží do nekonečna
+"""
+def Ant():
     window = turtle.Screen()
     window.bgcolor('white')
     window.screensize(2000,2000)
+    maps = {}   # slovník pro uložení souřadnice a barvy
 
-    # slovník pro uložení souřadnice a barvy
-    maps = {}
-    # vytvoření grafického mravence, určení tvaru a velikosti
     ant = turtle
     ant.shape('square')    
     ant.shapesize(0.5)
       
-    ant.speed(10)   # rychlost mravence     
-    ant.tracer(2,0)     # pro zrychlení ruší VSync - plátno se neobnovuje s frekvencí obrazovky -> parametry: (počet přeskočených obnov, zpoždění)                          
-    pos = coordinate(ant)   # přiřazení souřadnice pro mravence -> funkce coordinate                                    
+    ant.speed(10)    
+    ant.tracer(2,0)  # pro zrychlení ruší VSync - plátno se neobnovuje s frekvencí obrazovky -> parametry: (počet přeskočených obnov, zpoždění)                          
+    pos = coordinate(ant)                                   
 
-    for i in range(12000):      #mravenec začíná dělat dálnici cca po 11000 cyklech, jinak program běží do nekonečna
+    for i in range(12000): 
           
-        step = 10   # vzdálenost jakou mravenec urazí
-        #pokud mravenec ještě danou pozici nenavštívil a nebo je pozice bílá, změní se barva na černou, mravenec se otočí doprava a posune se                            
+        step = 10                           
         if pos not in maps or maps[pos] == "white":
             ant.fillcolor("black")         
-            ant.stamp() # udělá kopii mravence na plátno     
+            ant.stamp()    
             invert(maps, ant, "black")
-            ant.right(90)  # otočí mravence doprava
-            ant.forward(step) # posune mravence o jeden krok dopředu
-            pos = coordinate(ant) #uloží pozici
-
-        # pokud je pozice černá, mravenec změní barvu na bílou, otočí se doleva a udělá krok dopředu      
+            ant.right(90)
+            ant.forward(step)
+            pos = coordinate(ant)
+      
         elif maps[pos] == "black":
             ant.fillcolor("white")
             invert(maps, ant, "white")
@@ -71,6 +81,8 @@ def Ant():
 
     turtle.done()  #nezavírá plátno po dokončení cyklů
 
+
+# Varianta funkce ant kdy uživatel zadává nastavení
 def AntModified():
     ScreenColor, AntFillColor,  AntSpeed = settings()
     delay()
@@ -115,11 +127,11 @@ def AntModified():
 def invert(graph, ant, color):
     graph[coordinate(ant)] = color
   
-#funkce získává aktuální pozici mravence
+# funkce získává aktuální pozici mravence
 def coordinate(ant):
     return (round(ant.xcor()), round(ant.ycor()))
 
-#časový odpočet načtení (nemá žádnou reálnou funkci, pouze doplněk)
+# časový odpočet načtení (nemá žádnou reálnou funkci, pouze doplněk)
 def delay():
     print("Nacitam...")
     print("3")
@@ -129,7 +141,7 @@ def delay():
     print("1")
     time.sleep(1)
 
-#funkce na rychlost animace, vrací hodnoty do funkce ModifiedAnt
+# funkce na rychlost animace, vrací hodnoty do funkce ModifiedAnt
 def Speed(AntSpeed, ant):
 
     if AntSpeed == 1:
@@ -156,7 +168,7 @@ def Speed(AntSpeed, ant):
         print("Zadali jste neznámou hodnotu!")
         return AntModified()
 
-#funkce pro chybu vstupu
+# funkce pro chybu vstupu
 def Chyba():
     decision = input("Chyba vstupu! Chcete pokračovat? [y/n]: ")
     if decision == "y":
@@ -164,6 +176,5 @@ def Chyba():
     else: 
         return 0
 
-
-
-main()
+if __name__ == '__main__':
+    main()
