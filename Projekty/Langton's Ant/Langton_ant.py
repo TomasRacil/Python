@@ -12,14 +12,14 @@ print('Program \"Langtonův mravenec\"')
 # Hlavní funkce spouští varianty - s nastavením/bez nastavení
 def main():
 
-    nastaveni = input('Přejete si vstoupit do nastavení? [y/n] ')
+    nastaveni = input("Přejete si vstoupit do nastavení? [y/n] ")
 
-    if nastaveni == 'y':
-        print('Jste v nastavení.')
+    if nastaveni == "y":
+        print("Jste v nastavení.")
         AntModified()
 
-    elif nastaveni == 'n':
-        print('Pokračujeme s přednastavenými hodnotami!')
+    elif nastaveni == "n":
+        print("Pokračujeme s přednastavenými hodnotami!")
         Delay.delay()
         ant.Ant()
        
@@ -29,10 +29,10 @@ def main():
 
 #Funkce nastavení - uživatel vybírá barvy a rychlost mravence       
 def settings():
-    print('Výběr barev: \n[yellow, gold, orange, red, maroon, \nviolet, magenta, purple, navy, blue, \nskyblue, cyan, turquoise, lightgreen, green, \ndarkgreen, chocolate, brown, black, gray, white]\n')
-    ScreenColor = str(input('Zadejte barvu pozadí: '))
-    AntFillColor = str(input('Zadejte barvu mravence: '))
-    AntSpeed = int(input('Zadejte rychlost [1-10]; nejpomalejší 1, nejrychlejší 10]: '))
+    print("Výběr barev: \n[yellow, gold, orange, red, maroon, \nviolet, magenta, purple, navy, blue, \nskyblue, cyan, turquoise, lightgreen, green, \ndarkgreen, chocolate, brown, black, gray, white]\n")
+    ScreenColor = str(input("Zadejte barvu pozadí: "))
+    AntFillColor = str(input("Zadejte barvu mravence: "))
+    AntSpeed = int(input("Zadejte rychlost [1-10]; nejpomalejší 1, nejrychlejší 10]: "))
     return ScreenColor, AntFillColor, AntSpeed
 
 # Varianta funkce ant kdy uživatel zadává nastavení
