@@ -45,7 +45,7 @@ def AntModified():
     maps = {}
 
     ant = turtle
-    ant.shape('square')    
+    ant.shape("square")    
     ant.shapesize(0.5)
       
     ant.speed(AntSpeed)     
@@ -111,12 +111,12 @@ def Speed(AntSpeed, ant):
     elif AntSpeed == 10:
         return ant.speed(10), ant.tracer(60,0)    
     else:
-        print('Zadali jste neznámou hodnotu!')
+        print("Zadali jste neznámou hodnotu!")
         return AntModified()
 
 # funkce pro chybu vstupu
 def Chyba():
-    decision = input('Chyba vstupu! Chcete pokračovat? [y/n]: ')
+    decision = input("Chyba vstupu! Chcete pokračovat? [y/n]: ")
     if decision == "y":
         return main()
     else: 
