@@ -11,6 +11,8 @@ reddit = praw.Reddit(
     password="Unob123456789",
 )
 
+cislo = 1
+
 def dejMeme():
     target_subreddit = 'memes' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=1):
@@ -34,12 +36,19 @@ def dejNSFW():
             return url2
 
 def stahniMeme():
-    #cesta = os.path.join(cesta, nazev)
-    urllib.request.urlretrieve(url1, f"imageMeme.jpg")
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
+    cislo = os.listdir(cestaSlozky)
+    cisloSouboru = len(cislo) 
+    cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
+    urllib.request.urlretrieve(url1, cesta)
+    
 
 def stahniNSFW():
-    #cesta = os.path.join(cesta, nazev)
-    urllib.request.urlretrieve(url2, f"imageNSFW.jpg")
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/NSFWObrazky')
+    cislo = os.listdir(cestaSlozky)
+    cisloSouboru = len(cislo)
+    cesta = os.path.join(cestaSlozky, f"ObrazekNSFW{cisloSouboru + 1}.jpg")
+    urllib.request.urlretrieve(url2, cesta)
     
 
 dejMeme()
