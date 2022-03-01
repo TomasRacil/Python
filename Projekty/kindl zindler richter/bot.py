@@ -44,7 +44,19 @@ def dejMeme():
     global parametr
     parametr = submission
 
+def dejNSFW():
+    target_subreddit = 'nsfw' #odkud se meme bere                 
+    for submission in reddit.subreddit(target_subreddit).new(limit=1): # získání url jednoho obrázku/gifu
+        url = submission.url
+        print(submission.id) #www.reddit.com/*id*
+        if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
+            webbrowser.open_new(url) # otevře v nastaveném browseru
+            #submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
+
+
 dejMeme()
+dejNSFW()
+
 
 def Napis_koment():
     #dejMeme()
