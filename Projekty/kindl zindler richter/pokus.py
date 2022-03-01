@@ -1,6 +1,7 @@
 import urllib.request
 import praw
 import webbrowser
+import os
 
 reddit = praw.Reddit(
     client_id="SQH_PT8jleVf6tjGTHLOZg", #The client ID is the 14-character string listed just under “personal use script” for the desired developed application
@@ -33,9 +34,11 @@ def dejNSFW():
             return url2
 
 def stahniMeme():
+    #cesta = os.path.join(cesta, nazev)
     urllib.request.urlretrieve(url1, f"imageMeme.jpg")
 
 def stahniNSFW():
+    #cesta = os.path.join(cesta, nazev)
     urllib.request.urlretrieve(url2, f"imageNSFW.jpg")
     
 
