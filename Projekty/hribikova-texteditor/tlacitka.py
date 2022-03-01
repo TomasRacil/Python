@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import SEL_FIRST, SEL_LAST
 
 
 class Functions:
