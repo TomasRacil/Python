@@ -1,7 +1,6 @@
-from tkinter import *
-from json.tool import main
-from tlacitka import *
-from tdown import *
+from tkinter import Tk
+from tlacitka import Functions
+from tdown import Window
 
 
 class Editor(Window, Functions):
@@ -9,10 +8,8 @@ class Editor(Window, Functions):
     Příprava pro mainloop.
     """
 
-    pass
 
-
-if __name__ == "_main_":
+if __name__ == "__main__":
     root = Tk()
     root.geometry("1250x720")
     app = Editor(root)

@@ -1,10 +1,20 @@
-from tkinter import *
-from tkinter import font, filedialog
-from tkinter import messagebox as mbox
-from tkinter.scrolledtext import *
+from tkinter import (
+    Frame,
+    Button,
+    Menu,
+    font,
+    filedialog,
+    messagebox as mbox,
+    RIGHT,
+    LEFT,
+    BOTH,
+    END,
+)
+from tkinter.scrolledtext import ScrolledText
 from markdown2 import Markdown
 from tkhtmlview import HTMLLabel
-from tlacitka import *
+
+# from tlacitka import *
 
 # importujeme vše potřebné z knihoven, s kterými budeme pracovat
 
@@ -23,8 +33,10 @@ class Window(Frame):
         self.init_window()
         self.buttonbox()
 
-    # vytvoření a nastavení okna:
     def init_window(self):
+        """
+        vytvoření a nastavení okna:
+        """
 
         self.master.title("TDOWN")
 
@@ -60,8 +72,10 @@ class Window(Frame):
         self.filemenu.add_command(label="Exit", command=self.quit)
         self.master.config(menu=self.mainmenu)
 
-    # tlačítka - tučné písmo, kurzíva, odrážky:
     def buttonbox(self):
+        """
+        tlačítka - tučné písmo, kurzíva, odrážky:
+        """
 
         box = Frame(master=self.master)
 
@@ -83,14 +97,18 @@ class Window(Frame):
         # vytvořením řížky raw=řádek, column=sloupec, ipadx,ipady=vylnění na ose x a y
         # sticky ew=roztahne se vodorovně
 
-    # funkce, které převádí input uživatele na html:
-    def onInputChange(self, event):
+    def onInputChange(self, _):
+        """
+        funkce, které převádí input uživatele na html:
+        """
         self.inputeditor.edit_modified(0)
         md2html = Markdown()
         self.outputbox.set_html(md2html.convert(self.inputeditor.get("1.0", END)))
 
-    # definujeme funkci pro otevírání souborů:
     def openfile(self):
+        """
+        definujeme funkci pro otevírání souborů:
+        """
         openfilename = filedialog.askopenfilename(
             filetypes=(
                 ("Markdown File", "*.md , *.mdown , *.markdown"),
@@ -106,13 +124,13 @@ class Window(Frame):
                 # print("Cannot Open File!")
                 mbox.showerror(
                     "Error Opening Selected File",
-                    "Oops!, The file you selected : {} can not be opened!".format(
-                        openfilename
-                    ),
+                    f"Oops!, The file you selected : {openfilename} can not be opened!",
                 )
 
-    # definujeme funkci pro uložení našeho markdown vstupu:
     def savefile(self):
+        """
+        definujeme funkci pro uložení našeho markdown vstupu:
+        """
         filedata = self.inputeditor.get("1.0", END)
         savefilename = filedialog.asksaveasfilename(
             filetypes=(("Markdown File", "*.md"), ("Text File", "*.txt")),
@@ -125,5 +143,5 @@ class Window(Frame):
             except:
                 mbox.showerror(
                     "Error Saving File",
-                    "Oops!, The File : {} can not be saved!".format(savefilename),
+                    f"Oops!, The File : {savefilename} can not be saved!",
                 )
