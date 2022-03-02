@@ -30,19 +30,26 @@ reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny fu
             user_agent=user_agent,
             username=username,
             password=password)
+urlList = []
 
 def dejMeme():
     target_subreddit = 'memes' #odkud se meme bere                 
-    for submission in reddit.subreddit(target_subreddit).new(limit=1): # získání url jednoho obrázku/gifu
+    for submission in reddit.subreddit(target_subreddit).new(limit=100): # získání url jednoho obrázku/gifu
         url = submission.url
-        print(submission.id) #www.reddit.com/*id*
-        if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
-            webbrowser.open_new(url) # otevře v nastaveném browseru
-            #submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
+        urlList.append(url) 
+        #if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
+        #webbrowser.open_new(url) # otevře v nastaveném browseru
 
-    print(reddit.read_only) #tohle ani nevím, co dělá
+    print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu
     global parametr
-    parametr = submission
+    parametr = submission        
+
+def MemeZListu(): #funguje!!
+    for x in urlList:
+        print (x)
+    webbrowser.open_new(urlList[75])
+
+
 
 def dejNSFW():
     target_subreddit = 'nsfw' #odkud se meme bere                 
@@ -51,18 +58,19 @@ def dejNSFW():
         print(submission.id) #www.reddit.com/*id*
         if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
             webbrowser.open_new(url) # otevře v nastaveném browseru
-            #submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
 
 
 dejMeme()
-dejNSFW()
+MemeZListu()
+#dejNSFW()
 
 
 def Napis_koment():
-    #dejMeme()
+    dejMeme()
     print(parametr)
+    #parametr.reply("Nice")
 
-Napis_koment()
+#Napis_koment()
  
     
 
