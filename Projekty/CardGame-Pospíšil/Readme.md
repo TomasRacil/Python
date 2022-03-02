@@ -1,9 +1,9 @@
-# Wargame - jednoduchá karetní hra
+Wargame - jednoduchá karetní hra
 
 - balíček 52 karet, který zamícháme a rozdělíme do dvou balíčků po 26 kartách.
 
-Hra:
 
+Hra:
 - Hra je pro dva hráče. Každý hráč obdrží 26 karet.
 
 - Pravidlo hry je jednoduché, každý hráč otočí kartu a hráč s větší hodnotou karty vyhrává a příčítává se mu karta.
@@ -12,10 +12,10 @@ Hra:
 
 - Hra končí, pokud jednomu hráči nezbyde ani jedna karta.
 
-Ovládání:
 
+Ovládání:
 - Hru ovládáme pomocí tlačítka enter, pokud chceme ve hře pokračovat, pro vypnutí hry tlačítko q.
 
 TODO:
-
 - Hru vytvořit v grafickém rozhraní.
+
