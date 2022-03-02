@@ -13,7 +13,7 @@ from tkinter import *
 from inspect import Parameter
 import praw, urllib
 from tkinter import *
-import webbrowser
+import webbrowser, random
 
 ### GUI ###
 
@@ -59,6 +59,9 @@ def dejNSFW():
         if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
             webbrowser.open_new(url) # otevře v nastaveném browseru
 
+def randCislo():
+    picnum = random.randint(0,1000)
+    print (picnum)
 
 dejMeme()
 MemeZListu()
