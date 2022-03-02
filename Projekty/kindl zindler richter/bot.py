@@ -32,6 +32,7 @@ reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny fu
             password=password)
 urlList = [] #inicializuje list na ukládání url adres
 urlKoment = []
+RandomCislo = random.randint(0,5)
 
 def dejMeme(): #stáhne 100 url adres a vloží je do listu
     target_subreddit = 'memes' #odkud se meme bere                 
@@ -43,38 +44,20 @@ def dejMeme(): #stáhne 100 url adres a vloží je do listu
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
 def MemeZListu(): #funguje!!
-    for x in urlList:
-        print (x)
-<<<<<<< HEAD
-    webbrowser.open_new(urlList[2])
-=======
-    webbrowser.open_new(urlList[75])
+   # for x in urlList:  pro kontrolu
+   #    print (x)
 
-
-
-def dejNSFW():
-    target_subreddit = 'nsfw' #odkud se meme bere                 
-    for submission in reddit.subreddit(target_subreddit).new(limit=1): # získání url jednoho obrázku/gifu
-        url = submission.url
-        print(submission.id) #www.reddit.com/*id*
-        if url.endswith(('.jpg', '.png', '.gif', '.jpeg')):
-            webbrowser.open_new(url) # otevře v nastaveném browseru
-
-def randCislo():
-    picnum = random.randint(0,1000)
-    print (picnum)
->>>>>>> d3b17bbd92edf209c2f48fcefa9524af61a7760e
-
-dejMeme()
-MemeZListu()
+    webbrowser.open_new(urlList[RandomCislo])
 
 
 def Napis_koment():
     #dejMeme()
-    print(urlKoment[2])
+    print(urlKoment[RandomCislo])
     #parametr.reply("Nice")
 
 Napis_koment()
+dejMeme()
+MemeZListu()
  
     
 
