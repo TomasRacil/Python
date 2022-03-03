@@ -29,13 +29,9 @@ reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny fu
             user_agent=user_agent,
             username=username,
             password=password)
-<<<<<<< HEAD
 
-urlList = [] #inicializuje list na ukládání url adres
-=======
 urlList1 = [] #inicializuje list na ukládání url adres
 urlList2 = []
->>>>>>> 7a32afd28d1d6d2c602629f658af364af241ea1f
 urlKoment = [] #list na komentáře
 cisla = [] #list čísel
 
