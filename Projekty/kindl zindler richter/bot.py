@@ -29,10 +29,19 @@ reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny fu
             user_agent=user_agent,
             username=username,
             password=password)
+
 urlList1 = [] #inicializuje list na ukládání url adres
 urlList2 = []
 urlKoment = [] #list na komentáře
-RandomCislo = random.randint(0,99) #generování random, ale bude potřeba to nějak pokaždé zapnout
+cisla = [] #list čísel
+
+
+def RandomCislo():
+    i = 1
+    while i < 100:
+        Cislo = random.randint(0,99)
+        cisla.append(Cislo)
+        i += 1
 
 def dejMeme(): #stáhne 100 url adres a vloží je do listu
     target_subreddit = 'memes' #odkud se meme bere                 
