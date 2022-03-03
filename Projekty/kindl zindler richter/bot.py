@@ -29,47 +29,48 @@ reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny fu
             user_agent=user_agent,
             username=username,
             password=password)
-urlList = [] #inicializuje list na ukládání url adres
+urlList1 = [] #inicializuje list na ukládání url adres
+urlList2 = []
 urlKoment = [] #list na komentáře
 RandomCislo = random.randint(0,99) #generování random, ale bude potřeba to nějak pokaždé zapnout
 
 def dejMeme(): #stáhne 100 url adres a vloží je do listu
     target_subreddit = 'memes' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=100): # získání url jednoho obrázku/gifu
-        url = submission.url
-        urlList.append(url)
+        url1 = submission.url
+        urlList1.append(url1)
         urlKoment.append(submission) 
 
 def dejCute():
     target_subreddit = 'awww' #odkud se meme bere                 
-    for submission in reddit.subreddit(target_subreddit).new(limit=1):
-        global url2
+    for submission in reddit.subreddit(target_subreddit).new(limit=100):
         url2 = submission.url
-        if url2.endswith(('.jpg', '.png', '.gif', '.jpeg')):
-            webbrowser.open_new(url2) # otevře v nastaveném browseru
-            return url2
+        urlList2.append(url2)
+        urlKoment.append(submission)
 
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
 def MemeZListu(): #funguje!!
    # for x in urlList:  pro kontrolu
-    print (urlList[RandomCislo])
+    print (urlList1[RandomCislo])
+    print (urlList2[RandomCislo])
 
-    webbrowser.open_new(urlList[RandomCislo])
+    webbrowser.open_new(urlList1[RandomCislo])
+    webbrowser.open_new(urlList2[RandomCislo])
 
 def stahniMeme():
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
     cislo = os.listdir(cestaSlozky)
     cisloSouboru = len(cislo) 
     cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(urlList[RandomCislo], cesta)
+    urllib.request.urlretrieve(urlList1[RandomCislo], cesta)
     
 def stahniCute():
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
     cislo = os.listdir(cestaSlozky)
     cisloSouboru = len(cislo)
     cesta = os.path.join(cestaSlozky, f"ObrazekNSFW{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(url2, cesta)
+    urllib.request.urlretrieve(urlList2[RandomCislo], cesta)
 
 def Napis_koment():
     print (urlKoment[RandomCislo])
