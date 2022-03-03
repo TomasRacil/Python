@@ -52,6 +52,6 @@ def stahniCute():
     
 
 dejMeme()
-dejNSFW()
+dejCute()
 stahniMeme()
-stahniNSFW()
+stahniCute()
