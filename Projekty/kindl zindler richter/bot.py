@@ -13,7 +13,7 @@ from inspect import Parameter
 import praw, urllib
 from tkinter import *
 import webbrowser, random
-
+import os
 
 ###logika bota###
 client_id = 'SQH_PT8jleVf6tjGTHLOZg'
@@ -21,6 +21,8 @@ client_secret = '3AAep9CO2KH7X6cRUaZH6RzUldtxQg'
 user_agent = 'Reddit image thing'
 username = 'Bot_741',
 password = 'Unob123456789',
+
+cislo = 1
 
 reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny funkce
             client_secret=client_secret, 
@@ -45,15 +47,34 @@ def MemeZListu(): #funguje!!
     print (urlList[RandomCislo])
 
     webbrowser.open_new(urlList[RandomCislo])
+def stahniMeme():
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
+    cislo = os.listdir(cestaSlozky)
+    cisloSouboru = len(cislo) 
+    cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
+    urllib.request.urlretrieve(url1, cesta)
+    
 
+def stahniNSFW():
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/NSFWObrazky')
+    cislo = os.listdir(cestaSlozky)
+    cisloSouboru = len(cislo)
+    cesta = os.path.join(cestaSlozky, f"ObrazekNSFW{cisloSouboru + 1}.jpg")
+    urllib.request.urlretrieve(url2, cesta)
 
 def Napis_koment():
     print (urlKoment[RandomCislo])
    # urlKoment[RandomCislo].reply("Nice!")
 
 #zapnutí funkcí pro test
+
 #dejMeme()
 #MemeZListu()
+
+###stahovani###
+#stahniMeme()
+#stahniNSFW()
+
 #Napis_koment()
 
  
