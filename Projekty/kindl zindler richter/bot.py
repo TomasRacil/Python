@@ -40,6 +40,15 @@ def dejMeme(): #stáhne 100 url adres a vloží je do listu
         urlList.append(url)
         urlKoment.append(submission) 
 
+def dejCute():
+    target_subreddit = 'awww' #odkud se meme bere                 
+    for submission in reddit.subreddit(target_subreddit).new(limit=1):
+        global url2
+        url2 = submission.url
+        if url2.endswith(('.jpg', '.png', '.gif', '.jpeg')):
+            webbrowser.open_new(url2) # otevře v nastaveném browseru
+            return url2
+
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
 def MemeZListu(): #funguje!!
@@ -55,10 +64,16 @@ def stahniMeme():
     cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
     urllib.request.urlretrieve(urlList[RandomCislo], cesta)
     
+def stahniCute():
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
+    cislo = os.listdir(cestaSlozky)
+    cisloSouboru = len(cislo)
+    cesta = os.path.join(cestaSlozky, f"ObrazekNSFW{cisloSouboru + 1}.jpg")
+    urllib.request.urlretrieve(url2, cesta)
 
 def Napis_koment():
     print (urlKoment[RandomCislo])
-   # urlKoment[RandomCislo].reply("Nice!")
+   #urlKoment[RandomCislo].reply("Nice!")
 
 #zapnutí funkcí pro test
 
@@ -67,7 +82,7 @@ MemeZListu()
 
 ###stahovani###
 stahniMeme()
-#stahniNSFW()
+stahniCute()
 
 Napis_koment()
 

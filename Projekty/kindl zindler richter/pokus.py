@@ -24,8 +24,8 @@ def dejMeme():
             #submission.reply("Nice") #TOHLE SE MUSÍ VYNDAT
             return url1
 
-def dejNSFW():
-    target_subreddit = 'nsfw' #odkud se meme bere                 
+def dejCute():
+    target_subreddit = 'awww' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=1):
         global url2
         url2 = submission.url
@@ -43,8 +43,8 @@ def stahniMeme():
     urllib.request.urlretrieve(url1, cesta)
     
 
-def stahniNSFW():
-    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/NSFWObrazky')
+def stahniCute():
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
     cislo = os.listdir(cestaSlozky)
     cisloSouboru = len(cislo)
     cesta = os.path.join(cestaSlozky, f"ObrazekNSFW{cisloSouboru + 1}.jpg")
