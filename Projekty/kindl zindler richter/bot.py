@@ -47,20 +47,14 @@ def MemeZListu(): #funguje!!
     print (urlList[RandomCislo])
 
     webbrowser.open_new(urlList[RandomCislo])
+
 def stahniMeme():
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
     cislo = os.listdir(cestaSlozky)
     cisloSouboru = len(cislo) 
     cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(url1, cesta)
+    urllib.request.urlretrieve(urlList[RandomCislo], cesta)
     
-
-def stahniNSFW():
-    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/NSFWObrazky')
-    cislo = os.listdir(cestaSlozky)
-    cisloSouboru = len(cislo)
-    cesta = os.path.join(cestaSlozky, f"ObrazekNSFW{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(url2, cesta)
 
 def Napis_koment():
     print (urlKoment[RandomCislo])
@@ -68,14 +62,14 @@ def Napis_koment():
 
 #zapnutí funkcí pro test
 
-#dejMeme()
-#MemeZListu()
+dejMeme()
+MemeZListu()
 
 ###stahovani###
-#stahniMeme()
+stahniMeme()
 #stahniNSFW()
 
-#Napis_koment()
+Napis_koment()
 
  
     
