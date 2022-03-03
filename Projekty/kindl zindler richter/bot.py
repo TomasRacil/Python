@@ -1,5 +1,4 @@
 
-from tkinter import *
 #secret	3AAep9CO2KH7X6cRUaZH6RzUldtxQg
 #web app  SQH_PT8jleVf6tjGTHLOZg
 #Bot_741 /jméno
@@ -8,14 +7,12 @@ from tkinter import *
 #https://praw.readthedocs.io/en/stable/index.html Knihovna PRAW
 #https://docs.python.org/3/library/tkinter.html Knihovna TKINTER
 
-#nový kód je dole!!!!!!!!!
+#prohrabat ty importy, něco už tam nepoužíváme!!
 
 from inspect import Parameter
 import praw, urllib
 from tkinter import *
 import webbrowser, random
-
-### GUI ###
 
 
 ###logika bota###
@@ -31,33 +28,34 @@ reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny fu
             username=username,
             password=password)
 urlList = [] #inicializuje list na ukládání url adres
-urlKoment = []
-RandomCislo = random.randint(0,5)
+urlKoment = [] #list na komentáře
+RandomCislo = random.randint(0,99) #generování random, ale bude potřeba to nějak pokaždé zapnout
 
 def dejMeme(): #stáhne 100 url adres a vloží je do listu
     target_subreddit = 'memes' #odkud se meme bere                 
-    for submission in reddit.subreddit(target_subreddit).new(limit=5): # získání url jednoho obrázku/gifu
+    for submission in reddit.subreddit(target_subreddit).new(limit=100): # získání url jednoho obrázku/gifu
         url = submission.url
+        urlList.append(url)
         urlKoment.append(submission) 
-        urlList.append(url) 
 
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
 def MemeZListu(): #funguje!!
    # for x in urlList:  pro kontrolu
-   #    print (x)
+    print (urlList[RandomCislo])
 
     webbrowser.open_new(urlList[RandomCislo])
 
 
 def Napis_koment():
-    #dejMeme()
-    print(urlKoment[RandomCislo])
-    #parametr.reply("Nice")
+    print (urlKoment[RandomCislo])
+   # urlKoment[RandomCislo].reply("Nice!")
 
-Napis_koment()
-dejMeme()
-MemeZListu()
+#zapnutí funkcí pro test
+#dejMeme()
+#MemeZListu()
+#Napis_koment()
+
  
     
 
