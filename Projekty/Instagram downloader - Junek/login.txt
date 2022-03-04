@@ -1,0 +1,4 @@
+usr= "getimag"
+pswd= "admin56789"
+usr= "filipbohda"
+pswd= "admin56789"
