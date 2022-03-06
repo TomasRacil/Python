@@ -24,6 +24,9 @@ install_and_import("instaloader")
 
 #Definování cesta jako cesta do místa umístění scriptu
 cesta=os.getcwd()
+host = input("Zadejte host:") #localhost
+usr = input("Zadejte uživatelské jméno:") #root
+passwd = input("Zadejte heslo:") #admin
 
 #Nastavení vstupu USER
 print("Pokud je profil soukromý, zadejte své přihlašovací jméno, pokud je veřejný, stikněte ENTER.")
@@ -51,9 +54,9 @@ def function():
     L.login(USER, PASSWORD)
     #Přihlášení do databáze
     mydb = mysql.connector.connect(
-      host = "localhost",
-      user= "root",
-      passwd = "admin",
+      host = host,
+      user= usr,
+      passwd = passwd,
       database = "instagram"
   )
 
