@@ -11,7 +11,7 @@ reddit = praw.Reddit(
     password="Unob123456789",
 )
 
-cislo = 1
+cislo = 0
 
 def dejMeme():
     target_subreddit = 'memes' #odkud se meme bere                 
@@ -25,7 +25,7 @@ def dejMeme():
             return url1
 
 def dejCute():
-    target_subreddit = 'awww' #odkud se meme bere                 
+    target_subreddit = 'aww' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=1):
         global url2
         url2 = submission.url
@@ -47,11 +47,11 @@ def stahniCute():
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
     cislo = os.listdir(cestaSlozky)
     cisloSouboru = len(cislo)
-    cesta = os.path.join(cestaSlozky, f"ObrazekNSFW{cisloSouboru + 1}.jpg")
+    cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
     urllib.request.urlretrieve(url2, cesta)
     
 
 dejMeme()
-dejCute()
 stahniMeme()
+dejCute()
 stahniCute()

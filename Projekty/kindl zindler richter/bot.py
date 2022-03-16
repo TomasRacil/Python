@@ -7,15 +7,14 @@
 #https://praw.readthedocs.io/en/stable/index.html Knihovna PRAW
 #https://docs.python.org/3/library/tkinter.html Knihovna TKINTER
 
-#nový kód je dole!!!!!!!!!
+#prohrabat ty importy, něco už tam nepoužíváme!!
 
 from inspect import Parameter
+from tracemalloc import stop
 import praw, urllib
 from tkinter import *
 import webbrowser, random
-
-### GUI ###
-
+import os
 
 ###logika bota###
 client_id = 'SQH_PT8jleVf6tjGTHLOZg'
@@ -24,37 +23,76 @@ user_agent = 'Reddit image thing'
 username = 'Bot_741',
 password = 'Unob123456789',
 
+cisloObr = 0
+
 reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny funkce
             client_secret=client_secret, 
             user_agent=user_agent,
             username=username,
             password=password)
-urlList = [] #inicializuje list na ukládání url adres
-urlKoment = []
-RandomCislo = random.randint(0,4)
+
+urlList1 = [] #inicializuje list na ukládání url adres
+urlList2 = []
+urlKoment = [] #list na komentáře
+cisla = [] #list čísel
+
+
+Cislo = random.randint(0,99)
+        
 
 def dejMeme(): #stáhne 100 url adres a vloží je do listu
     target_subreddit = 'memes' #odkud se meme bere                 
-    for submission in reddit.subreddit(target_subreddit).new(limit=10): # získání url jednoho obrázku/gifu
-        url = submission.url
-        urlList.append(url)
+    for submission in reddit.subreddit(target_subreddit).new(limit=100): # získání url jednoho obrázku/gifu
+        url1 = submission.url
+        urlList1.append(url1)
         urlKoment.append(submission) 
+
+def dejCute():
+    target_subreddit = 'aww' #odkud se meme bere                 
+    for submission in reddit.subreddit(target_subreddit).new(limit=100):
+        url2 = submission.url
+        urlList2.append(url2)
+        urlKoment.append(submission)
 
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
 def MemeZListu(): #funguje!!
    # for x in urlList:  pro kontrolu
-    print (urlList[RandomCislo])
 
-    webbrowser.open_new(urlList[RandomCislo])
+    print (urlList1[Cislo])
+    print (urlList2[Cislo])
 
+    webbrowser.open_new(urlList1[Cislo])
+    webbrowser.open_new(urlList2[Cislo])
+
+def stahniMeme():
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
+    cisloObr = os.listdir(cestaSlozky)
+    cisloSouboru = len(cisloObr) 
+    cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
+    urllib.request.urlretrieve(urlList1[Cislo], cesta)
+    
+def stahniCute():
+    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
+    cisloObr = os.listdir(cestaSlozky)
+    cisloSouboru = len(cisloObr)
+    cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
+    urllib.request.urlretrieve(urlList2[Cislo], cesta)
 
 def Napis_koment():
-    print (urlKoment[RandomCislo])
-    #urlKoment[RandomCislo].reply("Nice!")
+    print (urlKoment[Cislo])
+   #urlKoment[RandomCislo].reply("Nice!")
+
+#zapnutí funkcí pro test
 
 dejMeme()
+dejCute()
 MemeZListu()
+
+###stahovani###
+stahniMeme()
+stahniCute()
+
 Napis_koment()
 
  
