@@ -131,7 +131,7 @@ titulek.place(x = 165, y = 50)
 # TLAČÍTKO KOMENT - OKOMTUJE A ZAVŘE OKNO
 # TLAČÍTKO CLOSE - ZAVŘE OKNO
 
-def nsfw():
+def cute_okno():
 
     global nove_okno
         
@@ -147,8 +147,12 @@ def nsfw():
     # VYTVOEŘNÍ TLAČÍTKA
     button_koment = Button(nove_okno,text="Comment",width=15,height=2)
     button_koment.place(x=70,y=100)
+
+    button_stahni = Button(nove_okno,text="Stahnout",width=15,height=2,command=stahniCute())
+    button_stahni.place(x=70,y=150)
+
     button_destroy = Button(nove_okno, text="Close window",command=nove_okno.destroy,width=15,height=2)
-    button_destroy.place(x=70,y=150)  
+    button_destroy.place(x=70,y=200)  
    
 # SFW
 # PO KLIKNUTI SE OTEVŘE - URL ADRESA
@@ -158,34 +162,36 @@ def nsfw():
 # TLAČÍTKO CLOSE - ZAVŘE OKNO 
 
 
-def sfw():
+def meme_okno():
 
     
     #VYTVOŘENÍ VYSKAKOVACÍHO OKNA
     
     nove_okno2 = Toplevel(root)
     nove_okno2.geometry("250x250")
-    nove_okno2.title("SFW Meme")
+    nove_okno2.title("Meme")
     #nove_okno2.iconbitmap(r"C:\Users\jacke\py\images\icon3.ico")
 
-    titulek3 = Label(nove_okno2,text="Show SFW Meme",font=("Arial",16))
+    titulek3 = Label(nove_okno2,text="Show Meme",font=("Arial",16))
     titulek3.place(x = 35, y = 30)
 
     # VYTVOEŘNÍ TLAČÍTKA
 
     button_koment2 = Button(nove_okno2,text="Comment",width=15,height=2)
     button_koment2.place(x=70,y=100)
+    button_stahni2 = Button(nove_okno2,text="Stahnout",width=15,height=2,command=stahniMeme())
+    button_stahni2.place(x=70,y=150)
     button_destroy2 = Button(nove_okno2, text="Close window",command=nove_okno2.destroy,width=15,height=2)
-    button_destroy2.place(x=70,y=150)  
+    button_destroy2.place(x=70,y=200)  
 
 
-button_sfw = Button(root, text="Cute meme", width=20,height=5, command= MemeZListuCute )
-button_nsfw = Button(root, text="Meme",width=20,height=5,command = MemeZListu)
+button_cute = Button(root, text="Cute meme", width=20,height=5, command= lambda:[MemeZListuCute(), cute_okno()] )
+button_meme = Button(root, text="Meme",width=20,height=5,command = lambda:[MemeZListu(), meme_okno()])
 button_exit = Button(root, text = "Exit", width=20,height=5,command=root.quit)
 
 
-button_sfw.place(x = 170, y = 150)
-button_nsfw.place(x = 170, y = 250)
+button_cute.place(x = 170, y = 150)
+button_meme.place(x = 170, y = 250)
 button_exit.place(x = 170,y = 350)
 
 
