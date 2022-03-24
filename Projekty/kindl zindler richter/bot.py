@@ -152,10 +152,10 @@ def cute_okno():
     titulek2.place(x = 35, y = 30)
 
     # VYTVOEŘNÍ TLAČÍTKA
-    button_koment = Button(nove_okno,text="Comment",width=15,height=2)
+    button_koment = Button(nove_okno,text="Comment",width=15,height=2,command=lambda:Napis_koment_Cute())
     button_koment.place(x=70,y=100)
 
-    button_stahni = Button(nove_okno,text="Stahnout",width=15,height=2,command=stahniCute())
+    button_stahni = Button(nove_okno,text="Stahnout",width=15,height=2,command=lambda:[stahniCute(),nove_okno.destroy()])
     button_stahni.place(x=70,y=150)
 
     button_destroy = Button(nove_okno, text="Close window",command=nove_okno.destroy,width=15,height=2)
@@ -184,9 +184,9 @@ def meme_okno():
 
     # VYTVOEŘNÍ TLAČÍTKA
 
-    button_koment2 = Button(nove_okno2,text="Comment",width=15,height=2)
+    button_koment2 = Button(nove_okno2,text="Comment",width=15,height=2,command=lambda:Napis_koment_Meme())
     button_koment2.place(x=70,y=100)
-    button_stahni2 = Button(nove_okno2,text="Stahnout",width=15,height=2,command=stahniMeme())
+    button_stahni2 = Button(nove_okno2,text="Stahnout",width=15,height=2,command=lambda:[stahniMeme(),nove_okno2.destroy()])
     button_stahni2.place(x=70,y=150)
     button_destroy2 = Button(nove_okno2, text="Close window",command=nove_okno2.destroy,width=15,height=2)
     button_destroy2.place(x=70,y=200)  
