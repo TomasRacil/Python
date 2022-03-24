@@ -24,6 +24,8 @@ username = 'Bot_741',
 password = 'Unob123456789',
 
 cisloObr = 0
+CounterMeme = 0 #počítačka na MEME
+CounterCute = 0 #počítačka na CUTE
 
 reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny funkce
             client_secret=client_secret, 
@@ -56,16 +58,29 @@ def dejCute(): #inicializace pro druhé tlačítko.
 
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
-def MemeZListu(): #hlavní funkce která otevře obrázek tlačítko 1!
-    print (urlList1[Cislo])
-    webbrowser.open_new(urlList1[Cislo])
+def MemeZListu():
+    """""
+    hlavní funkce která se otevře po stisku tlačítka 2.
+    bere si číslo podle globální proměnné, díky tomu se pokaždé otevře jiný obrázek až do 100
+    po každém kliknutí zvýší globální proměnnou o +1
+    """ 
+    global CounterMeme 
+    print (urlList1[CounterMeme])
+    webbrowser.open_new(urlList1[CounterMeme])
+    CounterMeme +=1
 
 def MemeZListuCute(): # tlačítko 2!
-    print (urlList2[Cislo])
-    webbrowser.open_new(urlList2[Cislo])
+    global CounterCute
+    print (urlList2[CounterCute])
+    webbrowser.open_new(urlList2[CounterCute])
+    CounterCute +=1
 
 
 def stahniMeme():
+    """
+    To stahování si musí vyřešit sám Zindler já kur*a ani nevím jak to funguje!!!
+    a btw musíš to nějak sladit, aby to fungovalo s těmi Countery.
+    """
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr) 
