@@ -23,7 +23,7 @@ user_agent = 'Reddit image thing'
 username = 'Bot_741',
 password = 'Unob123456789',
 
-cisloObr = 0
+cisloObr = 0 #hej raději ani mazat nebudu... 
 CounterMeme = 0 #počítačka na MEME
 CounterCute = 0 #počítačka na CUTE
 
@@ -85,20 +85,27 @@ def stahniMeme():
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr) 
     cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(urlList1[Cislo], cesta)
+    urllib.request.urlretrieve(urlList1[CounterMeme], cesta)
     
 def stahniCute():
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr)
     cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(urlList2[Cislo], cesta)
+    urllib.request.urlretrieve(urlList2[CounterCute], cesta)
 
-def Napis_koment():
-    print (urlKoment[Cislo])
-   #urlKoment[RandomCislo].reply("Nice!")
+def Napis_koment_Meme():
+   #urlKoment[RandomCislo].reply("Nice!!")
+   
+   print("x") #dočasné smazat!
 
-#zapnutí funkcí pro test
+def Napis_koment_Cute():
+    #urlKoment[RandomCislo].reply("Cute!!")
+    
+    print("x") #dočasné smazat!
+
+
+#zapnutí funkcí na inicializaci/ naplnění listů
 dejMeme()
 dejCute()
 
