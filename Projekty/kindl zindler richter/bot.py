@@ -37,7 +37,8 @@ reddit = praw.Reddit(client_id=client_id, # inicializace klienta pro všechny fu
 
 urlList1 = [] #inicializuje list na ukládání url adres
 urlList2 = []
-urlKoment = [] #list na komentáře
+urlKoment1 = [] #list na komentáře
+urlKoment2 = []
 cisla = [] #list čísel
 
 
@@ -49,14 +50,14 @@ def dejMeme(): #stáhne 100 url adres a vloží je do listu inicializace pro prv
     for submission in reddit.subreddit(target_subreddit).new(limit=100): # získání url jednoho obrázku/gifu
         url1 = submission.url
         urlList1.append(url1)
-        urlKoment.append(submission) 
+        urlKoment1.append(submission) 
 
 def dejCute(): #inicializace pro druhé tlačítko.
     target_subreddit = 'aww' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=100):
         url2 = submission.url
         urlList2.append(url2)
-        urlKoment.append(submission)
+        urlKoment2.append(submission)
 
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
@@ -97,14 +98,12 @@ def stahniCute():
     urllib.request.urlretrieve(urlList2[CounterCute -1], cesta)
 
 def Napis_koment_Meme():
-   #urlKoment[RandomCislo].reply("Nice!!")
+   urlKoment1[CounterMeme-1].reply("Nice!!")
    
-   print("x") #dočasné smazat!
 
 def Napis_koment_Cute():
-    #urlKoment[RandomCislo].reply("Cute!!")
+    urlKoment2[CounterCute-1].reply("Cute!!")
     
-    print("x") #dočasné smazat!
 
 
 #zapnutí funkcí na inicializaci/ naplnění listů
