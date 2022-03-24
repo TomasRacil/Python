@@ -85,14 +85,14 @@ def stahniMeme():
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr) 
     cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(urlList1[CounterMeme], cesta)
+    urllib.request.urlretrieve(urlList1[CounterMeme -1], cesta)
     
 def stahniCute():
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr)
     cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
-    urllib.request.urlretrieve(urlList2[CounterCute], cesta)
+    urllib.request.urlretrieve(urlList2[CounterCute -1], cesta)
 
 def Napis_koment_Meme():
    #urlKoment[RandomCislo].reply("Nice!!")
