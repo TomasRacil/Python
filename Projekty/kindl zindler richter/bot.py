@@ -40,14 +40,14 @@ cisla = [] #list čísel
 Cislo = random.randint(0,99)
         
 
-def dejMeme(): #stáhne 100 url adres a vloží je do listu
+def dejMeme(): #stáhne 100 url adres a vloží je do listu inicializace pro první tlačítko, zavolá se po spuštění
     target_subreddit = 'memes' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=100): # získání url jednoho obrázku/gifu
         url1 = submission.url
         urlList1.append(url1)
         urlKoment.append(submission) 
 
-def dejCute():
+def dejCute(): #inicializace pro druhé tlačítko.
     target_subreddit = 'aww' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=100):
         url2 = submission.url
@@ -56,14 +56,14 @@ def dejCute():
 
     #print(reddit.read_only) #tohle ani nevím, co dělá, ale bylo to tam, tak to mazat raději nebudu       
 
-def MemeZListu(): #funguje!!
-   # for x in urlList:  pro kontrolu
-
+def MemeZListu(): #hlavní funkce která otevře obrázek tlačítko 1!
     print (urlList1[Cislo])
-    print (urlList2[Cislo])
-
     webbrowser.open_new(urlList1[Cislo])
+
+def MemeZListuCute(): # tlačítko 2!
+    print (urlList2[Cislo])
     webbrowser.open_new(urlList2[Cislo])
+
 
 def stahniMeme():
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
@@ -84,16 +84,9 @@ def Napis_koment():
    #urlKoment[RandomCislo].reply("Nice!")
 
 #zapnutí funkcí pro test
-
 dejMeme()
 dejCute()
-MemeZListu()
 
-###stahovani###
-stahniMeme()
-stahniCute()
-
-Napis_koment()
 
  
     
