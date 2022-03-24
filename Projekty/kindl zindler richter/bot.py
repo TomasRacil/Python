@@ -123,10 +123,10 @@ def nsfw():
     # VYTVOŘENÍ VYSKAKOVACÍHO OKNA
     nove_okno = Toplevel(root)
     nove_okno.geometry("250x250")
-    nove_okno.title("NSFW Meme")
+    nove_okno.title("Show Cute meme")
     #nove_okno.iconbitmap(r"C:\Users\jacke\py\images\icon2.ico")
 
-    titulek2 = Label(nove_okno,text="Show NSFW Meme",font=("Arial",16))
+    titulek2 = Label(nove_okno,text="Show Cute meme",font=("Arial",16))
     titulek2.place(x = 35, y = 30)
 
     # VYTVOEŘNÍ TLAČÍTKA
@@ -164,8 +164,8 @@ def sfw():
     button_destroy2.place(x=70,y=150)  
 
 
-button_sfw = Button(root, text="Image SFW", width=20,height=5, command= sfw )
-button_nsfw = Button(root, text="Image NSFW",width=20,height=5,command = nsfw)
+button_sfw = Button(root, text="Cute meme", width=20,height=5, command= MemeZListuCute )
+button_nsfw = Button(root, text="Meme",width=20,height=5,command = MemeZListu)
 button_exit = Button(root, text = "Exit", width=20,height=5,command=root.quit)
 
 
