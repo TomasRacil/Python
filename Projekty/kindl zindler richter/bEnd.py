@@ -86,14 +86,14 @@ def MemeZListuCute():
 def stahniMeme():
     cestaSlozky = os.path.join(os.path.dirname(os.path.realpath(__file__)), "MemeObrazky")
     cisloObr = os.listdir(cestaSlozky)
-    cisloSouboru = len(cisloObr)
+    cisloSouboru = len(cisloObr) -1
     cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
     urllib.request.urlretrieve(urlList1[CounterMeme -1], cesta)
     
 def stahniCute():
     cestaSlozky = os.path.join(os.path.dirname(os.path.realpath(__file__)), "CuteObrazky")
     cisloObr = os.listdir(cestaSlozky)
-    cisloSouboru = len(cisloObr)
+    cisloSouboru = len(cisloObr) -1
     cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
     urllib.request.urlretrieve(urlList2[CounterCute -1], cesta)
 
