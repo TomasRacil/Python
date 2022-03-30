@@ -41,12 +41,8 @@ cisla = [] #list čísel
 Cislo = random.randint(0,99)
         
 
-"""
-    dejMeme a dejCute
-    -funkce stáhnou 100 url adres a vloží se do listu
-    -z toho listu budou tlačítka brát obrázky
-"""
-def dejMeme(): 
+def dejMeme():
+   
     target_subreddit = 'memes' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=100): # získání url jednoho obrázku/gifu
         url1 = submission.url
@@ -54,36 +50,39 @@ def dejMeme():
         urlKoment1.append(submission) 
 
 def dejCute(): 
+    """
+    Tyto funkce stáhnou 100 url adres a vloží se do listu
+    Z listu budou tlačítka brát obrázky
+    
+    """ 
     target_subreddit = 'aww' #odkud se meme bere                 
     for submission in reddit.subreddit(target_subreddit).new(limit=100):  # získání url jednoho obrázku/gifu
         url2 = submission.url
         urlList2.append(url2)
         urlKoment2.append(submission)
-
+   
           
-"""
-    MemeZListu a MemeZListuCute
 
-    -bere si číslo podle globální proměnné, díky tomu se pokaždé otevře jiný obrázek až do 100
-    -po každém kliknutí zvýší globální proměnnou o +1
-""" 
 def MemeZListu():
+    
     
     global CounterMeme 
     print (urlList1[CounterMeme])
     webbrowser.open_new(urlList1[CounterMeme])
     CounterMeme +=1
 
-def MemeZListuCute(): # tlačítko 2!
+def MemeZListuCute(): 
+    """
+    Tyto funkce si berou globální proměnou a díky tomu otevřou jiný obrázek až do 100
+    Po každém kliknutí zvýší o 1
+    
+    """
     global CounterCute
     print (urlList2[CounterCute])
     webbrowser.open_new(urlList2[CounterCute])
     CounterCute +=1
 
-"""
-    stahniMeme a stahniCute
-    - stáhnou otevřené obrázky
-"""
+
 def stahniMeme():
     
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
@@ -93,26 +92,30 @@ def stahniMeme():
     urllib.request.urlretrieve(urlList1[CounterMeme -1], cesta)
     
 def stahniCute():
+    """
+    Tyto funkce stáhnout a otevřou obrázek
+    
+    """
     cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr)
     cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
     urllib.request.urlretrieve(urlList2[CounterCute -1], cesta)
 
-"""
-    Napis_koment_Meme a Napis_koment_Cute
-    - hodí koment pod obrázek
-"""
+
 
 def Napis_koment_Meme():
    urlKoment1[CounterMeme-1].reply("Nice!!")
    
 
 def Napis_koment_Cute():
+    """
+    Tyto funkce napíši koment pod poslední obrázek
+    """
     urlKoment2[CounterCute-1].reply("Cute!!")
     
 
 
-#zapnutí funkcí na inicializaci/ naplnění listů
-dejMeme()
+
+dejMeme() #zapnutí funkcí na inicializaci/ naplnění listů
 dejCute()
