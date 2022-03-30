@@ -85,15 +85,14 @@ def MemeZListuCute(): # tlačítko 2!
     - stáhnou otevřené obrázky
 """
 def stahniMeme():
-    
-    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/MemeObrazky')
+    cestaSlozky = os.path.join(os.path.dirname(os.path.realpath(__file__)), "MemeObrazky")
     cisloObr = os.listdir(cestaSlozky)
-    cisloSouboru = len(cisloObr) 
+    cisloSouboru = len(cisloObr)
     cesta = os.path.join(cestaSlozky, f"ObrazekMeme{cisloSouboru + 1}.jpg")
     urllib.request.urlretrieve(urlList1[CounterMeme -1], cesta)
     
 def stahniCute():
-    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
+    cestaSlozky = os.path.join(os.path.dirname(os.path.realpath(__file__)), "CuteObrazky")
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr)
     cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
