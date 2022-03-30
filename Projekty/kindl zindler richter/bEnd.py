@@ -91,10 +91,10 @@ def stahniMeme():
     urllib.request.urlretrieve(urlList1[CounterMeme -1], cesta)
     
 def stahniCute():
-
     """
-    Tyto funkce stahují obrázek a ukládají ji do lokální složky uživatele
+    Tyto funkce stahují obrázek a ukládají jej do lokální složky uživatele
     Podle počtu mění číslo souboru aby se obrázek nepřepisoval
+    
     """
     cestaSlozky = os.path.join(os.path.dirname(os.path.realpath(__file__)), "CuteObrazky")
     cisloObr = os.listdir(cestaSlozky)
