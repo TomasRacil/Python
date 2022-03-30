@@ -91,15 +91,7 @@ def stahniMeme():
     urllib.request.urlretrieve(urlList1[CounterMeme -1], cesta)
     
 def stahniCute():
-<<<<<<< HEAD
     cestaSlozky = os.path.join(os.path.dirname(os.path.realpath(__file__)), "CuteObrazky")
-=======
-    """
-    Tyto funkce stáhnout a otevřou obrázek
-    
-    """
-    cestaSlozky = os.path.abspath('Projekty/kindl zindler richter/CuteObrazky')
->>>>>>> e25e241c0faa2cba60a6a5a02153463b625fa37e
     cisloObr = os.listdir(cestaSlozky)
     cisloSouboru = len(cisloObr)
     cesta = os.path.join(cestaSlozky, f"ObrazekCute{cisloSouboru + 1}.jpg")
