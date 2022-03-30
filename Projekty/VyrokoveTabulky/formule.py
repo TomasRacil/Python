@@ -101,7 +101,7 @@ matrices = {
     "C": [0, 1, 0, 1, 0, 1, 0, 1],
 }
 
-parserformule1 = Parsing("(A /\ (B<=>C) /\ B)")
+parserformule1 = Parsing("(A /\ (B<=>C) /\ A)")
 print(parserformule1)
 parserformule2 = Parsing("b <=> (a ==> ~a)")
 print(parserformule2)
@@ -124,23 +124,21 @@ def solve(vyrok: list) -> list:
     Returns:
         list: _description_
     """
-    if len(vyrok) != 1:
-        i, repetition = 0, int(len(vyrok) / 2)
-        if isinstance(vyrok[0], list):
-            prvni = solve(vyrok.pop(0))
-        else:
-            prvni = matrices[vyrok.pop(0)]
-        for i in range(repetition):
-            op = vyrok.pop(0)
-            if isinstance(vyrok[0], list):
-                druhy = solve(vyrok.pop(0))
-            else:
-                druhy = matrices[vyrok.pop(0)]
-            prvni = operations[op](prvni, druhy)
-            i += 1
-        return prvni
+
+    repetition = int(len(vyrok) / 2)
+    if isinstance(vyrok[0], list):
+        prvni = solve(vyrok.pop(0))
     else:
-        return solve(vyrok[0])
+        prvni = matrices[vyrok.pop(0)]
+    for _ in range(repetition):
+        op = vyrok.pop(0)
+        druhy = (
+            solve(vyrok.pop(0))
+            if isinstance(vyrok[0], list)
+            else matrices[vyrok.pop(0)]
+        )
+        prvni = operations[op](prvni, druhy)
+    return prvni
 
 
 print(solve(parserformule1))
