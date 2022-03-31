@@ -84,16 +84,59 @@ def Ekv(a, b):
         x += 1
     return c
 
+def solve(prvek: list) -> list:
+    """Recursively solve ...
+
+    Args:
+        prvek (list): _description_
+
+    Returns:
+        list: _description_
+    """
+    konec = False
+    repetition = int(len(prvek) / 2) 
+    if isinstance(prvek[0], list):  #instance() = kdyz prvek[0] je list pak:
+        prvni = solve(prvek.pop(0)) #priradi prvni 0.prvek - tedy list v listu - a smaze ho, zavola znovu funkci solve
+    else:
+        if (prvek[0].endswith('~')):    #pro pripad ze je vice negaci za sebou
+            if ((prvek[0].count('~')%2)==1): #negace rusi negaci...sudy pocet negaci = zadna negace
+                if isinstance(prvek[1], list): #jak vyresit
+                    prvek.pop(0)
+                    prvni = Neg(solve(prvek.pop(0)))    #!!!CHYBA!!! po vyhodnoceni jede zase dal
+                    konec = True                                        
+                else:
+                    repetition-=1
+                    prvek.pop(0)
+                    prvni = Neg(matrices[prvek.pop(0)]) 
+            else: #neni negace
+                prvek.pop(0)
+                prvni = matrices[prvek.pop(0)]  
+        else: prvni = matrices[prvek.pop(0)]    
+    k = False
+    for _ in range(repetition):
+        if konec: break 
+        op = prvek.pop(0) #priradim dalsi prvek operaci a smazu
+
+        if isinstance(prvek[0], list):
+            druhy = solve(prvek.pop(0))
+        else:
+            if (prvek[0].endswith('~')):
+                k = True
+                if ((prvek[0].count('~')%2)==1):   
+                    prvek.pop(0)                
+                    druhy = Neg(matrices[prvek.pop(0)])
+                else:
+                    prvek.pop(0)
+                    druhy = matrices[prvek.pop(0)]
+            else: druhy = matrices[prvek.pop(0)]
+        prvni = operations[op](prvni, druhy)
+        if k: break
+    return prvni
 
 def Vypis():
     pass
 
-
-p = [0, 0, 0, 0, 1, 1, 1, 1]
-q = [0, 0, 1, 1, 0, 0, 1, 1]
-r = [0, 1, 0, 1, 0, 1, 0, 1]
-
-# ~ negace, /\ konjunkce, \/ disjunkce, ==> implikace, <=> ekvivalence
+operations = {"and": Kon, "or": Dis, "iff": Ekv, "implies": Imp, "~": Neg}
 
 matrices = {
     "A": [0, 0, 0, 0, 1, 1, 1, 1],
@@ -101,57 +144,8 @@ matrices = {
     "C": [0, 1, 0, 1, 0, 1, 0, 1],
 }
 
-parserformule1 = Parsing("(A /\ (B<=>C) /\ A)")
-print(parserformule1)
-parserformule2 = Parsing("b <=> (a ==> ~a)")
-print(parserformule2)
-print(parserformule2[0][2][2])
+# ~ negace, /\ konjunkce, \/ disjunkce, ==> implikace, <=> ekvivalence
 
-operations = {"and": Kon, "iff": Ekv, "implies": Imp, "~": Neg}
-
-# formule = Dis(Kon(Neg(p),q),(Ekv(Imp(r,Neg(q)),p)))
-# print(formule)
-# op = "~"
-# print(operations[op](p))
-
-
-def solve(vyrok: list) -> list:
-    """Recursively solve ...
-
-    Args:
-        vyrok (list): _description_
-
-    Returns:
-        list: _description_
-    """
-
-    repetition = int(len(vyrok) / 2)
-    if isinstance(vyrok[0], list):
-        prvni = solve(vyrok.pop(0))
-    else:
-        prvni = matrices[vyrok.pop(0)]
-    for _ in range(repetition):
-        op = vyrok.pop(0)
-        druhy = (
-            solve(vyrok.pop(0))
-            if isinstance(vyrok[0], list)
-            else matrices[vyrok.pop(0)]
-        )
-        prvni = operations[op](prvni, druhy)
-    return prvni
-
-
-print(solve(parserformule1))
-
-"""
-result = Neg(p)
-print(result)
-result = Kon(p,q)
-print(result)
-result = Dis(p,q)
-print(result)
-result = Imp(p,q)
-print(result)
-result = Ekv(p,q)
-print(result)
-"""
+formule1 = Parsing("(~((A /\ B) ==> ~(B <=> ~C)))")
+print(formule1)
+print(solve(formule1))
