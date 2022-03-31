@@ -8,12 +8,14 @@ pygame.init()
 def game_input(file):
     for ev in pygame.event.get():
         if ev.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if ev.type == pygame.KEYDOWN:
             file.close()
             pygame.quit()
             sys.exit()
+        if ev.type == pygame.KEYDOWN:
+            if ev.key == pygame.K_ESCAPE:
+                file.close()
+                pygame.quit()
+                sys.exit()
 
 
 def ai_move(game_array, turn, array_size, win_condition):
