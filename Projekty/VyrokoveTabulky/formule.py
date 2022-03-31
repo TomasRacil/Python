@@ -100,9 +100,9 @@ def solve(prvek: list) -> list:
     else:
         if (prvek[0].endswith('~')):    #pro pripad ze je vice negaci za sebou
             if ((prvek[0].count('~')%2)==1): #negace rusi negaci...sudy pocet negaci = zadna negace
-                if isinstance(prvek[1], list): #jak vyresit
+                if isinstance(prvek[1], list):
                     prvek.pop(0)
-                    prvni = Neg(solve(prvek.pop(0)))    #!!!CHYBA!!! po vyhodnoceni jede zase dal
+                    prvni = Neg(solve(prvek.pop(0)))
                     konec = True                                        
                 else:
                     repetition-=1
