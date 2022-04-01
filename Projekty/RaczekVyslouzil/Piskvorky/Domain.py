@@ -68,9 +68,16 @@ def clear_domain(domain, array_size):
             domain[j][i].set_pressed(False)
 
 
-def update_domain(screen, game_domain, my_font, turn, level_number, number_of_levels):
+def update_domain(screen, game_domain, my_font, turn, level_number, number_of_levels, diff):
     mouse = pygame.mouse.get_pos()
-    screen.fill((99, 155, 255))
+    if int(diff) == 1:
+        screen.fill((99, 155, 255))
+    elif int(diff) == 2:
+        screen.fill((118, 66, 138))
+    elif int(diff) == 3:
+        screen.fill((203, 32, 32))
+    else:
+        screen.fill((215, 123, 186))
     screen.blit(my_font.render(f'{level_number} / {number_of_levels}', True, (255, 255, 255)), (screen.get_width()/2 - 50, 20))
     for j in range(len(game_domain)):
         for i in range(len(game_domain[0])):
