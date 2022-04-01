@@ -6,17 +6,21 @@ import sys
 pygame.init()
 
 
-def result(screen, domain, my_font, turn, catch, file, array_size, level_number, number_of_levels):
+def result(screen, domain, my_font, turn, catch, file, array_size, level_number, number_of_levels, diff):
     if catch is not None:
-        update_domain(screen, domain, my_font, turn, level_number, number_of_levels)
+        update_domain(screen, domain, my_font, turn, level_number, number_of_levels, diff)
         pygame.display.update()
         paused = True
         if catch == 0:
             clear_domain(domain, array_size)
             pygame.mouse.set_pos(screen.get_width() / 2, 0)
             paused = False
+            return level_number, 1, diff
+        elif catch == 1 and diff == 3:
+            title = 'Game beaten'
+            text = ['Main menu ', 'Exit ']
         elif catch == 1:
-            title = 'You have won this level'
+            title = 'Level demolished'
             text = ['Next level ', 'Main menu ', 'Exit ']
         elif catch == 2:
             title = 'nah a Draw'
@@ -56,8 +60,9 @@ def result(screen, domain, my_font, turn, catch, file, array_size, level_number,
                     sys.exit()
                 if ev.type == pygame.KEYDOWN:
                     if ev.key == pygame.K_ESCAPE:
-                        screen.blit(original, (0, 0))
-                        paused = False
+                        file.close()
+                        pygame.quit()
+                        sys.exit()
                     if ev.key == pygame.K_w:
                         if x > 0:
                             x -= 1
@@ -79,19 +84,27 @@ def result(screen, domain, my_font, turn, catch, file, array_size, level_number,
                                 clear_domain(domain, array_size)
                                 pygame.mouse.set_pos(screen.get_width() / 2, 0)
                                 paused = False
-                                return level_number
+                                diff += 1
+                                return 1, 1, diff
                             if txt == 'Continue ':
                                 clear_domain(domain, array_size)
                                 pygame.mouse.set_pos(screen.get_width() / 2, 0)
                                 paused = False
-                                return level_number
+                                return level_number, 1, diff
                             if txt == 'Start again ':
                                 clear_domain(domain, array_size)
                                 pygame.mouse.set_pos(screen.get_width() / 2, 0)
                                 paused = False
-                                return 1
+                                return 1, 1, 1
+                            if txt == 'Main menu ':
+                                menu = Menus(screen)
+                                menu.menu(file)
+                                clear_domain(domain, array_size)
+                                pygame.mouse.set_pos(screen.get_width() / 2, 0)
+                                paused = False
+                                return 1, 1, diff
                             if txt == 'Exit ':
                                 file.close()
                                 pygame.quit()
                                 sys.exit()
-    return level_number
+    return level_number, turn, diff
