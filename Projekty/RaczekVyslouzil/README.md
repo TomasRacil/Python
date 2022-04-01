@@ -9,4 +9,4 @@ pravidla:
 
 to do:
 -rozvinout funkci uložení progresu
--přidávání obtížnosti po určitém počtu levlů
+-rozšířit možnosti obtížnosti a velikosti hrací plochy
