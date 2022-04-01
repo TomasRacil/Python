@@ -22,7 +22,7 @@ class Menus:
         self.x = 0
         self.screen = screen
 
-    def menu(self, file):   #method
+        def menu(self, file):   #method
         screen = self.screen
         width = screen.get_width()
         height = screen.get_height()
@@ -88,7 +88,7 @@ class Menus:
                                 else:
                                     return 5
                             if txt == 'Options ':
-                                options = Menus(screen, 'Options:', ['Resolution: Full Screen', 'Resolution: 1280 x 720', 'Resolution: 800 x 480', 'Volume: Full ', 'Volume / 2 ', 'Back  '])
+                                options = Menus(screen, 'Options:', ['Resolution: Full Screen', 'Resolution: 1280 x 720', 'Resolution: 800 x 480', 'Back  '])
                                 options.menu(file)
                             if txt == 'Exit ':
                                 file.close()
@@ -114,7 +114,7 @@ class Menus:
                                 file.write('2')
                                 return 5
                             if txt == 'Asian ':
-                                file.write('4')
+                                file.write('3')
                                 return 5
                             if txt == 'Resolution: Full Screen':
                                 self.screen = pygame.display.set_mode((1920, 1080))
