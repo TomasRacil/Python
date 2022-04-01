@@ -19,12 +19,7 @@ def main():
 
     # for reading and writing
     file = open("Progress.txt", "r+")
-    save = []
-    # if the file is not empty then put it into an array
-    if os.stat("Progress.txt").st_size != 0:
-        save = file.read()
-        save = [int(n) for n in save.split(" ")]
-    play(screen, file, save)
+    play(screen, file)
 
 
 if __name__ == '__main__':
