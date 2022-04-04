@@ -1,5 +1,4 @@
 # Výrokové tabulky
-
 Téma výrokové logiky je vyučováno v matematice už na střední škole. Tabulka pravdivostních hodnost se používá při vyhodnocení složitějších formulí. Pro pokrytí středoškolské matiky a základů vysokoškolské nám postačí tabulka nanejvýš se 3 výroky.
 ####
 Jak s tabulkou pracovat:
@@ -32,4 +31,5 @@ Inspirováno: https://www.erpelstolz.at/gateway/formular-uk-zentral.html
 1. vylepšení, zefektivnění v parser.py - např.: aby negace vytvářeli samostatný list
 2. neomezený počet výroků, různá písmena pro označení výroků
 3. DNF, KNF
-4. GUI
+4. další operátory: NAND, NOR, XOR, XNOR
+5. GUI

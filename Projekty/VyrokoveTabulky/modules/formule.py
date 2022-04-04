@@ -13,8 +13,6 @@ def pqr(s):
             r = 1
     string = (p*'p' + q*'q' + r*'r')
     return (string)
-    #tuple = (str(p),str(q), str(r))    
-    #return (tuple)
 
 def Parsing(string):
     string = parse(lex(string))
@@ -22,62 +20,60 @@ def Parsing(string):
 
 
 def Neg(a):
-    # cyklus, prochazi prvky a, prohazuje 1 -> 0 a obracene, vraci je do c
-    c = [0, 0, 0, 0, 0, 0, 0, 0]
+    c = []
     x = 0
-    while x != len(c):
+    while x != len(a):
         if a[x] == 0:
-            c[x] = 1
+            c.append(1)
         else:
-            c[x] = 0
+            c.append(0)
         x += 1
     return c
 
-
 def Kon(a, b):
-    c = [0, 0, 0, 0, 0, 0, 0, 0]
+    c = []
     x = 0
-    while x != len(c):
+    while x != len(a):
         if a[x] == 1 and b[x] == 1:
-            c[x] = 1
+            c.append(1)
         else:
-            c[x] = 0
+            c.append(0)
         x += 1
     return c
 
 
 def Dis(a, b):
-    c = [0, 0, 0, 0, 0, 0, 0, 0]
+    c = []
     x = 0
-    while x != len(c):
+    while x != len(a):
         if a[x] == 0 and b[x] == 0:
-            c[x] = 0
+            c.append(0)
         else:
-            c[x] = 1
+            c.append(1)
         x += 1
     return c
 
 
 def Imp(a, b):
-    c = [0, 0, 0, 0, 0, 0, 0, 0]
+    c = []
     x = 0
-    while x != len(c):
+    while x != len(a):
         if a[x] == 1 and b[x] == 0:
-            c[x] = 0
+            c.append(0)
         else:
-            c[x] = 1
+            c.append(1)
         x += 1
     return c
 
 
 def Ekv(a, b):
-    c = [0, 0, 0, 0, 0, 0, 0, 0]
+    c = []
     x = 0
     while x != len(a):
         if a[x] == b[x]:
-            c[x] = 1
+            c.append(1)
         else:
-            c[x] = 0
+            c.append(0)
         x += 1
     return c
 
@@ -92,7 +88,7 @@ def Solve(prvek: list) -> list:
     """
     konec = False
     repetition = int(len(prvek) / 2) 
-    if isinstance(prvek[0], list):  #instance() = kdyz prvek[0] je list pak:
+    if isinstance(prvek[0], list):
         prvni = Solve(prvek.pop(0)) #priradi prvni 0.prvek - tedy list v listu - a smaze ho, zavola znovu funkci solve
     else:
         if (prvek[0].endswith('~')):    #pro pripad ze je vice negaci za sebou
@@ -136,20 +132,18 @@ def Vypis(formule,result):
     match pqr(formule):
         case 'p':                       #kazdy 4. prvek
             print('p   |  ',formule,"\n––––|–––––––––––––––––––––––––––––––––––––––––––––––––")
-            for i in range(0,7,4):      
+            for i in range(0,8,4):      
                 print(matrices["p"][i],"  |  ",result[i])
 
         case 'pq':                      #kazdy 2. prvek
             print("p    q   |  ",formule,"\n–––––––––|––––––––––––––––––––––––––––––––––––––––––––––––––")
-            for i in range(0,7,2):          
+            for i in range(0,8,2):          
                 print(matrices["p"][i],"  ",matrices["q"][i],"  |  ",result[i])
 
         case _:                         #vsechny prvky
             print("p    q    r   |  ",formule,"\n––––––––––––––|–––––––––––––––––––––––––––––––––––––––––––––")
             for i in range(8):                   
                 print(matrices["p"][i],"  ",matrices["q"][i],"  ",matrices["r"][i],"  |  ",result[i])
-
-
 
 operations = {"and": Kon, "or": Dis, "iff": Ekv, "implies": Imp, "~": Neg}
 
@@ -158,15 +152,8 @@ matrices = {
     "q": [0, 0, 1, 1, 0, 0, 1, 1],
     "r": [0, 1, 0, 1, 0, 1, 0, 1],
 }
+
 # ~ negace, /\ konjunkce, \/ disjunkce, ==> implikace, <=> ekvivalence
-"""
-formule1 = Parsing("[~(p /\ ~~q) ==> ~(q <=> ~~~~r)]")
-print(formule1)
-print(Solve(formule1))
-"""
-
-
-
 
 
 
