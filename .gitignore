@@ -94,6 +94,7 @@ Pipfile.lock
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
+__pycache__/
 
 # Celery stuff
 celerybeat-schedule
@@ -136,5 +137,20 @@ dmypy.json
 .vs/
 .vscode/
 
+#OSx
+.idea/
+
 # pip wheel
 *.whl
+
+# media file
+*.avi
+*.mp4
+*.jpg
+*.jpeg
+*.mkv
+*.webm
+
+#binaries
+*.exe
+

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file://$USER_HOME$/AppData/Local/Programs/Python/Python310/Lib/site-packages">
+      <sourceFolder url="file://$USER_HOME$/AppData/Local/Programs/Python/Python310/Lib/site-packages" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>

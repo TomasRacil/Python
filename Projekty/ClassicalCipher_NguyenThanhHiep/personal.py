@@ -1,16 +1,16 @@
 #login
 m_Password="123"
 
-#substitution
+#substitution - case 2
 m_Zobrazeni=["qwert","yuiop","asdfg","hjkl","zxcvb","nm","QWERT","YUIOP","ASDFG","HJKL","ZXCVB","NM","789","456","123","0"]
 
-#Ceasar
+#Ceasar-case 1
 m_KeyShift=5    
 
-#Columnar 
+#Columnar - case 4
 m_Keyword="Vietnam" 
 
-#XOR
+#XOR -case 3
 m_XoredNumber=13
 m_IndexVariable=0
 
