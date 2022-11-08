@@ -1,3 +1,5 @@
+"""Modell for webpages in neo4j"""
+
 #from neomodel import StructuredNode, StringProperty, RelationshipTo,BooleanProperty
 from py2neo.ogm import Label, Model, Property,RelatedTo
 
@@ -5,6 +7,11 @@ from py2neo.ogm import Label, Model, Property,RelatedTo
 
 
 class WebPage(Model):
+    """_summary_
+
+    Args:
+        Model (_type_): _description_
+    """
     __primarykey__="name"
     name = Property()
     url = Property()

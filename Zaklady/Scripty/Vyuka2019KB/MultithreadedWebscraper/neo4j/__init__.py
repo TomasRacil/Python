@@ -1,1 +1,3 @@
-from .ctrmodel import expandMap
+"""Module docstring"""
+
+from .ctrmodel import expand_map

@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  crawler:
+    # image: gql_empty
+    build:
+      # context: ./gql_empty/.devcontainer
+      dockerfile: Dockerfile
+    # environment:
+    #   - POSTGRES_USER=postgres
+    #   - POSTGRES_PASSWORD=example
+    #   - POSTGRES_DB=data
+    # depends_on:
+    #   - postgres
+    #   - gql_ug
+    # ports:
+    #   - 31128:8000
+    volumes:
+      # Mount the root folder that contains .git
+      - .:/workspace:cached
+    tty: true
+    # command: /bin/sh -c "while sleep 1000; do :; done"
+  neo4j:
+    image: neo4j:latest
+    ports: 
+      - 7474:7474 
+      - 7687:7687
+    volumes: 
+      - neo-data:/home/neo4j/data
+volumes:
+  neo-data:
