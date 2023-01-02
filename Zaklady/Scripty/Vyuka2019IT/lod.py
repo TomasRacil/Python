@@ -1,9 +1,11 @@
 from os.path import join, realpath, dirname
+from collections import deque
 
 class Lod:
     """Trida pro reseni uolu AoC 2020 den 12
     """
     smer = 'E'
+    rotace = deque(['E','S','W','N'])
     pozice_x = 0
     pozice_y = 0
     
@@ -11,7 +13,7 @@ class Lod:
         self.navigacniData = [(radek.split('\n')[0][0],int(radek.split('\n')[0][1:])) for radek in navigacniSoubor]
         
     def __repr__(self) -> str:
-        return f"Poloha lodi x: {self.pozice_x}, y: {self.pozice_y} a smer lodi je {self.smer} vzdalenot manhattan {abs(self.pozice_x)+abs(self.pozice_y)}"
+        return f"Poloha lodi x: {self.pozice_x}, y: {self.pozice_y} a smer lodi je {self.rotace[0]} vzdalenot manhattan {abs(self.pozice_x)+abs(self.pozice_y)}"
         
     def naviguj(self)->None:
         for prikaz, hodnota in self.navigacniData:
@@ -23,7 +25,7 @@ class Lod:
 
     def pohybSmer(self, smer:str, hodnota:int)->None:
 
-        smer = self.smer if smer=='F' else smer
+        smer = self.rotace[0] if smer=='F' else smer
 
         if smer == 'N':
             self.pozice_y += hodnota
@@ -35,15 +37,17 @@ class Lod:
             self.pozice_x -= hodnota
     
     def otoc(self, smer: str, hodnota: int)->None:
-        smer_na_stupne = {'E':0,'S':90,'W':180,'N':270}
-        stupne_na_smer = {0:'E',90:'S',180:'W',270:'N'}
-        vychozi_smer = smer_na_stupne[self.smer]
-        if smer == 'R':
-            novy_smer = vychozi_smer+hodnota
-            self.smer = stupne_na_smer[novy_smer%360]
-        elif smer == 'L':
-            novy_smer = vychozi_smer-hodnota
-            self.smer = stupne_na_smer[novy_smer%360]
+        otocky = (hodnota//90) * (-1 if smer=='R' else 1)
+        self.rotace.rotate(otocky)
+        # smer_na_stupne = {'E':0,'S':90,'W':180,'N':270}
+        # stupne_na_smer = {0:'E',90:'S',180:'W',270:'N'}
+        # vychozi_smer = smer_na_stupne[self.smer]
+        # if smer == 'R':
+        #     novy_smer = vychozi_smer+hodnota
+        #     self.smer = stupne_na_smer[novy_smer%360]
+        # elif smer == 'L':
+        #     novy_smer = vychozi_smer-hodnota
+        #     self.smer = stupne_na_smer[novy_smer%360]
         
     
 soubor = open(join(dirname(realpath(__file__)), "lod.txt"), "r", encoding="utf-8")
