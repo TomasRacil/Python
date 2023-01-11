@@ -10,7 +10,6 @@ class Tetris:
     def __init__(self) -> None:
         self.heigts = [0,0,0,0,0,0,0]
     
-    def 
     
 
 class Rock:

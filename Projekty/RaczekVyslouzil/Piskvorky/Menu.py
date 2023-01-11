@@ -22,7 +22,7 @@ class Menus:
         self.x = 0
         self.screen = screen
 
-        def menu(self, file):   #method
+    def menu(self, file):   #method
         screen = self.screen
         width = screen.get_width()
         height = screen.get_height()

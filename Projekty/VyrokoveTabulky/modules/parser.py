@@ -146,7 +146,9 @@ def parse_neg(inp):
 			elif t==')':
 				b-=1
 				if b==0 and i<(len(inp)-2):
-					return parse_iff(inp)
+					pass
+					#! ERROR
+					# return parse_iff(inp) 
 				else:
 					return [['~'] + parse(inp[2:-1])]
 	elif inp[1]=='[' and inp[0]=='~': 
@@ -156,7 +158,9 @@ def parse_neg(inp):
 			elif t==']':
 				b-=1
 				if b==0 and i<(len(inp)-2):
-					return parse_iff(inp)
+					#! ERROR
+					pass
+					#return parse_iff(inp)
 				else:
 					return [['~'] + parse(inp[2:-1])]
 	if inp[1]=='{' and inp[0]=='~': 
@@ -166,7 +170,9 @@ def parse_neg(inp):
 			elif t=='}':
 				b-=1
 				if b==0 and i<(len(inp)-2):
-					return parse_iff(inp)
+					#! ERROR
+					pass
+					#return parse_iff(inp)
 				else:
 					return [['~'] + parse(inp[2:-1])]
 	else:
@@ -177,7 +183,9 @@ def evaluate(fm,dictionary):
 		if var in variables:
 			return variables[var]
 		while True:
-			val = raw_input('Valuation of '+ var + ': ')
+			#! ERROR
+			val = None
+			#val = raw_input('Valuation of '+ var + ': ')
 			if val in ['True', 'true']:
 				variables[var]=True
 				return True
