@@ -70,7 +70,7 @@ print(f"První slovo: {x}\n")
 #DAlší informace a možnosti je možné najít na této stránce https://docs.python.org/3/library/re.html
 
 #Jednoduchý regulární výraz pro nalezení emailové adresy
-emailVzor="[a-z\d]+[a-z\d]\.-_]*[a-z0-9]+@\w+.\w{2,3}"
+emailVzor="([a-z\d]+[a-z\d\.-_]*[a-z0-9]+)@(\w+.\w{2,3})"
 #vysvětlení výrazu
 #[a-z0-9]+ 	jakýkoliv počet znaků nebo čísel větší jak jedna 
 #[\._]? 	nula nebo jeden výskyt . nebo ?
