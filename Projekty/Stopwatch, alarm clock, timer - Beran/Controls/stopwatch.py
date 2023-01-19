@@ -27,3 +27,6 @@ def stop():
     """
     global stp
     stp = 1
+def restart():
+    global stp
+    stp = 0
