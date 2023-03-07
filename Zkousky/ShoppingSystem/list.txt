@@ -1,0 +1,10 @@
+maslo;potraviny;3;EUR
+rohliky;potraviny;20;CZK
+hrnec;dompotreby;150;CZK
+mleko;potraviny;1;EUR
+baterie;elektro;2;EUR
+nuz;dompotreby;500;CZK
+jablka;potraviny;45;CZK
+svitilna;elektro;10;EUR
+sunka;potraviny;38;CZK
+dzus;potraviny;2;EUR
