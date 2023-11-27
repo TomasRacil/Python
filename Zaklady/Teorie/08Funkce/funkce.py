@@ -1,12 +1,12 @@
 """
 Podobně, jako v ostatních programovacích jazycích, se funkce v pythonu používají pro často se opakujicí bloky kódu, nebo pro zvýšeni přehlednosti.
 Funkce musí být prvně nadefinována a to pomicí výrazu def a následně zavolána aby byl daný blok kódu proveden.
-Při psaní funkcí je v pythonu důležité zohlednit to že se jedná o interpretovaný jazyk. Funkce tak nemohou být volány v progrmu dřív než jsou nadefinovány.
+Při psaní funkcí je v pythonu důležité zohlednit to že se jedná o interpretovaný jazyk. Funkce tak nemohou být volány v programu dřív než jsou nadefinovány.
 """
 
 #Příklad základní funkce, která nevykonává žádnou činnost.
 #def určuje zčátek deklarace funkce; následuje název funkce; do závorek je pak možné vkládat parametry funkce
-def funkce():
+def funkce()->None:
 	#veškerý kód v rámci funkce musí být patřičně odsazený
 	pass	#pass je univerzální výraz který interpretovi říká ať pokračuje na dalším řádku
 
@@ -16,7 +16,7 @@ funkce()
 
 
 #následující funkce přijímá dva parametry a pokusí se na ně uplatnit operátor +
-def sectiAVypis(a,b):
+def sectiAVypis(a:int,b:int)->None:
 	print(f"Soucet {a+b}")
 
 print("Sečti dva prvky")
@@ -29,7 +29,7 @@ sectiAVypis(prvni,druhy)
 
 #Na následujícím případě je demonstrována schopnost vracet hodnoty pomocí funkce. 
 #Není nutné typ vracené proměné nijak specifikovat narozdíl od mnoha ostatních programovacích jazyků.
-def vrat(a):
+def vrat(a:int):
 	if a != 6:
 		return a
 	else:
@@ -55,7 +55,7 @@ def vypisJazyky(*jazyky):
 #Jednoduché volání možné vložit libovolý počet prvků
 vypisJazyky('C#','C++','Kobol')
 
-#Ukázka s uživatelským vstupem a rozblaením seznamu do skupiny proměných
+#Ukázka s uživatelským vstupem a rozbalením seznamu do skupiny proměných
 pokracuj=True
 jazyky=[]
 while pokracuj:
@@ -77,7 +77,7 @@ deleni(delitel=2,delenec=8)
 
 
 #Pokud chceme aby byly parametry volitelné můžeme u nich nastavit defaultní hodnotu.
-def helloWorld(text="Hello world!"):
+def helloWorld(text:str="Hello world!"):
 	print(text)
 
 helloWorld()

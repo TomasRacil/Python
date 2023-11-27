@@ -14,11 +14,11 @@ while podminka:
 #Může být využit i pro iterování. V tomto případě je zároveň využito výrazu break pro ukončení cyklu v případě že i je rovno 4.
 i = 1
 while i < 6:
-  print(i)
-  if i == 4:
-  	print("přerušení cyklu!")
-  	break
-  i += 1
+    print(i)
+    if i == 4:
+        print("přerušení cyklu!")
+        break
+    i += 1
 
 
 #Základní syntax for iterujíc seznam. 

@@ -6,11 +6,11 @@ ty budou později podrobněji rozebírány v dalších lekcích, nebo je možné
 """
 
 #klasický int; velikost není limitovaná ničím kromě paměti zařízení; jediný typ celých čísel, terý python vnitřně používá
-integer = 1
+integer:int = 1
 print(f"hodnota {integer} typ {type(integer)}")
 
 #zápis binárního čísla
-binary = 0b10
+binary:bin = 0b10
 print(f"hodnota {binary} typ {type(binary)}")
 
 #zápis čísla osmičkové soustavy
@@ -24,7 +24,7 @@ print(f"hodnota {hexadecimal} typ {type(hexadecimal)}")
 #Jak je vidět na výstupu python přijíma čísla v různých soustavách, ale převádí je na svůj univerzální typ int.
 
 #zápis čísla s plovoucí desetinou čárkou; opět bez omezení velikosti; dva způsoby
-floatingPointNumber= 2.58
+floatingPointNumber=2.58
 print(f"hodnota {floatingPointNumber} typ {type(floatingPointNumber)}")
 
 #rozeznává také vědecký zápis
@@ -36,10 +36,10 @@ complexNumber = 2+3j
 print(f"hodnota {complexNumber} typ {type(complexNumber)}")
 
 #řetězce je možné zapisovat třemi způsoby pomocí dvojitých uvozovek, jednoduchých uvozovek, anebo je uzavřít mezi trojici uvozovek.
-text1="Ahoj "
-text2='světe!'
+text1:str="Ahoj "
+text2:str='světe!'
 print(f"hodnoty: {text1}, {text2} typ {type(text1)}, {type(text2)}")
-text3="""
+text3:str="""
 Mezi trojící uvozovek je text ukládán
 ve stejném formátu jako byl napsán
 včetně řádků 
@@ -48,7 +48,7 @@ včetně řádků
 print(f"hodnota: {text3} typ {type(text3)}")
 
 #dalším základním datovým typem je binární proměná boolean; python je casesensitive True/False musí začínat velkým písmenem.
-boolean = True
+boolean:bool = True
 print(f"hodnota {boolean} typ {type(boolean)}")
 
 

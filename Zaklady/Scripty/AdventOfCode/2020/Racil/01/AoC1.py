@@ -3,6 +3,7 @@ import time
 
 #slovnik={ 2020-int(line.strip()):int(line.strip()) for line in open("2000.txt", "r")}
 
+
 #čteme soubor řádek po řádku a u každého řádku použijeme metodu strip, která odstraní všechny bílé znaky ze začátku a konce řetězce 
 #také ho převedeme na int pomocí castingu následně je ukládáme do seznamu
 cisla=[int(line.strip()) for line in open("2000.txt", "r")]
