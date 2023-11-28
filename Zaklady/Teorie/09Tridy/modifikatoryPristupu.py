@@ -25,7 +25,7 @@ obj.jmenoVek()
 
 #Protected je přístupý pouze třídám, které jsou jeho potomky. Označujeme pomocí jednoho podtržítka.
 class Osoba:
-	#portected prměnné
+	#protected prměnné
 	_jmeno = None
 	_vek = None
 	def __init__(self, jmeno, vek): 	  
