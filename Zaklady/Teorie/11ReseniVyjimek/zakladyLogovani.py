@@ -2,6 +2,8 @@
 Logování nám umožňuje jednoduší způsob sledování chodu našeho programu.
 """
 
+from os.path import realpath, join, dirname
+
 #budeme potřebovat importovat knihovnu logging
 import logging
 
@@ -21,7 +23,7 @@ import logging
 #filemode způsob zápisu (w-přepíše soubor při každém spuštění aplikace,a-přidává na konec souboru);
 #format, který definuje jakým způsobem bude zpráva zformátována;
 
-logging.basicConfig(level=logging.DEBUG, filename='ukazka.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s -%(asctime)s')
+logging.basicConfig(level=logging.DEBUG, filename=join(dirname(realpath(__file__)),'ukazka.log'), filemode='w', format='%(name)s - %(levelname)s - %(message)s -%(asctime)s')
 
 #V rámci formátu je možné odkazovat na základní elementy třídy LogRecord, pomocí %(názvu elementu)s
 #Užitečné elementy:
@@ -49,8 +51,8 @@ logging.error('Připojení k serveru selhalo')
 logging.critical('Klíčové závislosti nenalezeny! Aplikace bude ukončena.')
 
 #Pokud k jednoduchému zachycení chybovou události (try) metodu exception která zachytí událost a přiřadí jí úroveň error 
-# a,b = 5,0
+a,b = 5,0
 
-# try:
-#     c = a / b
-# except Exception as e: logging.exception("Exception occurred")
+try:
+    c = a / b
+except Exception as e: logging.exception("Exception occurred")

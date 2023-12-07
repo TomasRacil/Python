@@ -43,11 +43,11 @@ print(f"Poslední znaky: {x}\n")
 
 #Pokud chceme použít speciální symbol využijeme \ symbol
 x = re.search("\.[a-z]{2,3}", text)
-print(f"První jmeno nebo email: {x}\n")
+print(f"Domena: {x}\n")
 
 #Kombinace zpětného lomítka a znaku
 #\b - označení začátku slova; 
-#\B označení konce slovaů
+#\B označení konce slova
 #u těchto dvou musíme použít r před řetězcem (definuje raw string)
 x = re.search(r"\be[a-z]*", text)
 print(f"První slovo zacinajici na e: {x}\n")
@@ -84,8 +84,8 @@ emaily = re.findall(emailVzor, text)
 print(f"Nalezené emaily: {emaily}\n")
 
 #metoda split(regulární výraz, text) rozdělí email v místě které splňuje regulární výraz
-slicedEmail = re.split('@',emaily[0])
-print(f"Rozdělený email: {slicedEmail}\n")
+# slicedEmail = re.split('@',emaily[0])
+# print(f"Rozdělený email: {slicedEmail}\n")
 
 #metoda sub(regulární výraz, nová hodnota textu, text) vymění všechny podmnožiny textu splňující regulární výraz za novou hodnotu textu
 ladan = re.sub("[kK]ol[ií]k", "ladan", text)
