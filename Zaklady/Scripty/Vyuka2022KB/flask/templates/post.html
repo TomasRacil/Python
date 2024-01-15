@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Flask website</title>-->
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        <h2>{% block title %} {{ post['title'] }} {% endblock %}</h2>
+        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <p>{{ post['content'] }}</p>
+    {% endblock %}
+</body>
+</html>
