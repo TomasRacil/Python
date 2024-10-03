@@ -36,12 +36,13 @@
             "humao.rest-client",
             "visualstudioexptteam.vscodeintellicode",
             "eamodio.gitlens"
-		],
-		"vscode": {
-			"extensions": [
-				"njpwerner.autodocstring"
-			]
-		}
+        ],
+        "vscode": {
+            "extensions": [
+                "njpwerner.autodocstring",
+                "eamodio.gitlens"
+            ]
+        }
     },
     // // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [5000],
