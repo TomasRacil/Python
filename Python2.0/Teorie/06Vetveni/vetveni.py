@@ -1,36 +1,50 @@
-vyraz = input("zadej A jestli souhlasíš: ") == 'A'
-
-if vyraz:
-    print("Souhlasíš")
+# Jednoduchý if-else
+cislo = 5
+if cislo > 0:
+  print("Číslo je kladné.")
 else:
-    print("Nesouhlasiš")
+  print("Číslo je záporné nebo nula.")
 
-try:
-    cislo = int(input("zadej cislo: "))
+# if-elif-else
+cislo = 0
+if cislo > 0:
+  print("Číslo je kladné.")
+elif cislo < 0:
+  print("Číslo je záporné.")
+else:
+  print("Číslo je nula.")
 
-    if cislo > 0:
-        print(f"{cislo} je větší jak nula")
-    elif cislo < 0:
-        print(f"{cislo} je menší jak nula")
-    else:
-        print(f"{cislo} je nula")
+# Vnořené podmínky
+cislo = 5
+if cislo > 0:
+  if cislo % 2 == 0:
+    print("Číslo je kladné a sudé.")
+  else:
+    print("Číslo je kladné a liché.")
+else:
+  print("Číslo je záporné nebo nula.")
 
-except ValueError:
-    print("Toto není číslo")
-except Exception as e:
-    print(e)
-
+# Inline podmínka
 jmeno = input("Tvoje jméno: ")
 print(f"Tvoje jmeno je {jmeno}") if jmeno != "" else print("Nezadal jsi jmeno")
 
-volba = int(input("Zadej číslo volby (1-3): "))
+# Přepínač s match a case
+den = input("Zadej den v týdnu (1-7): ")
 
-match volba:
-    case 1:
-        print("Zvolil jsi možnost 1")
-    case 2:
-        print("Zvolil jsi možnost 2")
-    case 3:
-        print("Zvolil jsi možnost 3")
-    case _:  # Defaultní case pro neplatné volby
-        print("Neplatná volba")
+match den:
+  case "1":
+    print("Pondělí")
+  case "2":
+    print("Úterý")
+  case "3":
+    print("Středa")
+  case "4":
+    print("Čtvrtek")
+  case "5":
+    print("Pátek")
+  case "6":
+    print("Sobota")
+  case "7":
+    print("Neděle")
+  case _:  # Defaultní větev
+    print("Neplatný den.")

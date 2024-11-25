@@ -1,5 +1,5 @@
 """
-TODO
+Abstraktní třídy
 """
 
 from abc import ABC, abstractmethod

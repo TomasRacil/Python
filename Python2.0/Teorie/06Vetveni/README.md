@@ -1,136 +1,91 @@
 ## Větvení
 
-V Pythonu se pro větvení programu používají klíčová slova `if`, `elif` a `else`. Umožňují vykonávat různé bloky kódu v závislosti na splnění podmínek.
+### Úvod
 
-### Syntaxe
+Větvení umožňuje programu vykonávat různé bloky kódu v závislosti na splnění podmínek. V Pythonu se k větvení používají klíčová slova `if`, `elif` a `else`.
 
-* **Jednoduché větvení (`if`)**
+### Příkaz `if`
+
+Příkaz `if` provede blok kódu, pokud je podmínka pravdivá.
 
 ```python
-if podmínka:
-    # Blok kódu, který se provede, pokud je podmínka True
+cislo = 5
+if cislo > 0:
+  print("Číslo je kladné.")
 ```
 
-* **Větvení s alternativou (`if-else`)**
+### Příkaz `else`
+
+Příkaz `else` se používá v kombinaci s `if` a provede blok kódu, pokud podmínka v `if` není pravdivá.
 
 ```python
-if podmínka:
-    # Blok kódu, který se provede, pokud je podmínka True
+cislo = -5
+if cislo > 0:
+  print("Číslo je kladné.")
 else:
-    # Blok kódu, který se provede, pokud je podmínka False
+  print("Číslo je záporné nebo nula.")
 ```
 
-* **Vícenásobné větvení (`if-elif-else`)**
+### Příkaz `elif`
+
+Příkaz `elif` (zkratka pro "else if") umožňuje testovat více podmínek.
 
 ```python
-if podmínka1:
-    # Blok kódu, který se provede, pokud je podmínka1 True
-elif podmínka2:
-    # Blok kódu, který se provede, pokud je podmínka2 True
-elif podmínka3:
-    # Blok kódu, který se provede, pokud je podmínka3 True
+cislo = 0
+if cislo > 0:
+  print("Číslo je kladné.")
+elif cislo < 0:
+  print("Číslo je záporné.")
 else:
-    # Blok kódu, který se provede, pokud žádná z podmínek není True
+  print("Číslo je nula.")
 ```
 
-### Příklady
+### Vnořené podmínky
 
-* **Jednoduchý `if-else` statement:**
+Podmínky lze vnořovat do sebe.
 
 ```python
-vyraz = input("zadej A jestli souhlasíš: ") == 'A'
-
-if vyraz:
-    print("Souhlasíš")
+cislo = 5
+if cislo > 0:
+  if cislo % 2 == 0:
+    print("Číslo je kladné a sudé.")
+  else:
+    print("Číslo je kladné a liché.")
 else:
-    print("Nesouhlasiš")
+  print("Číslo je záporné nebo nula.")
 ```
 
-* **Vícenásobné větvení s `elif`:**
+### Inline podmínka
 
-```python
-try:
-    cislo = int(input("zadej cislo: "))
-
-    if cislo > 0:
-        print(f"{cislo} je větší jak nula")
-    elif cislo < 0:
-        print(f"{cislo} je menší jak nula")
-    else:
-        print(f"{cislo} je nula")
-
-except ValueError:
-    print("Toto není číslo")
-except Exception as e:
-    print(e)
-```
-
-* **Inline podmínka:**
+Pro jednoduché podmínky lze použít inline zápis.
 
 ```python
 jmeno = input("Tvoje jméno: ")
 print(f"Tvoje jmeno je {jmeno}") if jmeno != "" else print("Nezadal jsi jmeno")
 ```
 
-### Přepínač
+### Přepínač s `match` a `case` (Python 3.10+)
 
-Od verze Pythonu 3.10 je možné použít `match` a `case` pro simulaci přepínače.
+Od verze Python 3.10 je k dispozici příkaz `match`, který funguje podobně jako `switch` v jiných jazycích.
 
 ```python
-volba = int(input("Zadej číslo volby (1-3): "))
+den = input("Zadej den v týdnu (1-7): ")
 
-match volba:
-    case 1:
-        print("Zvolil jsi možnost 1")
-    case 2:
-        print("Zvolil jsi možnost 2")
-    case 3:
-        print("Zvolil jsi možnost 3")
-    case _:  # Defaultní case pro neplatné volby
-        print("Neplatná volba")
+match den:
+  case "1":
+    print("Pondělí")
+  case "2":
+    print("Úterý")
+  case "3":
+    print("Středa")
+  case "4":
+    print("Čtvrtek")
+  case "5":
+    print("Pátek")
+  case "6":
+    print("Sobota")
+  case "7":
+    print("Neděle")
+  case _:  # Defaultní větev
+    print("Neplatný den.")
 ```
-
-V tomto případě příkaz `match` porovnává hodnotu proměnné `volba` s jednotlivými `case` bloky. Pokud dojde ke shodě, provede se kód v daném bloku. Klíčové slovo `_` funguje jako defaultní case a zachytí všechny hodnoty, které neodpovídají žádnému z předchozích `case` bloků.
-
-## Cvičení
-
-**1. Kontrola věku:**
-
-* Napište program, který si vyžádá od uživatele jeho věk.
-* Program vypíše, zda je uživatel:
-    * Dítě (věk < 18 let)
-    * Dospělý (18 <= věk < 65 let)
-    * Senior (věk >= 65 let)
-
-**2. Kalkulačka:**
-
-* Napište program, který si vyžádá od uživatele dvě čísla a operaci (+, -, *, /).
-* Program provede zadanou operaci a vypíše výsledek.
-* Použijte `match` a `case` pro výběr operace.
-* Ošetřete případné chyby, např. dělení nulou.
-
-**3. Hádání čísla:**
-
-* Program si náhodně vygeneruje číslo od 1 do 100.
-* Uživatel hádá číslo. Program mu napovídá, zda je hádané číslo větší nebo menší než to správné.
-* Po uhodnutí čísla program vypíše počet pokusů.
-
-**4. Přestupný rok:**
-
-* Napište program, který si vyžádá od uživatele rok.
-* Program zjistí a vypíše, zda je zadaný rok přestupný.
-* Rok je přestupný, pokud je dělitelný 4, ale není dělitelný 100, s výjimkou roků dělitelných 400.
-
-**5. Kámen, nůžky, papír**
-
-* Vytvořte program, který simuluje jednoduchou hru "kámen, nůžky, papír" proti počítači.
-* Počítač náhodně vybere jednu z možností.
-* Uživatel zadá svou volbu.
-* Program vyhodnotí výsledek hry a vypíše, kdo vyhrál.
-
-**Doporučení:**
-
-* Pro generování náhodných čísel použijte modul `random`.
-* Pro ošetření chyb použijte `try-except` bloky.
-* Pro kontrolu vstupu od uživatele použijte podmínky a cykly.
-* Nezapomeňte na komentáře v kódu, které vysvětlují, co program dělá.

@@ -1,9 +1,13 @@
-#Pro přístup k souboru použijeme funkci open("soubor","čtení/zápis")
+from os import path
+# 
+# Pro přístup k souboru použijeme funkci open("soubor","čtení/zápis")
 #"soubor" nahradíme buď jen jménem pokud se nachází ve stejném adresáři ze kterého je script spouštěn
 #nebo celou celou cestou
 #druhý argument může mít hodnoty: 
 #"r"- read pro čtení, "w"- pro zápis, "a"- pro přidání textu na konec
-soubor = open("demo.txt", "r")
+# print(path.join(path.dirname(path.realpath(__file__)),"demo.txt"))
+soubor = open(path.join(path.dirname(path.realpath(__file__)),"demo.txt"),'r')
+# soubor = open("demo.txt", "r")
 #soubor = open("/home/tomas/Vyuka/Python/Základy/Teorie/12PráceSeSoubory/demo.txt","r")
 print(f"Typ třídy kterou vrací open: {type(soubor)} \n")
 

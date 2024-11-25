@@ -1,36 +1,30 @@
-podminka = True
+# Cyklus while
+i = 0
+while i < 5:
+  print(i)
+  i += 1
 
-while podminka:
-    podminka = input("Pro opakování cyklu zadej r: ") == 'r'
+# Cyklus while s break
+i = 0
+while True:  # Nekonečný cyklus
+  print(i)
+  i += 1
+  if i >= 5:
+    break
 
-i = 1
-while i < 6:
-    print(i)
-    if i == 4:
-        print("přerušení cyklu!")
-        break
-    i += 1
+# Cyklus for
+seznam = ["jablko", "hruška", "banán"]
+for ovoce in seznam:
+  print(ovoce)
 
-seznam = ['python', 'go', 'kotlin']
-for prvek in seznam:
-    print(prvek)
+# Cyklus for s range()
+for i in range(5):
+  print(i)
 
-veta = "Procházení řetězce písmeno po písmenu"
-for pismeno in veta:
-    print(pismeno)
+for i in range(2, 8, 2):
+  print(i)
 
-for cislo in range(5, 50, 5):
-    print(cislo)
-
-i = 1
-while i < 6:
-    line = ""
-    for cislo in range(6):  # Generuje čísla od 0 do 5
-        line += str(cislo) + ", "
-    print(line)
-    i += 1
-
-for i in range(10):
-    if i == 5:
-        break
-    print(i)
+# Vnořené cykly
+for i in range(3):
+  for j in range(2):
+    print(f"i = {i}, j = {j}")
