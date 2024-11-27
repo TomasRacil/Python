@@ -1,6 +1,6 @@
 ## Datové struktury
 
-Datové struktury slouží k ukládání kolekcí dat. V Pythonu existují čtyři základní typy:
+Datové struktury slouží k ukládání a organizaci dat v paměti počítače. Umožňují nám efektivně pracovat s daty, vyhledávat v nich, modifikovat je a provádět další operace. V Pythonu máme k dispozici několik základních datových struktur:
 
 ### Seznam (list)
 
