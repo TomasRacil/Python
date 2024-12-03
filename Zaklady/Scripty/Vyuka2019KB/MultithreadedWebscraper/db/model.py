@@ -1,22 +1,12 @@
 """Modell for webpages in neo4j"""
 
-#from neomodel import StructuredNode, StringProperty, RelationshipTo,BooleanProperty
-from py2neo.ogm import Label, Model, Property,RelatedTo
+from neomodel import StructuredNode, StringProperty, BooleanProperty, RelationshipTo
 
-#config.DATABASE_URL = 'bolt://neo4j:heslo123@localhost:7687'
-
-
-class WebPage(Model):
-    """_summary_
-
-    Args:
-        Model (_type_): _description_
-    """
-    __primarykey__="name"
-    name = Property()
-    url = Property()
-    ssl = Label()
-    connected_webpages= RelatedTo('WebPage','WEBPAGE')
+class WebPage(StructuredNode):
+    name = StringProperty(unique_index=True, required=True)  # primary key
+    url = StringProperty(required=True)
+    ssl = BooleanProperty(default=False) 
+    connected_webpages = RelationshipTo('WebPage', 'WEBPAGE')
 
 # google=WebPage(url="https://www.google.com").save()
 # googleMaps=WebPage(url="https://www.maps.google.com").save()

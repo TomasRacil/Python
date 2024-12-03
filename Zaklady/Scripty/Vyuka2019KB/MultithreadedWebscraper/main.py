@@ -8,7 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-from neo4j import expand_map
+from db import expand_map
 
 
 EXIT_FLAG = False
@@ -72,6 +72,7 @@ def get_urls(cid: int, origin_url: str):
                     if check_url(origin_url, href):
                         urls_to_visit.append(href)
             expand_map(origin_url, urls_to_visit)
+            # print(origin_url, urls_to_visit)
             for url in urls_to_visit:
                 # print(f"{id}: from: {url} page: {ur}")
                 workQueue.put(url)
@@ -112,8 +113,8 @@ if __name__ == "__main__":
     ids = [1, 2, 3, 4, 5, 6, 7, 8]
     crawlers = []
 
-    #URL = "https://www.google.com"
-    URL = "https://www.youtube.com/"
+    URL = "https://www.google.com"
+    # URL = "https://www.youtube.com/"
     workQueue.put(URL)
 
     for cid in ids:
