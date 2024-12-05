@@ -1,5 +1,5 @@
 """
-Solution to 1. day of advent of code 2022
+Solution to 1. day of advent of code 2024
 https://adventofcode.com/2024/day/1
 """
 
@@ -11,7 +11,7 @@ def main():
     main
     """
     with open(
-        join(dirname(realpath(__file__)), "input.txt"), "r", encoding="utf_8"
+        join(dirname(realpath(__file__)), "test.txt"), "r", encoding="utf_8"
     ) as file:
         lists = [
             sorted(l)
