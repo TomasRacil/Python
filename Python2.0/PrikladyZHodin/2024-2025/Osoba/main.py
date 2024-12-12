@@ -45,13 +45,26 @@ class Osoba:
         else:
             raise ValueError("Neplatna hodnota op")
 
+    def zkontorlujPlatnostJmena(func):
+        def wrapper(self):
+            if len(self.jmeno) > 0 and len(self.prijmeni) > 0:
+                func(self)
+
+        return wrapper
+
+    @zkontorlujPlatnostJmena
+    def pozdrav(self):
+        print(f"Ahoj {self.jmeno} {self.prijmeni}")
+
     def __str__(self):
         return f"{self.jmeno} {self.prijmeni} {self.vek} let c. op {self.cislo_op}"
 
 
 if __name__ == "__main__":
-    osoba = Osoba("Josef", "Novy", 1)
+    osoba = Osoba("", "Novy", 1)
     print(osoba)
+    osoba.pozdrav()
 
     osoba2 = Osoba.vytvorOsobuZTXT(join(dirname(realpath(__file__)), "osoba.txt"))
     print(osoba2)
+    osoba2.pozdrav()
