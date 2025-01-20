@@ -617,3 +617,69 @@ Správné použití synchronizačních primitiv je klíčové pro zajištění i
 
   * [Dokumentace k modulu `threading`](https://docs.python.org/3/library/threading.html)
   * [Dokumentace k modulu `multiprocessing`](https://docs.python.org/3/library/multiprocessing.html)
+
+
+## Cviceni
+
+1.  **Závod želv:**
+    *   Napište program, který simuluje závod 5 želv.
+    *   Každá želva je reprezentována vláknem (modul `threading`).
+    *   Želva se v každém kroku posune o náhodnou vzdálenost (např. 1-5 cm) a "usne" na náhodnou dobu (např. 0.1-0.5 sekundy).
+    *   Využijte `threading.Thread`, `time.sleep()` a `random`.
+    *   Hlavní vlákno vypisuje průběžné pořadí želv.
+    *   Po dokončení závodu program vypíše vítěze.
+    *   **Rozšíření:** Implementujte různé rychlosti pro želvy.
+
+2.  **Stahovač obrázků (threading):**
+    *   Napište program, který stáhne z dané URL adresy seznam obrázků (např. 10 obrázků).
+    *   Každý obrázek se stahuje v samostatném vlákně.
+    *   Využijte `threading.Thread`, `urllib.request` (nebo knihovnu `requests`).
+    *   Program zobrazuje průběh stahování (např. procenta stažení pro každý obrázek).
+    *   **Rozšíření:** Ukládejte stažené obrázky do specifické složky s unikátními názvy.
+
+3.  **Hledání prvočísel (multiprocessing):**
+    *   Napište program, který najde všechna prvočísla v zadaném rozsahu (např. 1-100000).
+    *   Rozdělte rozsah na menší části a každou část zpracujte v samostatném procesu.
+    *   Využijte `multiprocessing.Process` a `multiprocessing.Queue` pro sdílení výsledků.
+    *   Hlavní proces vypíše nalezená prvočísla.
+    *   **Rozšíření:** Měřte a porovnejte čas běhu s jedním procesem a s více procesy.
+
+4.  **Paralelní výpočet Mandelbrotovy množiny (multiprocessing):**
+    *   Napište program, který vypočítá a vykreslí Mandelbrotovu množinu.
+    *   Rozdělte výpočet na více procesů, kde každý proces zpracuje část obrazu.
+    *   Využijte `multiprocessing.Process`, `multiprocessing.Array` (nebo `multiprocessing.sharedctypes`) pro sdílení dat a knihovnu `PIL` (nebo `matplotlib`) pro vykreslení.
+    *   **Rozšíření:** Umožněte uživateli zadat rozsah a rozlišení obrazu.
+
+5.  **Synchronizovaný přístup k souboru (threading/multiprocessing):**
+    *   Napište program, kde více vláken/procesů zapisuje data do sdíleného souboru.
+    *   Každé vlákno/proces zapisuje unikátní řetězec (např. "Vlákno 1: zpráva", "Proces 2: zpráva").
+    *   Zajistěte, aby se zápisy do souboru nepřekrývaly a aby byl soubor správně uzavřen.
+    *   Využijte `threading.Lock` nebo `multiprocessing.Lock` pro synchronizaci.
+    *   **Rozšíření:** Implementujte různé úrovně logování (např. INFO, WARNING, ERROR) s různými barvami výstupu.
+
+6.  **Producent/Konzument (threading/multiprocessing):**
+    *   Implementujte model Producent/Konzument pomocí vláken nebo procesů.
+    *   Producent generuje náhodná čísla a vkládá je do sdílené fronty.
+    *   Konzument odebírá čísla z fronty a zpracovává je (např. vypisuje, sčítá).
+    *   Využijte `threading.Queue` nebo `multiprocessing.Queue` a `threading.Condition`/`multiprocessing.Condition` pro synchronizaci.
+    *   **Rozšíření:** Implementujte více producentů a/nebo konzumentů.
+
+7.  **Asynchronní stahovač webových stránek (asyncio):**
+    *   Napište program, který asynchronně stáhne obsah z více webových stránek.
+    *   Využijte `asyncio`, `aiohttp` (pro asynchronní HTTP požadavky).
+    *   Program vypíše čas stahování pro každou stránku a celkový čas.
+    *   **Rozšíření:** Implementujte limit na počet současně stahovaných stránek (např. pomocí `asyncio.Semaphore`).
+
+8.  **Asynchronní chatovací server (asyncio):**
+    *   Napište jednoduchý chatovací server, který umožňuje komunikaci mezi více klienty.
+    *   Využijte `asyncio.start_server` a `asyncio.StreamReader`/`asyncio.StreamWriter`.
+    *   Server přijímá zprávy od klientů a rozesílá je všem ostatním připojeným klientům.
+    *   **Rozšíření:** Implementujte soukromé zprávy mezi klienty.
+
+9.  **Paralelní a asynchronní zpracování dat:**
+    *   Napište program, který kombinuje paralelní a asynchronní přístupy.
+    *   Například:
+        *   Více procesů stahuje data z různých URL asynchronně (pomocí `aiohttp`).
+        *   Výsledky se ukládají do sdílené fronty (`multiprocessing.Queue`).
+        *   Jiný proces data z fronty odebírá a zpracovává je.
+    *   **Rozšíření:** Implementujte různé typy zpracování dat (např. filtrování, agregace).
