@@ -1,0 +1,22 @@
+import threading
+import time
+
+semaphore = threading.Semaphore(2) # Povoluje přístup maximálně 2 vláknům
+
+def access_resource(thread_id):
+  print(f"Vlákno {thread_id} se pokouší získat přístup...")
+  semaphore.acquire()
+  print(f"Vlákno {thread_id} získalo přístup.")
+  time.sleep(2)  # Simulace práce se sdíleným prostředkem
+  print(f"Vlákno {thread_id} uvolňuje přístup.")
+  semaphore.release()
+
+# Vytvoření a spuštění 4 vláken
+threads = []
+for i in range(4):
+  t = threading.Thread(target=access_resource, args=(i+1,))
+  threads.append(t)
+  t.start()
+
+for t in threads:
+  t.join()
