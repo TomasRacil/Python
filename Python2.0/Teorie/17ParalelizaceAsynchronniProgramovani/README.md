@@ -116,7 +116,7 @@ print("Hlavní vlákno: hotovo")
 
 **Vysvětlení:**
 
-  * Funkce `task` simuluje úlohu, která trvá 2 sekundy (např. čekání na odpověď ze serveru).
+  * Funkce `task` simuluje úlohu, která trvá n sekund (např. čekání na odpověď ze serveru).
   * Vytvoří se dvě vlákna, která provádějí tuto úlohu.
   * `thread1.start()` a `thread2.start()` spustí vlákna.
   * `thread1.join()` a `thread2.join()` zajistí, že hlavní vlákno počká na dokončení obou vláken.

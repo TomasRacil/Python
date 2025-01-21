@@ -2,18 +2,18 @@ import threading
 import multiprocessing
 import time
 
-def task(name):
-  print(f"Vlákno {name}: start")
+def task(name, thread):
+  print(f"{'Vlákno' if thread else 'Proces'} {name}: start")
   for i in range(100_000_000):  # Simulace CPU-náročné operace
     pass
-  print(f"Vlákno {name}: konec")
+  print(f"{'Vlákno' if thread else 'Proces'} {name}: konec")
 
 if __name__ == '__main__':
   start_time = time.time()
 
   # Vytvoření a spuštění dvou vláken
-  thread1 = threading.Thread(target=task, args=("1",))
-  thread2 = threading.Thread(target=task, args=("2",))
+  thread1 = threading.Thread(target=task, args=("1",True))
+  thread2 = threading.Thread(target=task, args=("2",True))
 
   thread1.start()
   thread2.start()
@@ -28,8 +28,8 @@ if __name__ == '__main__':
   start_time = time.time()
 
   # Vytvoření a spuštění dvou procesů
-  process1 = multiprocessing.Process(target=task, args=("1",))
-  process2 = multiprocessing.Process(target=task, args=("2",))
+  process1 = multiprocessing.Process(target=task, args=("1",False))
+  process2 = multiprocessing.Process(target=task, args=("2",False))
 
   process1.start()
   process2.start()

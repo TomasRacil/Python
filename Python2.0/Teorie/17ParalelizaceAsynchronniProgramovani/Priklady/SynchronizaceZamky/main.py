@@ -8,13 +8,13 @@ def increment_counter():
     global counter
     for _ in range(10000):
         lock.acquire()
-        try:
-            temp = counter
-            temp += 1
-            time.sleep(0)
-            counter = temp
-        finally:
-            lock.release()
+        # try:
+        temp = counter
+        temp += 1
+        time.sleep(0)
+        counter = temp
+        # finally:
+        lock.release()
 
 # Vytvoření a spuštění deseti vláken
 threads = []
